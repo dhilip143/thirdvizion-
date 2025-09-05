@@ -7,10 +7,10 @@ import Blogs from "./Pages/Blogs";
 import Header from "/src/Layout/Header.jsx";
 import Footer from "/src/Layout/Footer.jsx";
 
-import MainImmersive from "/src/Pages/Services/Immersive/MainImmersive";
+import Diagram from "./Pages/Services/Immersive/Diagram";
+import MainImmersive from "./Pages/Services/Immersive/MainImmersive";
 import MainData from "./Pages/Services/Data & Cloud/MainData";
 import MainSoftware from "./Pages/Services/Software/MainSoftware";
-// import WebDev from "/src/Pages/Services/Software/WebDev.jsx"
 import ProjectGallery from "./Pages/Services/Software/ProjectGallery";
 import Game from "./Pages/Services/Software/game";
 
@@ -25,13 +25,16 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blogs />} />
 
-          <Route path="/immersive" element={<MainImmersive />} />
+          {/* Immersive Route with Diagram + MainImmersive */}
+          <Route
+            path="/immersive"
+            element={<Diagram />}
+            />
+
           <Route path="/data" element={<MainData />} />
           <Route path="/software" element={<MainSoftware />} />
-          
-           <Route path="/ProjectGallery" element={<ProjectGallery />} />
-            <Route path="/ame" element={<Game/>} />   
-         
+          <Route path="/ProjectGallery" element={<ProjectGallery />} />
+          <Route path="/ame" element={<Game />} />
         </Routes>
         <Footer />
       </BrowserRouter>

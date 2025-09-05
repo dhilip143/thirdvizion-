@@ -47,14 +47,14 @@ const Header = () => {
               <div className="absolute top-full left-0 bg-white text-black shadow-md rounded-lg w-44 z-50">
                 <ul className="flex flex-col text-sm">
                   <Link
-                    to="/about-me"
+                    to="/immersive"
                     className="px-4 py-2 hover:bg-gray-100"
                     onClick={() => setDropdown(false)}
                   >
                     Immersive Technology
                   </Link>
                   <Link
-                    to="/about-us"
+                    to="/data"
                     className="px-4 py-2 hover:bg-gray-100"
                     onClick={() => setDropdown(false)}
                   >
