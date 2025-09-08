@@ -13,6 +13,7 @@ import MainData from "./Pages/Services/Data & Cloud/MainData";
 import MainSoftware from "./Pages/Services/Software/MainSoftware";
 import ProjectGallery from "./Pages/Services/Software/ProjectGallery";
 import Game from "./Pages/Services/Software/game";
+import ThreeD from "./Pages/Services/Immersive/ThreeD";
 
 function App() {
   return (
@@ -27,14 +28,28 @@ function App() {
 
           {/* Immersive Route with Diagram + MainImmersive */}
           <Route
-            path="/immersive"
+            path="/ar"
             element={<Diagram />}
             />
 
+            <Route
+            path="/vr"
+            element={<MainImmersive />}
+            />
+
+          <Route
+            path="/3d"
+            element={<ThreeD/>}
+            />
+
+
+
           <Route path="/data" element={<MainData />} />
           <Route path="/software" element={<MainSoftware />} />
-          <Route path="/ProjectGallery" element={<ProjectGallery />} />
-          <Route path="/ame" element={<Game />} />
+          
+           <Route path="/ProjectGallery" element={<ProjectGallery />} />
+            <Route path="/game" element={<Game/>} />   
+         
         </Routes>
         <Footer />
       </BrowserRouter>

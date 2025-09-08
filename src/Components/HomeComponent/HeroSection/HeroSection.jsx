@@ -10,6 +10,7 @@ import service6 from "/src/assets/HeroImages/7.png";
 import service7 from "/src/assets/HeroImages/8.png";
 import service8 from "/src/assets/HeroImages/9.png";
 import service9 from "/src/assets/HeroImages/10.png";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   const icons = [
@@ -36,8 +37,8 @@ const Landing = () => {
           shuffledIcons[(liIndex + ulIndex) % shuffledIcons.length];
         listItems.push(
           <li className={currentIcon.class} key={liIndex}>
-            <a href="#">
-              <div className="span-wrapper">
+            <a >
+              <div>
                 {[...Array(4)].map((_, idx) => (
                   <span key={idx}></span>
                 ))}
@@ -64,18 +65,24 @@ const Landing = () => {
   }, []);
 
   return (
-    <div id="pattern" className="pattern h-[100vh] overflow-hidden relative z-0">
+    <div
+      id="pattern"
+      className="pattern 2xl:h-[112vh] overflow-hidden relative z-0"
+    >
       {/* This section contains the background pattern */}
       {createDynamicLists(10, 10)}
 
       {/* ✅ Centered text + button */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 z-20 text-white pointer-events-none">
-        <h2 className="lg:leading-relaxed leading-snug px-6  pt-[220px] text-center text-[28px] md:text-[36px] lg:text-4xl font-michroma font-extrabold">
+      <div className="flex flex-col items-center justify-center gap-5 z-20 text-white">
+        <h2 className="absolute top-105 z-50 lg:leading-relaxed leading-snug px-6 text-center text-[28px] md:text-[36px] lg:text-4xl 2xl:text-xl font-michroma font-extrabold">
           ENGINEERING THE FUTURE <br /> INNOVATING THE PRESENT
         </h2>
-        <button className="bg-violet-500 text-white px-6 py-4 w-fit text-[14px] rounded-full">
-          Know more
-        </button>
+        <Link
+          to={"/contact"}
+          className="absolute top-125 bg-violet-500 text-white px-4 py-2 text-sm rounded-full pointer-events-auto hover:scale-110 duration-300"
+        >
+          Book A Free Demo
+        </Link>
       </div>
     </div>
   );
