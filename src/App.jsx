@@ -105,7 +105,7 @@ function App() {
           
            <Route path="/ProjectGallery" element={<ProjectGallery />} />
             <Route path="/ame" element={<Game/>} />  
-             <Route path="/MOB" element={<Mobile/>} />      
+             <Route path="/mobile" element={<Mobile/>} />      
          
           <Route path="/web" element={<MainSoftware />} />
           <Route path="/ProjectGallery" element={<ProjectGallery />} />
