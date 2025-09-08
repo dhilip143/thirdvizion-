@@ -58,15 +58,16 @@ import Blogs from "./Pages/Blogs";
 import Header from "/src/Layout/Header.jsx";
 import Footer from "/src/Layout/Footer.jsx";
 
-import MainImmersive from "/src/Pages/Services/Immersive/MainImmersive";
+import Diagram from "./Pages/Services/Immersive/Diagram";
+import MainImmersive from "./Pages/Services/Immersive/MainImmersive";
 import MainData from "./Pages/Services/Data & Cloud/MainData";
 import MainSoftware from "./Pages/Services/Software/MainSoftware";
-// import WebDev from "/src/Pages/Services/Software/WebDev.jsx"
 import ProjectGallery from "./Pages/Services/Software/ProjectGallery";
 import CRM from "./Pages/Services/crm/CRM";
 import IAMHero from "./Pages/Services/IAM/IAMHero";
 // import ITServices from "/src/Pages/Services/ITServices.jsx/IT.jsx";
 import Game from "./Pages/Services/Software/game";
+import ThreeD from "./Pages/Services/Immersive/ThreeD";
 import Mobile from "./Pages/Services/mobile/mobile";
 import ERPHeroSlider from "./Pages/Services/ERP/ERPHeroSlider";  // ✅ fixed path
 import ServerManagement from "./Pages/Services/Server/ServerManagement";
@@ -82,13 +83,31 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blogs />} />
 
-          <Route path="/immersive" element={<MainImmersive />} />
+          {/* Immersive Route with Diagram + MainImmersive */}
+          <Route
+            path="/ar"
+            element={<Diagram />}
+            />
+
+            <Route
+            path="/vr"
+            element={<MainImmersive />}
+            />
+
+          <Route
+            path="/3d"
+            element={<ThreeD/>}
+            />
+
+
+
           <Route path="/data" element={<MainData />} />
           <Route path="/software" element={<MainSoftware />} />
+                
           
            <Route path="/ProjectGallery" element={<ProjectGallery />} />
             <Route path="/ame" element={<Game/>} />  
-             <Route path="/MOB" element={<Mobile/>} />      
+             <Route path="/mobile" element={<Mobile/>} />      
          
           <Route path="/web" element={<MainSoftware />} />
           <Route path="/ProjectGallery" element={<ProjectGallery />} />
@@ -99,7 +118,7 @@ function App() {
           <Route path="/erp" element={<ERPHeroSlider />} /> {/* ✅ unique path */}
           <Route path="/server" element={<ServerManagement />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </>
   );

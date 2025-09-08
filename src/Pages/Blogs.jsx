@@ -1,8 +1,9 @@
+import BlogLanding from "../Components/HomeComponent/BLOG/BlogLanding"
 
 
 const Blogs = () => {
   return (
-    <div>Blogs</div>
+<BlogLanding/>
   )
 }
 
