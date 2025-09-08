@@ -69,6 +69,7 @@ import IAMHero from "./Pages/Services/IAM/IAMHero";
 import Game from "./Pages/Services/Software/game";
 import Mobile from "./Pages/Services/mobile/mobile";
 import ERPHeroSlider from "./Pages/Services/ERP/ERPHeroSlider";  // ✅ fixed path
+import ServerManagement from "./Pages/Services/Server/ServerManagement";
 
 function App() {
   return (
@@ -96,6 +97,7 @@ function App() {
           {/* <Route path="/erp" element={<ITServices />} /> */}
           <Route path="/game" element={<Game />} />   
           <Route path="/erp" element={<ERPHeroSlider />} /> {/* ✅ unique path */}
+          <Route path="/server" element={<ServerManagement />} />
         </Routes>
         {/* <Footer /> */}
       </BrowserRouter>
