@@ -58,15 +58,16 @@ import Blogs from "./Pages/Blogs";
 import Header from "/src/Layout/Header.jsx";
 import Footer from "/src/Layout/Footer.jsx";
 
-import MainImmersive from "/src/Pages/Services/Immersive/MainImmersive";
+import Diagram from "./Pages/Services/Immersive/Diagram";
+import MainImmersive from "./Pages/Services/Immersive/MainImmersive";
 import MainData from "./Pages/Services/Data & Cloud/MainData";
 import MainSoftware from "./Pages/Services/Software/MainSoftware";
-// import WebDev from "/src/Pages/Services/Software/WebDev.jsx"
 import ProjectGallery from "./Pages/Services/Software/ProjectGallery";
 import CRM from "./Pages/Services/crm/CRM";
 import IAMHero from "./Pages/Services/IAM/IAMHero";
 // import ITServices from "/src/Pages/Services/ITServices.jsx/IT.jsx";
 import Game from "./Pages/Services/Software/game";
+import ThreeD from "./Pages/Services/Immersive/ThreeD";
 import Mobile from "./Pages/Services/mobile/mobile";
 import ERPHeroSlider from "./Pages/Services/ERP/ERPHeroSlider";  // ✅ fixed path
 
@@ -81,7 +82,24 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blogs />} />
 
-          <Route path="/immersive" element={<MainImmersive />} />
+          {/* Immersive Route with Diagram + MainImmersive */}
+          <Route
+            path="/ar"
+            element={<Diagram />}
+            />
+
+            <Route
+            path="/vr"
+            element={<MainImmersive />}
+            />
+
+          <Route
+            path="/3d"
+            element={<ThreeD/>}
+            />
+
+
+
           <Route path="/data" element={<MainData />} />
           <Route path="/software" element={<MainSoftware />} />
           
@@ -97,7 +115,7 @@ function App() {
           <Route path="/game" element={<Game />} />   
           <Route path="/erp" element={<ERPHeroSlider />} /> {/* ✅ unique path */}
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </>
   );
