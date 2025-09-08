@@ -67,6 +67,7 @@ import CRM from "./Pages/Services/crm/CRM";
 import IAMHero from "./Pages/Services/IAM/IAMHero";
 // import ITServices from "/src/Pages/Services/ITServices.jsx/IT.jsx";
 import Game from "./Pages/Services/Software/game";
+import Mobile from "./Pages/Services/mobile/mobile";
 import ERPHeroSlider from "./Pages/Services/ERP/ERPHeroSlider";  // ✅ fixed path
 
 function App() {
@@ -82,6 +83,12 @@ function App() {
 
           <Route path="/immersive" element={<MainImmersive />} />
           <Route path="/data" element={<MainData />} />
+          <Route path="/software" element={<MainSoftware />} />
+          
+           <Route path="/ProjectGallery" element={<ProjectGallery />} />
+            <Route path="/ame" element={<Game/>} />  
+             <Route path="/MOB" element={<Mobile/>} />      
+         
           <Route path="/web" element={<MainSoftware />} />
           <Route path="/ProjectGallery" element={<ProjectGallery />} />
           <Route path="/crm" element={<CRM />} />

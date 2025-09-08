@@ -1,0 +1,11 @@
+Model Information:
+* title:	App Le Watch TPP
+* source:	https://sketchfab.com/3d-models/app-le-watch-tpp-a5d4091fc42247c2bce0e5eb5230851e
+* author:	vmmaniac (https://sketchfab.com/vmmaniac)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "App Le Watch TPP" (https://sketchfab.com/3d-models/app-le-watch-tpp-a5d4091fc42247c2bce0e5eb5230851e) by vmmaniac (https://sketchfab.com/vmmaniac) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
