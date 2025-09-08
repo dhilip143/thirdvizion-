@@ -4,51 +4,27 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Float, Html } from "@react-three/drei";
 import { gsap } from "gsap";
 
-// App data (gamified icons + gradients)
+// Mobile services app data
 const appData = [
-  { name: "Nova Chat", color1: "#FF6B6B", color2: "#FFD93D", icon: "💬" },
-  { name: "Luma Music", color1: "#00F5A0", color2: "#00D9F5", icon: "🎵" },
-  { name: "HyperPix", color1: "#A445B2", color2: "#FF0066", icon: "✨" },
-  { name: "Orbit Social", color1: "#42A5F5", color2: "#478ED1", icon: "🌐" },
-  { name: "Pulse Stream", color1: "#FF9F1C", color2: "#FF4040", icon: "📡" },
-  { name: "Zen Play", color1: "#34D399", color2: "#059669", icon: "🎮" },
+  { name: "React Native", color1: "#61DAFB", color2: "#007ACC", icon: "⚛️" },
+  { name: "Flutter", color1: "#02569B", color2: "#39CEFD", icon: "💠" },
+  { name: "Swift iOS", color1: "#FF6B6B", color2: "#FF9500", icon: "🦅" },
+  { name: "Kotlin Android", color1: "#A445B2", color2: "#FF9800", icon: "📱" },
+  { name: "Firebase", color1: "#FFCA28", color2: "#FF5722", icon: "🔥" },
+  { name: "Node Backend", color1: "#3C873A", color2: "#68A063", icon: "🌐" },
 ];
 
-// 3D App Card
+// 3D App Card (without background layer)
 function AppCard({ color1, color2, label, icon, position }) {
-  const meshRef = useRef();
-
-  useEffect(() => {
-    if (!meshRef.current) return;
-    meshRef.current.scale.set(1.2, 1.2, 0.4);
-  }, []);
-
   return (
     <Float speed={2} rotationIntensity={1} floatIntensity={1.5}>
-      {/* Card Base */}
-      <mesh ref={meshRef} position={position}>
-        <boxGeometry args={[1.5, 1.5, 0.3]} />
-        <meshStandardMaterial
-          metalness={0.6}
-          roughness={0.3}
-          color={color1}
-        />
-      </mesh>
-
-      {/* Icon inside */}
+      {/* Icon only */}
       <Html position={[position[0], position[1], position[2] + 0.25]} center>
         <div
           style={{
-            width: "60px",
-            height: "60px",
-            borderRadius: "14px",
-            background: `linear-gradient(135deg, ${color1}, ${color2})`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "28px",
+            fontSize: "42px",
             color: "#fff",
-            boxShadow: "0 0 18px rgba(255,255,255,0.7)",
+            textShadow: "0 0 12px rgba(255,255,255,0.8)",
           }}
         >
           {icon}
@@ -75,9 +51,9 @@ function AppCard({ color1, color2, label, icon, position }) {
   );
 }
 
-// Floating glowing particles (instead of plain dots/stars)
+// Floating glowing particles (gamified background)
 function FloatingParticles() {
-  const count = 40;
+  const count = 50;
   const particles = [];
 
   for (let i = 0; i < count; i++) {
@@ -110,7 +86,7 @@ function FloatingParticles() {
 export default function MobileAppsShowcase3D() {
   const rocketRef = useRef();
 
-  // Rocket looping + rotating animation with GSAP
+  // Rocket looping animation
   useEffect(() => {
     if (rocketRef.current) {
       const tl = gsap.timeline({ repeat: -1, yoyo: true });
@@ -148,21 +124,21 @@ export default function MobileAppsShowcase3D() {
       <h2
         style={{
           textAlign: "center",
-          fontSize: "40px",
+          fontSize: "42px",
           fontWeight: "900",
           paddingTop: "30px",
           marginBottom: "30px",
-          background: "linear-gradient(90deg,#00F5A0,#00D9F5,#FF4B2B)",
+          background: "linear-gradient(90deg,#61DAFB,#00D9F5,#FF4B2B)",
           WebkitBackgroundClip: "text",
           color: "transparent",
           letterSpacing: "2px",
           textShadow: "0 0 20px rgba(255,255,255,0.9)",
         }}
       >
-        Futuristic App Universe
+        Mobile App Services 🚀
       </h2>
 
-      {/* Rocket Flying */}
+      {/* Rocket Flying Shuttle */}
       <div
         ref={rocketRef}
         style={{
@@ -173,7 +149,7 @@ export default function MobileAppsShowcase3D() {
           filter: "drop-shadow(0 0 15px #fff)",
         }}
       >
-        🚀
+        🛰️
       </div>
 
       {/* 3D Canvas */}
