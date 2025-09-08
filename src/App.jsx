@@ -102,6 +102,7 @@ function App() {
 
           <Route path="/data" element={<MainData />} />
           <Route path="/software" element={<MainSoftware />} />
+                
           
            <Route path="/ProjectGallery" element={<ProjectGallery />} />
             <Route path="/ame" element={<Game/>} />  
