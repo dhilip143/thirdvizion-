@@ -1,4 +1,4 @@
-import BlogLanding from "../Components/HomeComponent/BLOG/BlogLanding"
+import BlogLanding from "../../Components/HomeComponent/BLOG/BlogLanding"
 
 
 const Blogs = () => {
