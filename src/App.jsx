@@ -70,9 +70,16 @@ import Game from "./Pages/Services/Software/game";
 import ThreeD from "./Pages/Services/Immersive/ThreeD";
 import Mobile from "./Pages/Services/mobile/mobile";
 import ERPHeroSlider from "./Pages/Services/ERP/ERPHeroSlider";  // ✅ fixed path
+<<<<<<< HEAD
 import ServerManagement from "./Pages/Services/Server/ServerManagement";
 // import InnerBlock from "./Pages/Blog/InnerBlock";
 import BlogDetails from "./Pages/Blog/Innerblogpages/InnerBlog";
+=======
+import Thirdblog from "./Components/HomeComponent/About/Thirdblog";
+
+
+
+>>>>>>> 0661c872483f6dcd55349d33b9cd4d1c7690331a
 
 function App() {
   return (
@@ -108,13 +115,15 @@ function App() {
 
           <Route path="/data" element={<MainData />} />
           <Route path="/software" element={<MainSoftware />} />
+           
                 
           
            <Route path="/ProjectGallery" element={<ProjectGallery />} />
             <Route path="/ame" element={<Game/>} />  
              <Route path="/mobile" element={<Mobile/>} />      
-         
+         <Route path="/THREE" element={<Thirdblog/>} />  
           <Route path="/web" element={<MainSoftware />} />
+          
           <Route path="/ProjectGallery" element={<ProjectGallery />} />
           <Route path="/crm" element={<CRM />} />
           <Route path="/iam" element={<IAMHero />} />
