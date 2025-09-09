@@ -1,53 +1,59 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// Layout Components
+
+import ScrollToTop from "/src/Layout/ScrollToTop";
 import Header from "/src/Layout/Header.jsx";
 import Footer from "/src/Layout/Footer.jsx";
 // Basic Pages
-import Home from "/src/Pages/HomePage.jsx";
-import About from "/src/Pages/AboutPage.jsx";
-import Contact from "/src/Pages/ContactPage.jsx";
-import Blogs from "/src/Pages/Blog/BlogPage.jsx";
+import HomePage from "/src/Pages/HomePage.jsx";
+import AboutPage from "/src/Pages/AboutPage.jsx";
+import ContactPage from "/src/Pages/ContactPage.jsx";
+// Blog Page
+import BlogPage from "/src/Pages/Blog/BlogPage.jsx";
+import InnerBlog from "/src/Pages/Blog/InnerBlog.jsx";
+// Immersive Tech
+import VrPage from "/src/Pages/Services/ImmersiveTech/VirtualReality.jsx";
+import ArPage from "/src/Pages/Services/ImmersiveTech/AugmentedReality.jsx";
+import ThreeDServices from "/src/Pages/Services/ImmersiveTech/3DServices.jsx";
+// Data & Cloud
+import CRM from "/src/Pages/Services/Data & Cloud/CRMPage.jsx";
+import IAM from "/src/Pages/Services/Data & Cloud/IAMPage.jsx";
+import ERP from "/src/Pages/Services/Data & Cloud/ERPPage.jsx";
+import Server from "/src/Pages/Services/Data & Cloud/ServerPage.jsx";
+// Devlopment & Software
+import WebsitePage from "/src/Pages/Services/Development & Software/WebsitePage.jsx";
+import AppPage from "/src/Pages/Services/Development & Software/AppPage.jsx";
+import GamePage from "/src/Pages/Services/Development & Software/GamePage.jsx";
+// Additional Pages
 
-import Diagram from "/src/Pages/Services/Immersive/Diagram";
-import MainImmersive from "./Pages/Services/Immersive/MainImmersive";
-import MainData from "/src/Pages/Services/Data & Cloud/MainData";
-import MainSoftware from "/src/Pages/Services/Software/MainSoftware";
-import ProjectGallery from "/src/Pages/Services/Software/ProjectGallery";
-import CRM from "/src/Pages/Services/crm/CRM";
-import IAMHero from "/src/Pages/Services/IAM/IAMHero";
-// import ITServices from "/src/Pages/Services/ITServices.jsx/IT.jsx";
-import Game from "/src/Pages/Services/Software/game";
-import ThreeD from "/src/Pages/Services/Immersive/ThreeD";
-import Mobile from "/src/Pages/Services/mobile/mobile";
-import ERPHeroSlider from "/src/Pages/Services/ERP/ERPHeroSlider"; // ✅ fixed path
-import Thirdblog from "./Components/HomeComponent/About/Thirdblog";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog" element={<Blogs />} />
-          {/* Immersive Route with Diagram + MainImmersive */}
-          <Route path="/ar" element={<Diagram />} />
-          <Route path="/vr" element={<MainImmersive />} />
-          <Route path="/3d" element={<ThreeD />} />
-          <Route path="/data" element={<MainData />} />
-          <Route path="/ProjectGallery" element={<ProjectGallery />} />
-          <Route path="/mobile" element={<Mobile />} />
-          <Route path="/three" element={<Thirdblog />} />
-          <Route path="/web" element={<MainSoftware />} />
-          <Route path="/ProjectGallery" element={<ProjectGallery />} />
-          <Route path="/crm" element={<CRM />} />
-          <Route path="/iam" element={<IAMHero />} />
-          {/* <Route path="/erp" element={<ITServices />} /> */}
-          <Route path="/game" element={<Game />} />
-          <Route path="/erp" element={<ERPHeroSlider />} />{" "}
-          {/* ✅ unique path */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          {/* Blog */}
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<InnerBlog />} />
+          {/* Services */}
+          {/* Immersive Tech */}
+          <Route path="/virtual_reality" element={<VrPage />} />
+          <Route path="/augmented_reality" element={<ArPage />} />
+          <Route path="/3d_services" element={<ThreeDServices />} />
+          {/* Data & Cloud */}
+          <Route path="/client_relationship_management" element={<CRM />} />
+          <Route path="/identity_and_access_management" element={<IAM />} />
+          <Route path="/enterprise_resource_planning" element={<ERP />} />
+          <Route path="/server_management" element={<Server />} />
+          {/* Development & Software */}
+          <Route path="/web_development" element={<WebsitePage />} />
+          <Route path="/app_development" element={<AppPage />} />
+          <Route path="/game_development" element={<GamePage />} />
+          {/* Additional pages */}
         </Routes>
         <Footer />
       </BrowserRouter>

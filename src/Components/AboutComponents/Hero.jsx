@@ -1,30 +1,164 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import threed from "/src/assets/home/3d.png";
 
-const Hero = () => {
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Thirdblog() {
+  const headerRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const imgHolderRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const header = headerRef.current;
+      const wrapper = wrapperRef.current;
+      const imgHolder = imgHolderRef.current;
+      if (!header || !wrapper || !imgHolder) return;
+
+      const aboutText = header.querySelector(".about-text");
+      const thirdText = header.querySelector(".third-text");
+      const vizionText = header.querySelector(".vizion-text");
+
+      // About moves UP
+      if (aboutText) {
+        gsap.to(aboutText, {
+          y: -200,
+          opacity: 0,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: wrapper,
+            start: "top top",
+            end: "+=150%",
+            scrub: true,
+          },
+        });
+      }
+
+      // Third moves LEFT
+      if (thirdText) {
+        gsap.to(thirdText, {
+          x: -window.innerWidth * 1.5,
+          scale: 3,
+          opacity: 0,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: wrapper,
+            start: "top top",
+            end: "+=150%",
+            scrub: true,
+          },
+        });
+      }
+
+      // Vizion moves RIGHT
+      if (vizionText) {
+        gsap.to(vizionText, {
+          x: window.innerWidth * 1.5,
+          scale: 3,
+          opacity: 0,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: wrapper,
+            start: "top top",
+            end: "+=150%",
+            scrub: true,
+          },
+        });
+      }
+
+      // Image rotate + clip path expand
+      gsap.fromTo(
+        imgHolder,
+        {
+          rotate: 30,
+          clipPath: "polygon(37.5% 20%, 62.5% 20%, 62.5% 80%, 37.5% 80%)",
+        },
+        {
+          rotate: 0,
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: wrapper,
+            start: "top top",
+            end: "+=200%",
+            scrub: true,
+            pin: imgHolder,
+            anticipatePin: 1,
+          },
+        }
+      );
+
+      // Image scale
+      const innerImg = imgHolder.querySelector("img");
+      if (innerImg) {
+        gsap.fromTo(
+          innerImg,
+          { scale: 2 },
+          {
+            scale: 1,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: wrapper,
+              start: "top top",
+              end: "+=200%",
+              scrub: true,
+            },
+          }
+        );
+      }
+    }, wrapperRef);
+
+    const handleResize = () => ScrollTrigger.refresh();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      ctx.revert();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
+
   return (
-    <>
-      <section className="relative flex flex-col items-center justify-center text-center py-20 px-6 bg-black">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="border-4 border-yellow-400 rounded-2xl p-10 shadow-[0_0_30px_rgba(255,255,0,0.5)] max-w-4xl mx-auto"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-yellow-400 via-blue-500 via-green-500 to-red-500 bg-clip-text text-transparent">
-            About ThirdVizion
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-gray-300 mx-auto">
-            At{" "}
-            <span className="font-semibold text-yellow-400">ThirdVizion</span>,
-            we are more than just a technology company. Our mission is to
-            deliver cutting-edge solutions that not only solve challenges but
-            also create new opportunities across industries.
-          </p>
-        </motion.div>
-      </section>
-    </>
-  );
-};
+    <div className="relative w-full min-h-screen bg-black font-contrail  overflow-hidden">
+      {/* Small logo */}
+      <div className="fixed top-0 right-0 m-8 w-[18px] h-[18px] bg-red-500 rounded-sm z-40" />
 
-export default Hero;
+      {/* Header text */}
+      <div
+        ref={headerRef}
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center w-full z-30 pointer-events-none"
+        aria-hidden
+      >
+        <div className="about-text text-[5rem] font-medium text-white text-center uppercase transform translate-y-[90px] ">
+          About
+        </div>
+        <div className="flex gap-6 mt-4">
+          <div className="third-text text-[12rem] font-medium text-white text-center uppercase">
+            Third
+          </div>
+          <div className="vizion-text text-[12rem] font-medium text-white text-center uppercase">
+            Vizion
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll wrapper */}
+      <div ref={wrapperRef} className="relative min-h-[300vh]">
+        <div className="website-content sticky top-0 w-full min-h-screen z-10">
+          <div
+            ref={imgHolderRef}
+            className="relative w-full h-screen bg-gray-200 flex items-center justify-center [clip-path:polygon(37.5%_20%,62.5%_20%,62.5%_80%,37.5%_80%)] rotate-[30deg]"
+          >
+            <img
+              src={threed}
+              alt="3d visual"
+              className="w-full h-full object-cover scale-[2]"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,6 +1,6 @@
 import React from "react";
 
-const AboutUs = () => {
+const Mission = () => {
   return (
     <section className="w-full h-screen flex justify-center items-center bg-black  px-6 md:px-10 xl:px-14">
       <div className=" flex flex-col items-left">
@@ -57,4 +57,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default Mission;
