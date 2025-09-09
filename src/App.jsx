@@ -70,16 +70,13 @@ import Game from "./Pages/Services/Software/game";
 import ThreeD from "./Pages/Services/Immersive/ThreeD";
 import Mobile from "./Pages/Services/mobile/mobile";
 import ERPHeroSlider from "./Pages/Services/ERP/ERPHeroSlider";  // ✅ fixed path
-<<<<<<< HEAD
 import ServerManagement from "./Pages/Services/Server/ServerManagement";
 // import InnerBlock from "./Pages/Blog/InnerBlock";
 import BlogDetails from "./Pages/Blog/Innerblogpages/InnerBlog";
-=======
 import Thirdblog from "./Components/HomeComponent/About/Thirdblog";
 
 
 
->>>>>>> 0661c872483f6dcd55349d33b9cd4d1c7690331a
 
 function App() {
   return (
