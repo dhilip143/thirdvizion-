@@ -1,5 +1,7 @@
-import React from "react";
+// src/Pages/Contact.jsx
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import {
   FaFacebookF,
   FaInstagram,
@@ -33,6 +35,48 @@ const typingText = {
 
 const Contact = () => {
   const text = "Let's create\nsomething unforgettable";
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const sendMail = (e) => {
+    e.preventDefault();
+
+    const parms = {
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    emailjs
+      .send(
+        "service_xobkpan", // ✅ Service ID
+        "template_593n1su", // ✅ Template ID
+        parms,
+        "4AnXDmbIUVcrm3tHZ" // ✅ replace with Public Key from dashboard
+      )
+      .then(
+        () => {
+          setStatus("✅ Message sent successfully!");
+          setFormData({ name: "", email: "", subject: "", message: "" });
+        },
+        (error) => {
+          console.error("❌ Failed to send email:", error);
+          setStatus("❌ Failed to send message. Please try again.");
+        }
+      );
+  };
 
   return (
     <section className="relative min-h-screen bg-black text-white overflow-hidden px-6 py-16">
@@ -101,21 +145,41 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="md:col-span-2 p-6 bg-gray-900/60 rounded-2xl shadow-lg">
-            <form className="space-y-4">
+            <form onSubmit={sendMail} className="space-y-4">
               <input
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 placeholder="Your Name"
                 className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:border-yellow-400"
+                required
               />
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="Your Email"
+                className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:border-yellow-400"
+                required
+              />
+              <input
+                type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                placeholder="Subject"
                 className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:border-yellow-400"
               />
               <textarea
                 rows="5"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Your Message"
                 className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg focus:border-yellow-400"
+                required
               ></textarea>
               <button
                 type="submit"
@@ -124,22 +188,12 @@ const Contact = () => {
                 Send Message
               </button>
             </form>
+            {status && <p className="mt-4 text-sm">{status}</p>}
           </div>
         </div>
       </div>
 
       {/* Google Map Embed */}
-      {/* <div className="relative z-10 mt-12 max-w-7xl mx-auto">
-        <iframe
-          src="https://maps.app.goo.gl/yRq1ai24hgsHYupi6"
-          width="100%"
-          height="400"
-          allowFullScreen=""
-          loading="lazy"
-          className="rounded-2xl shadow-lg"
-        ></iframe>
-        
-      </div> */}
       <div className="relative z-10 mt-12 max-w-7xl mx-auto">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d971.3769118616685!2d80.21570859260818!3d13.130346971455051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265005562c04d%3A0xffa654adbcddc690!2sThirdvizion%20Labs%20Private%20Limited!5e0!3m2!1sen!2sin!4v1756812933414!5m2!1sen!2sin"

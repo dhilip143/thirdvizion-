@@ -20,6 +20,7 @@ import Game from "/src/Pages/Services/Software/game";
 import ThreeD from "/src/Pages/Services/Immersive/ThreeD";
 import Mobile from "/src/Pages/Services/mobile/mobile";
 import ERPHeroSlider from "/src/Pages/Services/ERP/ERPHeroSlider"; // ✅ fixed path
+import Thirdblog from "./Components/HomeComponent/About/Thirdblog";
 
 function App() {
   return (
@@ -36,10 +37,9 @@ function App() {
           <Route path="/vr" element={<MainImmersive />} />
           <Route path="/3d" element={<ThreeD />} />
           <Route path="/data" element={<MainData />} />
-          <Route path="/software" element={<MainSoftware />} />
           <Route path="/ProjectGallery" element={<ProjectGallery />} />
-          <Route path="/ame" element={<Game />} />
           <Route path="/mobile" element={<Mobile />} />
+          <Route path="/three" element={<Thirdblog />} />
           <Route path="/web" element={<MainSoftware />} />
           <Route path="/ProjectGallery" element={<ProjectGallery />} />
           <Route path="/crm" element={<CRM />} />
