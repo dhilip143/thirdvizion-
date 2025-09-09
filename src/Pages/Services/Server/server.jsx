@@ -7,7 +7,6 @@ import {
   FaNetworkWired,
   FaCogs,
 } from "react-icons/fa";
-import "./Curve.css";
 
 function ServerManagementUI() {
   return (
