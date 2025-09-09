@@ -53,7 +53,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "/src/Pages/Home.jsx";
 import About from "/src/Pages/About.jsx";
 import Contact from "/src/Pages/Contact.jsx";
-import Blogs from "./Pages/Blogs";
+import Blogs from "./Pages/Blog/Blogs";
 
 import Header from "/src/Layout/Header.jsx";
 import Footer from "/src/Layout/Footer.jsx";
@@ -71,6 +71,8 @@ import ThreeD from "./Pages/Services/Immersive/ThreeD";
 import Mobile from "./Pages/Services/mobile/mobile";
 import ERPHeroSlider from "./Pages/Services/ERP/ERPHeroSlider";  // ✅ fixed path
 import ServerManagement from "./Pages/Services/Server/ServerManagement";
+// import InnerBlock from "./Pages/Blog/InnerBlock";
+import BlogDetails from "./Pages/Blog/Innerblogpages/InnerBlog";
 
 function App() {
   return (
@@ -82,6 +84,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blogs />} />
+          <Route path="/blog/:id" element={<BlogDetails />} />
+          
+          
 
           {/* Immersive Route with Diagram + MainImmersive */}
           <Route
