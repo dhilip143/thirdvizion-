@@ -12,7 +12,9 @@ import ContactSection from "../Components/HomeComponent/ContactSection.jsx";
 export default function Home() {
   return (
     <>
+    <div className="bg-white">
       <Hero />
+      </div>
       <About />
       <Service />
       <Categories />

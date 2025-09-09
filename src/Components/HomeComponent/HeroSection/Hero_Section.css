@@ -27,49 +27,49 @@
   transition: background 0.9s ease;
 }
 
-.pattern ul:nth-child(1){
-  margin: 0px 200px 0px 0px ;
+.pattern ul:nth-child(1) {
+  margin: 0px 200px 0px 0px;
 }
 
-.pattern ul:nth-child(2){
-  margin: -20px 200px 0px 60px ;
+.pattern ul:nth-child(2) {
+  margin: -20px 200px 0px 60px;
 }
 
-.pattern ul:nth-child(3){
-  margin: -20px 200px 0px 100px ;
+.pattern ul:nth-child(3) {
+  margin: -20px 200px 0px 100px;
 }
 
-.pattern ul:nth-child(4){
-  margin: -20px 200px 0px 145px ;
+.pattern ul:nth-child(4) {
+  margin: -20px 200px 0px 145px;
 }
 
-.pattern ul:nth-child(5){
-  margin: -20px 200px 0px 190px ;
+.pattern ul:nth-child(5) {
+  margin: -20px 200px 0px 190px;
 }
 
-.pattern ul:nth-child(6){
-  margin: -20px 200px 0px 235px ;
+.pattern ul:nth-child(6) {
+  margin: -20px 200px 0px 235px;
 }
 
-.pattern ul:nth-child(7){
-  margin: -20px 200px 0px 285px ;
+.pattern ul:nth-child(7) {
+  margin: -20px 200px 0px 285px;
 }
 
-.pattern ul:nth-child(8){
-  margin: -20px 200px 0px 330px ;
+.pattern ul:nth-child(8) {
+  margin: -20px 200px 0px 330px;
 }
 
-.pattern ul:nth-child(9){
-  margin: -20px 200px 0px 380px ;
+.pattern ul:nth-child(9) {
+  margin: -20px 200px 0px 380px;
 }
 
-.pattern ul:nth-child(10){
-  margin: -20px 200px 0px 425px ;
+.pattern ul:nth-child(10) {
+  margin: -20px 200px 0px 425px;
 }
 
 .pattern ul li::before,
 .pattern ul li::after {
-  content: '';
+  content: "";
   position: absolute;
   background: #2a2a2a;
 }
@@ -79,10 +79,9 @@
   left: 28px;
   width: 81px;
   height: 16.5px;
-  transform-origin:bottom;
-  transform: skewX(-33deg) skewY(3deg)
-             rotateZ(17.5deg) 
-             translateX(-86px) translateY(-10px) ;
+  transform-origin: bottom;
+  transform: skewX(-33deg) skewY(3deg) rotateZ(17.5deg) translateX(-86px)
+    translateY(-10px);
 }
 
 .pattern ul li::after {
@@ -91,25 +90,22 @@
   left: -15px;
   width: 17px;
   height: 60px;
-  transform-origin:right;
+  transform-origin: right;
   transform: skewY(-49deg);
 }
 
 /* Span styles */
-.pattern ul li #hexa{
+.pattern ul li #hexa {
   margin: 75px 0px 0px 50px;
   background-color: #222222;
   width: 60px;
   height: 8px;
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  transform: skewY(-26.5deg) 
-             translateX(2px) 
-             translateY(34px)
-             skewX(-65deg);
-} 
+  transform: skewY(-26.5deg) translateX(2px) translateY(34px) skewX(-65deg);
+}
 
 .pattern ul li span {
-  position: absolute;  
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -138,7 +134,7 @@
   width: 18px;
   height: 70px;
   background: #2a2a2a;
-  transition: .5s;
+  transition: 0.5s;
   transform: rotate(0deg) skewY(-45deg);
 }
 
@@ -147,7 +143,7 @@
   left: -10px;
   height: 20px;
   background: #2a2a2a;
-  transition: .5s;
+  transition: 0.5s;
   transform: rotate(0deg) skewX(-45deg);
 }
 
@@ -164,7 +160,7 @@
 
 .pattern ul li:hover span:nth-child(4) {
   transform: translate(25px, -25px);
-  z-index: 1002;  
+  z-index: 1002;
   background: #2a2a2a;
 }
 
@@ -201,5 +197,41 @@
 }
 
 .pattern ul li.whatsapp:hover span:nth-child(5) {
-  background: #25D366;
+  background: #25d366;
+}
+
+/* Extra small screens (phones) */
+@media (max-width: 480px) {
+  .pattern {
+    zoom: 0.5;
+    height: 180vh;
+    padding-top: 480px;
+  }
+}
+
+/* Small screens (large phones / small tablets) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .pattern {
+    zoom: 1;
+    height: 142vh;
+    padding-top: 480px;
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pattern {
+    zoom: 1.3;
+    height: 120vh;
+    padding-top: 480px;
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .pattern {
+    zoom: 1.5;
+    height: 112vh;
+    padding-top: 480px;
+  }
 }
