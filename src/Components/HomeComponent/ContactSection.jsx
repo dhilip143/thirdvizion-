@@ -3,7 +3,7 @@ import reach from "/src/assets/HomeImages/contactBg.png";
 export default function ContactHero() {
   return (
     <section
-      className="relative w-full overflow-hidden bg-black text-white pt-32 pb-32 sm:pt-40 sm:pb-40 md:pt-48 md:pb-48 lg:pt-56 lg:pb-56"
+      className="relative w-full overflow-hidden bg-transparent text-white pt-32 pb-32 sm:pt-40 sm:pb-40 md:pt-48 md:pb-48 lg:pt-56 lg:pb-56"
       style={{
         backgroundImage: `url(${reach})`,
         backgroundSize: "cover",
