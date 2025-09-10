@@ -240,7 +240,7 @@ import Layout from "/src/assets/HomeImages/CatagoriesImges/layout.jpg";
 import Component from "/src/assets/HomeImages/CatagoriesImges/component.jpg";
 import UserFocus from "/src/assets/HomeImages/CatagoriesImges/UserFocus.jpg";
 
-import Ecommerce from "/src/assets/HomeImages/CatagoriesImges/ecommerce.jpg";
+import Ecommerce from "/src/assets/HomeImages/CatagoriesImges/Ecommerce.jpg";
 import Portal from "/src/assets/HomeImages/CatagoriesImges/portals.jpg";
 import Dashboard from "/src/assets/HomeImages/CatagoriesImges/dashboard.jpg";
 
