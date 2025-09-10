@@ -6,6 +6,7 @@ import Categories from "/src/Components/HomeComponent/Categories";
 import VisionMission from "/src/Components/HomeComponent/VissionSection";
 import Hovercard from "/src/Components/HomeComponent/HoverCard.jsx";
 import FAQ from "/src/Components/HomeComponent/FAQ.jsx";
+import Testimonial from "/src/Components/HomeComponent/Testimonial.jsx";
 import Industries from "/src/Components/HomeComponent/Industries.jsx";
 import ContactSection from "/src/Components/HomeComponent/ContactSection.jsx";
 
@@ -17,8 +18,11 @@ export default function Home() {
       <Service />
       <Categories />
       <VisionMission />
-      <Industries />
       <Hovercard />
+      <FAQ />
+      <Testimonial />
+      <Industries />
+      {/* <Hovercard /> */}
 
       {/* FAQ sticky container */}
       <div className="relative">
