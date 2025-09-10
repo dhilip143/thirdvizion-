@@ -3,17 +3,17 @@ import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 // ✅ Import images with clear names
-import DesignTool from "/src/assets/HomeImages/CatagoriesImges/DesignTool.jpg";
-import Layout from "/src/assets/HomeImages/CatagoriesImges/layout.jpg";
-import Component from "/src/assets/HomeImages/CatagoriesImges/component.jpg";
-import UserFocus from "/src/assets/HomeImages/CatagoriesImges/UserFocus.jpg";
+import DesignTool from "/src/assets/HomeImages/CategoryImages/DesignTool.jpg";
+import Layout from "/src/assets/HomeImages/CategoryImages/layout.jpg";
+import Component from "/src/assets/HomeImages/CategoryImages/component.jpg";
+import UserFocus from "/src/assets/HomeImages/CategoryImages/UserFocus.jpg";
 
-import Portal from "/src/assets/HomeImages/CatagoriesImges/portals.jpg";
-import Dashboard from "/src/assets/HomeImages/CatagoriesImges/dashboard.jpg";
+import Portal from "/src/assets/HomeImages/CategoryImages/portals.jpg";
+import Dashboard from "/src/assets/HomeImages/CategoryImages/DashBoard.jpg";
 
-import Aws from "/src/assets/HomeImages/CatagoriesImges/aws.jpg";
-import Azure from "/src/assets/HomeImages/CatagoriesImges/azure.jpg";
-import GoogleCloud from "/src/assets/HomeImages/CatagoriesImges/googlecloud.jpg";
+import Aws from "/src/assets/HomeImages/CategoryImages/aws.jpg";
+import Azure from "/src/assets/HomeImages/CategoryImages/azure.jpg";
+import GoogleCloud from "/src/assets/HomeImages/CategoryImages/googlecloud.jpg";
 
 const capabilitiesData = [
   {
