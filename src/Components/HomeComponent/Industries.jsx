@@ -1,6 +1,7 @@
+// src/components/Industries.jsx
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import ScrollReveal from "scrollreveal";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import threed from "/src/assets/HomeImages/3d development.webp";
 import gam from "/src/assets/HomeImages/gam.png";
@@ -8,16 +9,23 @@ import are from "/src/assets/HomeImages/ar.png";
 import wih from "/src/assets/HomeImages/hiw.png";
 import extra from "/src/assets/HomeImages/pon.png";
 
-export default function Industries() {
-  // 🔥 Responsive circle radius
-  const [radius, setRadius] = useState(120);
+gsap.registerPlugin(ScrollTrigger);
 
+export default function Industries() {
+  const [radius, setRadius] = useState(120);
+  const svgRef = useRef(null);
+  const pathRef = useRef(null);
+  const circleRefs = useRef([]);
+  const textRefs = useRef([]);
+  const imageRefs = useRef([]);
+
+  // 🔥 Responsive circle radius
   useEffect(() => {
     const updateRadius = () => {
-      if (window.innerWidth < 640) setRadius(70); // mobile
-      else if (window.innerWidth < 1024) setRadius(100); // tablet
-      else if (window.innerWidth < 1536) setRadius(120); // laptop
-      else setRadius(140); // 2xl screens
+      if (window.innerWidth < 640) setRadius(70);
+      else if (window.innerWidth < 1024) setRadius(100);
+      else if (window.innerWidth < 1536) setRadius(120);
+      else setRadius(140);
     };
     updateRadius();
     window.addEventListener("resize", updateRadius);
@@ -47,80 +55,96 @@ export default function Industries() {
       .join(" ")}
   `;
 
-  const pathRef = useRef(null);
-  const svgRef = useRef(null);
-
-  const [progresses, setProgresses] = useState([]);
-  const [started, setStarted] = useState(false);
-  const pathDuration = 6;
-
-  // 👀 inView detection
-  const isInView = useInView(svgRef, { once: true, margin: "-100px" });
-
-  // ✨ ScrollReveal
+  // ✨ GSAP ScrollTrigger animations (path + circles open immediately)
   useEffect(() => {
-    ScrollReveal().reveal(".industries-container", {
-      duration: 1200,
-      distance: "50px",
-      origin: "bottom",
-      easing: "ease-in-out",
-      opacity: 0,
-      reset: false,
-    });
-  }, []);
+    const path = pathRef.current;
+    if (!path) return;
 
-  // 🔥 calculate circle reveal timing
-  useEffect(() => {
-    if (!isInView) return;
-
-    const pathEl = pathRef.current;
-    if (!pathEl) return;
-
-    const raf = requestAnimationFrame(() => {
-      try {
-        const total = pathEl.getTotalLength();
-        const step = Math.max(2, Math.floor(total / 1200));
-
-        const progs = circles.map((c) => {
-          let minDist = Infinity;
-          let bestLen = 0;
-          for (let len = 0; len <= total; len += step) {
-            const p = pathEl.getPointAtLength(len);
-            const d = Math.hypot(p.x - c.cx, p.y - c.cy);
-            if (d < minDist) {
-              minDist = d;
-              bestLen = len;
-            }
-          }
-          return bestLen / total;
-        });
-
-        setProgresses(progs);
-        setStarted(true);
-      } catch (err) {
-        console.error("Path measurement failed:", err);
-        setProgresses(circles.map((_, i) => i / (circles.length - 1)));
-        setStarted(true);
-      }
+    const totalLength = path.getTotalLength();
+    gsap.set(path, {
+      strokeDasharray: totalLength,
+      strokeDashoffset: totalLength,
     });
 
-    return () => cancelAnimationFrame(raf);
-  }, [isInView]);
+    // Animate the path as you scroll (whole)
+    gsap.to(path, {
+      strokeDashoffset: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: svgRef.current,
+        start: "top 20%",
+        end: "bottom 80%",
+        scrub: true,
+      },
+    });
+
+    // Each circle animates when it enters viewport
+    circles.forEach((c, i) => {
+      gsap.fromTo(
+        circleRefs.current[i],
+        { scale: 0.5, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          ease: "back.out(1.7)",
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: circleRefs.current[i],
+            start: "top 80%", // when circle comes into view
+          },
+        }
+      );
+
+      gsap.fromTo(
+        imageRefs.current[i],
+        { opacity: 0, scale: 0.8 },
+        {
+          opacity: 1,
+          scale: 1,
+          ease: "power2.out",
+          duration: 0.4,
+          scrollTrigger: {
+            trigger: circleRefs.current[i],
+            start: "top 80%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        textRefs.current[i],
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          ease: "power2.out",
+          duration: 0.4,
+          scrollTrigger: {
+            trigger: circleRefs.current[i],
+            start: "top 80%",
+          },
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, [circles]);
 
   return (
     <section className="relative w-full min-h-screen bg-black text-white flex flex-col items-center justify-start py-16 sm:py-20 lg:py-28 overflow-hidden">
       {/* 🔥 Heading */}
-      <div className="text-center mb-12 sm:mb-16 industries-container px-4">
+      <div className="text-center mb-12 sm:mb-16 px-4">
         <p className="text-xs sm:text-sm text-gray-400 tracking-wide uppercase">
           Industry Applications
         </p>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-extrabold mt-2 leading-tight">
+        <h1 className="text-2xl sm:text-2xl md:text-5xl lg:text-4xl 2xl:text-7xl font-extrabold mt-2 leading-tight">
           INDUSTRIES <br className="hidden sm:block" /> WE EMPOWER
         </h1>
       </div>
 
       {/* 🔥 SVG Path + Circles */}
-      <div className="relative w-full max-w-[95%] sm:max-w-[700px] lg:max-w-[900px] 2xl:max-w-[1100px] mx-auto industries-container">
+      <div className="relative w-full max-w-[95%] sm:max-w-[700px] lg:max-w-[900px] 2xl:max-w-[1100px] mx-auto">
         <svg
           ref={svgRef}
           viewBox="0 0 500 2000"
@@ -129,9 +153,8 @@ export default function Industries() {
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMin meet"
         >
-          {/* base faint path */}
+          {/* faint base path */}
           <path
-            ref={pathRef}
             d={pathD}
             stroke="rgba(255,255,255,0.18)"
             strokeWidth="3"
@@ -139,16 +162,14 @@ export default function Industries() {
             strokeLinecap="round"
           />
 
-          {/* glowing path */}
-          <motion.path
+          {/* animated path */}
+          <path
+            ref={pathRef}
             d={pathD}
             stroke="url(#glow)"
             strokeWidth="4"
             strokeLinecap="round"
             fill="none"
-            initial={{ pathLength: 0 }}
-            animate={started ? { pathLength: 1 } : { pathLength: 0 }}
-            transition={{ duration: pathDuration, ease: "easeInOut" }}
           />
 
           {/* gradient + glow filter */}
@@ -167,50 +188,35 @@ export default function Industries() {
             </filter>
           </defs>
 
-          {/* 🔥 Circles + Labels */}
+          {/* 🔥 Circles + Images + Labels */}
           {circles.map((c, idx) => {
-            const prog = progresses[idx] ?? idx / (circles.length - 1);
-            const delay = Math.max(0, pathDuration * prog - 0.15);
             const textX = c.cx + (idx % 2 === 0 ? -(radius + 60) : radius + 60);
-
-            // 📏 Responsive font size for labels
-            let fontSize = 12;
-            if (window.innerWidth >= 640) fontSize = 14 + radius / 10;
-            if (window.innerWidth >= 1024) fontSize = 16 + radius / 10;
-            if (window.innerWidth >= 1536) fontSize = 18 + radius / 8;
+            const fontSize =
+              window.innerWidth >= 1536
+                ? 18 + radius / 8
+                : window.innerWidth >= 1024
+                ? 16 + radius / 10
+                : window.innerWidth >= 640
+                ? 14 + radius / 10
+                : 12;
 
             return (
-              <motion.g
-                key={c.id}
-                initial={{ scale: 0.6, opacity: 0 }}
-                animate={
-                  started
-                    ? { scale: 1, opacity: 1 }
-                    : { scale: 0.6, opacity: 0 }
-                }
-                transition={{
-                  delay,
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 24,
-                }}
-              >
-                {/* background circle */}
-                <motion.circle
+              <g key={c.id}>
+                {/* circle */}
+                <circle
+                  ref={(el) => (circleRefs.current[idx] = el)}
                   cx={c.cx}
                   cy={c.cy}
                   r={radius}
                   fill="#111"
-                  initial={{ r: 40 }}
-                  animate={started ? { r: radius } : { r: 40 }}
-                  transition={{ delay, duration: 0.6, ease: "easeOut" }}
                 />
 
                 {/* image mask */}
                 <clipPath id={`clip-${c.id}`}>
                   <circle cx={c.cx} cy={c.cy} r={radius} />
                 </clipPath>
-                <motion.image
+                <image
+                  ref={(el) => (imageRefs.current[idx] = el)}
                   href={c.img}
                   x={c.cx - radius}
                   y={c.cy - radius}
@@ -218,61 +224,34 @@ export default function Industries() {
                   height={radius * 2}
                   preserveAspectRatio="xMidYMid slice"
                   clipPath={`url(#clip-${c.id})`}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={
-                    started
-                      ? { opacity: 1, scale: 1 }
-                      : { opacity: 0, scale: 0.8 }
-                  }
-                  transition={{
-                    delay: delay + 0.1,
-                    duration: 0.6,
-                    ease: "easeOut",
-                  }}
-                  style={{ transformOrigin: `${c.cx}px ${c.cy}px` }}
                 />
 
                 {/* glow ring */}
-                <motion.circle
+                <circle
                   cx={c.cx}
                   cy={c.cy}
+                  r={radius + 20}
                   fill="none"
-                  stroke="#ffffff"
-                  strokeWidth={2}
-                  initial={{ r: radius - 20, opacity: 0 }}
-                  animate={
-                    started
-                      ? { r: radius + 20, opacity: 0.15 }
-                      : { r: radius - 20, opacity: 0 }
-                  }
-                  transition={{
-                    delay: delay + 0.12,
-                    duration: 0.8,
-                    ease: "easeOut",
-                  }}
+                  stroke="#fff"
+                  strokeWidth="2"
+                  opacity="0.15"
                   style={{ filter: "url(#softGlow)" }}
                 />
 
                 {/* label */}
-                <motion.text
+                <text
+                  ref={(el) => (textRefs.current[idx] = el)}
                   x={textX}
                   y={c.cy + 8}
                   textAnchor={idx % 2 === 0 ? "end" : "start"}
                   fill="#E6E7E8"
-                  fontSize={fontSize}
+                  fontSize={fontSize * 0.7}
                   fontWeight={700}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
-                  animate={started ? { opacity: 1, x: 0 } : { opacity: 0 }}
-                  transition={{
-                    delay: delay + 0.2,
-                    duration: 0.5,
-                    ease: "easeOut",
-                  }}
                   style={{ fontFamily: "inherit" }}
                 >
                   {c.label}
-                </motion.text>
-              </motion.g>
+                </text>
+              </g>
             );
           })}
         </svg>
