@@ -111,16 +111,33 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="text-center py-4 text-gray-400 text-xs border-gray-700">
+      {/* <div className="text-center py-4 text-gray-400 text-xs border-gray-700">
         © 2019 Lift Media | All Rights Reserved
       </div>
 
-      {/* Brand Text */}
+      
       <div className="text-center py-10 text-[200px] tracking-wide">
         <span className="bg-gradient-to-r from-yellow-400 via-blue-500 via-green-500 to-red-500 bg-clip-text text-transparent">
           THIRDVIZION
         </span>
-      </div>
+      </div> */}
+            {/* Bottom Section */}
+      {/* Bottom Section */}
+<div className="text-center text-gray-400 text-xs border-t border-gray-700 leading-none">
+  © 2019 Lift Media | All Rights Reserved
+</div>
+
+{/* Brand Text */}
+<div className="text-center leading-none">
+  <span className="bg-gradient-to-r from-yellow-400 via-blue-500 via-green-500 to-red-500 
+    bg-clip-text text-transparent 
+    text-[50px] sm:text-[90px] md:text-[130px] lg:text-[180px] 
+    tracking-wide block">
+    THIRDVIZION
+  </span>
+</div>
+
+
     </footer>
   );
 };
