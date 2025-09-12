@@ -107,7 +107,12 @@ body {
   width: 100%;
   height: var(--height);
   overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, #ffffff 10% 90%, transparent);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #ffffff 10% 90%,
+    transparent
+  );
 }
 
 .slider .list {
