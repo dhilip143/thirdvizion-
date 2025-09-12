@@ -1,60 +1,95 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FaBullseye, FaLightbulb, FaHandsHelping } from "react-icons/fa";
 
-const Mission = () => {
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Mission() {
+  const containerRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const cards = cardsRef.current;
+
+    // Scroll-triggered fade-in and slide-up animation
+    cards.forEach((card) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            end: "bottom 60%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+  }, []);
+
+  const handleCardClick = (index) => {
+    const card = cardsRef.current[index];
+    gsap.fromTo(
+      card,
+      { scale: 1 },
+      {
+        scale: 1.05,
+        duration: 0.3,
+        yoyo: true,
+        repeat: 1,
+        ease: "power1.inOut",
+      }
+    );
+  };
+
+  const data = [
+    {
+      icon: <FaBullseye className="text-6xl text-yellow-400" />,
+      title: "Third Vision",
+      desc: "Pioneering service excellence with innovation at the core.",
+    },
+    {
+      icon: <FaLightbulb className="text-6xl text-green-400" />,
+      title: "Vision",
+      desc: "To be the most reliable and creative service-based company globally.",
+    },
+    {
+      icon: <FaHandsHelping className="text-6xl text-blue-400" />,
+      title: "Mission",
+      desc: "Deliver solutions that empower businesses with efficiency and trust.",
+    },
+  ];
+
   return (
-    <section className="w-full h-screen flex justify-center items-center bg-black  px-6 md:px-10 xl:px-14">
-      <div className=" flex flex-col items-left">
-        {/* Top Section */}
-        <div>
-          <h2 className="w-full text-white font-michroma max-w-md text-2xl md:text-6xl lg:text-7xl xl:text-8xl text-center md:text-left font-medium tracking-wider">
-            ABOUT US
-          </h2>
-        </div>
+    <section
+      ref={containerRef}
+      className="min-h-screen bg-black text-white flex flex-col items-center justify-center py-20 px-4"
+    >
+      <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+        About Us
+      </h2>
 
-        {/* Bottom Section */}
-        <div className=" flex flex-col md:flex-row gap-5">
-          {/* Left Text Section */}
-          <div className="w-full md:w-1/3 flex flex-col justify-start md:mt-10 2xl:mt-0 ">
-            <p className="text-xs lg:text-sm text-center md:text-left uppercase tracking-wide mt-4 text-gray-600 ">
-              Luxurious Interior and Industrial Design
-            </p>
-            <p className="mt-3 md:mt-6 text-[12px] lg:text-sm text-center md:text-left text-gray-700  leading-relaxed">
-              Modern Elegance: Designs featuring clean lines, neutral palettes,
-              and high-quality materials.
-            </p>
+      <div className="grid md:grid-cols-3 gap-8 w-full max-w-6xl">
+        {data.map((item, index) => (
+          <div
+            key={index}
+            ref={(el) => (cardsRef.current[index] = el)}
+            onClick={() => handleCardClick(index)}
+            className="bg-gray-900 p-8 rounded-2xl shadow-lg cursor-pointer transform transition-transform hover:scale-105 hover:shadow-2xl"
+          >
+            <div className="mb-6 flex justify-center">{item.icon}</div>
+            <h3 className="text-2xl font-semibold mb-4 text-center">
+              {item.title}
+            </h3>
+            <p className="text-gray-300 text-center">{item.desc}</p>
           </div>
-          {/* Main Image */}
-          <div className="w-full -mt-10 lg:-mt-18">
-            <img
-              src="https://i.ibb.co/Vj3P5wX/interior1.jpg"
-              alt="Interior design"
-              className="w-full h-[40vh] xl:h-[50vh] object-cover rounded-4xl"
-            />
-          </div>
-          {/* Philosophy Section */}
-          <div className="w-full md:w-1/2 flex gap-5 flex-col items-start -mt-8">
-            <div className="rounded-2xl overflow-hidden shadow-md  w-full">
-              <img
-                src="https://i.ibb.co/R23x2Zh/interior2.jpg"
-                alt="Interior philosophy"
-                className="w-full h-[18vh] xl:h-[25vh] object-cover"
-              />
-            </div>
-            <div className="flex flex-col justify-center">
-              <h3 className="text-xl text-white font-semibold mb-2">
-                Our Mission
-              </h3>
-              <p className="text-gray-700 text-sm  leading-relaxed max-w-sm">
-                At Britto Charette, we believe in creating luxurious,
-                personalized environments that reflect our clients’ tastes and
-                lifestyles.
-              </p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
-};
-
-export default Mission;
+}
