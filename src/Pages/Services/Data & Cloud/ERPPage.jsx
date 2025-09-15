@@ -1,7 +1,10 @@
+import ERPHero from "/src/Components/ServiceComponents/Data&Cloud/ERPPage/ERPHero.jsx";
+import Benifits from "/src/Components/ServiceComponents/Data&Cloud/ERPPage/ERPBenefits";
+import ERPAnalytics from "/src/Components/ServiceComponents/Data&Cloud/ERPPage/ERPAnalytics.jsx";
 // import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import erpImg from "/src/assets/ERPimage.jpg";
-import Benifits from "/src/Components/ServiceComponents/Data&Cloud/ERPBenefits";
+import Benefits from "/src/Components/ServiceComponents/Data&Cloud/ERPPage/ERPBenefits.jsx";
 
 /* ========================= ERP Hero ========================= */
 export default function ERPPage() {
@@ -48,7 +51,9 @@ export default function ERPPage() {
           </motion.div>
         </div>
       </section>
-      <Benifits />
+      <ERPHero />
+      <Benefits />
+      <ERPAnalytics />
     </>
   );
 }
