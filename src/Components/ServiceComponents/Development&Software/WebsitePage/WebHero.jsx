@@ -22,7 +22,12 @@ const WebHero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-yellow-400 via-red-400 to-pink-500 bg-clip-text text-transparent drop-shadow-lg"
+          className="
+    text-5xl md:text-7xl font-extrabold
+    bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-orange-500
+    bg-[length:300%_auto] animate-gradient
+    bg-clip-text text-transparent drop-shadow-lg
+  "
         >
           We Build Digital Experiences
         </motion.h1>

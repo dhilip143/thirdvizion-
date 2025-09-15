@@ -1,6 +1,7 @@
 import WebStack from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebStack";
 import WebProjects from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebProjects.jsx";
 import WebHero from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebHero";
+import WebDesignScroll from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebDesignScroll.jsx";
 import { motion } from "framer-motion";
 
 const WebsitePage = () => {
@@ -8,6 +9,8 @@ const WebsitePage = () => {
     <>
       <div className="bg-black">
         <WebHero />
+
+        <WebDesignScroll />
 
         {/* WebStack Wrapper */}
         <section className="h-screen w-full bg-gradient-to-b from-gray-900 via-black to-gray-900 flex flex-col items-center justify-center px-6">

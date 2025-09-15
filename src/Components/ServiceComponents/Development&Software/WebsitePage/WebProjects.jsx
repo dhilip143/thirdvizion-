@@ -120,6 +120,7 @@ export default function WebProject() {
         {ProjectsData.map((project, index) => (
           <section
             key={project.id}
+            id="section"
             className="h-screen flex flex-col lg:flex-row items-center justify-center overflow-hidden relative"
           >
             {/* Image */}
