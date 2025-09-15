@@ -93,7 +93,7 @@ export default function ERPBenefits() {
   return (
     <section className="relative bg-black text-white py-20 overflow-hidden">
       {/* Neon Line at top */}
-      <NeonLine className="absolute top-0 left-0 w-full h-20 opacity-80" />
+      {/* <NeonLine className="absolute top-0 left-0 w-full h-20 opacity-80" /> */}
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <motion.h2
