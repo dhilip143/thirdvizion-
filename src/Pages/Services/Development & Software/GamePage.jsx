@@ -1,13 +1,11 @@
-import GameHero from "/src/Components/ServiceComponents/Development&Software/GameHero.jsx";
-import WebGames from "/src/Components/ServiceComponents/Development&Software/WebGames.jsx";
-import GameFeature from "/src/Components/ServiceComponents/Development&Software/GameFeature.jsx";
+import GameHero from "/src/Components/ServiceComponents/Development&Software/GamePage/GameHero.jsx";
+import CommingSoon from "/src/Components/ServiceComponents/Development&Software/GamePage/CommingSoon.jsx";
 
 function GamePage() {
   return (
     <>
       <GameHero />
-      <WebGames />
-      <GameFeature />
+      <CommingSoon />
     </>
   );
 }

@@ -230,49 +230,49 @@ export default function Thirdblog() {
 
         // Mobile (<1024px)
         "(max-width: 1023px)": () => {
-          // if (aboutText) {
-          //   gsap.to(aboutText, {
-          //     y: -1,
-          //     opacity: 0,
-          //     ease: "power2.inOut",
-          //     scrollTrigger: {
-          //       trigger: wrapper,
-          //       start: "top top",
-          //       end: "+=100%",
-          //       scrub: true,
-          //     },
-          //   });
-          // }
+          if (aboutText) {
+            gsap.to(aboutText, {
+              y: -1,
+              opacity: 0,
+              ease: "power2.inOut",
+              scrollTrigger: {
+                trigger: wrapper,
+                start: "top top",
+                end: "+=100%",
+                scrub: true,
+              },
+            });
+          }
 
-          // if (thirdText) {
-          //   gsap.to(thirdText, {
-          //     x: -window.innerWidth,
-          //     scale: 2,
-          //     opacity: 0,
-          //     ease: "power2.inOut",
-          //     scrollTrigger: {
-          //       trigger: wrapper,
-          //       start: "top top",
-          //       end: "+=100%",
-          //       scrub: true,
-          //     },
-          //   });
-          // }
+          if (thirdText) {
+            gsap.to(thirdText, {
+              x: -window.innerWidth,
+              scale: 2,
+              opacity: 0,
+              ease: "power2.inOut",
+              scrollTrigger: {
+                trigger: wrapper,
+                start: "top top",
+                end: "+=100%",
+                scrub: true,
+              },
+            });
+          }
 
-          // if (vizionText) {
-          //   gsap.to(vizionText, {
-          //     x: window.innerWidth,
-          //     scale: 2,
-          //     opacity: 0,
-          //     ease: "power2.inOut",
-          //     scrollTrigger: {
-          //       trigger: wrapper,
-          //       start: "top top",
-          //       end: "+=100%",
-          //       scrub: true,
-          //     },
-          //   });
-          // }
+          if (vizionText) {
+            gsap.to(vizionText, {
+              x: window.innerWidth,
+              scale: 2,
+              opacity: 0,
+              ease: "power2.inOut",
+              scrollTrigger: {
+                trigger: wrapper,
+                start: "top top",
+                end: "+=100%",
+                scrub: true,
+              },
+            });
+          }
 
           gsap.fromTo(
             imgHolder,
