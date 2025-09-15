@@ -1,14 +1,17 @@
 import React from "react";
 import CRMChallenges from "/src/Components/ServiceComponents/Data&Cloud/CRMChallenges.jsx";
 import CRMBenefits from "/src/Components/ServiceComponents/Data&Cloud/CRMBenefits.jsx";
-import CRMHero from "/src/Components/ServiceComponents/Data&Cloud/CRMHero.jsx";
+import CrmHero from "../../../Components/ServiceComponents/Data&Cloud/CRMHero";
+import Crmdash from "../../../Components/ServiceComponents/Data&Cloud/crmdash";
+
 
 const CRMPage = () => {
   return (
     <>
-      <CRMHero />
+      <CrmHero/>
       <CRMChallenges />
       <CRMBenefits />
+      <Crmdash/>
     </>
   );
 };

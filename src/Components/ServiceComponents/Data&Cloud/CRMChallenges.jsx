@@ -1,150 +1,218 @@
-import { User } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import {
+  Calendar,
+  Mail,
+  Linkedin,
+  MessageCircle,
+  PhoneCall,
+  Users,
+  BarChart3,
+} from "lucide-react";
 
-const Card = ({
-  id,
-  title,
-  highlight,
-  description,
-  image,
-  button1,
-  button2,
-  details,
-}) => {
+// -----------------------------------------------------------------------------
+// CRMChallenges
+// -----------------------------------------------------------------------------
+export default function CRMChallenges() {
+  const linesRef = useRef([]);
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const cardData = [
+    {
+      title: "Meeting Scheduler",
+      desc: "Auto-sync all your meetings with CRM calendar. No missed follow-ups, no double booking.",
+    },
+    {
+      title: "Email Integration",
+      desc: "Track every customer email, log automatically, and respond faster without leaving CRM.",
+    },
+    {
+      title: "LinkedIn Sync",
+      desc: "Bring LinkedIn leads & conversations straight into CRM pipeline for smooth prospecting.",
+    },
+    {
+      title: "Call Tracking",
+      desc: "Log inbound & outbound calls, record notes instantly, and measure call performance.",
+    },
+    {
+      title: "Message Hub",
+      desc: "Unify SMS, WhatsApp & chat into one CRM inbox. Always know the full conversation history.",
+    },
+    {
+      title: "Contact Management",
+      desc: "360° view of every customer. All details, notes, and interactions at your fingertips.",
+    },
+    {
+      title: "Analytics & Reports",
+      desc: "Generate real-time reports. Track sales performance and improve forecasting accuracy.",
+    },
+  ];
+
+  linesRef.current = [];
+
+  useEffect(() => {
+    linesRef.current.forEach((line) => {
+      const length = line.getTotalLength();
+      gsap.set(line, { strokeDasharray: length, strokeDashoffset: length });
+      gsap.to(line, {
+        strokeDashoffset: 0,
+        duration: 1.4,
+        ease: "power2.out",
+      });
+    });
+  }, []);
+
+  function addLineRef(el) {
+    if (el && !linesRef.current.includes(el)) {
+      linesRef.current.push(el);
+    }
+  }
+
+  function handleIconClick(index) {
+    setActiveIndex(index);
+
+    const line = linesRef.current[index];
+    if (line) {
+      gsap.fromTo(
+        line,
+        { strokeWidth: 2, opacity: 0.6 },
+        {
+          strokeWidth: 5,
+          opacity: 1,
+          duration: 0.7,
+          yoyo: true,
+          repeat: 1,
+          ease: "power2.inOut",
+        }
+      );
+    }
+  }
+
+  const platforms = [
+    { icon: <Calendar className="w-8 h-8" />, label: "Meetings" },
+    { icon: <Mail className="w-8 h-8" />, label: "Emails" },
+    { icon: <Linkedin className="w-8 h-8" />, label: "LinkedIn" },
+    { icon: <PhoneCall className="w-8 h-8" />, label: "Calls" },
+    { icon: <MessageCircle className="w-8 h-8" />, label: "Messages" },
+    { icon: <Users className="w-8 h-8" />, label: "Contacts" },
+    { icon: <BarChart3 className="w-8 h-8" />, label: "Reports" },
+  ];
+
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl shadow-xl border border-gray-800 grid grid-cols-1 md:grid-cols-2 overflow-hidden mb-12">
-      {/* Left Image */}
-      <div className="relative">
-        <img src={image} alt={title} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 border-2 border-cyan-400 opacity-60 pointer-events-none"></div>
+    <section className="relative overflow-hidden bg-[#050510] text-white px-8 md:px-16 py-28">
+      {/* Background Gradient Layers */}
+      <div className="absolute inset-0">
+        <div className="absolute w-[800px] h-[800px] bg-indigo-500/20 rounded-full blur-[200px] top-[-200px] left-[-200px]" />
+        <div className="absolute w-[600px] h-[600px] bg-rose-500/20 rounded-full blur-[200px] bottom-[-150px] right-[-150px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050510]/80 to-[#050510]" />
       </div>
 
-      {/* Right Content */}
-      <div className="p-8 flex flex-col justify-between">
-        {/* Top Icon */}
-        <div className="flex justify-between items-center mb-6">
-          <span className="text-lg font-semibold">{id}</span>
-          <User className="text-cyan-400" />
+      <div className="relative max-w-6xl mx-auto text-center mb-20">
+        <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+          Connect to all platforms
+        </h2>
+        <p className="text-white/70 text-lg max-w-3xl mx-auto">
+          Every CRM channel integrated in one hub. Meetings, emails, calls and
+          deals — all synced so your team never misses an opportunity.
+        </p>
+      </div>
+
+      <div className="relative flex flex-col items-center">
+        {/* Icons Row */}
+        <div className="grid grid-cols-3 md:grid-cols-7 gap-10 mb-24 relative z-10">
+          {platforms.map((p, i) => (
+            <div
+              key={i}
+              onClick={() => handleIconClick(i)}
+              className={`flex flex-col items-center gap-3 group cursor-pointer transition-transform ${
+                activeIndex === i ? "scale-125" : "scale-100"
+              }`}
+            >
+              <div
+                className={`w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl border text-xl ${
+                  activeIndex === i
+                    ? "bg-gradient-to-br from-indigo-500 to-rose-500 border-transparent"
+                    : "bg-white/5 border-white/10"
+                }`}
+              >
+                {p.icon}
+              </div>
+              <span
+                className={`text-sm md:text-base font-medium ${
+                  activeIndex === i ? "text-indigo-400" : "text-white/70"
+                }`}
+              >
+                {p.label}
+              </span>
+            </div>
+          ))}
         </div>
 
-        {/* Heading */}
-        <h2 className="text-xl font-bold uppercase tracking-wide mb-4">
-          {title}{" "}
-          <span className="text-cyan-400 drop-shadow-lg">{highlight}</span>
-        </h2>
+        {/* SVG Connections */}
+        <svg
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          viewBox="0 0 1400 700"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          {platforms.map((_, i) => {
+            const x = 200 + i * 160;
+            return (
+              <path
+                key={i}
+                ref={addLineRef}
+                d={`M${x},180 C${x},360 700,360 700,460`}
+                stroke={
+                  activeIndex === i
+                    ? "url(#lineGradient)" // purple gradient
+                    : "#555" // grey default
+                }
+                strokeWidth="3"
+                fill="none"
+                opacity={activeIndex === i ? "1" : "0.4"}
+              />
+            );
+          })}
 
-        {/* Description */}
-        {description && (
-          <p className="text-gray-300 text-sm leading-relaxed mb-8">
-            {description}
-          </p>
-        )}
+          <defs>
+            <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#6366f1" />
+              <stop offset="100%" stopColor="#ec4899" />
+            </linearGradient>
+          </defs>
+        </svg>
 
-        {/* Extra Details */}
-        {details && (
-          <div className="bg-cyan-900/30 border border-cyan-400 rounded-lg p-4 text-sm text-gray-300 mb-6">
-            <p>
-              <span className="font-semibold">Users:</span> {details.users}
-            </p>
-            <p>
-              <span className="font-semibold">Storage:</span> {details.storage}
-            </p>
-            <p>
-              <span className="font-semibold">Integrations:</span>{" "}
-              {details.integrations}
-            </p>
-            <p>
-              <span className="font-semibold">Plan:</span> {details.plan}
-            </p>
+        {/* Central CRM Card */}
+        <div
+          className={`relative z-20 w-[420px] backdrop-blur-2xl rounded-3xl p-8 shadow-2xl transition-all duration-500 ${
+            activeIndex !== null
+              ? "border-2 border-indigo-500 bg-gradient-to-br from-white/10 to-white/5"
+              : "border border-white/10 bg-gradient-to-br from-white/10 to-white/5"
+          }`}
+        >
+          <div className="flex items-center gap-6">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-rose-500 flex items-center justify-center font-bold text-xl">
+              CRM
+            </div>
+            <div>
+              <div className="font-semibold text-2xl">
+                {activeIndex !== null
+                  ? cardData[activeIndex].title
+                  : "Unified CRM Hub"}
+              </div>
+              <div className="text-base text-white/70">
+                {activeIndex !== null
+                  ? platforms[activeIndex].label
+                  : "All customer data in one place"}
+              </div>
+            </div>
           </div>
-        )}
-
-        {/* Buttons */}
-        <div className="flex gap-4">
-          {button1 && (
-            <button className="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-black transition">
-              {button1}
-            </button>
-          )}
-          {button2 && (
-            <button className="px-6 py-2 bg-cyan-400 text-black font-semibold rounded-full hover:bg-cyan-300 transition">
-              {button2}
-            </button>
-          )}
+          <div className="mt-6 text-base text-white/80 leading-relaxed">
+            {activeIndex !== null
+              ? cardData[activeIndex].desc
+              : "Every lead, meeting, email, and deal automatically captured and connected — making sure nothing falls through the cracks."}
+          </div>
         </div>
-      </div>
-    </div>
-  );
-};
-
-const Challenges = () => {
-  return (
-    <section className="min-h-screen bg-black flex flex-col items-center justify-center px-6 py-12 text-white">
-      <div className="max-w-6xl w-full">
-        {/* <h1>CHALLENGES YOU FACED BEFORE CRM</h1> */}
-        <h2 className="text-4xl font-bold text-center text-teal-500 mb-12">
-          CHALLENGES BEFORE CRM
-        </h2>
-        {/* Card 1 */}
-        <Card
-          id="01"
-          title=" Manual "
-          highlight="Workflow 
-Bottleneck"
-          description=" Dependence on manual processes caused 
-delays and inefficiencies in daily operations."
-          image="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-          button1="Explore Insights"
-          button2="Get Started"
-        />
-
-        {/* Card 2 */}
-        <Card
-          id="02"
-          title="Disorganized"
-          highlight=" Data 
-Managements"
-          description="Track leads, deals, and revenue growth with a visually interactive pipeline. Automate follow-ups and never miss an opportunity."
-          image="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-          //   details={{
-          //     users: "Unlimited",
-          //     storage: "500 GB",
-          //     integrations: "Slack, Gmail, HubSpot",
-          //     plan: "Pro Edition",
-          //   }}
-        />
-
-        {/* Card 3 */}
-        <Card
-          id="03"
-          title=" Limited Insight and 
-"
-          highlight="Reporting"
-          description=" Difficulty in generating actionable insights 
-due to fragmented data and no real-time 
-reporting tools."
-          image="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-          button1="See Collaboration Tools"
-          button2="Start Free Trial"
-        />
-        <Card
-          id="04"
-          title=""
-          highlight=" Data 
-Managements"
-          description=" Challenges in tracking and managing client 
-interactions, resulting in missed 
-opportunities and slower response times"
-          image="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-          //   details={{
-          //     users: "Unlimited",
-          //     storage: "500 GB",
-          //     integrations: "Slack, Gmail, HubSpot",
-          //     plan: "Pro Edition",
-          //   }}
-        />
       </div>
     </section>
   );
-};
-
-export default Challenges;
+}

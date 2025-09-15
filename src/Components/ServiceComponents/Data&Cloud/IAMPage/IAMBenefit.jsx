@@ -10,7 +10,7 @@ const IAMBenefits = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-extrabold text-teal-400"
+          className="text-4xl md:text-5xl font-extrabold "
         >
           Benefits of IAM
         </motion.h2>
@@ -38,7 +38,7 @@ const IAMBenefits = () => {
             viewport={{ once: true }}
             className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 shadow-lg border border-white/10"
           >
-            <h2 className="text-4xl font-extrabold text-teal-400 mb-3">10X</h2>
+            <h2 className="text-4xl font-extrabold  mb-3">10X</h2>
             <p className="text-lg font-semibold mb-4">Boost in Security Posture</p>
             <p className="text-gray-300">
               IAM reduced unauthorized access by 80% with zero-trust policies and
@@ -54,7 +54,7 @@ const IAMBenefits = () => {
             viewport={{ once: true }}
             className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 shadow-lg border border-white/10"
           >
-            <h2 className="text-4xl font-extrabold text-teal-400 mb-3">5X</h2>
+            <h2 className="text-4xl font-extrabold  mb-3">5X</h2>
             <p className="text-lg font-semibold mb-4">Faster User Onboarding</p>
             <p className="text-gray-300">
               Automated provisioning cut onboarding from days to minutes,
@@ -73,7 +73,7 @@ const IAMBenefits = () => {
             viewport={{ once: true }}
             className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 shadow-lg border border-white/10"
           >
-            <h2 className="text-4xl font-extrabold text-teal-400 mb-3">3X</h2>
+            <h2 className="text-4xl font-extrabold mb-3">3X</h2>
             <p className="text-lg font-semibold mb-4">Improved Compliance</p>
             <p className="text-gray-300">
               IAM simplified audits and access reviews, helping achieve compliance
@@ -89,7 +89,7 @@ const IAMBenefits = () => {
             viewport={{ once: true }}
             className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 shadow-lg border border-white/10"
           >
-            <h2 className="text-4xl font-extrabold text-teal-400 mb-3">70%</h2>
+            <h2 className="text-4xl font-extrabold mb-3">70%</h2>
             <p className="text-lg font-semibold mb-4">Reduction in IT Workload</p>
             <p className="text-gray-300">
               Centralized access management and SSO reduced password resets and
