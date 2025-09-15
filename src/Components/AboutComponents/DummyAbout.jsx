@@ -175,15 +175,22 @@ export default function About() {
         <div className="flex justify-center items-center h-screen">
           <div
             ref={capsuleRef}
-            className="relative bg-neutral-900 w-72 h-56 md:w-96 md:h-72 rounded-[3rem] shadow-2xl flex items-center justify-center overflow-hidden"
+            className="relative bg-neutral-900 w-72 h-56 md:w-96 md:h-72 rounded-[3rem] shadow-2xl flex flex-col items-center justify-center overflow-hidden"
           >
             {/* Brand inside capsule */}
             <h3
               ref={brandRef}
-              className="text-3xl md:text-5xl font-extrabold text-white"
+              className="text-3xl md:text-5xl font-extrabold text-white z-10"
             >
               Thirdvizion
             </h3>
+
+            {/* ✅ 3D SVG-like Image inside capsule */}
+            <img
+              src="/src/assets/AboutImages/tird.png"
+              alt="Thirdvizion Logo"
+              className="absolute w-40 h-40 object-contain opacity-90 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform perspective-1000 rotate-y-6"
+            />
 
             {/* Glow effect */}
             <div className="absolute inset-0 rounded-[3rem] pointer-events-none bg-gradient-to-r from-indigo-600/30 via-pink-600/20 to-purple-600/30 mix-blend-overlay" />
