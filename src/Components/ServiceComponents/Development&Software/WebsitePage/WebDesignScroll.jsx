@@ -42,8 +42,7 @@ const WebStack = () => {
       >
         <TextReveal animateOnScroll={true} scrub={true}>
           <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-            Stunning <span className="text-indigo-400">Designs</span> for Modern
-            Web
+            Stunning Designs for Modern Web
           </h1>
         </TextReveal>
         <TextReveal delay={0.5} animateOnScroll={true} scrub={true}>
@@ -59,7 +58,7 @@ const WebStack = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true, amount: 0.3 }}
           href="/contact"
-          className="bg-indigo-500 hover:bg-indigo-600 text-white text-lg px-6 py-3 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105 w-fit"
+          className="border-white border-1 hover:bg-white hover:text-black text-white text-lg px-6 py-3 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105 w-fit"
         >
           Contact Us
         </motion.a>
