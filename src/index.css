@@ -183,8 +183,6 @@ body {
   }
 }
 
-
-
 /* Web Hero Section */
 
 @keyframes gradient-move {
@@ -194,6 +192,6 @@ body {
 }
 
 .animate-gradient {
-  background-size: 300% auto;
-  animation: gradient-move 10s linear infinite;
+  background-size: 400% auto;
+  animation: gradient-move 15s linear infinite;
 }
