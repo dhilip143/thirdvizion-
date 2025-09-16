@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import mobile from "/src/assets/MobileTransparent.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TextReveal from "/src/Hooks/TextReveal.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,42 +76,40 @@ export default function AppHero() {
     };
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-  };
-
   return (
     <div className="bg-black text-white font-sans overflow-x-hidden mb-[-100vh]">
       {/* Hero text section */}
-      <section className="h-screen flex flex-col justify-center items-center text-center px-6 -mt-15 -mb-40">
+      <section className="h-screen flex flex-col justify-center items-center text-center px-6 -mt-15 -mb-40 relative z-10">
+        {/* <TextReveal> */}
         <motion.h1
-          variants={fadeInUp}
-          initial="hidden"
-          animate="show"
-          className="text-4xl md:text-6xl font-extrabold mb-4"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ amount: 0 }} // ✅ better viewport setting
+          className="text-4xl md:text-6xl font-extrabold mb-4 text-white"
         >
           We Craft Seamless Mobile Experiences
         </motion.h1>
+        {/* </TextReveal> */}
+
+        {/* <TextReveal delay={0.2}> */}
         <motion.p
-          variants={fadeInUp}
-          initial="hidden"
-          animate="show"
-          transition={{ delay: 0.3 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }} // ✅ triggers earlier
           className="text-gray-400 max-w-xl mb-6"
         >
           Transforming ideas into intuitive and engaging mobile applications
           that drive success.
         </motion.p>
+        {/* </TextReveal> */}
+
         <motion.button
-          variants={fadeInUp}
-          initial="hidden"
-          animate="show"
-          transition={{ delay: 0.6 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           className="px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition"
         >
           Get Started
@@ -129,7 +128,7 @@ export default function AppHero() {
           <img
             src={mobile}
             alt=""
-            className="w-80 md:w-[20rem] object-contain"
+            className="w-80 md:w-[19rem] mt-20 object-contain"
           />
         </div>
       </div>

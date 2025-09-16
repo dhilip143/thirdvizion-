@@ -31,7 +31,7 @@ const WebHero = () => {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          viewport={{ amount: 1 }}
+          viewport={{ amount: 0 }}
           className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 backdrop-blur-md"
         >
           <Sparkles className="h-4 w-4" />

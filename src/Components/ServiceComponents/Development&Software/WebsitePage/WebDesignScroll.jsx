@@ -26,37 +26,49 @@ import image10 from "/src/assets/AboutImages/tow.png";
 const WebStack = () => {
   return (
     <motion.div
-      className="w-full h-[calc(100vh-40px)] flex overflow-hidden bg-black"
+      className="w-full h-screen flex overflow-hidden bg-black"
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0 }} // ✅ triggers when center hits viewport
+      viewport={{ amount: 0 }}
     >
       {/* Left Section */}
       <motion.div
-        className="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-12 lg:px-10"
+        className="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-12 lg:px-10 text-white"
         // initial={{ x: -50, opacity: 0 }}
         // whileInView={{ x: 0, opacity: 1 }}
         // transition={{ duration: 0.8, delay: 0.2 }}
-        // viewport={{ once: true, amount: 0.1 }}
+        // viewport={{  amount: 0.1 }}
       >
         <TextReveal>
-          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
+          <motion.h1
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ amount: 0 }}
+            className="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6"
+          >
             Stunning Designs for Modern Web
-          </h1>
+          </motion.h1>
         </TextReveal>
-        <TextReveal delay={0.5}>
-          <p className="text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed mb-8 max-w-lg">
+        <TextReveal delay={0.1}>
+          <motion.p
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ amount: 0 }}
+            className="text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed mb-8 max-w-lg"
+          >
             This section is all about the design work we craft with passion. The
             right side showcases real designs created by our designers,
             reflecting creativity, detail, and a modern approach to UI/UX.
-          </p>
+          </motion.p>
         </TextReveal>
         <motion.a
           initial={{ x: 0, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ amount: 0 }}
           href="/contact"
           className="border-white border-1 hover:bg-white hover:text-black text-white text-lg px-6 py-3 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105 w-fit"
         >
@@ -70,7 +82,7 @@ const WebStack = () => {
         initial={{ x: 50, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        viewport={{ once: true, amount: 0.1 }}
+        viewport={{ amount: 0 }}
       >
         {/* Row 1 */}
         <div
