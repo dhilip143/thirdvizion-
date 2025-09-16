@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import vrone from "/src/assets/vr/vrn.jpg";
-
 import vrtwo from "/src/assets/vr/vrman.jpg";  
 
 gsap.registerPlugin(ScrollTrigger);
@@ -17,21 +16,9 @@ export default function Vrtwo() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.to(vrHeadsetRef.current, {
-        y: -25,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut",
-      });
-
-      gsap.to(vrManRef.current, {
-        y: 25,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut",
-      });
+      // Removed floating animation for VR images
+      // gsap.to(vrHeadsetRef.current, { ... });
+      // gsap.to(vrManRef.current, { ... });
 
       gsap.from(textLeftRef.current, {
         x: -150,
