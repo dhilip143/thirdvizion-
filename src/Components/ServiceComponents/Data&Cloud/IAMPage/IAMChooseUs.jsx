@@ -163,42 +163,53 @@ export default function WhyChooseIAM() {
       className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 py-16 overflow-hidden"
     >
       {/* Sparkle + Network Background */}
-      <SparkleField />
+      {/* <SparkleField /> */}
 
       {/* Title */}
       <motion.h2
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9 }}
-        className="text-4xl md:text-5xl font-bold text-teal-400 mb-12 z-10 text-center"
+        className="text-4xl md:text-5xl font-bold z-10 mb-12 text-center "
       >
         Why Choose <span className="text-white">IAM?</span>
       </motion.h2>
 
-      {/* Steps */}
-      <div className="relative max-w-3xl w-full space-y-6 z-10">
-        {steps.map((step) => (
-          <div
-            key={step.id}
-            className="iam-card relative flex items-center bg-white/10 backdrop-blur-lg rounded-xl shadow-lg p-6 border border-white/20"
-          >
-            <div className="flex-shrink-0 flex flex-col items-center justify-center mr-4">
-              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 border border-white/20">
-                {step.icon}
-              </div>
-              <span className="mt-2 text-teal-400 font-bold text-xl">
-                {String(step.id).padStart(2, "0")}
-              </span>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-teal-300">
-                {step.title}
-              </h3>
-              <p className="text-sm text-gray-300 mt-1">{step.description}</p>
-            </div>
+    <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+  {/* Steps (Left Side) */}
+  <div className="space-y-6">
+    {steps.map((step) => (
+      <div
+        key={step.id}
+        className="iam-card relative flex items-center bg-white/10 backdrop-blur-lg rounded-xl shadow-lg p-4 border border-white/20 
+                   transition transform hover:scale-105 hover:shadow-2xl hover:border-blue-500 hover:bg-white/20"
+      >
+        <div className="flex-shrink-0 flex flex-col items-center justify-center mr-4">
+          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 border border-white/20">
+            {step.icon}
           </div>
-        ))}
+          <span className="mt-2 font-bold text-xl">
+            {String(step.id).padStart(2, "0")}
+          </span>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold">{step.title}</h3>
+          <p className="text-sm text-gray-300 mt-1">{step.description}</p>
+        </div>
       </div>
+    ))}
+  </div>
+
+  {/* Image (Right Side) */}
+  <div className="flex justify-center">
+    <img
+      src="/src/assets/HeroImages/HeroHeader.webp"
+      alt="ERP Preview"
+      className="rounded-2xl shadow-lg border border-white/20 max-w-full h-auto"
+    />
+  </div>
+</div>
+
     </section>
   );
 }
