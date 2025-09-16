@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { VrData, StatsData } from "/src/Data/Data.jsx";
-import Vr from "../../../Components/ServiceComponents/Development&Software/virtuvalreiaylity/vr";
-import Vrvideo from "../../../Components/ServiceComponents/ImmersiveTech/VRPage/VRVideoHero";
+// import Vr from "../../../Components/ServiceComponents/Development&Software/virtuvalreiaylity/vr";
+import Vrvideo from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/VRVideoHero.jsx";
 
 const VirtualRealityServices = () => {
   const [activeService, setActiveService] = useState("enterpriseVR");
@@ -456,7 +456,7 @@ const VirtualRealityServices = () => {
       </div>
 
       {/* Vr component at the bottom */}
-      <Vr />
+      {/* <Vr /> */}
     </div>
   );
 };
