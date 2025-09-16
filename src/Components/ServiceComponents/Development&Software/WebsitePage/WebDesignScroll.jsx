@@ -40,12 +40,12 @@ const WebStack = () => {
         // transition={{ duration: 0.8, delay: 0.2 }}
         // viewport={{ once: true, amount: 0.1 }}
       >
-        <TextReveal animateOnScroll={true} scrub={true}>
+        <TextReveal>
           <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
             Stunning Designs for Modern Web
           </h1>
         </TextReveal>
-        <TextReveal delay={0.5} animateOnScroll={true} scrub={true}>
+        <TextReveal delay={0.5}>
           <p className="text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed mb-8 max-w-lg">
             This section is all about the design work we craft with passion. The
             right side showcases real designs created by our designers,
