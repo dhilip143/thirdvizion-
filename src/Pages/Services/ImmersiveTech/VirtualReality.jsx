@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { VrData, StatsData } from "/src/Data/Data.jsx";
 import Vr from "../../../Components/ServiceComponents/Development&Software/virtuvalreiaylity/vr";
-import Vrvideo from "../../../Components/ServiceComponents/Development&Software/virtuvalreiaylity/vrvideo";
+import Vrvideo from "../../../Components/ServiceComponents/ImmersiveTech/VRPage/VRVideoHero";
 
 const VirtualRealityServices = () => {
   const [activeService, setActiveService] = useState("enterpriseVR");

@@ -17,6 +17,65 @@ function Vrvideo() {
   const endFrame = 86591;   // ✅ Timeline 1_00086591
 
   useEffect(() => {
+    const lenis = new Lenis({
+      lerp: 0.02,
+      smoothWheel: true,
+      smoothtouch: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    lenis.on("scroll", ScrollTrigger.update);
+
+    const sections = gsap.utils.toArray("section");
+
+    sections.forEach((section, index) => {
+      const img = section.querySelector("img");
+      const text = section.querySelector(".overlay-content"); // ✅ select text container
+      gsap.set(img, { transformOrigin: "center center" });
+
+      // Alternate direction: even index = left → right, odd index = right → left
+      const fromX = index % 2 === 0 ? -800 : 400;
+      const toX = index % 2 === 0 ? 400 : -400;
+      const centerX = index % 2 === 0 ? -300 : 300;
+
+      const textFromX = index % 2 === 0 ? 300 : -300; // opposite for text
+      const textToX = 0;
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "clamp(top bottom-=100)",
+          end: "clamp(bottom top+=200)",
+          scrub: true,
+        },
+      });
+
+      tl.fromTo(
+        img,
+        { scale: 0.2, x: fromX },
+        { scale: 0.7, x: centerX, ease: "power2.out" }
+      ).to(img, { scale: 0.3, x: toX, ease: "power2.in" });
+
+      // Animate Text (slides from opposite side)
+      if (text) {
+        tl.fromTo(
+          text,
+          { opacity: 0, x: textFromX },
+          { opacity: 1, x: textToX, ease: "power2.out" },
+          0.1 // slightly delayed so it feels smooth
+        );
+      }
+    });
+
+    ScrollTrigger.refresh();
+  }, []);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
 
