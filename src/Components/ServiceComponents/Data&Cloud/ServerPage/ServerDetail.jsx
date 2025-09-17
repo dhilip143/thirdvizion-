@@ -42,10 +42,10 @@ export default function ServerDetail() {
       <section className="text-center mb-16">
         <TextReveal>
           <motion.h1
-            initial={{ opacity: 0, y: -40 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent tracking-tight"
+            className="text-5xl md:text-6xl font-extrabold  tracking-tight"
           >
             Server Management
           </motion.h1>
@@ -53,7 +53,7 @@ export default function ServerDetail() {
         <TextReveal delay={0.2}>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
             className="mt-4 text-white/70 max-w-2xl mx-auto"
           >
@@ -63,7 +63,7 @@ export default function ServerDetail() {
         </TextReveal>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
           className="mt-8 flex justify-center gap-6 flex-wrap"
         >

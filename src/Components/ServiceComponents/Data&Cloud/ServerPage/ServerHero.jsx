@@ -29,7 +29,7 @@ const ServerHero = () => {
         <TextReveal>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-5xl 2xl:text-6xl font-extrabold mb-6 "
           >
@@ -39,7 +39,7 @@ const ServerHero = () => {
         <TextReveal delay={0.2}>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
             className="text-white/70 max-w-3xl mb-8 leading-relaxed"
           >
@@ -52,7 +52,7 @@ const ServerHero = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
           className="flex gap-4 flex-wrap justify-center"
         >
