@@ -1,66 +1,11 @@
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Clock, Calendar, Sparkles } from "lucide-react";
-
-function SparkleField() {
-  const canvasRef = useRef(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    let raf;
-    const DPR = Math.min(2, window.devicePixelRatio || 1);
-
-    const resize = () => {
-      canvas.width = canvas.clientWidth * DPR;
-      canvas.height = canvas.clientHeight * DPR;
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const dots = Array.from({ length: 90 }).map(() => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: (Math.random() * 1.5 + 0.5) * DPR,
-      s: Math.random() * 0.6 + 0.2,
-      a: Math.random() * Math.PI * 2,
-    }));
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (const d of dots) {
-        d.a += 0.004 * d.s;
-        d.x += Math.cos(d.a) * 0.2;
-        d.y += Math.sin(d.a) * 0.2;
-        if (d.x < 0) d.x = canvas.width;
-        if (d.x > canvas.width) d.x = 0;
-        if (d.y < 0) d.y = canvas.height;
-        if (d.y > canvas.height) d.y = 0;
-        ctx.globalAlpha = 0.8;
-        const g = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r * 3);
-        g.addColorStop(0, "rgba(255,255,255,0.7)");
-        g.addColorStop(1, "rgba(255,255,255,0)");
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, d.r * 3, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-  return (
-    <canvas ref={canvasRef} className="absolute inset-0 -z-10 h-full w-full" />
-  );
-}
+import { Sparkles } from "lucide-react";
+import TextReveal from "/src/Hooks/TextReveal.jsx";
+import { Link } from "react-router-dom";
 
 export default function ComingSoon() {
   return (
-    <section className="relative isolate w-full overflow-hidden bg-black text-white py-20">
-      <SparkleField />
+    <section className="relative isolate w-full overflow-hidden text-white py-20">
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div
@@ -74,53 +19,63 @@ export default function ComingSoon() {
 
       <div className="mx-auto flex max-w-3xl flex-col items-center justify-center text-center px-6">
         {/* Small badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs text-white/70 backdrop-blur-md"
-        >
-          <Sparkles className="h-4 w-4 text-white/60" />
-          New Experience Loading...
-        </motion.div>
+        <TextReveal>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs text-white/70 backdrop-blur-md"
+          >
+            <Sparkles className="h-4 w-4 text-white/60" />
+            New Experience Loading...
+          </motion.div>
+        </TextReveal>
 
         {/* Main headline */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1, duration: 0.8 }}
-          className="mt-6 font-inter-tight text-5xl font-black leading-[1.1] tracking-tight md:text-7xl"
-        >
-          Coming{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">
-            Soon
-          </span>
-        </motion.h2>
+        <TextReveal delay={0.2}>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.8 }}
+            className="mt-6 font-inter-tight text-5xl font-black leading-[1.1] tracking-tight md:text-7xl"
+          >
+            Coming{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">
+              Soon
+            </span>
+          </motion.h2>
+        </TextReveal>
 
         {/* Supporting text */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.7 }}
-          className="mt-4 max-w-xl text-white/70"
-        >
-          We’re crafting something special. Stay tuned for the launch and be the
-          first to experience our next-gen web games.
-        </motion.p>
+        <TextReveal delay={0.4}>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.7 }}
+            className="mt-4 max-w-xl text-white/70"
+          >
+            We’re crafting something special. Stay tuned for the launch and be
+            the first to experience our next-gen web games.
+          </motion.p>
+        </TextReveal>
 
         {/* Notify me button */}
-        <motion.button
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.7 }}
-          className="mt-10 rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 px-6 py-3 text-sm font-semibold shadow-[0_0_20px_rgba(255,255,255,0.08)] backdrop-blur-md hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] transition"
-        >
-          Notify Me
-        </motion.button>
+        <TextReveal delay={0.5}>
+          <Link to={"/contact"}>
+            <motion.button
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.7 }}
+              className="mt-10 rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 hover:bg-white hover:text-black transition-all duration-500 px-6 py-3 text-sm font-semibold shadow-[0_0_20px_rgba(255,255,255,0.08)] backdrop-blur-md hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]"
+            >
+              Notify Me
+            </motion.button>
+          </Link>
+        </TextReveal>
       </div>
     </section>
   );

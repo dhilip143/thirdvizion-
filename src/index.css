@@ -2,36 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Jura:wght@300..700&family=Michroma&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&display=swap");
 @import "tailwindcss";
 /* ensure root heights are normal */
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-/* body {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  background-color: black;
-}
-
-.snap-start {
-  scroll-snap-align: start;
-  min-height: 100vh;
-} */
-
-
-
-.scroll-snapping-page {
-  --color-background: black;
-}
-
-/* Now prefix selectors like this: */
-.scroll-snapping-page html {
-  scroll-snap-type: y mandatory;
-}
-.scroll-snapping-page .section {
-  scroll-snap-align: start;
-}
 /* ...and so on for the rest */
 
 /* Makes the Selected Text Transparent in the Browser */
@@ -211,10 +189,57 @@ html, body, #root {
 
 
 
-/* For Scroll Snapping */
 
 
 
 
 
-/* IMPORTANT: remove any wrapper with overflow-y: scroll or h-screen that creates another scrollbar */
+/* Keyboard Game  */
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.key {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin: 3px;
+  background: linear-gradient(180deg, #fdfcf8, #f5f1e6); /* soft beige + white */
+  border-radius: 8px;
+  box-shadow: inset -6px 0 6px rgba(0,0,0,0.08),
+              inset 0 -6px 6px rgba(0,0,0,0.12),
+              8px 16px 20px rgba(0,0,0,0.2),
+              0 0 0 1px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.key::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 4px;
+  bottom: 10px;
+  right: 8px;
+  background: linear-gradient(90deg, #ffffff, #ede5d3); /* white highlight + mild beige */
+  box-shadow: -4px -4px 5px rgba(255,255,255,0.6), 6px 4px 8px rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+
+.key.active {
+  background: #f7e8d2; /* mild beige active */
+}
+
+.key.active::before {
+  background: linear-gradient(90deg, #f9f4e8, #ffffff); /* active key highlight */
+  border-left: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  border-top: 1px solid rgba(255,255,255,0.3);
+}
