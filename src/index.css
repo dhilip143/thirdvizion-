@@ -1,11 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Diphylleia&family=Michroma&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Jura:wght@300..700&family=Michroma&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&display=swap");
 @import "tailwindcss";
-
+* {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
   padding: 0;
 }
+
+.scroll-snapping-page {
+  --color-background: black;
+}
+
+/* Now prefix selectors like this: */
+.scroll-snapping-page html {
+  scroll-snap-type: y mandatory;
+}
+.scroll-snapping-page .section {
+  scroll-snap-align: start;
+}
+/* ...and so on for the rest */
 
 /* Makes the Selected Text Transparent in the Browser */
 /* ::selection {
@@ -107,7 +122,12 @@ body {
   width: 100%;
   height: var(--height);
   overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, #ffffff 10% 90%, transparent);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #ffffff 10% 90%,
+    transparent
+  );
 }
 
 .slider .list {
@@ -133,7 +153,7 @@ body {
   left: 100%; /* At initial to the left most side */
   animation: corosal var(--time) linear infinite;
   animation-delay: calc(
-    var(--time) / var(--quantity) * (var(--position) - 1) - 14s
+    var(--time) / var(--quantity) * (var(--position) - 1) - 48s
   );
 }
 
@@ -148,9 +168,9 @@ body {
 
 /* Reverse Corosal */
 .slider[reverse="true"] .item {
-  animation: reverse_corosal 14s linear infinite;
+  animation: reverse_corosal var(--time) linear infinite;
   animation-delay: calc(
-    var(--time) / var(--quantity) * (var(--position) - 1) - 14s
+    var(--time) / var(--quantity) * (var(--position) - 1) - 48s
   );
 }
 
@@ -161,4 +181,17 @@ body {
   to {
     left: 100%;
   }
+}
+
+/* Web Hero Section */
+
+@keyframes gradient-move {
+  to {
+    background-position: 300% center;
+  }
+}
+
+.animate-gradient {
+  background-size: 400% auto;
+  animation: gradient-move 15s linear infinite;
 }
