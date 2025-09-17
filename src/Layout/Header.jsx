@@ -18,6 +18,7 @@ import {
   FaBrain,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import Logo from "/src/assets/Logo.svg"
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -151,10 +152,11 @@ const Header = () => {
             className="relative group cursor-pointer"
             onClick={closeMenu}
           >
-            <div className="absolute -inset-1 sm:-inset-2 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-lg blur-xl opacity-5 group-hover:opacity-50 transition duration-300"></div>
+            {/* <div className="absolute -inset-1 sm:-inset-2 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-lg blur-xl opacity-5 group-hover:opacity-50 transition duration-300"></div>
             <div className="relative font-bold text-lg sm:text-xl md:text-2xl bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
               ThirdVizion
-            </div>
+            </div> */}
+            <img src={Logo} alt="" className="size-40" />
           </Link>
 
           {/* Desktop Menu */}

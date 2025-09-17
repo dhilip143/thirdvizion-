@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaCloud, FaHdd, FaNetworkWired, FaCogs } from "react-icons/fa";
+import TextReveal from "/src/Hooks/TextReveal.jsx";
 
 export default function ServerDetail() {
   const sections = [
@@ -27,7 +28,7 @@ export default function ServerDetail() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-20 relative">
+    <div className="min-h-screen text-white px-6 py-20 relative">
       {/* Background Glow */}
       <div
         className="absolute top-20 left-1/3 w-[50vh] h-[50vh] rounded-full blur-3xl -z-10"
@@ -39,25 +40,27 @@ export default function ServerDetail() {
 
       {/* Hero Section */}
       <section className="text-center mb-16">
-        <motion.h1
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent tracking-tight"
-        >
-          Server Management
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.7 }}
-          className="mt-4 text-white/70 max-w-2xl mx-auto"
-        >
-          Secure • Scalable • Reliable <br /> Empowering your business with
-          next-gen server solutions.
-        </motion.p>
-
+        <TextReveal>
+          <motion.h1
+            initial={{ opacity: 0, y: -40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-white via-white/80 to-white/60 bg-clip-text text-transparent tracking-tight"
+          >
+            Server Management
+          </motion.h1>
+        </TextReveal>
+        <TextReveal delay={0.2}>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.7 }}
+            className="mt-4 text-white/70 max-w-2xl mx-auto"
+          >
+            Secure • Scalable • Reliable <br /> Empowering your business with
+            next-gen server solutions.
+          </motion.p>
+        </TextReveal>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

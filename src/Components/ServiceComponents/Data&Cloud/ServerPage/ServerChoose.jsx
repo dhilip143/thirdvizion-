@@ -8,6 +8,7 @@ import {
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import serverAnimation from "/src/assets/server.json"; // Replace with your Lottie JSON file
+import TextReveal from "/src/Hooks/TextReveal.jsx";
 
 export default function ServerChoose() {
   const features = [
@@ -38,16 +39,18 @@ export default function ServerChoose() {
   ];
 
   return (
-    <section className="bg-black relative py-20 px-6 max-h-screen overflow-hidden">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-3xl md:text-4xl font-bold mb-12 bg-gradient-to-r from-white via-white/80 to-white/50 bg-clip-text text-transparent text-center"
-      >
-        Why Choose Us?
-      </motion.h2>
+    <section className=" relative py-20 px-6 max-h-screen overflow-hidden">
+      <TextReveal>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-3xl md:text-4xl font-bold mb-12 bg-gradient-to-r from-white via-white/80 to-white/50 bg-clip-text text-transparent text-center"
+        >
+          Why Choose Us?
+        </motion.h2>
+      </TextReveal>
 
       <div className="max-w-8xl mx-auto flex justify-center items-center gap-12">
         {/* Left - Feature Cards */}

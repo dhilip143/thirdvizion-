@@ -22,7 +22,6 @@ export default function Home() {
       <FAQ />
       <Testimonial />
       <Industries />
-      {/* <Hovercard /> */}
 
       {/* FAQ sticky container */}
       <div className="relative">

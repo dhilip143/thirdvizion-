@@ -4,6 +4,7 @@ import WebHero from "/src/Components/ServiceComponents/Development&Software/Webs
 import WebDesignScroll from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebDesignScroll.jsx";
 import { motion } from "framer-motion";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
+import WebCTA from "../../../Components/ServiceComponents/Development&Software/WebsitePage/WebCTA";
 const WebsitePage = () => {
   return (
     <>
@@ -46,6 +47,8 @@ const WebsitePage = () => {
         </section>
 
         <WebProjects />
+        
+        <WebCTA />
       </div>
     </>
   );
