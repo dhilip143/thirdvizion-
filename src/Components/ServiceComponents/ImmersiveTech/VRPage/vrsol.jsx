@@ -459,7 +459,7 @@ const Vrsol = () => {
       </div>
 
       {/* Vr component at the bottom */}
-      {/* <Vr /> */}
+  
     </div>
     </>
   );
