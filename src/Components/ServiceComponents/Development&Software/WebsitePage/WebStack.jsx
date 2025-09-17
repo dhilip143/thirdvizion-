@@ -18,12 +18,12 @@ const WebStack = () => {
           style={{
             "--width": "150px",
             "--height": "100px",
-            "--quantity": 10,
+            "--quantity": 9,
             "--time": "14s",
           }}
         >
           <div className="list">
-            <div className="item" style={{ "--position": 1 }}>
+            <div className="item hidden" style={{ "--position": 1 }}>
               <img src={image1} alt="" className="filter brightness-0 invert" />
             </div>
             <div className="item" style={{ "--position": 2 }}>
@@ -67,14 +67,11 @@ const WebStack = () => {
           style={{
             "--width": "150px",
             "--height": "100px",
-            "--quantity": 10,
+            "--quantity": 9,
             "--time": "14s",
           }}
         >
           <div className="list">
-            <div className="item" style={{ "--position": 1 }}>
-              <img src={image1} alt="" className="filter brightness-0 invert" />
-            </div>
             <div className="item" style={{ "--position": 2 }}>
               <img src={image2} alt="" className="filter brightness-0 invert" />
             </div>
@@ -115,14 +112,11 @@ const WebStack = () => {
           style={{
             "--width": "150px",
             "--height": "100px",
-            "--quantity": 10,
+            "--quantity": 9,
             "--time": "14s",
           }}
         >
           <div className="list">
-            <div className="item" style={{ "--position": 1 }}>
-              <img src={image1} alt="" className="filter brightness-0 invert" />
-            </div>
             <div className="item" style={{ "--position": 2 }}>
               <img src={image2} alt="" className="filter brightness-0 invert" />
             </div>

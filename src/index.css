@@ -8,18 +8,18 @@ html, body, #root {
   padding: 0;
 }
 
-/* Make the window the snap container */
-body {
+/* body {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  margin: 0;
-  background: #000;
+  background-color: black;
 }
-/* Each section snaps */
-.snap-section {
+
+.snap-start {
   scroll-snap-align: start;
   min-height: 100vh;
-}
+} */
+
+
 
 .scroll-snapping-page {
   --color-background: black;

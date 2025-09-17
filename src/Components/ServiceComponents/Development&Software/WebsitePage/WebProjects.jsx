@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import { motion } from "framer-motion";
+import TextReveal from "/src/Hooks/TextReveal.jsx";
 
 // /src/data/ProjectsData.js
 import amsi from "/src/assets/HeroImages/amsi-go.png";
@@ -52,19 +54,10 @@ const ProjectsData = [
 
 export default function WebProject() {
   useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.02,
-      smoothWheel: true,
-      smoothtouch: true,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
+    function raf() {
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-
-    lenis.on("scroll", ScrollTrigger.update);
 
     const sections = gsap.utils.toArray("section");
 
@@ -112,9 +105,34 @@ export default function WebProject() {
 
   return (
     <>
-      <div className="h-[20vh] bg-transparent text-white flex justify-center items-center font-mono text-5xl">
-        <h1>Our Portfolio</h1>
-      </div>
+      {/* Portfolio Heading */}
+      <motion.div
+        className="h-[20vh] bg-transparent text-white flex flex-col justify-center items-center text-center"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ amount: 0 }}
+      >
+        <TextReveal>
+          <motion.h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white drop-shadow-lg">
+            Our Portfolio
+          </motion.h1>
+        </TextReveal>
+
+        {/* Small Description Below Portfolio */}
+        <TextReveal delay={0.2}>
+          <motion.p
+            className="mt-4 text-lg md:text-xl text-gray-300 leading-relaxed max-w-4xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ amount: 0 }}
+          >
+            A curated collection of our favorite projects — each one crafted
+            with passion, precision, and modern web technologies.
+          </motion.p>
+        </TextReveal>
+      </motion.div>
 
       <div className="h-[400vh] bg-transparent text-white">
         {ProjectsData.map((project, index) => (
