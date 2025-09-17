@@ -1,10 +1,9 @@
-import DashBoardimage from "/src/assets/HeroImages/HeroHeader.webp";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative isolate w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black text-white -mt-10">
+    <section className="relative isolate w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black text-white -pt-10">
       {/* Background Glows */}
       {/* <div className="pointer-events-none absolute inset-0 -z-10">
         <div
@@ -74,22 +73,7 @@ export default function HeroSection() {
           </button>
         </motion.div>
 
-        {/* Image Section */}
-        {/* <motion.div
-          className="mt-16 max-w-4xl w-full flex justify-center"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-        >
-          <motion.img
-            src={DashBoardimage}
-            alt="Dashboard preview"
-            className="rounded-2xl shadow-2xl hover:shadow-blue-500/40 hover:scale-105 transition-all duration-500 ease-out"
-            initial={{ scale: 0.95, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          />
-        </motion.div> */}
+        
       </div>
     </section>
   );
