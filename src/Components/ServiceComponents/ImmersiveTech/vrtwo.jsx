@@ -3,23 +3,19 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import vrone from "/src/assets/vr/vrn.jpg";
-import vrtwo from "/src/assets/vr/vrman.jpg";  
+import vrtwo from "/src/assets/vr/vrman.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Vrtwo() {
   const sectionRef = useRef(null);
   const vrHeadsetRef = useRef(null);
-  const vrManRef = useRef(null);
   const textLeftRef = useRef(null);
   const textRightRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Removed floating animation for VR images
-      // gsap.to(vrHeadsetRef.current, { ... });
-      // gsap.to(vrManRef.current, { ... });
-
+      // Text animations
       gsap.from(textLeftRef.current, {
         x: -150,
         opacity: 0,
@@ -42,7 +38,8 @@ export default function Vrtwo() {
         },
       });
 
-      gsap.from([vrHeadsetRef.current, vrManRef.current], {
+      // VR Headset animation only
+      gsap.from(vrHeadsetRef.current, {
         scale: 0.7,
         opacity: 0,
         duration: 1.5,
@@ -53,6 +50,7 @@ export default function Vrtwo() {
         },
       });
 
+      // Floating particles animation
       gsap.to(".particle", {
         y: (i) => (i % 2 === 0 ? 30 : -30),
         duration: 4,
@@ -97,7 +95,7 @@ export default function Vrtwo() {
 
       {/* Content */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-20 px-10 py-20 w-full max-w-7xl relative z-10">
-        {/* Left: Text + VR Man */}
+        {/* Left: Text + VR Man (static, no animation) */}
         <div className="flex flex-col items-center md:items-start gap-12">
           <div ref={textLeftRef} className="space-y-6">
             <h2 className="text-4xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-violet-400 to-indigo-500 bg-clip-text text-transparent">
@@ -110,28 +108,25 @@ export default function Vrtwo() {
             </p>
           </div>
 
-          <div
-            ref={vrManRef}
-            className="relative w-80 h-80 rounded-3xl overflow-hidden backdrop-blur-md bg-zinc-900/40 border border-violet-500/30 shadow-[0_0_50px_rgba(168,85,247,0.5)]"
-          >
+          {/* VR Man (STATIC) */}
+          <div className="relative w-80 h-80 rounded-3xl overflow-hidden bg-zinc-900/40 border border-violet-500/30">
             <img
               src={vrtwo}
               alt="VR Man"
-              className="w-full h-full "
+              className="w-full h-full object-cover"
               onError={(e) =>
                 (e.currentTarget.src =
                   "https://via.placeholder.com/300x300?text=VR+Man")
               }
             />
-            <div className="absolute inset-0 "></div>
           </div>
         </div>
 
-        {/* Right: VR Headset + Text */}
+        {/* Right: VR Headset (animated) + Text */}
         <div className="flex flex-col items-center md:items-end gap-12">
           <div
             ref={vrHeadsetRef}
-            className="relative w-80 h-80 rounded-3xl overflow-hidden backdrop-blur-md bg-zinc-900/40 border border-indigo-500/30 shadow-[0_0_50px_rgba(59,130,246,0.5)]"
+            className="relative w-80 h-80 rounded-3xl overflow-hidden backdrop-blur-md border border-indigo-500/30 shadow-[0_0_50px_rgba(59,130,246,0.5)]"
           >
             <img
               src={vrone}
