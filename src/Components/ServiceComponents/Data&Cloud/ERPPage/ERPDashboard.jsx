@@ -4,14 +4,14 @@ import DashBoardimage from "/src/assets/HeroImages/HeroHeader.webp";
 
 const ERPDashboard = () => {
   const { scrollYProgress } = useScroll();
-  
+
   // Optional: Slight scale or parallax effect while scrolling
   const scale = useTransform(scrollYProgress, [0, 0.3], [0.2, 0.5]);
 
   return (
-    <section className="relative h-[300vh] bg-black">
+    <section className="relative h-[300vh]">
       {/* This section is twice the viewport height so you can scroll */}
-      
+
       {/* Pinned Container */}
       <div className="sticky top-0 flex justify-center items-center h-screen">
         <motion.div className="w-full md:w-1/2">

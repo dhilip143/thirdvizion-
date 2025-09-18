@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const IAMBenefits = () => {
   return (
-    <section className="bg-black text-white py-20 px-6">
+    <section className=" text-white py-20 px-6">
       <div className="max-w-7xl mx-auto text-center mb-14">
         <motion.h2
           initial={{ opacity: 0, y: -40 }}

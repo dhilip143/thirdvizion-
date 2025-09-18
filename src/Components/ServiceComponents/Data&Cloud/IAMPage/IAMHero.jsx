@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <div className="bg-black text-white min-h-screen flex flex-col items-center justify-center px-6 py-16">
+    <div className=" text-white min-h-screen flex flex-col items-center justify-center px-6 py-16">
       {/* Heading */}
       <motion.div
         className="max-w-4xl text-center mt-50"

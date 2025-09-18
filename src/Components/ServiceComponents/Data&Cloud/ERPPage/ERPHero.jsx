@@ -3,7 +3,7 @@ import { Sparkles } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative isolate w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black text-white -pt-10">
+    <section className="relative isolate w-full min-h-screen flex flex-col items-center justify-center overflow-hidden text-white -pt-10">
       {/* Background Glows */}
       {/* <div className="pointer-events-none absolute inset-0 -z-10">
         <div
