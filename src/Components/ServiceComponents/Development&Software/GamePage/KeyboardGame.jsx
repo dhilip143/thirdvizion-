@@ -426,7 +426,7 @@ const KeyboardGame = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4 }}
-          className="max-w-xl sm:max-w-2xl mb-10 bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 p-4 sm:p-6 rounded-2xl shadow-xl text-center"
+          className="max-w-2xl mb-10 bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 p-6 rounded-2xl shadow-xl"
         >
           <h2 className="text-2xl sm:text-3xl font-extrabold mb-3">{activeTool}</h2>
           <p className="text-base sm:text-lg leading-relaxed">{toolDescriptions[activeTool]}</p>

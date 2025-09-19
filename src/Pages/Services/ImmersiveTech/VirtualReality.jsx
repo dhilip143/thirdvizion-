@@ -9,8 +9,9 @@ function VirtualReality() {
     <>
     <Vrvideo/>
      <Vrtwo/>
+      <Vrbike/>
     <Vrsol/>
-    <Vrbike/>
+    
    
     
     </>

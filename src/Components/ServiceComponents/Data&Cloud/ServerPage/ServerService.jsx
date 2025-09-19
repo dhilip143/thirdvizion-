@@ -12,7 +12,7 @@ const ServerService = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            viewport={{}}
             className="text-3xl font-bold mb-2 bg-gradient-to-r from-white via-white/80 to-white/50 bg-clip-text text-transparent"
           >
             Our Services
@@ -26,7 +26,7 @@ const ServerService = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            viewport={{}}
           >
             We provide end-to-end solutions to ensure your servers and cloud
             infrastructure are optimized, secure, and tailored to your business
@@ -64,7 +64,7 @@ const ServerService = () => {
                 type: "spring",
                 stiffness: 120,
               }}
-              viewport={{ once: true }}
+              viewport={{}}
               className="bg-white/5 p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105 text-left backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)]"
             >
               {/* Icon Animation */}

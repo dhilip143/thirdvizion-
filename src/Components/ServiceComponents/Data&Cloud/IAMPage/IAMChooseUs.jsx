@@ -160,7 +160,7 @@ export default function WhyChooseIAM() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 py-16 overflow-hidden"
+      className="relative min-h-screen text-white flex flex-col items-center justify-center px-6 py-16 overflow-hidden"
     >
       {/* Sparkle + Network Background */}
       {/* <SparkleField /> */}
