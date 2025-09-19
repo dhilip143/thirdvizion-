@@ -26,7 +26,7 @@ import image10 from "/src/assets/AboutImages/tow.png";
 const WebStack = () => {
   return (
     <motion.div
-      className="w-full h-screen flex overflow-hidden bg-black"
+      className="w-full h-screen flex overflow-hidden"
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}

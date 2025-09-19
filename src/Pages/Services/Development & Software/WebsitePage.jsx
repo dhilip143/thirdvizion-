@@ -5,12 +5,16 @@ import WebDesignScroll from "/src/Components/ServiceComponents/Development&Softw
 import { motion } from "framer-motion";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
 import WebCTA from "../../../Components/ServiceComponents/Development&Software/WebsitePage/WebCTA";
+import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx"
+
 const WebsitePage = () => {
   return (
     <>
       <div className="bg-black">
-        <WebHero />
 
+        <SparkleBg />
+
+        <WebHero />
         <WebDesignScroll />
 
         <section className="h-screen w-full flex flex-col items-center justify-center px-6">
@@ -47,7 +51,6 @@ const WebsitePage = () => {
         </section>
 
         <WebProjects />
-        
         <WebCTA />
       </div>
     </>

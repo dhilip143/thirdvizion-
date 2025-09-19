@@ -12,7 +12,7 @@ import image10 from "/src/assets/Images/slider1_10.png";
 const WebStack = () => {
   return (
     <>
-      <div className="bg-black">
+      <div className="">
         <div
           className="slider"
           style={{

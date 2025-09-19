@@ -5,7 +5,7 @@ import TextReveal from "/src/Hooks/TextReveal.jsx";
 
 const WebCTA = () => {
   return (
-    <section className="w-full bg-black text-white py-24 px-6 flex flex-col items-center text-center">
+    <section className="w-full text-white py-24 px-6 flex flex-col items-center text-center">
       <TextReveal>
         <motion.h2
           className="text-4xl md:text-5xl font-extrabold mb-4"

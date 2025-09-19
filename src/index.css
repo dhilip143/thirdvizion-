@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Diphylleia&family=Michroma&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Jura:wght@300..700&family=Michroma&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Diphylleia&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Jura:wght@300..700&family=Michroma&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap');
 @import "tailwindcss";
 /* ensure root heights are normal */
 html,
@@ -13,20 +14,20 @@ body,
 /* ...and so on for the rest */
 
 /* Makes the Selected Text Transparent in the Browser */
-/* ::selection {
+::selection {
   background-color: transparent; 
-  color: transparent; 
-  background-clip: text;
-  -webkit-background-clip: text; 
-  background-image: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  color: white; 
+  /* background-clip: text; */
+  /* -webkit-background-clip: text;  */
+  /* background-image: linear-gradient(90deg, #3b82f6, #8b5cf6); */
 }
 ::-moz-selection {
   background-color: transparent;
-  color: transparent;
-  background-clip: text;
-  -moz-background-clip: text;
-  background-image: linear-gradient(90deg, #3b82f6, #8b5cf6);
-} */
+  /* color: transparent; */
+  /* background-clip: text; */
+  /* -moz-background-clip: text; */
+  /* background-image: linear-gradient(90deg, #3b82f6, #8b5cf6); */
+}
 
 .font-michroma {
   font-family: "Michroma", sans-serif;
@@ -35,6 +36,12 @@ body,
 .font-jura {
   font-family: "Jura", sans-serif;
 }
+
+.font-inter-tight {
+  font-family: "Inter Tight", sans-serif;
+  font-optical-sizing: auto;
+}
+
 
 .blurAnimated {
   animation: blurFadeIn 1.5s ease forwards;

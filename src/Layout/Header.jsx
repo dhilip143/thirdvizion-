@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 import {
   FaFacebookF,
@@ -8,170 +6,174 @@ import {
   FaGithub,
   FaYoutube,
   FaChevronDown,
-  FaRocket,
-  FaCloud,
-  FaCode,
-  FaMobile,
+  FaVrCardboard,
+  FaCubes,
+  FaUsers,
+  FaLock,
   FaDatabase,
-  FaShieldAlt,
-  FaCube,
-  FaBrain,
+  FaServer,
+  FaCode,
+  FaMobileAlt,
+  FaGamepad,
 } from "react-icons/fa";
+import { MdViewInAr } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "/src/assets/Logo.svg"
+import { motion, AnimatePresence } from "framer-motion";
+import Logo from "/src/assets/Logo.svg";
+import NewLogo from "/src/assets/New_Logo.png"
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [mobileCategoryOpen, setMobileCategoryOpen] = useState(null);
+  const [setMobileCategoryOpen] = useState(null);
+  const [hoverDisabled, setHoverDisabled] = useState(false);
+  const [activeBox, setActiveBox] = useState(null);
 
   const navigate = useNavigate();
 
-  // Categories with their respective pages
   const categories = {
     "Immersive Tech": {
-      icon: <FaCube className="w-4 h-4 sm:w-5 sm:h-5" />,
       pages: [
         {
           name: "Virtual Reality",
           href: "/virtual_reality",
+          icon: <FaVrCardboard className="w-4 h-4 text-purple-400" />,
+          desc: "Create fully immersive 3D experiences for training, marketing, or entertainment.",
         },
         {
           name: "Augmented Reality",
           href: "/augmented_reality",
+          icon: <MdViewInAr className="w-4 h-4 text-pink-400" />,
+          desc: "Blend the digital and real world with interactive AR applications.",
         },
         {
           name: "3D Services",
           href: "/3d_services",
+          icon: <FaCubes className="w-4 h-4 text-blue-400" />,
+          desc: "High-quality 3D modeling, rendering, and visualization for any industry.",
         },
       ],
     },
     "Data & Cloud": {
-      icon: <FaCloud className="w-4 h-4 sm:w-5 sm:h-5" />,
       pages: [
         {
           name: "CRM Solutions",
           href: "/client_relationship_management",
+          icon: <FaUsers className="w-4 h-4 text-green-400" />,
+          desc: "Manage customer data, boost sales, and streamline communication.",
         },
         {
           name: "IAM Solutions",
           href: "/identity_and_access_management",
+          icon: <FaLock className="w-4 h-4 text-yellow-400" />,
+          desc: "Securely control user access and identity management across systems.",
         },
         {
           name: "ERP Solutions",
           href: "/enterprise_resource_planning",
+          icon: <FaDatabase className="w-4 h-4 text-indigo-400" />,
+          desc: "Unify business operations with powerful, scalable ERP software.",
         },
         {
           name: "Server Management",
           href: "/server_management",
+          icon: <FaServer className="w-4 h-4 text-red-400" />,
+          desc: "Reliable server setup, monitoring, and optimization for your infrastructure.",
         },
       ],
     },
-    "Development&software": {
-      icon: <FaCode className="w-4 h-4 sm:w-5 sm:h-5" />,
+    "Development & Software": {
       pages: [
         {
           name: "Web Development",
           href: "/web_development",
+          icon: <FaCode className="w-4 h-4 text-cyan-400" />,
+          desc: "Modern, responsive, and fast websites built to engage users.",
         },
         {
           name: "Mobile Apps",
           href: "/app_development",
+          icon: <FaMobileAlt className="w-4 h-4 text-orange-400" />,
+          desc: "Custom iOS & Android apps designed for performance and scalability.",
         },
         {
           name: "Game Development",
           href: "/game_development",
+          icon: <FaGamepad className="w-4 h-4 text-pink-400" />,
+          desc: "Interactive and visually stunning games for multiple platforms.",
         },
       ],
     },
   };
 
+
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
-
   const closeMenu = () => {
     setIsOpen(false);
     setActiveDropdown(null);
     setMobileCategoryOpen(null);
   };
 
-  const handleNavClick = (path) => {
-    navigate(path);
-    closeMenu();
+  const handleBoxClick = (page, e) => {
+    // Just close dropdown (not full menu reset)
+    setHoverDisabled(true); // stop hover from working
+    setActiveDropdown(null);
+    setIsOpen(false); // close mobile menu if open
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    setActiveBox({ page, rect });
+  };
+
+  const handleAnimationComplete = () => {
+    if (activeBox?.page?.href) {
+      navigate(activeBox.page.href);
+      setActiveBox(null);
+      setHoverDisabled(false); // re-enable hover for next interactions
+    }
   };
 
   const socialLinks = [
-    {
-      icon: FaFacebookF,
-      href: "https://www.facebook.com/share/1Q5hmaxzpF/",
-      label: "Facebook",
-    },
-    {
-      icon: FaInstagram,
-      href: "https://www.instagram.com/thirdvizionlabs/",
-      label: "Instagram",
-    },
+    { icon: FaFacebookF, href: "https://www.facebook.com/share/1Q5hmaxzpF/" },
+    { icon: FaInstagram, href: "https://www.instagram.com/thirdvizionlabs/" },
     {
       icon: FaLinkedinIn,
       href: "https://www.linkedin.com/company/thirdvizion-labs/posts/?feedView=all",
-      label: "LinkedIn",
     },
-    {
-      icon: FaGithub,
-      href: "https://github.com/Thirdvizion-Labs",
-      label: "GitHub",
-    },
-    {
-      icon: FaYoutube,
-      href: "https://www.youtube.com/@ThirdVizion",
-      label: "YouTube",
-    },
+    { icon: FaGithub, href: "https://github.com/Thirdvizion-Labs" },
+    { icon: FaYoutube, href: "https://www.youtube.com/@ThirdVizion" },
   ];
 
   return (
     <>
+      {/* Top Nav */}
       <div
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-black/90 backdrop-blur-lg border-b border-white/10 shadow-2xl"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? "bg-black/90 backdrop-blur-lg border-b border-white/10 shadow-2xl"
+          : "bg-transparent"
+          }`}
       >
         <div className="flex justify-between items-center h-14 sm:h-16 md:h-18 px-3 sm:px-4 md:px-6 lg:px-10">
           {/* Logo */}
-          <Link
-            to="/"
-            className="relative group cursor-pointer"
-            onClick={closeMenu}
-          >
-            {/* <div className="absolute -inset-1 sm:-inset-2 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-lg blur-xl opacity-5 group-hover:opacity-50 transition duration-300"></div>
-            <div className="relative font-bold text-lg sm:text-xl md:text-2xl bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-              ThirdVizion
-            </div> */}
-            <img src={Logo} alt="" className="size-40" />
+          <Link to="/" onClick={closeMenu}>
+            <img src={Logo} alt="Logo" className="size-40" />
           </Link>
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex justify-center items-center gap-4 xl:gap-8 text-white text-sm xl:text-base">
-            <Link
-              to="/"
-              onClick={closeMenu}
-              className="hover:text-purple-400 transition"
-            >
+            <Link to="/" onClick={closeMenu} className="hover:text-purple-400">
               Home
             </Link>
             <Link
               to="/about"
               onClick={closeMenu}
-              className="hover:text-purple-400 transition"
+              className="hover:text-purple-400"
             >
               About
             </Link>
@@ -179,220 +181,230 @@ const Header = () => {
             {/* Services Dropdown */}
             <div
               className="relative group"
-              onMouseEnter={() => setActiveDropdown("Services")}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => !hoverDisabled && setActiveDropdown("Services")}
+              onMouseLeave={() => !hoverDisabled && setActiveDropdown(null)}
             >
-              <button className="flex items-center gap-2 py-2 hover:text-purple-400 transition">
+
+              <button className="flex items-center gap-2 py-2 hover:text-purple-400">
                 Services
                 <FaChevronDown
-                  className={`w-3 h-3 transition-transform duration-300 ${
-                    activeDropdown === "Services" ? "rotate-180" : ""
-                  }`}
+                  className={`w-3 h-3 transition-transform duration-300 ${activeDropdown === "Services" ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
-              {/* Dropdown */}
+              {/* Mega Menu */}
               <div
-                className={`w-[70vw] absolute top-full left-1/2 transform -translate-x-1/2 mt-2 transition-all duration-300 ${
-                  activeDropdown === "Services"
-                    ? "opacity-100 visible translate-y-0"
-                    : "opacity-0 invisible -translate-y-4"
-                }`}
+                className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-4 transition-all duration-300 ${activeDropdown === "Services"
+                  ? "opacity-100 visible translate-y-0"
+                  : "opacity-0 invisible -translate-y-4"
+                  }`}
               >
-                <div className="bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {Object.entries(categories).map(
-                    ([categoryName, categoryData]) => (
-                      <div key={categoryName}>
-                        <div className="flex items-center gap-2 text-purple-400 font-medium mb-2">
-                          {categoryData.icon}
-                          {categoryName}
-                        </div>
-                        <div className="space-y-2">
-                          {categoryData.pages.map((page) => (
-                            <Link
-                              key={page.name}
-                              to={page.href}
-                              onClick={closeMenu}
-                              className="flex items-center gap-2 text-gray-300 hover:text-white transition"
-                            >
-                              {page.name}
-                            </Link>
-                          ))}
-                        </div>
+                <div className="bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-[80vw] max-w-6xl">
+                  {Object.entries(categories).map(([categoryName, categoryData]) => (
+                    <div key={categoryName} className="flex flex-col gap-4">
+                      {/* Category Heading (No icon) */}
+                      <h3 className="text-gray-300 uppercase text-xs tracking-wide">
+                        {categoryName}
+                      </h3>
+
+                      {/* Page Links */}
+                      <div className="flex flex-col gap-3">
+                        {categoryData.pages.map((page) => (
+                          <button
+                            key={page.name}
+                            onClick={(e) => handleBoxClick(page, e)}
+                            className="flex items-start gap-3 rounded-xl p-3 hover:bg-white/10 transition"
+                          >
+                            {/* Icon for Page */}
+                            <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg bg-white/10 text-purple-400 text-lg">
+                              {page.icon} {/* page.icon should be defined in categories data */}
+                            </span>
+
+                            {/* Page Name + Description */}
+                            <div className="text-left">
+                              <p className="text-sm text-white font-medium">
+                                {page.name}
+                              </p>
+                              <p className="text-xs text-gray-400">
+                                {page.desc}
+                              </p>
+                            </div>
+                          </button>
+                        ))}
                       </div>
-                    )
-                  )}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
+
             <Link
               to="/contact"
               onClick={closeMenu}
-              className="hover:text-purple-400 transition"
+              className="hover:text-purple-400"
             >
               Contact
             </Link>
             <Link
               to="/blog"
               onClick={closeMenu}
-              className="hover:text-purple-400 transition"
+              className="hover:text-purple-400"
             >
               Resources
             </Link>
           </nav>
 
           {/* Social Icons */}
-          <div className="hidden xl:flex gap-3 text-base">
-            {socialLinks.map((social) => {
-              const IconComponent = social.icon;
+          <div className="hidden lg:flex gap-3 text-base">
+            {socialLinks.map((social, i) => {
+              const Icon = social.icon;
               return (
                 <a
-                  key={social.label}
+                  key={i}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="p-2 text-gray-400 hover:text-white transition"
+                  className="p-2 text-gray-400 hover:text-white"
                 >
-                  <IconComponent />
+                  <Icon />
                 </a>
               );
             })}
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden">
-            <button
-              onClick={toggleMenu}
-              className="w-8 h-8 flex flex-col justify-center items-center"
-            >
-              <span
-                className={`block h-0.5 w-5 bg-white transition ${
-                  isOpen ? "rotate-45 translate-y-1.5" : "-translate-y-1"
-                }`}
-              />
-              <span
-                className={`block h-0.5 w-5 bg-white transition ${
-                  isOpen ? "opacity-0" : "opacity-100"
-                }`}
-              />
-              <span
-                className={`block h-0.5 w-5 bg-white transition ${
-                  isOpen ? "-rotate-45 -translate-y-1.5" : "translate-y-1"
-                }`}
-              />
+          <div className="lg:hidden fixed top-5 right-10 z-50">
+            <button onClick={toggleMenu} className="w-8 h-8 flex flex-col justify-center items-center z-50">
+              <span className={`block h-0.5 w-5 bg-white transition ${isOpen ? "rotate-45 translate-y-1.5" : "-translate-y-1"}`} />
+              <span className={`block h-0.5 w-5 bg-white transition ${isOpen ? "opacity-0" : "opacity-100"}`} />
+              <span className={`block h-0.5 w-5 bg-white transition ${isOpen ? "-rotate-45 -translate-y-1.5" : "translate-y-1"}`} />
             </button>
           </div>
+
+          {/* Mobile Menu Drawer */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                key="mobile-menu"
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="w-full absolute top-0 z-40 bg-black/95 backdrop-blur-xl p-6 flex flex-col lg:hidden"
+              >
+                {/* Scrollable container */}
+                <div className="flex-1 overflow-y-scroll flex flex-col gap-6 pt-">
+                  {/* Mobile Nav Links */}
+                  <nav className="flex flex-col gap-4 text-white text-lg">
+                    <Link to="/" onClick={closeMenu} className="hover:text-purple-400">
+                      Home
+                    </Link>
+                    <Link to="/about" onClick={closeMenu} className="hover:text-purple-400">
+                      About
+                    </Link>
+
+                    {/* Collapsible Services Section */}
+                    <div className="border-t border-white/10 pt-4">
+                      <p className="text-gray-300 text-sm uppercase mb-3">Services</p>
+                      {Object.entries(categories).map(([categoryName, categoryData]) => (
+                        <div key={categoryName} className="mb-4">
+                          <p className="text-xs text-gray-400 mb-2">{categoryName}</p>
+                          <div className="flex flex-col gap-2">
+                            {categoryData.pages.map((page) => (
+                              <button
+                                key={page.name}
+                                onClick={(e) => handleBoxClick(page, e)}
+                                className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/10"
+                              >
+                                <span className="w-6 h-6 flex items-center justify-center rounded bg-white/10 text-purple-400">
+                                  {page.icon}
+                                </span>
+                                <span className="text-sm">{page.name}</span>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <Link to="/contact" onClick={closeMenu} className="hover:text-purple-400">
+                      Contact
+                    </Link>
+                    <Link to="/blog" onClick={closeMenu} className="hover:text-purple-400">
+                      Resources
+                    </Link>
+                  </nav>
+
+                  {/* Social Links */}
+                  <div className="mt-auto flex gap-4 justify-center md:justify-start">
+                    {socialLinks.map((social, i) => {
+                      const Icon = social.icon;
+                      return (
+                        <a
+                          key={i}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 text-gray-400 hover:text-white"
+                        >
+                          <Icon />
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              </motion.div>
+
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl z-40 overflow-y-auto p-6 pt-20 text-white">
-          <div className="flex flex-col gap-6">
-            <Link
-              to="/"
-              onClick={() => handleNavClick("/")}
-              className="text-xl"
-            >
-              Home
-            </Link>
-
-            <Link
-              to="/about"
-              onClick={() => handleNavClick("/about")}
-              className="text-xl"
-            >
-              About
-            </Link>
-
-            {/* Services Accordion */}
-            <div>
-              <button
-                onClick={() =>
-                  setActiveDropdown(
-                    activeDropdown === "Services" ? null : "Services"
-                  )
-                }
-                className="flex items-center justify-between w-full text-xl"
-              >
-                Services
-                <FaChevronDown
-                  className={`transition-transform ${
-                    activeDropdown === "Services" ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {activeDropdown === "Services" && (
-                <div className="mt-3 space-y-4">
-                  {Object.entries(categories).map(
-                    ([categoryName, categoryData]) => (
-                      <div key={categoryName}>
-                        <button
-                          onClick={() =>
-                            setMobileCategoryOpen(
-                              mobileCategoryOpen === categoryName
-                                ? null
-                                : categoryName
-                            )
-                          }
-                          className="flex items-center justify-between w-full text-purple-400"
-                        >
-                          <span className="flex items-center gap-2">
-                            {categoryData.icon}
-                            {categoryName}
-                          </span>
-                          <FaChevronDown
-                            className={`transition ${
-                              mobileCategoryOpen === categoryName
-                                ? "rotate-180"
-                                : ""
-                            }`}
-                          />
-                        </button>
-                        {mobileCategoryOpen === categoryName && (
-                          <div className="ml-6 mt-2 space-y-2">
-                            {categoryData.pages.map((page) => (
-                              <Link
-                                key={page.name}
-                                to={page.href}
-                                onClick={() => handleNavClick(page.href)}
-                                className="flex items-center gap-2 text-gray-300 hover:text-white transition"
-                              >
-                                {page.name}
-                              </Link>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    )
-                  )}
-                </div>
-              )}
-            </div>
-
-            <Link
-              to="/contact"
-              onClick={() => handleNavClick("/contact")}
-              className="text-xl"
-            >
-              Contact
-            </Link>
-
-            <Link
-              to="/blog"
-              onClick={() => handleNavClick("/blog")}
-              className="text-xl"
-            >
-              Resources
-            </Link>
-          </div>
-        </div>
-      )}
+      {/* Animate clicked box to center */}
+      <AnimatePresence>
+        {activeBox && (
+          <motion.div
+            initial={{
+              // top: activeBox.rect.top,
+              // left: activeBox.rect.left,
+              // width: activeBox.rect.width,
+              // height: activeBox.rect.height,
+              top: "50%",
+              left: "50%",
+              width: 30,
+              height: 30,
+              translateX: "-50%",
+              translateY: "-50%",
+              position: "fixed",
+              // backgroundColor: "rgba(255,255,255,0.1)",
+              // borderRadius: "2.75rem",
+              zIndex: 9999,
+            }}
+            animate={{
+              top: "50%",
+              left: "50%",
+              width: 300,
+              height: 50,
+              translateX: "-50%",
+              translateY: "-50%",
+              // backgroundColor: "rgba(255,255,255,0.2)",
+              // boxShadow: "0 10px 40px rgba(0,0,0,0.4)",
+              // borderRadius: "2.75rem",
+            }}
+            exit={{ opacity: 0, scale: 80 }}
+            transition={{ duration: 2.2, ease: "easeInOut" }}
+            onAnimationComplete={handleAnimationComplete}
+            className="flex items-center justify-center text-white text-lg font-semibold"
+          >
+            <img src={NewLogo} alt="" className="size-14" />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
 
 export default Header;
+
