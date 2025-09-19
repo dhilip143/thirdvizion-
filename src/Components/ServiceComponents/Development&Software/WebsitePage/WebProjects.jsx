@@ -58,7 +58,8 @@ export default function WebProject() {
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-
+    const isMobile = window.matchMedia("(max-width: 768px)").matches; // ✅ detect mobile
+    const isLapScreen = window.matchMedia("(min-width: 1024px) and (max-width: 1440px)").matches;
     const sections = gsap.utils.toArray("section");
 
     sections.forEach((section, index) => {
@@ -69,16 +70,18 @@ export default function WebProject() {
       // Alternate direction: even index = left → right, odd index = right → left
       const fromX = index % 2 === 0 ? -800 : 400;
       const toX = index % 2 === 0 ? 400 : -400;
-      const centerX = index % 2 === 0 ? -300 : 300;
+      const centerX = isMobile ? 0 : index % 2 === 0 ? -300 : 300;
 
-      const textFromX = index % 2 === 0 ? 300 : -300; // opposite for text
+      const textFromX = isLapScreen
+        ? (index % 2 === 0 ? 300 : 300) // ✅ laptop screens (custom values)
+        : (index % 2 === 0 ? 300 : -300); // ✅ default screens
       const textToX = 0;
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: "clamp(top bottom-=100)",
-          end: "clamp(bottom top+=200)",
+          start: isMobile ? "clamp(top bottom-=300)" : "clamp(top bottom-=100)", // ✅ start sooner
+          end: isMobile ? "clamp(bottom top+=200)" : "clamp(bottom top+=200)", // ✅ end earlier
           scrub: true,
         },
       });
@@ -107,14 +110,14 @@ export default function WebProject() {
     <>
       {/* Portfolio Heading */}
       <motion.div
-        className="h-[20vh] bg-transparent text-white flex flex-col justify-center items-center text-center"
+        className="mt-20 lg:mt-0 h-[20vh] bg-transparent text-white flex flex-col justify-center items-center text-center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ amount: 0 }}
       >
         <TextReveal>
-          <motion.h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white drop-shadow-lg">
+          <motion.h1 className="text-4xl md:text-6xl font-extrabold font-inter-tight tracking-wide overflow-hidden text-white drop-shadow-lg">
             Our Portfolio
           </motion.h1>
         </TextReveal>
@@ -122,7 +125,7 @@ export default function WebProject() {
         {/* Small Description Below Portfolio */}
         <TextReveal delay={0.2}>
           <motion.p
-            className="mt-4 text-lg md:text-xl text-gray-300 leading-relaxed max-w-4xl"
+            className="mt-4 text-md md:text-xl text-gray-300 leading-relaxed max-w-4xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -139,7 +142,7 @@ export default function WebProject() {
           <section
             key={project.id}
             id="section"
-            className="h-screen flex flex-col lg:flex-row items-center justify-center overflow-hidden relative"
+            className="h-screen flex flex-col xl:flex-row items-center justify-center overflow-hidden relative"
           >
             {/* Image */}
             <img
@@ -150,28 +153,26 @@ export default function WebProject() {
             {/* Overlay Content */}
             <div
               className={`overlay-content lg:absolute lg:top-1/2 lg:-translate-y-1/2 
-      ${
-        index % 2 === 0
-          ? "lg:right-40 lg:text-left"
-          : "lg:left-40 lg:text-right"
-      } 
+      ${index % 2 === 0
+                  ? "lg:right-40 lg:text-left"
+                  : "lg:left-40 lg:text-right"
+                } 
       w-full lg:w-auto px-6 mt-6 lg:mt-0 text-center lg:text-inherit`}
             >
-              <h2 className="text-2xl lg:text-3xl font-bold">
+              <h2 className="text-2xl md:text-5xl lg:text-3xl font-bold">
                 {project.title}
               </h2>
 
-              <p className="text-base lg:text-lg max-w-md mx-auto mb-3">
+              <p className="text-base md:text-md lg:text-lg max-w-lg mx-auto mb-3">
                 {project.description}
               </p>
 
               {/* Tools */}
               <div
-                className={`flex ${
-                  index % 2 === 0
-                    ? "justify-center lg:justify-start"
-                    : "justify-center lg:justify-end"
-                } gap-3 flex-wrap text-xs lg:text-sm text-gray-300 mb-3`}
+                className={`flex ${index % 2 === 0
+                  ? "justify-center lg:justify-start"
+                  : "justify-center lg:justify-end"
+                  } gap-3 flex-wrap text-xs lg:text-sm text-gray-300 mb-3`}
               >
                 {project.tools.map((tool, i) => (
                   <span
@@ -184,7 +185,7 @@ export default function WebProject() {
               </div>
 
               {/* Live Link */}
-              {project.live && (
+              {/* {project.live && (
                 <a
                   href={project.live}
                   target="_blank"
@@ -193,7 +194,7 @@ export default function WebProject() {
                 >
                   View Live
                 </a>
-              )}
+              )} */}
             </div>
           </section>
         ))}

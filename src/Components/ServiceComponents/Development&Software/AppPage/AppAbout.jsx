@@ -5,7 +5,10 @@ import { motion, scale } from "framer-motion";
 
 const AppAbout = () => {
   return (
-    <section className="bg-black w-full h-screen pl-30 flex gap-12 items-center justify-center">
+    // <section className="bg-black w-full h-screen pl-30 flex gap-12 items-center justify-center">
+    <section className="bg-black w-full min-h-screen flex flex-col md:flex-row gap-10 lg:gap-16 items-center justify-center px-4 sm:px-8 md:px-12 lg:px-20 py-12">
+
+
       {/* Left Content */}
       <div className="w-full md:w-1/2">
         <TextReveal>
@@ -72,7 +75,7 @@ const AppAbout = () => {
         <img
           src={sampleImage}
           alt="App Development Illustration"
-          className="rounded-2xl shadow-lg w-1/2 p-10 object-cover"
+          className="rounded-2xl shadow-lg w-3/4 sm:w-2/3 md:w-full max-w-md p-4 sm:p-6 md:p-10 object-cover"
         />
       </motion.div>
     </section>

@@ -218,9 +218,17 @@ function Vrvideo() {
           ref={headerRef}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white z-20 opacity-0"
         >
-          <h1 className="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
+          {/* <h1 className="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
             Immersive VR Experience
-          </h1>
+          </h1> */}
+          <h1
+  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold 
+             bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 
+             bg-clip-text text-transparent drop-shadow-lg text-center md:text-left"
+>
+  Immersive VR Experience
+</h1>
+
         </div>
       </section>
     </div>

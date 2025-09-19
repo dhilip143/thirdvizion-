@@ -1,17 +1,6 @@
 import { motion } from "framer-motion";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
 
-// import image1 from "/src/assets/DesignImages/DesignImage1.jpg";
-// import image2 from "/src/assets/DesignImages/DesignImage2.jpg";
-// import image3 from "/src/assets/DesignImages/DesignImage3.jpg";
-// import image4 from "/src/assets/DesignImages/DesignImage4.jpg";
-// import image5 from "/src/assets/DesignImages/DesignImage5.jpg";
-// import image6 from "/src/assets/DesignImages/DesignImage6.jpg";
-// import image7 from "/src/assets/DesignImages/DesignImage7.jpg";
-// import image8 from "/src/assets/DesignImages/DesignImage8.jpg";
-// import image9 from "/src/assets/DesignImages/DesignImage9.jpg";
-// import image10 from "/src/assets/DesignImages/DesignImage10.jpg";
-
 import image1 from "/src/assets/AboutImages/wow.png";
 import image2 from "/src/assets/AboutImages/vow.png";
 import image3 from "/src/assets/AboutImages/tow.png";
@@ -23,22 +12,18 @@ import image8 from "/src/assets/AboutImages/vow.png";
 import image9 from "/src/assets/AboutImages/tow.png";
 import image10 from "/src/assets/AboutImages/tow.png";
 
-const WebStack = () => {
+const WebDesignScroll = () => {
   return (
     <motion.div
-      className="w-full h-screen flex overflow-hidden"
+      className="w-full lg:min-h-screen flex flex-col-reverse md:flex-row justify-center items-center overflow-hidden gap-15"
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ amount: 0 }}
     >
       {/* Left Section */}
-      <motion.div
-        className="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-12 lg:px-10 text-white"
-        // initial={{ x: -50, opacity: 0 }}
-        // whileInView={{ x: 0, opacity: 1 }}
-        // transition={{ duration: 0.8, delay: 0.2 }}
-        // viewport={{  amount: 0.1 }}
+      <div
+        className="w-full md:w-1/2 flex flex-col justify-center items-center px-6 md:px-8 lg:px-10 text-white text-center md:text-start"
       >
         <TextReveal>
           <motion.h1
@@ -46,39 +31,39 @@ const WebStack = () => {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ amount: 0 }}
-            className="text-white text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6"
+            className="w-full text-white text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 "
           >
-            Stunning Designs for Modern Web
+            Stunning Designs for <span className="text-[#00d3f3]">Modern Web</span>
           </motion.h1>
         </TextReveal>
-        <TextReveal delay={0.1}>
-          <motion.p
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ amount: 0 }}
-            className="text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed mb-8 max-w-lg"
-          >
-            This section is all about the design work we craft with passion. The
-            right side showcases real designs created by our designers,
-            reflecting creativity, detail, and a modern approach to UI/UX.
-          </motion.p>
-        </TextReveal>
+        {/* <TextReveal delay={0.1}> */}
+        <motion.p
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ amount: 0.8 }}
+          className="text-gray-300 text-sm md:text-lg leading-relaxed mb-8 md:max-w-lg "
+        >
+          This section is all about the design work we craft with passion. The
+          right side showcases real designs created by our designers,
+          reflecting creativity, detail, and a modern approach to UI/UX.
+        </motion.p>
+        {/* </TextReveal> */}
         <motion.a
           initial={{ x: 0, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ amount: 0 }}
           href="/contact"
-          className="border-white border-1 hover:bg-white hover:text-black text-white text-lg px-6 py-3 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105 w-fit"
+          className="font-inter-tight flex items-center justify-center md:mr-9 lg:mr-36 xl:mr-50 2xl:mr-60 gap-2 rounded-xl md:rounded-2xl border border-[#00d3f3]/40 bg-black px-5 md:px-6 xl:px-10 py-3 sm:py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-lg shadow-[0_0_10px_rgba(0,211,243,0.3)] backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(0,211,243,0.5)] hover:scale-105 text-[#00d3f3] w-fit"
         >
-          Contact Us
+          Let's Craft Together
         </motion.a>
-      </motion.div>
+      </div>
 
       {/* Right Section - Animates from Right */}
       <motion.div
-        className="w-full md:w-1/2 h-full flex flex-col justify-center items-center -rotate-75 ml-30"
+        className="w-full md:w-1/2 h-full flex flex-col justify-center items-center md:-rotate-75 xl:ml-30 gap-3 lg:gap-5"
         initial={{ x: 50, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
@@ -88,8 +73,8 @@ const WebStack = () => {
         <div
           className="slider"
           style={{
-            "--width": "250px",
-            "--height": "250px",
+            "--width": "clamp(180px, 25vw, 250px)",
+            "--height": "clamp(80px, 20vw, 200px)",
             "--quantity": 10,
             "--time": "48s",
           }}
@@ -123,8 +108,8 @@ const WebStack = () => {
           className="slider"
           reverse="true"
           style={{
-            "--width": "250px",
-            "--height": "250px",
+            "--width": "clamp(180px, 25vw, 250px)",
+            "--height": "clamp(80px, 20vw, 200px)",
             "--quantity": 10,
             "--time": "58s",
           }}
@@ -157,8 +142,8 @@ const WebStack = () => {
         <div
           className="slider"
           style={{
-            "--width": "250px",
-            "--height": "250px",
+            "--width": "clamp(180px, 25vw, 250px)",
+            "--height": "clamp(80px, 20vw, 200px)",
             "--quantity": 10,
             "--time": "48s",
           }}
@@ -191,4 +176,4 @@ const WebStack = () => {
   );
 };
 
-export default WebStack;
+export default WebDesignScroll;

@@ -79,7 +79,7 @@ export default function AppHero() {
   return (
     <div className="bg-black text-white font-sans overflow-x-hidden mb-[-100vh]">
       {/* Hero text section */}
-      <section className="h-screen flex flex-col justify-center items-center text-center px-6 -mt-15 -mb-40 relative z-10">
+      <section className="h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 relative z-10">
         {/* <TextReveal> */}
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
@@ -98,7 +98,7 @@ export default function AppHero() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }} // ✅ triggers earlier
-          className="text-gray-400 max-w-xl mb-6"
+          className="text-gray-400 text-sm sm:text-base md:text-lg max-w-md sm:max-w-xl lg:max-w-2xl mb-6"
         >
           Transforming ideas into intuitive and engaging mobile applications
           that drive success.
@@ -110,7 +110,7 @@ export default function AppHero() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition"
+          className="px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition text-sm sm:text-base"
         >
           Get Started
         </motion.button>
@@ -128,7 +128,7 @@ export default function AppHero() {
           <img
             src={mobile}
             alt=""
-            className="w-80 md:w-[19rem] mt-20 object-contain"
+            className="w-56 sm:w-64 md:w-80 lg:w-[22rem] xl:w-[25rem] mt-20 object-contain"
           />
         </div>
       </div>

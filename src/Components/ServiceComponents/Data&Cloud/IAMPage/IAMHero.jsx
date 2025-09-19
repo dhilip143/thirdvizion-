@@ -11,13 +11,13 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className="text-8xl md:text-5xl font-bold">Empower Your Business with Smarter Access</h1>
+        <h1 className="text-8xl md:text-5xl font-bold text-green-600">Empower Your Business with Smarter Access</h1>
         <p className="mt-4 text-neutral-400 text-lg">
           Identity & Access Management solutions made secure, scalable, and
             future-ready.
         </p>
         <motion.button
-          className="mt-6 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-neutral-200 transition"
+          className="mt-6 px-6 py-3 rounded-full bg-green-600 text-black font-semibold hover:bg-neutral-200 transition"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >

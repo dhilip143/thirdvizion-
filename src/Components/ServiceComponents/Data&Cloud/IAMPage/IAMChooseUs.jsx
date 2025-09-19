@@ -172,7 +172,7 @@ export default function WhyChooseIAM() {
         transition={{ duration: 0.9 }}
         className="text-4xl md:text-5xl font-bold z-10 mb-12 text-center "
       >
-        Why Choose <span className="text-white">IAM?</span>
+        Why Choose <span className="text-green-600">IAM?</span>
       </motion.h2>
 
     <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">

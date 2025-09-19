@@ -10,7 +10,7 @@ const IAMBenefits = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-extrabold "
+          className="text-4xl md:text-5xl font-extrabold text-green-500"
         >
           Benefits of IAM
         </motion.h2>
@@ -29,7 +29,7 @@ const IAMBenefits = () => {
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
         {/* Left Side */}
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-6 border-green-600">
           {/* Box 1 */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
