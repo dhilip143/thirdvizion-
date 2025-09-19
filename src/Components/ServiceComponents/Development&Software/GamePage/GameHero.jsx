@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import {
   Sparkles,
-  Stars,
   BadgeCheck,
   ArrowRight,
   Rocket,
@@ -10,6 +9,8 @@ import {
   Workflow,
   Gamepad2,
 } from "lucide-react";
+import TextReveal from "/src/Hooks/TextReveal.jsx";
+import { Link } from "react-router-dom";
 
 const tools = [
   { name: "Three.js", tag: "WebGL", hint: "3D in browser" },
@@ -53,8 +54,8 @@ function MagneticButton({ children, className = "" }) {
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-30, 30], [10, -10]);
-  const rotateY = useTransform(x, [-30, 30], [-10, 10]);
+  const rotateX = useTransform(y, [-50, 50], [10, -10]);
+  const rotateY = useTransform(x, [-50, 50], [-10, 10]);
 
   useEffect(() => {
     const el = ref.current;
@@ -90,67 +91,10 @@ function MagneticButton({ children, className = "" }) {
   );
 }
 
-function SparkleField() {
-  const canvasRef = useRef(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    let raf;
-    const DPR = Math.min(2, window.devicePixelRatio || 1);
-
-    const resize = () => {
-      canvas.width = canvas.clientWidth * DPR;
-      canvas.height = canvas.clientHeight * DPR;
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const dots = Array.from({ length: 90 }).map(() => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: (Math.random() * 1.5 + 0.5) * DPR,
-      s: Math.random() * 0.6 + 0.2,
-      a: Math.random() * Math.PI * 2,
-    }));
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (const d of dots) {
-        d.a += 0.004 * d.s;
-        d.x += Math.cos(d.a) * 0.2;
-        d.y += Math.sin(d.a) * 0.2;
-        if (d.x < 0) d.x = canvas.width;
-        if (d.x > canvas.width) d.x = 0;
-        if (d.y < 0) d.y = canvas.height;
-        if (d.y > canvas.height) d.y = 0;
-        ctx.globalAlpha = 0.8;
-        const g = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r * 3);
-        g.addColorStop(0, "rgba(255,255,255,0.7)");
-        g.addColorStop(1, "rgba(255,255,255,0)");
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, d.r * 3, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-  return (
-    <canvas ref={canvasRef} className="absolute inset-0 -z-10 h-full w-full" />
-  );
-}
-
 function MarqueeRow({ items, reverse = false }) {
   return (
     <div className="relative w-full overflow-hidden">
-      <div
-        className={`flex whitespace-nowrap [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]`}
-      >
+      <div className="flex whitespace-nowrap [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div
           className={`animate-marquee inline-flex gap-3 py-2 ${
             reverse ? "animate-direction-reverse" : ""
@@ -159,12 +103,12 @@ function MarqueeRow({ items, reverse = false }) {
           {items.concat(items).map((t, i) => (
             <span
               key={i}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/90"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm text-white/90"
             >
               <BadgeCheck className="h-4 w-4" />
               <b className="font-semibold">{t.name}</b>
               <em className="not-italic text-white/60">{t.tag}</em>
-              <span className="text-white/40">• {t.hint}</span>
+              <span className="text-white/40 hidden sm:inline">• {t.hint}</span>
             </span>
           ))}
         </div>
@@ -173,9 +117,138 @@ function MarqueeRow({ items, reverse = false }) {
   );
 }
 
+function DragGame() {
+  const [placed, setPlaced] = useState({ A: false, B: false });
+  const [gameKey, setGameKey] = useState(0);
+  const cardAPosition = useRef({ x: 0, y: 0 });
+  const cardBPosition = useRef({ x: 0, y: 0 });
+  const gameCompleted = placed.A && placed.B;
+
+  return (
+    <div key={gameKey} className="relative flex flex-col items-center">
+      <div className="relative h-[360px] sm:h-[400px] md:h-[440px] w-full max-w-lg rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-4 shadow-lg backdrop-blur-md">
+        {/* Target Zones */}
+        <div
+          id="targetA"
+          className="absolute left-3 top-6 h-28 sm:h-36 md:h-40 w-[80%] sm:w-[70%] rounded-xl border border-dashed border-green-400/40"
+        />
+        <div
+          id="targetB"
+          className="absolute right-3 bottom-6 h-28 sm:h-32 md:h-32 w-[70%] sm:w-[60%] rounded-xl border border-dashed border-blue-400/40"
+        />
+
+        {/* Card A */}
+        <motion.div
+          drag
+          dragElastic={0.3}
+          dragMomentum={false}
+          whileDrag={{ scale: 1.1, zIndex: 10 }}
+          onDrag={(e, info) => {
+            cardAPosition.current = info.point;
+          }}
+          onDragEnd={(event) => {
+            const card = event.target.getBoundingClientRect();
+            const targetZone = document
+              .querySelector("#targetA")
+              .getBoundingClientRect();
+            const isInZone =
+              card.left < targetZone.right &&
+              card.right > targetZone.left &&
+              card.top < targetZone.bottom &&
+              card.bottom > targetZone.top;
+            if (isInZone) setPlaced((p) => ({ ...p, A: true }));
+            else cardAPosition.current = { x: 0, y: 0 };
+          }}
+          animate={
+            placed.A
+              ? { x: 0, y: 0, scale: 1, rotate: 0 }
+              : { x: cardAPosition.current.x, y: cardAPosition.current.y }
+          }
+          className="absolute right-3 bottom-6 w-[80%] sm:w-[65%] md:w-[60%] cursor-grab active:cursor-grabbing"
+        >
+          <div className="rounded-2xl border border-white/10 bg-black/60 p-4">
+            <div className="flex items-center justify-between text-xs text-white/60">
+              <span>Web Demo A</span>
+              <span>90 FPS</span>
+            </div>
+            <div className="mt-2 h-24 sm:h-28 rounded-lg bg-gradient-to-br from-white/10 to-white/0 flex items-center justify-center text-xs sm:text-sm text-white/60">
+              Drag Me To Green Zone ✅
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Card B */}
+        <motion.div
+          drag
+          dragElastic={0.3}
+          dragMomentum={false}
+          whileDrag={{ scale: 1.1, zIndex: 10 }}
+          onDrag={(e, info) => {
+            cardBPosition.current = info.point;
+          }}
+          onDragEnd={(event) => {
+            const card = event.target.getBoundingClientRect();
+            const targetZone = document
+              .querySelector("#targetB")
+              .getBoundingClientRect();
+            const isInZone =
+              card.left < targetZone.right &&
+              card.right > targetZone.left &&
+              card.top < targetZone.bottom &&
+              card.bottom > targetZone.top;
+            if (isInZone) setPlaced((p) => ({ ...p, B: true }));
+            else cardBPosition.current = { x: 0, y: 0 };
+          }}
+          animate={
+            placed.B
+              ? { x: 0, y: 0, scale: 1, rotate: 0 }
+              : { x: cardBPosition.current.x, y: cardBPosition.current.y }
+          }
+          className="absolute left-3 top-6 w-[80%] sm:w-[70%] md:w-[70%] cursor-grab active:cursor-grabbing"
+        >
+          <div className="rounded-2xl border border-white/10 bg-black/60 p-4">
+            <div className="flex items-center justify-between text-xs text-white/60">
+              <span>Web Demo B</span>
+              <span>GPU OK</span>
+            </div>
+            <div className="mt-2 h-28 sm:h-32 rounded-lg bg-gradient-to-bl from-white/10 to-white/0 flex items-center justify-center text-xs sm:text-sm text-white/60">
+              Drag Me To Blue Zone 🎯
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {gameCompleted && (
+        <>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: "spring", stiffness: 200 }}
+            className="mt-4 text-center text-green-400 text-lg sm:text-xl font-bold"
+          >
+            🎉 You did it! Game Complete!
+          </motion.div>
+          <button
+            onClick={() => {
+              setPlaced({ A: false, B: false });
+              cardAPosition.current = { x: 0, y: 0 };
+              cardBPosition.current = { x: 0, y: 0 };
+              setGameKey((k) => k + 1);
+            }}
+            className="mt-2 rounded-xl bg-white/10 px-4 py-2 text-white hover:bg-white/20 transition"
+          >
+            🔄 Play Again
+          </button>
+        </>
+      )}
+    </div>
+  );
+}
+
 export default function GameLanding() {
   return (
-    <section className="relative isolate min-h-[100dvh] w-full overflow-hidden bg-black text-white">
+    <section className="relative isolate min-h-[100dvh] w-full overflow-hidden text-white">
+      {/* Background glows */}
       <div className="pointer-events-none absolute inset-0 -z-20">
         <div
           className="absolute -top-40 left-1/2 h-[60vh] w-[60vh] -translate-x-1/2 rounded-full blur-3xl"
@@ -193,72 +266,87 @@ export default function GameLanding() {
         />
       </div>
 
-      <SparkleField />
-
-      {/* Nav simplified (no Services/Work/About/Contact) */}
-      <div className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-        <div className="flex items-center gap-3">
-          <Stars className="h-5 w-5" />
-          <span className="font-inter-tight text-lg font-semibold tracking-tight">
-            {" "}
-            THIRDVIZION GAMES{" "}
-          </span>
-        </div>
-      </div>
-
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-8 md:grid-cols-2 md:py-16">
+      {/* Main Grid */}
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-4 py-8 sm:px-6 md:grid-cols-2 md:gap-10 md:py-16">
         <div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
-          >
-            <Sparkles className="h-4 w-4" />
-            Premium Web-Game Services
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.8 }}
-            className="mt-4 font-inter-tight text-5xl font-black leading-[1.05] tracking-tight md:text-7xl"
-          >
-            Build{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/60">
-              Interactive
-            </span>
-            <br /> JavaScript Games Players Love
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.25, duration: 0.8 }}
-            className="mt-5 max-w-xl text-white/70"
-          >
-            From React + Three.js prototypes to full-engine WebGL titles — we
-            deliver playable demos, polished visuals, and optimized builds.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.7 }}
-            className="mt-8 flex flex-wrap items-center gap-4"
-          >
-            <MagneticButton className="font-inter-tight text-black bg-white text-base hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]">
-              Explore Engine Demos{" "}
-              <ArrowRight className="h-5 w-5 transition group-hover:translate-x-0.5" />
-            </MagneticButton>
-            <a
-              href="#work"
-              className="text-white/70 underline-offset-4 hover:text-white hover:underline"
+          {/* <TextReveal delay={0}>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              viewport={{ amount: 0.8 }}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
             >
-              See Builds
-            </a>
-          </motion.div>
+              <Sparkles className="h-4 w-4" />
+              Premium Web-Game Services
+            </motion.div>
+          </TextReveal> */}
+          <TextReveal delay={0}>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              viewport={{ amount: 0.8 }}
+              className="mt-16 sm:mt-12 md:mt-0 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
+            >
+              <Sparkles className="h-4 w-4" />
+              Premium Web-Game Services
+            </motion.div>
+          </TextReveal>
 
+          <TextReveal delay={0.5}>
+            <motion.h1
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              viewport={{ amount: 0.8 }}
+              className="font-inter-tight text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight"
+            >
+              Build{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/60">
+                Interactive
+              </span>
+              <br /> WebSite Games Players Love
+            </motion.h1>
+          </TextReveal>
+
+          <TextReveal delay={1}>
+            <motion.p
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              viewport={{ amount: 0.8 }}
+              className="mt-5 max-w-xl text-sm sm:text-base text-white/70"
+            >
+              From React + Three.js prototypes to full-engine WebGL titles — we
+              deliver playable demos, polished visuals, and optimized builds.
+            </motion.p>
+          </TextReveal>
+
+          <TextReveal delay={1}>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              viewport={{ amount: 0.8 }}
+              className="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-8"
+            >
+              <Link to={"/contact"}>
+                <MagneticButton className="font-inter-tight text-black bg-white text-base hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]">
+                  Cast a Spell{" "}
+                  <ArrowRight className="h-5 w-5 transition group-hover:translate-x-0.5" />
+                </MagneticButton>
+              </Link>
+              <a
+                href="#work"
+                className="text-white/70 underline-offset-4 hover:text-white hover:underline px-2 sm:px-6"
+              >
+                See Builds
+              </a>
+            </motion.div>
+          </TextReveal>
+
+          {/* Marquee Rows */}
           <div className="mt-10 space-y-2">
             <MarqueeRow items={tools.slice(0, Math.ceil(tools.length / 2))} />
             <MarqueeRow
@@ -268,67 +356,32 @@ export default function GameLanding() {
           </div>
         </div>
 
-        {/* Interactive Visual Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.8 }}
-          className="relative"
-        >
-          <motion.div
-            whileHover={{ scale: 1.02, rotate: -1 }}
-            transition={{ type: "spring", stiffness: 120 }}
-            className="relative rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-4 shadow-[0_0_40px_rgba(255,255,255,0.06)] backdrop-blur-md"
-          >
-            <div className="relative h-[440px] overflow-hidden rounded-2xl">
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 6, repeat: Infinity }}
-                className="absolute left-6 top-8 w-[70%]"
-              >
-                <div className="rounded-2xl border border-white/10 bg-black/60 p-4 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition">
-                  <div className="flex items-center justify-between text-xs text-white/60">
-                    <span>Web Demo A</span>
-                    <span>90 FPS</span>
-                  </div>
-                  <div className="mt-2 h-32 rounded-lg bg-gradient-to-br from-white/10 to-white/0 flex items-center justify-center text-sm text-white/60">
-                    Playable Prototype — Click to Launch
-                  </div>
-                </div>
-              </motion.div>
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 7, repeat: Infinity }}
-                className="absolute right-6 bottom-8 w-[60%]"
-              >
-                <div className="rounded-2xl border border-white/10 bg-black/60 p-4 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition">
-                  <div className="flex items-center justify-between text-xs text-white/60">
-                    <span>Web Demo B</span>
-                    <span>GPU OK</span>
-                  </div>
-                  <div className="mt-2 h-28 rounded-lg bg-gradient-to-bl from-white/10 to-white/0 flex items-center justify-center text-sm text-white/60">
-                    Multiplayer Lobby Mock — Live Preview
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-          <div className="pointer-events-none mt-3 text-center text-xs text-white/40">
-            Interactive mock cards—replace with your gameplay shots
-          </div>
-        </motion.div>
+        <DragGame />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pb-20">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+      {/* Features */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 pb-20">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.1 },
+            },
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+        >
           {features.map((f, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ delay: i * 0.06, duration: 0.6 }}
-              className="group rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
+              variants={{
+                hidden: { opacity: 0, y: 30, scale: 0.95 },
+                visible: { opacity: 1, y: 0, scale: 1 },
+              }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="group rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm hover:scale-[1.03] hover:bg-white/10 transition-transform"
             >
               <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/10">
                 {f.icon}
@@ -343,24 +396,17 @@ export default function GameLanding() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <style>{`
         .animate-marquee { animation: marquee 20s linear infinite; }
         .animate-direction-reverse { animation-direction: reverse; }
-        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes marquee {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
       `}</style>
     </section>
   );
-}
-
-// Extra helpers for future enhancements
-export function attachGameAnalytics() {
-  // placeholder for analytics hook — call from parent if needed
-  return {
-    trackEvent: (name, data) => {
-      console.debug("trackEvent", name, data);
-    },
-  };
 }

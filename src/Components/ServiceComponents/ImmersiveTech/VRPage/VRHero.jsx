@@ -13,6 +13,26 @@ const VRHero = () => {
 
   return (
     <div className="relative flex justify-center items-center w-full h-screen bg-black overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div
+          // ref={(el) => (backgroundElementsRef.current[0] = el)}
+          className="absolute -top-40 -left-40 w-80 h-80 bg-violet-700 rounded-full mix-blend-soft-light filter blur-xl opacity-30"
+        ></div>
+        <div
+          // ref={(el) => (backgroundElementsRef.current[1] = el)}
+          className="absolute top-1/4 -right-20 w-96 h-96 bg-indigo-600 rounded-full mix-blend-soft-light filter blur-xl opacity-20"
+        ></div>
+        <div
+          // ref={(el) => (backgroundElementsRef.current[2] = el)}
+          className="absolute bottom-0 left-1/4 w-64 h-64 bg-purple-700 rounded-full mix-blend-soft-light filter blur-xl opacity-30"
+        ></div>
+
+        {/* Grid pattern overlay */}
+        <div
+          // ref={gridPatternRef}
+          className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]"
+        ></div>
+      </div>
       {/* Background Image with Parallax */}
       <motion.img
         src={VR}

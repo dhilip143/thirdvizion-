@@ -3,13 +3,17 @@ import ServerImage from "/src/assets/HeroImages/ServerImage.jpg"; // make sure p
 import ChooseUs from "/src/Components/ServiceComponents/Data&Cloud/ServerPage/ServerChoose";
 import Details from "/src/Components/ServiceComponents/Data&Cloud/ServerPage/ServerDetail";
 import ServerHero from "/src/Components/ServiceComponents/Data&Cloud/ServerPage/ServerHero";
+import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
 
 function ServerPage() {
   return (
     <>
-      <ServerHero />
-      <ChooseUs />
-      <Details />
+      <div className="bg-black">
+        <SparkleBg />
+        <ServerHero />
+        <ChooseUs />
+        <Details />
+      </div>
     </>
   );
 }
