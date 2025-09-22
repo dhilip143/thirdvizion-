@@ -76,7 +76,7 @@ export default function SparkleBg({
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-    <canvas ref={canvasRef} className="absolute inset-0 -z-10 h-full w-full" />
+      <canvas ref={canvasRef} className="absolute inset-0 -z-10 h-full w-full" />
     </div>
   );
 }

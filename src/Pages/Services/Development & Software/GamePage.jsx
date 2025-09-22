@@ -5,11 +5,11 @@ import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
 function GamePage() {
   return (
     <>
-    <div className="bg-black">
-    <SparkleBg />
-      <GameHero />
-      <KeyboardGame />
-      <CommingSoon />
+      <div className="bg-black">
+        <SparkleBg count={70} speed={0.8} />
+        <GameHero />
+        <KeyboardGame />
+        <CommingSoon />
       </div>
     </>
   );

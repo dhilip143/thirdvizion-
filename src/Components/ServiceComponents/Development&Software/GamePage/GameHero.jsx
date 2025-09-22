@@ -96,9 +96,8 @@ function MarqueeRow({ items, reverse = false }) {
     <div className="relative w-full overflow-hidden">
       <div className="flex whitespace-nowrap [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div
-          className={`animate-marquee inline-flex gap-3 py-2 ${
-            reverse ? "animate-direction-reverse" : ""
-          }`}
+          className={`animate-marquee inline-flex gap-3 py-2 ${reverse ? "animate-direction-reverse" : ""
+            }`}
         >
           {items.concat(items).map((t, i) => (
             <span
@@ -247,7 +246,7 @@ function DragGame() {
 
 export default function GameLanding() {
   return (
-    <section className="relative isolate min-h-[100dvh] w-full overflow-hidden text-white">
+    <section className="relative isolate min-h-[100dvh] w-full overflow-hidden text-white font-inter-tight">
       {/* Background glows */}
       <div className="pointer-events-none absolute inset-0 -z-20">
         <div
@@ -269,28 +268,16 @@ export default function GameLanding() {
       {/* Main Grid */}
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-4 py-8 sm:px-6 md:grid-cols-2 md:gap-10 md:py-16">
         <div>
-          {/* <TextReveal delay={0}>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              viewport={{ amount: 0.8 }}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
-            >
-              <Sparkles className="h-4 w-4" />
-              Premium Web-Game Services
-            </motion.div>
-          </TextReveal> */}
           <TextReveal delay={0}>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
               viewport={{ amount: 0.8 }}
-              className="mt-16 sm:mt-12 md:mt-0 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
+              className="w-full md:w-auto mt-12 mb-4 sm:mt-12 md:mt-5 inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
             >
-              <Sparkles className="h-4 w-4" />
-              Premium Web-Game Services
+              <Sparkles className="h-4 w-4 mr-2 inline" />
+              <span >Premium Web-Game Services</span>
             </motion.div>
           </TextReveal>
 
@@ -300,13 +287,9 @@ export default function GameLanding() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
               viewport={{ amount: 0.8 }}
-              className="font-inter-tight text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight"
+              className="font-inter-tight text-4xl lg:text-6xl text-center md:text-start font-black leading-[1.05] tracking-tight"
             >
-              Build{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/60">
-                Interactive
-              </span>
-              <br /> WebSite Games Players Love
+              Build Interactive WebSite Games Players Love
             </motion.h1>
           </TextReveal>
 
@@ -316,35 +299,35 @@ export default function GameLanding() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
               viewport={{ amount: 0.8 }}
-              className="mt-5 max-w-xl text-sm sm:text-base text-white/70"
+              className="mt-5 max-w-xl text-center md:text-start text-sm text-white/70"
             >
               From React + Three.js prototypes to full-engine WebGL titles — we
               deliver playable demos, polished visuals, and optimized builds.
             </motion.p>
           </TextReveal>
 
-          <TextReveal delay={1}>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              viewport={{ amount: 0.8 }}
-              className="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 sm:gap-8"
+          {/* <TextReveal delay={1}> */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ amount: 0.8 }}
+            className="group w-full h-full mt-8 flex  items-center justify-center md:justify-start gap-4 md:gap-2"
+          >
+            <Link to={"/contact"}>
+              <button className="font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl border border-white/40 bg-transparent px-5 sm:px-6 md:px-8 py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-sm backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-105">
+                Cast a Spell{" "}
+                <ArrowRight className="h-5 w-5 transition-all duration-300 group-hover:translate-x-0.5" />
+              </button>
+            </Link>
+            <a
+              href="#work"
+              className="text-white/70 underline-offset-4 hover:text-white hover:underline px-2 sm:px-6"
             >
-              <Link to={"/contact"}>
-                <MagneticButton className="font-inter-tight text-black bg-white text-base hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]">
-                  Cast a Spell{" "}
-                  <ArrowRight className="h-5 w-5 transition group-hover:translate-x-0.5" />
-                </MagneticButton>
-              </Link>
-              <a
-                href="#work"
-                className="text-white/70 underline-offset-4 hover:text-white hover:underline px-2 sm:px-6"
-              >
-                See Builds
-              </a>
-            </motion.div>
-          </TextReveal>
+              See Builds
+            </a>
+          </motion.div>
+          {/* </TextReveal> */}
 
           {/* Marquee Rows */}
           <div className="mt-10 space-y-2">
