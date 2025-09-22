@@ -142,10 +142,18 @@ function DragGame() {
           dragElastic={0.3}
           dragMomentum={false}
           whileDrag={{ scale: 1.1, zIndex: 10 }}
+          onDragStart={() => {
+    // Disable body scroll on drag start
+    document.body.style.overflow = "hidden";
+  }}
           onDrag={(e, info) => {
             cardAPosition.current = info.point;
           }}
           onDragEnd={(event) => {
+
+            // Re-enable body scroll on drag end
+    document.body.style.overflow = "";
+
             const card = event.target.getBoundingClientRect();
             const targetZone = document
               .querySelector("#targetA")
@@ -182,10 +190,18 @@ function DragGame() {
           dragElastic={0.3}
           dragMomentum={false}
           whileDrag={{ scale: 1.1, zIndex: 10 }}
+          onDragStart={() => {
+    // Disable body scroll on drag start
+    document.body.style.overflow = "hidden";
+  }}
           onDrag={(e, info) => {
             cardBPosition.current = info.point;
           }}
           onDragEnd={(event) => {
+
+            // Re-enable body scroll on drag end
+    document.body.style.overflow = "";
+
             const card = event.target.getBoundingClientRect();
             const targetZone = document
               .querySelector("#targetB")
