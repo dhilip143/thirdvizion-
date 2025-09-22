@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import mobile from "/src/assets/MobileTransparent.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import TextReveal from "/src/Hooks/TextReveal.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,18 +78,16 @@ export default function AppHero() {
   return (
     <div className="bg-black text-white font-sans overflow-x-hidden mb-[-100vh]">
       {/* Hero text section */}
-      <section className="h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 relative z-10">
-        {/* <TextReveal> */}
+      <section className="mt-40 lg:mt-0 lg:h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 relative z-10">
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ amount: 0 }} // ✅ better viewport setting
-          className="text-4xl md:text-6xl font-extrabold mb-4 text-white"
+          className="text-3xl md:text-6xl xl:text-8xl font-inter-tight font-extrabold mb-4 text-[#ff8904]"
         >
           We Craft Seamless Mobile Experiences
         </motion.h1>
-        {/* </TextReveal> */}
 
         {/* <TextReveal delay={0.2}> */}
         <motion.p
@@ -110,7 +107,7 @@ export default function AppHero() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition text-sm sm:text-base"
+          className="font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl border border-[#ff8904]/40 bg-black px-5 sm:px-6 md:px-8 py-3 sm:py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-lg shadow-[0_0_10px_rgba(0,211,243,0.3)] backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(255, 137, 4,0.5)] hover:scale-105 text-[#ff8904]"
         >
           Get Started
         </motion.button>
@@ -128,7 +125,7 @@ export default function AppHero() {
           <img
             src={mobile}
             alt=""
-            className="w-56 sm:w-64 md:w-80 lg:w-[22rem] xl:w-[25rem] mt-20 object-contain"
+            className="w-56 sm:w-64 md:w-80 lg:w-[20rem] xl:w-[22rem] 2xl:w-[20rem] mt-40 md:mt-20 object-contain"
           />
         </div>
       </div>

@@ -5,10 +5,10 @@ import TextReveal from "/src/Hooks/TextReveal.jsx";
 
 const WebCTA = () => {
   return (
-    <section className="w-full text-white py-24 px-6 flex flex-col items-center text-center">
+    <section className="w-full py-24 px-6 flex flex-col items-center text-center">
       <TextReveal>
         <motion.h2
-          className="text-4xl md:text-5xl font-extrabold mb-4"
+          className="text-4xl md:text-5xl font-extrabold mb-4 text-[#00d3f3]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -33,7 +33,7 @@ const WebCTA = () => {
         <Link to={"/contact"}>
           <motion.a
             href=""
-            className="bg-white text-black font-bold px-8 py-3 rounded-lg shadow-lg hover:scale-105 transition-transform duration-200"
+            className="font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl border border-[#00d3f3]/40 bg-black px-5 sm:px-6 md:px-8 py-3 sm:py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-lg shadow-[0_0_10px_rgba(0,211,243,0.3)] backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(0,211,243,0.5)] hover:scale-105 text-[#00d3f3]"
             whileHover={{ scale: 1.05 }}
           >
             Get Started

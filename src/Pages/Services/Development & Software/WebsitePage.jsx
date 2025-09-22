@@ -4,7 +4,7 @@ import WebHero from "/src/Components/ServiceComponents/Development&Software/Webs
 import WebDesignScroll from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebDesignScroll.jsx";
 import { motion } from "framer-motion";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
-import WebCTA from "../../../Components/ServiceComponents/Development&Software/WebsitePage/WebCTA";
+import WebCTA from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebCTA";
 import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx"
 
 const WebsitePage = () => {
@@ -12,7 +12,7 @@ const WebsitePage = () => {
   return (
     <>
       <div className="bg-black">
-        <SparkleBg />
+        <SparkleBg count={20} color="0, 211, 243" speed={0.8} />
         <WebHero />
         <WebDesignScroll />
 
