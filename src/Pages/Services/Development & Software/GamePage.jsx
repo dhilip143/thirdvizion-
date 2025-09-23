@@ -6,9 +6,12 @@ function GamePage() {
   return (
     <>
       <div className="bg-black">
-        <SparkleBg count={70} speed={0.8} />
+        <SparkleBg count={20} speed={0.8} />
         <GameHero />
-        <KeyboardGame />
+        <div className="hidden md:block">
+          <KeyboardGame />
+        </div>
+
         <CommingSoon />
       </div>
     </>

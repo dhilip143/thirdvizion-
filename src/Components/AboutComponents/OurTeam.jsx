@@ -16,16 +16,21 @@ function OurTeam() {
   const images = [lap, mow, wow, hav, call, bow, how, vow, tow, low];
 
   const teamData = [
-    { name: "Arun Kumar", role: "UI/UX Designer", desc: "Specializes in crafting seamless user experiences and modern interfaces." },
-    { name: "Priya Sharma", role: "Backend Developer", desc: "Expert in APIs, databases, and scalable architectures." },
-    { name: "Dhilip", role: "Frontend Developer", desc: "Focused on building dynamic and interactive React applications." },
-    { name: "Hema R", role: "Project Manager", desc: "Ensures timely delivery and smooth communication across teams." },
-    { name: "Rahul Mehta", role: "DevOps Engineer", desc: "Automates deployments and manages cloud infrastructure." },
-    { name: "Sneha Iyer", role: "QA Engineer", desc: "Maintains product quality through testing and bug tracking." },
-    { name: "Vignesh K", role: "Mobile App Developer", desc: "Builds performant apps for Android and iOS using React Native." },
-    { name: "Ananya Gupta", role: "Business Analyst", desc: "Bridges business needs with technical solutions." },
-    { name: "Karthik S", role: "AI/ML Engineer", desc: "Develops intelligent models for data-driven applications." },
-    { name: "Meera N", role: "Content Strategist", desc: "Creates engaging content and manages digital communication." },
+    { name: "Tharun Joel", role: "3D Graphic Designer", desc: "Specializes in crafting seamless user experiences and modern interfaces." },
+    { name: "Paazil Parvesh", role: "Web Developer", desc: "Expert in APIs, databases, and scalable architectures." },
+    { name: "Dhilip Kumar", role: "Web Developer", desc: "Focused on building dynamic and interactive React applications." },
+    { name: "Rajesh", role: "Unity Developer", desc: "Ensures timely delivery and smooth communication across teams." },
+    { name: "Shammi Kumar", role: "Full Stack Developer", desc: "Automates deployments and manages cloud infrastructure." },
+    { name: "Yeswanth", role: "Python Developer", desc: "Maintains product quality through testing and bug tracking." },
+    { name: "Sathiya Narayanan", role: "DevOps Engineer", desc: "Builds performant apps for Android and iOS using React Native." },
+    { name: "Santhosh Kumar", role: "UI/UX Designer", desc: "Bridges business needs with technical solutions." },
+    { name: "Vishnu Priya", role: "Frontend Developer", desc: "Develops intelligent models for data-driven applications." },
+    { name: "Saravana Priya", role: "Frontend Developer", desc: "Creates engaging content and manages digital communication." },
+    { name: "Jebamalai Jero ", role: "CRM Specialist", desc: "Creates engaging content and manages digital communication." },
+    { name: "Arulwin Rex", role: "Digital Alchemist", desc: "Creates engaging content and manages digital communication." },
+    { name: "Ragul", role: "Graphic Designer", desc: "Creates engaging content and manages digital communication." },
+    { name: "Akash", role: "Game Developer", desc: "Creates engaging content and manages digital communication." },
+    { name: "Rakesh", role: "3D Modular", desc: "Creates engaging content and manages digital communication." },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -74,9 +79,8 @@ function OurTeam() {
                 key={index}
                 onClick={() => setActiveIndex(index)}
                 ref={(el) => (imageRefs.current[index] = el)}
-                className={`absolute w-[160px] h-[160px] rounded-full shadow-xl border border-gray-700 overflow-hidden bg-gray-900 cursor-pointer transition-transform ${
-                  activeIndex === index ? "ring-4 ring-yellow-400" : ""
-                }`}
+                className={`absolute w-[160px] h-[160px] rounded-full shadow-xl border border-gray-700 overflow-hidden bg-gray-900 cursor-pointer transition-transform ${activeIndex === index ? "ring-4 ring-yellow-400" : ""
+                  }`}
                 style={{
                   left: "50%",
                   top: "50%",
@@ -105,13 +109,13 @@ function OurTeam() {
 
       {/* Center Content */}
       <div className="relative text-center max-w-xl px-6 z-10 top-[150px]">
-        <h2 className="text-white text-4xl md:text-5xl font-bold leading-snug">
+        <h2 className="text-white text-3xl md:text-5xl font-bold leading-snug">
           {teamData[activeIndex].name}
         </h2>
-        <p className="text-yellow-400 font-semibold mt-2">
+        <p className="text-yellow-400 text-sm font-semibold mt-2">
           {teamData[activeIndex].role}
         </p>
-        <p className="text-gray-300 mt-4">{teamData[activeIndex].desc}</p>
+        <p className="text-gray-300 text-xs mt-4">{teamData[activeIndex].desc}</p>
       </div>
     </div>
   );

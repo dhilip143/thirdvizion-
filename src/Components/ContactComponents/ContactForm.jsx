@@ -78,10 +78,7 @@ const ContactForm = () => {
 
   return (
     <section className="relative min-h-screen bg-black text-white overflow-hidden px-6 py-16">
-      {/* Background Blobs */}
-      <div className="absolute top-[-120px] left-[-150px] w-[400px] h-[400px] bg-blue-500 rounded-full blur-[220px] opacity-40"></div>
-      <div className="absolute bottom-[-120px] right-[-150px] w-[500px] h-[500px] bg-purple-600 rounded-full blur-[250px] opacity-30"></div>
-      <div className="absolute top-[40%] left-[60%] w-[300px] h-[300px] bg-cyan-400 rounded-full blur-[180px] opacity-30"></div>
+
 
       <div className="relative z-10 flex flex-col md:flex-row max-w-7xl mx-auto md:min-h-screen md:items-start md:space-x-12">
         {/* LEFT SIDE */}
@@ -142,7 +139,7 @@ const ContactForm = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="md:col-span-2 p-6 bg-gray-900/60 rounded-2xl shadow-lg">
+          <div className="md:col-span-2 p-6  rounded-2xl shadow-lg">
             <form onSubmit={sendMail} className="space-y-4">
               <input
                 type="text"
@@ -181,7 +178,7 @@ const ContactForm = () => {
               ></textarea>
               <button
                 type="submit"
-                className="w-full py-3 bg-gradient-to-r from-yellow-400 via-blue-500 to-purple-600 rounded-lg font-bold text-black hover:opacity-90"
+                className="w-full py-3 bg-transparent rounded-lg font-bold text-white border-1 hover:opacity-90"
               >
                 Send Message
               </button>
@@ -195,3 +192,85 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
+
+// import React from "react";
+
+// export default function ContactSection() {
+//   return (
+//     <section className="bg-black text-white relative overflow-hidden py-16 px-4 md:px-12">
+//       {/* Background gradient */}
+//       {/* <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-green-500 to-green-300 opacity-20 blur-3xl pointer-events-none"></div> */}
+
+//       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+//         {/* Left: Contact Form */}
+//         <div className="space-y-6 z-10">
+//           <h2 className="text-4xl md:text-5xl font-bold">We&apos;re here to help</h2>
+
+//           <form className="space-y-4">
+//             <div>
+//               <label className="block text-sm font-medium mb-1" htmlFor="name">
+//                 Name
+//               </label>
+//               <input
+//                 type="text"
+//                 id="name"
+//                 placeholder="e.g. John Smith"
+//                 className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+//               />
+//             </div>
+
+//             <div>
+//               <label className="block text-sm font-medium mb-1" htmlFor="email">
+//                 Email address
+//               </label>
+//               <input
+//                 type="email"
+//                 id="email"
+//                 placeholder="e.g. example@gmail.com"
+//                 className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+//               />
+//             </div>
+
+//             <div>
+//               <label className="block text-sm font-medium mb-1" htmlFor="message">
+//                 Message
+//               </label>
+//               <textarea
+//                 id="message"
+//                 rows={4}
+//                 placeholder="Let us know how we can help"
+//                 className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+//               ></textarea>
+//             </div>
+
+//             <button
+//               type="submit"
+//               className="mt-2 px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition"
+//             >
+//               Send message
+//             </button>
+//           </form>
+//         </div>
+
+//         {/* Right: Testimonial Card */}
+//         <div className="z-10">
+//           <div className="bg-gray-900/70 backdrop-blur-lg rounded-xl p-6 shadow-lg flex flex-col justify-between h-full">
+//             <div className="space-y-4">
+//               <div className="flex items-center gap-2">
+//                 <span className="text-xl font-bold">Arctiq</span>
+//               </div>
+//               <p className="text-gray-300">
+//                 &quot;Arctic <b>cut project delays by 30%</b> and transformed our global team communication,
+//                 saving us hours every week.&quot;
+//               </p>
+//             </div>
+//             <div className="mt-4">
+//               <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Ebay_logo.svg" alt="eBay" className="h-6 w-auto" />
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }

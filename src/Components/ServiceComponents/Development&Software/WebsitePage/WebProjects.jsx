@@ -218,7 +218,7 @@ export default function WebProject() {
         </TextReveal>
       </motion.div>
 
-      <div className="h-[400vh] bg-gradient-to-b from-black via-[#001F26] to-black text-white">
+      <div className="h-[400vh]  text-white">
         {ProjectsData.map((project, index) => (
           <section
             key={project.id}

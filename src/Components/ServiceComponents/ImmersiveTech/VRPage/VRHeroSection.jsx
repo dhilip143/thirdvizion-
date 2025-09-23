@@ -1,4 +1,3 @@
-// src/components/Vrvideo.jsx
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -6,7 +5,7 @@ import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Vrvideo() {
+function VRHeroSection() {
   const mainRef = useRef(null);
   const canvasRef = useRef(null);
   const headerRef = useRef(null);
@@ -18,7 +17,7 @@ function Vrvideo() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.02,
+      lerp: 0.05,
       smoothWheel: true,
       smoothtouch: true,
     });
@@ -204,30 +203,26 @@ function Vrvideo() {
 
   return (
     <div ref={mainRef}>
-      <section className="relative w-screen h-[100svh] overflow-hidden bg-black">
+      <section className="relative w-full h-[100svh] overflow-hidden bg-black">
         <canvas ref={canvasRef} className="z-10"></canvas>
 
         {loading && (
           <div className="absolute inset-0 flex items-center justify-center bg-black text-white z-50">
-            <p>Loading VR frames...</p>
+            <p>Loading Your VR experince....</p>
           </div>
         )}
 
         {/* HEADER */}
         <div
           ref={headerRef}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white z-20 opacity-0"
+          className="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white z-20 opacity-0"
         >
-          {/* <h1 className="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent drop-shadow-lg">
-            Immersive VR Experience
-          </h1> */}
           <h1
-  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold 
-             bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 
-             bg-clip-text text-transparent drop-shadow-lg text-center md:text-left"
->
-  Immersive VR Experience
-</h1>
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold  
+             text-purple-500 drop-shadow-lg text-center font-inter-tight"
+          >
+            Your Gateway to Virtual Worlds
+          </h1>
 
         </div>
       </section>
@@ -235,4 +230,4 @@ function Vrvideo() {
   );
 }
 
-export default Vrvideo;
+export default VRHeroSection;

@@ -1,75 +1,5 @@
-import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-/* ========================= Neon Line ========================= */
-function NeonLine({ className }) {
-  const pathRef = useRef(null);
-
-  useEffect(() => {
-    const path = pathRef.current;
-    if (path) {
-      const length = path.getTotalLength();
-      path.style.strokeDasharray = length;
-      path.style.strokeDashoffset = length;
-
-      const animate = () => {
-        let start = null;
-        function step(timestamp) {
-          if (!start) start = timestamp;
-          const progress = (timestamp - start) / 6000; // 6s loop
-          path.style.strokeDashoffset = length * (1 - progress % 1);
-          requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      };
-      animate();
-    }
-  }, []);
-
-  return (
-    <svg
-      viewBox="0 0 800 200"
-      preserveAspectRatio="none"
-      className={className}
-    >
-      <defs>
-        <linearGradient id="neonGrad" x1="0" x2="1">
-          <stop offset="0%" stopColor="#22d3ee" />
-          <stop offset="100%" stopColor="#3b82f6" />
-        </linearGradient>
-      </defs>
-      <path
-        ref={pathRef}
-        d="M 0 100 Q 200 40, 400 100 T 800 100"
-        fill="none"
-        stroke="url(#neonGrad)"
-        strokeWidth="4"
-        strokeLinecap="round"
-        filter="url(#glow)"
-      />
-      <defs>
-        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-       <defs>
-        <filter id="glow" x="50%" y="50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-    </svg>
-  );
-}
-
-/* ========================= Benefits ========================= */
 export default function ERPBenefits() {
   const benefits = [
     {
@@ -91,22 +21,20 @@ export default function ERPBenefits() {
   ];
 
   return (
-    <section className="relative text-white py-20 overflow-hidden">
-      {/* Neon Line at top */}
-      {/* <NeonLine className="absolute top-0 left-0 w-full h-20 opacity-80" /> */}
-
+    <section className="relative py-20 overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto px-6">
+        {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold text-center text-cyan-400 mb-12"
+          className="text-4xl md:text-5xl xl:text-6xl font-extrabold text-center bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent mb-12"
         >
           Benefits of Our ERP
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Benefits Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {benefits.map((b, i) => (
             <motion.div
               key={i}
@@ -114,12 +42,10 @@ export default function ERPBenefits() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.2 }}
-              className="p-6 rounded-2xl bg-gray-900/40 border border-gray-800 hover:border-cyan-400 hover:scale-105 transition"
+              className="p-6 rounded-2xl bg-[#7C86FF10] border border-[#7C86FF20] shadow-[0_0_30px_rgba(124,134,255,0.1)] hover:shadow-[0_0_40px_rgba(124,134,255,0.25)] hover:border-[#7C86FF60] hover:scale-105 transition-all duration-300 backdrop-blur-md"
             >
-              <h3 className="text-xl font-semibold text-white mb-2">
-                {b.title}
-              </h3>
-              <p className="text-gray-400 text-sm">{b.text}</p>
+              <h3 className="text-xl font-semibold text-white mb-3">{b.title}</h3>
+              <p className="text-[#c7cbff] text-sm leading-relaxed">{b.text}</p>
             </motion.div>
           ))}
         </div>

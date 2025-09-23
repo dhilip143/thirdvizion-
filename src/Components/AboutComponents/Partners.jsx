@@ -1,15 +1,12 @@
-// src/Components/HomeComponent/Carousalabot.jsx
-import React from "react";
-
-import slide1 from "/src/assets/AboutImages/aboutclient/salse.webp";
-import slide2 from "/src/assets/AboutImages/aboutclient/react.jpeg";
-import slide3 from "/src/assets/AboutImages/aboutclient/css.jpeg";
-import slide4 from "/src/assets/AboutImages/aboutclient/html.png";
-import slide5 from "/src/assets/AboutImages/aboutclient/java.jpeg";
-import slide6 from "/src/assets/AboutImages/aboutclient/python.png";
-import slide7 from "/src/assets/AboutImages/aboutclient/django.png";
-import slide8 from "/src/assets/AboutImages/aboutclient/figma.png";
-import slide9 from "/src/assets/AboutImages/aboutclient/Blender-.png";
+import slide1 from "/src/assets/Logo/1.png";
+import slide2 from "/src/assets/Logo/2.png";
+import slide3 from "/src/assets/Logo/3.png";
+import slide4 from "/src/assets/Logo/4.png";
+import slide5 from "/src/assets/Logo/5.png";
+import slide6 from "/src/assets/Logo/6.png";
+import slide7 from "/src/assets/Logo/7.png";
+import slide8 from "/src/assets/Logo/8.png";
+import slide9 from "/src/assets/Logo/9.png";
 
 const slides = [slide1, slide2, slide3, slide4, slide5, slide6, slide7, slide8, slide9];
 
@@ -38,14 +35,16 @@ const CarousalRow = ({ reverse = false, duration = 14 }) => {
   );
 };
 
-export default function Carousalabot() {
+export default function Partners() {
   return (
-    <div className="bg-black text-white py-12 relative">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Our Clients</h2>
+    <div className=" text-white py-12 relative">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-3">Trusted partners</h2>
+      <p className="text-center text-gray-400 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8">
+        Creating impact alongside our valued clients.
+      </p>
+
 
       {/* Three Rows */}
-      <CarousalRow duration={14} />
-      <CarousalRow reverse={true} duration={14} />
       <CarousalRow duration={14} />
 
       {/* Tailwind animations */}

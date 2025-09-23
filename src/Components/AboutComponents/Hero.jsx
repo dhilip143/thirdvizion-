@@ -336,10 +336,10 @@ export default function Thirdblog() {
         className="absolute md:fixed  md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col justify-center md:h-screen items-center w-full z-30 pointer-events-none"
         aria-hidden
       >
-        <div className="about-text text-md md:text-[5rem] font-medium text-white text-center uppercase transform md:translate-y-[90px] ">
+        <div className="about-text text-md xl:text-2xl font-medium text-white text-center uppercase transform md:translate-y-[90px] font-stencil">
           About
         </div>
-        <div className="flex gap-6 mt-4">
+        <div className="flex gap-6 mt-4 font-stencil">
           <div className="third-text md:text-[12rem] font-medium text-white text-center uppercase">
             Third
           </div>

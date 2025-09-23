@@ -5,9 +5,11 @@ import ContactHero from "/src/Components/ContactComponents/ContactHero.jsx"
 const ContactPage = () => {
   return (
     <>
+    <div className="bg-black">
      <ContactHero />
       <ContactForm />
       <Map />
+      </div>
     </>
   );
 };

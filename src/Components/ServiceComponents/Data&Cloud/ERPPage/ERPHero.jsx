@@ -3,36 +3,21 @@ import { Sparkles } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative isolate w-full min-h-screen flex flex-col items-center justify-center overflow-hidden text-white -pt-10">
-      {/* Background Glows */}
-      {/* <div className="pointer-events-none absolute inset-0 -z-10">
-        <div
-          className="absolute -top-40 left-1/2 h-[60vh] w-[60vh] -translate-x-1/2 rounded-full blur-3xl"
-          style={{
-            background:
-              "radial-gradient(50%_50%_at_50%_50%, rgba(120,119,198,0.25), transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute -bottom-40 right-10 h-[50vh] w-[50vh] rounded-full blur-3xl"
-          style={{
-            background:
-              "radial-gradient(50%_50%_at_50%_50%, rgba(253,186,116,0.25), transparent 70%)",
-          }}
-        />
-      </div> */}
+    <section className="relative isolate w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* Subtle gradient overlay with soft glow */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#7C86FF20] to-transparent pointer-events-none" />
 
       {/* Content */}
-      <div className="relative inset-0 z-10 mx-auto max-w-6xl h-screen text-center px-6 flex flex-col justify-center items-center ">
+      <div className="relative z-10 mx-auto max-w-7xl h-screen text-center px-6 flex flex-col justify-center items-center">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
           viewport={{ amount: 0 }}
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 backdrop-blur-md"
+          className="inline-flex items-center gap-2 rounded-full border border-[#7C86FF30] bg-[#7C86FF10] px-4 py-1.5 text-xs text-[#c7cbff] backdrop-blur-md shadow-[0_0_20px_rgba(124,134,255,0.15)]"
         >
-          <Sparkles className="h-4 w-4" />
+          <Sparkles className="h-4 w-4 text-[#7C86FF]" />
           Next-Gen ERP System
         </motion.div>
 
@@ -41,10 +26,10 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
-          viewport={{ amount: 1 }}
-          className="mt-6 font-inter-tight text-5xl font-black leading-[1.05] tracking-tight md:text-6xl text-white"
+          viewport={{ amount: 0.3 }}
+          className="mt-6 font-inter-tight text-4xl md:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
         >
-          The operating system of the future, <br />
+          The operating system of the future, <br className="hidden xl:flex" />
           built for now.
         </motion.h1>
 
@@ -54,7 +39,7 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
           viewport={{ amount: 0.8 }}
-          className="mt-5 max-w-2xl mx-auto text-white/70"
+          className="mt-5 max-w-2xl mx-auto text-[#c7cbff] text-lg leading-relaxed"
         >
           Streamline operations, enhance decision-making, and improve
           productivity with our next-gen ERP systems.
@@ -68,12 +53,10 @@ export default function HeroSection() {
           viewport={{ amount: 1 }}
           className="mt-8"
         >
-          <button className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-gradient-to-br from-white/10 to-white/5 px-8 py-4 font-semibold tracking-wide shadow-[0_0_20px_rgba(255,255,255,0.08)] backdrop-blur-md transition hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:scale-105">
+          <button className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[#7C86FF40] bg-gradient-to-br from-[#7C86FF40] to-[#7C86FF20] px-8 py-4 font-semibold tracking-wide shadow-[0_0_20px_rgba(124,134,255,0.15)] backdrop-blur-md transition-transform hover:shadow-[0_0_40px_rgba(124,134,255,0.35)] hover:scale-105 text-white">
             Get Started
           </button>
         </motion.div>
-
-        
       </div>
     </section>
   );

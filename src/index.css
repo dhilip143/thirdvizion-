@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Diphylleia&family=Michroma&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Jura:wght@300..700&family=Michroma&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Diphylleia&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Jura:wght@300..700&family=Michroma&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Diphylleia&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Jura:wght@300..700&family=Michroma&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Saira+Stencil+One&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap');
 @import "tailwindcss";
 /* ensure root heights are normal */
 html,
@@ -40,6 +41,10 @@ body,
 .font-inter-tight {
   font-family: "Inter Tight", sans-serif;
   font-optical-sizing: auto;
+}
+
+.font-stencil {
+  font-family: "Saira Stencil One", sans-serif;
 }
 
 
@@ -327,4 +332,16 @@ body,
   border-left: 1px solid rgba(255, 255, 255, 0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+
+/* Contact Page > Map Section */
+
+.map {
+    -webkit-filter: invert(100%);
+       -moz-filter: invert(100%);
+        -ms-filter: invert(100%);
+         -o-filter: invert(100%);
+            filter: invert(100%);
 }

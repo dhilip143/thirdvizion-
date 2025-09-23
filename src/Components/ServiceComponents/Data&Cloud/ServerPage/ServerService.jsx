@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
+import { Server, Cpu, Cloud } from "lucide-react";
 
 const ServerService = () => {
   return (
@@ -9,11 +10,11 @@ const ServerService = () => {
       <section className="max-w-6xl mx-auto text-center py-16 px-6">
         <TextReveal>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            viewport={{}}
-            className="text-3xl font-bold mb-2 bg-gradient-to-r from-white via-white/80 to-white/50 bg-clip-text text-transparent"
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl xl:text-6xl font-bold mb-2 text-[#05df72]"
           >
             Our Services
           </motion.h2>
@@ -23,10 +24,10 @@ const ServerService = () => {
         <TextReveal delay={0.2}>
           <motion.p
             className="text-white/70 mb-10 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{}}
+            viewport={{ once: true }}
           >
             We provide end-to-end solutions to ensure your servers and cloud
             infrastructure are optimized, secure, and tailored to your business
@@ -34,24 +35,24 @@ const ServerService = () => {
           </motion.p>
         </TextReveal>
 
-        <div className="w-12 h-0.5 bg-white/20 mx-auto mb-10" />
+        <div className="w-12 h-0.5 bg-[#05df72]/30 mx-auto mb-10" />
 
         <div className="grid md:grid-cols-3 gap-6">
           {[
             {
               title: "Hardware Server Management",
               desc: "Ensure maximum uptime, proactive monitoring and performance tuning for your hardware servers.",
-              icon: <Server className="h-8 w-8 text-white/80" />,
+              icon: <Server className="h-8 w-8 text-[#05df72]/80" />,
             },
             {
               title: "Server Buying Guide",
               desc: "Receive expert hardware recommendations tailored to your specific needs and budget.",
-              icon: <Cpu className="h-8 w-8 text-white/80" />,
+              icon: <Cpu className="h-8 w-8 text-[#05df72]/80" />,
             },
             {
               title: "Cloud & Hybrid Setup",
               desc: "Seamlessly integrate cloud and hybrid solutions with secure configurations and scalable architecture.",
-              icon: <Cloud className="h-8 w-8 text-white/80" />,
+              icon: <Cloud className="h-8 w-8 text-[#05df72]/80" />,
             },
           ].map((service, idx) => (
             <motion.div
@@ -64,8 +65,8 @@ const ServerService = () => {
                 type: "spring",
                 stiffness: 120,
               }}
-              viewport={{}}
-              className="bg-white/5 p-6 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105 text-left backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)]"
+              viewport={{ once: true }}
+              className="bg-white/5 p-6 rounded-2xl border border-[#05df72]/20 hover:bg-[#05df72]/10 transition-all duration-300 hover:scale-105 text-left backdrop-blur-md shadow-[0_0_20px_rgba(255,137,4,0.1)]"
             >
               {/* Icon Animation */}
               <motion.div
@@ -78,7 +79,7 @@ const ServerService = () => {
 
               {/* Title Animation */}
               <motion.h3
-                className="font-semibold text-lg mb-2 mt-4"
+                className="font-semibold text-lg mb-2 mt-4 text-[#05df72]"
                 initial={{ x: -10, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ delay: idx * 0.2 + 0.2, duration: 0.5 }}

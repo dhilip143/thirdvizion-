@@ -60,7 +60,7 @@ const Header = () => {
         {
           name: "CRM Solutions",
           href: "/client_relationship_management",
-          icon: <FaUsers className="w-4 h-4 text-green-400" />,
+          icon: <FaUsers className="w-4 h-4 text-red-400" />,
           desc: "Manage customer data, boost sales, and streamline communication.",
         },
         {
@@ -78,7 +78,7 @@ const Header = () => {
         {
           name: "Server Management",
           href: "/server_management",
-          icon: <FaServer className="w-4 h-4 text-red-400" />,
+          icon: <FaServer className="w-4 h-4 text-green-400" />,
           desc: "Reliable server setup, monitoring, and optimization for your infrastructure.",
         },
       ],

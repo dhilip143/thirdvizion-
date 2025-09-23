@@ -1,47 +1,35 @@
-import DashBoardimage from "/src/assets/HeroImages/HeroHeader.webp";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <div className=" text-white min-h-screen flex flex-col items-center justify-center px-6 py-16">
-      {/* Heading */}
+    <section className="min-h-screen flex flex-col items-center justify-center px-6 pb-16  text-white">
+      {/* Heading Section */}
       <motion.div
-        className="max-w-4xl text-center mt-50"
+        className=" flex flex-col justify-center items-center max-w-4xl text-center"
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className="text-8xl md:text-5xl font-bold text-green-600">Empower Your Business with Smarter Access</h1>
-        <p className="mt-4 text-neutral-400 text-lg">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight font-inter-tight">
+          <span className="bg-gradient-to-r from-[#FDC700] to-[#ffd84c] bg-clip-text text-transparent">
+            Empower Your Business with Smarter Access
+          </span>
+        </h1>
+        <p className="mt-4 text-[#f5f5f5] text-base md:text-sm max-w-2xl mx-auto">
           Identity & Access Management solutions made secure, scalable, and
-            future-ready.
+          future-ready.
         </p>
+
+        {/* CTA Button */}
         <motion.button
-          className="mt-6 px-6 py-3 rounded-full bg-green-600 text-black font-semibold hover:bg-neutral-200 transition"
+          className="mt-6 px-8 py-3 rounded-full font-semibold tracking-wide bg-[#FDC700] text-black shadow-[0_0_25px_rgba(253,199,0,0.3)] hover:shadow-[0_0_40px_rgba(253,199,0,0.5)] hover:bg-[#ffe166] transition-all"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Get started
+          Get Started
         </motion.button>
       </motion.div>
-{/* Image Section */}
-<motion.div
-  className="mt-20 max-w-4xl w-full flex justify-center"
-  initial={{ opacity: 0, y: 40 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
->
- <motion.img
-  src={DashBoardimage}
-  alt="Dashboard preview"
-  className="rounded-2xl shadow-2xl  
-             hover:shadow-2xl hover:shadow-blue-500/40
-             hover:scale-105 transition-all duration-500 ease-out"
-  initial={{ scale: 0.95, opacity: 0 }}
-  animate={{ scale: 1, opacity: 1 }}
-  transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-/>
-</motion.div>
-    </div>
+
+    </section>
   );
 }

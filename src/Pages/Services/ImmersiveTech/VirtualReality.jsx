@@ -1,19 +1,17 @@
-
-import Vrvideo from "../../../Components/ServiceComponents/ImmersiveTech/VRPage/VRVideoHero";
-import Vrbike from "../../../Components/ServiceComponents/ImmersiveTech/VRPage/vrbike";
-import Vrsol from "../../../Components/ServiceComponents/ImmersiveTech/VRPage/vrsol";
-import Vrtwo from "../../../Components/ServiceComponents/ImmersiveTech/vrtwo";
+import VRHeroSection from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/VRHeroSection.jsx";
+import Vrbike from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/vrbike";
+import Vrsol from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/vrsol";
+import Vrtwo from "/src/Components/ServiceComponents/ImmersiveTech/vrtwo";
 
 function VirtualReality() {
-  return(
+  return (
     <>
-    <Vrvideo/>
-     <Vrtwo/>
-      <Vrbike/>
-    <Vrsol/>
-    
-   
-    
+      <div className="bg-black">
+        <VRHeroSection />
+        <Vrtwo />
+        <Vrbike />
+        <Vrsol />
+      </div>
     </>
   )
 }

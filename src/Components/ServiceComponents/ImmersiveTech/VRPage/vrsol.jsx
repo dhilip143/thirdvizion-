@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { VrData, StatsData } from "/src/Data/Data.jsx";
-// import Vr from "../../../Components/ServiceComponents/Development&Software/virtuvalreiaylity/vr";
-import Vrvideo from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/VRVideoHero.jsx";
 
 const Vrsol = () => {
   const [activeService, setActiveService] = useState("enterpriseVR");
@@ -280,187 +278,186 @@ const Vrsol = () => {
 
   return (
     <>
-   
-    <div
-      className="min-h-screen bg-zinc-950 text-white px-4 md:px-10 py-16 relative overflow-hidden"
-      ref={containerRef}
-    >
-      {/* ⬇️ VrVideo moved to the top */}
-      
 
-      {/* Background elements */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div
-          ref={(el) => (backgroundElementsRef.current[0] = el)}
-          className="absolute -top-40 -left-40 w-80 h-80 bg-violet-700 rounded-full mix-blend-soft-light filter blur-xl opacity-30"
-        ></div>
-        <div
-          ref={(el) => (backgroundElementsRef.current[1] = el)}
-          className="absolute top-1/4 -right-20 w-96 h-96 bg-indigo-600 rounded-full mix-blend-soft-light filter blur-xl opacity-20"
-        ></div>
-        <div
-          ref={(el) => (backgroundElementsRef.current[2] = el)}
-          className="absolute bottom-0 left-1/4 w-64 h-64 bg-purple-700 rounded-full mix-blend-soft-light filter blur-xl opacity-30"
-        ></div>
+      <div
+        className="min-h-screen bg-zinc-950 text-white px-4 md:px-10 py-16 relative overflow-hidden"
+        ref={containerRef}
+      >
+        {/* ⬇️ VrVideo moved to the top */}
 
-        <div
-          ref={gridPatternRef}
-          className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]"
-        ></div>
-      </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
-        <div ref={headerRef} className="text-center mb-12 md:mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 bg-[length:200%_100%] tracking-tight">
-            Virtual Reality Services
-          </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            From groundbreaking simulations to captivating experiences, we build
-            the virtual worlds of tomorrow.
-          </p>
+        {/* Background elements */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div
+            ref={(el) => (backgroundElementsRef.current[0] = el)}
+            className="absolute -top-40 -left-40 w-80 h-80 bg-violet-700 rounded-full mix-blend-soft-light filter blur-xl opacity-30"
+          ></div>
+          <div
+            ref={(el) => (backgroundElementsRef.current[1] = el)}
+            className="absolute top-1/4 -right-20 w-96 h-96 bg-indigo-600 rounded-full mix-blend-soft-light filter blur-xl opacity-20"
+          ></div>
+          <div
+            ref={(el) => (backgroundElementsRef.current[2] = el)}
+            className="absolute bottom-0 left-1/4 w-64 h-64 bg-purple-700 rounded-full mix-blend-soft-light filter blur-xl opacity-30"
+          ></div>
+
+          <div
+            ref={gridPatternRef}
+            className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]"
+          ></div>
         </div>
 
-        {/* Services & Details Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 md:gap-24">
-          {/* Left Column */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-            className="flex flex-col gap-6"
-          >
-            {VrData.map((service, index) => (
-              <motion.div
-                key={service.id}
-                ref={(el) => (serviceCardsRef.current[index] = el)}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
-                onClick={() => handleServiceClick(service.id)}
-                className={`p-8 rounded-3xl cursor-pointer transition-all duration-300 transform border
-                  ${
-                    activeService === service.id
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Header */}
+          <div ref={headerRef} className="text-center mb-12 md:mb-16">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 bg-[length:200%_100%] tracking-tight">
+              Virtual Reality Services
+            </h1>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              From groundbreaking simulations to captivating experiences, we build
+              the virtual worlds of tomorrow.
+            </p>
+          </div>
+
+          {/* Services & Details Grid */}
+          <div className="grid lg:grid-cols-2 gap-16 md:gap-24">
+            {/* Left Column */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              className="flex flex-col gap-6"
+            >
+              {VrData.map((service, index) => (
+                <motion.div
+                  key={service.id}
+                  ref={(el) => (serviceCardsRef.current[index] = el)}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.02 }}
+                  onClick={() => handleServiceClick(service.id)}
+                  className={`p-8 rounded-3xl cursor-pointer transition-all duration-300 transform border
+                  ${activeService === service.id
                       ? "bg-violet-900/40 border-violet-600"
                       : "bg-zinc-900/50 border-gray-700 hover:border-violet-500"
-                  }`}
+                    }`}
+                >
+                  <div className="flex items-center mb-4">
+                    <span className="text-4xl mr-4">{service.icon}</span>
+                    <h3 className="text-2xl font-bold">{service.title}</h3>
+                  </div>
+                  <p className="text-gray-400">{service.description}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Right Column */}
+            <div className="lg:sticky lg:top-8 self-start">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeService}
+                  ref={detailsRef}
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-zinc-900/60 rounded-3xl p-8 md:p-12 border border-violet-700/50 backdrop-blur-md relative overflow-hidden"
+                >
+                  <div className="absolute -right-20 -top-20 w-40 h-40 bg-violet-600 rounded-full mix-blend-soft-light filter blur-xl opacity-20 animate-pulse"></div>
+
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent relative z-10">
+                    {activeServiceData.title}
+                  </h2>
+                  <p className="text-lg text-gray-300 mb-8 leading-relaxed relative z-10">
+                    {activeServiceData.description}
+                  </p>
+                  <h3 className="text-xl font-semibold mb-4 text-violet-300 relative z-10">
+                    Key Features
+                  </h3>
+                  <ul className="grid grid-cols-1 gap-4 relative z-10">
+                    {activeServiceData.features.map((feature, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex items-center text-gray-200 p-3 bg-zinc-800/50 rounded-lg"
+                      >
+                        <div className="bg-violet-500/10 p-2 rounded-full mr-3 flex-shrink-0">
+                          <svg
+                            className="w-5 h-5 text-violet-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M5 13l4 4L19 7"
+                            ></path>
+                          </svg>
+                        </div>
+                        <span className="text-gray-200">{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap gap-4 mt-8 relative z-10">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg shadow-violet-500/20 transition-all relative overflow-hidden"
+                    >
+                      <span className="relative z-10">Request Demo</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-violet-700 to-indigo-700 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="border border-violet-500/50 hover:border-violet-400 text-violet-300 font-medium py-3 px-6 rounded-full transition-colors bg-black/30 relative overflow-hidden"
+                    >
+                      <span className="relative z-10">View Case Studies</span>
+                      <div className="absolute inset-0 bg-violet-900/20 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                    </motion.button>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Stats Section */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={containerVariants}
+            viewport={{ once: true }}
+            className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
+          >
+            {StatsData.map((stat, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="bg-zinc-900/50 rounded-2xl p-6 border border-violet-500/20 relative overflow-hidden"
               >
-                <div className="flex items-center mb-4">
-                  <span className="text-4xl mr-4">{service.icon}</span>
-                  <h3 className="text-2xl font-bold">{service.title}</h3>
+                <div className="absolute inset-0 bg-gradient-to-br from-violet-900/10 to-indigo-900/10 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+
+                <div
+                  ref={(el) => (statsRef.current[index] = el)}
+                  className="text-4xl md:text-5xl font-extrabold text-violet-400 relative z-10"
+                >
+                  {stat.value}
                 </div>
-                <p className="text-gray-400">{service.description}</p>
+                <div className="text-gray-300 mt-2 text-sm md:text-base relative z-10">
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Right Column */}
-          <div className="lg:sticky lg:top-8 self-start">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeService}
-                ref={detailsRef}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                transition={{ duration: 0.5 }}
-                className="bg-zinc-900/60 rounded-3xl p-8 md:p-12 border border-violet-700/50 backdrop-blur-md relative overflow-hidden"
-              >
-                <div className="absolute -right-20 -top-20 w-40 h-40 bg-violet-600 rounded-full mix-blend-soft-light filter blur-xl opacity-20 animate-pulse"></div>
-
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent relative z-10">
-                  {activeServiceData.title}
-                </h2>
-                <p className="text-lg text-gray-300 mb-8 leading-relaxed relative z-10">
-                  {activeServiceData.description}
-                </p>
-                <h3 className="text-xl font-semibold mb-4 text-violet-300 relative z-10">
-                  Key Features
-                </h3>
-                <ul className="grid grid-cols-1 gap-4 relative z-10">
-                  {activeServiceData.features.map((feature, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center text-gray-200 p-3 bg-zinc-800/50 rounded-lg"
-                    >
-                      <div className="bg-violet-500/10 p-2 rounded-full mr-3 flex-shrink-0">
-                        <svg
-                          className="w-5 h-5 text-violet-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          ></path>
-                        </svg>
-                      </div>
-                      <span className="text-gray-200">{feature}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-4 mt-8 relative z-10">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg shadow-violet-500/20 transition-all relative overflow-hidden"
-                  >
-                    <span className="relative z-10">Request Demo</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-violet-700 to-indigo-700 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="border border-violet-500/50 hover:border-violet-400 text-violet-300 font-medium py-3 px-6 rounded-full transition-colors bg-black/30 relative overflow-hidden"
-                  >
-                    <span className="relative z-10">View Case Studies</span>
-                    <div className="absolute inset-0 bg-violet-900/20 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                  </motion.button>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
         </div>
 
-        {/* Stats Section */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={containerVariants}
-          viewport={{ once: true }}
-          className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
-        >
-          {StatsData.map((stat, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="bg-zinc-900/50 rounded-2xl p-6 border border-violet-500/20 relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-900/10 to-indigo-900/10 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+        {/* Vr component at the bottom */}
 
-              <div
-                ref={(el) => (statsRef.current[index] = el)}
-                className="text-4xl md:text-5xl font-extrabold text-violet-400 relative z-10"
-              >
-                {stat.value}
-              </div>
-              <div className="text-gray-300 mt-2 text-sm md:text-base relative z-10">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-        
       </div>
-
-      {/* Vr component at the bottom */}
-  
-    </div>
     </>
   );
 };

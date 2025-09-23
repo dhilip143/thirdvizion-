@@ -50,47 +50,6 @@ const features = [
   },
 ];
 
-function MagneticButton({ children, className = "" }) {
-  const ref = useRef(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-50, 50], [10, -10]);
-  const rotateY = useTransform(x, [-50, 50], [-10, 10]);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const handleMove = (e) => {
-      const rect = el.getBoundingClientRect();
-      const relX = e.clientX - (rect.left + rect.width / 2);
-      const relY = e.clientY - (rect.top + rect.height / 2);
-      x.set(Math.max(-30, Math.min(30, relX / 4)));
-      y.set(Math.max(-30, Math.min(30, relY / 4)));
-    };
-    const reset = () => {
-      x.set(0);
-      y.set(0);
-    };
-    el.addEventListener("mousemove", handleMove);
-    el.addEventListener("mouseleave", reset);
-    return () => {
-      el.removeEventListener("mousemove", handleMove);
-      el.removeEventListener("mouseleave", reset);
-    };
-  }, [x, y]);
-
-  return (
-    <motion.button
-      ref={ref}
-      style={{ x, y, rotateX, rotateY }}
-      whileTap={{ scale: 0.98 }}
-      className={`group inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-gradient-to-br from-white/10 to-white/5 px-6 py-3 font-semibold tracking-wide shadow-[0_0_20px_rgba(255,255,255,0.08)] backdrop-blur-md transition ${className}`}
-    >
-      {children}
-    </motion.button>
-  );
-}
-
 function MarqueeRow({ items, reverse = false }) {
   return (
     <div className="relative w-full overflow-hidden">
@@ -123,8 +82,35 @@ function DragGame() {
   const cardBPosition = useRef({ x: 0, y: 0 });
   const gameCompleted = placed.A && placed.B;
 
+  // inside DragGame component, before return:
+  const blockScroll = () => (document.body.style.overflow = "hidden");
+  const allowScroll = () => (document.body.style.overflow = "");
+
+  // pointer handlers (these run early, before drag starts)
+  const handlePointerDown = (e) => {
+    blockScroll();
+    // capture pointer so we continue to get move/up events
+    if (e.pointerId && e.currentTarget && e.currentTarget.setPointerCapture) {
+      try { e.currentTarget.setPointerCapture(e.pointerId); } catch { }
+    }
+  };
+  const handlePointerUp = (e) => {
+    // release capture
+    if (e.pointerId && e.currentTarget && e.currentTarget.releasePointerCapture) {
+      try { e.currentTarget.releasePointerCapture(e.pointerId); } catch { }
+    }
+    allowScroll();
+  };
+  const handleTouchStart = (e) => {
+    e.preventDefault?.(); // stop browser scroll default
+    blockScroll();
+  };
+
+  const handleTouchEnd = () => allowScroll();
+
+
   return (
-    <div key={gameKey} className="relative flex flex-col items-center">
+    <div key={gameKey} className="relative flex flex-col items-center overscroll-none">
       <div className="relative h-[360px] sm:h-[400px] md:h-[440px] w-full max-w-lg rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-4 shadow-lg backdrop-blur-md">
         {/* Target Zones */}
         <div
@@ -142,18 +128,17 @@ function DragGame() {
           dragElastic={0.3}
           dragMomentum={false}
           whileDrag={{ scale: 1.1, zIndex: 10 }}
-          onDragStart={() => {
-    // Disable body scroll on drag start
-    document.body.style.overflow = "hidden";
-  }}
+          // run early to block browser scroll
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
           onDrag={(e, info) => {
             cardAPosition.current = info.point;
           }}
+          onDragStart={() => blockScroll()} // extra safety
           onDragEnd={(event) => {
-
-            // Re-enable body scroll on drag end
-    document.body.style.overflow = "";
-
+            allowScroll();
             const card = event.target.getBoundingClientRect();
             const targetZone = document
               .querySelector("#targetA")
@@ -171,7 +156,8 @@ function DragGame() {
               ? { x: 0, y: 0, scale: 1, rotate: 0 }
               : { x: cardAPosition.current.x, y: cardAPosition.current.y }
           }
-          className="absolute right-3 bottom-6 w-[80%] sm:w-[65%] md:w-[60%] cursor-grab active:cursor-grabbing"
+          style={{ touchAction: "none" }}
+          className="absolute right-3 bottom-6 w-[80%] sm:w-[65%] md:w-[60%] cursor-grab active:cursor-grabbing touch-none"
         >
           <div className="rounded-2xl border border-white/10 bg-black/60 p-4">
             <div className="flex items-center justify-between text-xs text-white/60">
@@ -189,19 +175,17 @@ function DragGame() {
           drag
           dragElastic={0.3}
           dragMomentum={false}
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
           whileDrag={{ scale: 1.1, zIndex: 10 }}
-          onDragStart={() => {
-    // Disable body scroll on drag start
-    document.body.style.overflow = "hidden";
-  }}
           onDrag={(e, info) => {
             cardBPosition.current = info.point;
           }}
+          onDragStart={() => blockScroll()} // extra safety
           onDragEnd={(event) => {
-
-            // Re-enable body scroll on drag end
-    document.body.style.overflow = "";
-
+            allowScroll();
             const card = event.target.getBoundingClientRect();
             const targetZone = document
               .querySelector("#targetB")
@@ -219,6 +203,7 @@ function DragGame() {
               ? { x: 0, y: 0, scale: 1, rotate: 0 }
               : { x: cardBPosition.current.x, y: cardBPosition.current.y }
           }
+          style={{ touchAction: "none" }}
           className="absolute left-3 top-6 w-[80%] sm:w-[70%] md:w-[70%] cursor-grab active:cursor-grabbing"
         >
           <div className="rounded-2xl border border-white/10 bg-black/60 p-4">
@@ -263,23 +248,6 @@ function DragGame() {
 export default function GameLanding() {
   return (
     <section className="relative isolate min-h-[100dvh] w-full overflow-hidden text-white font-inter-tight">
-      {/* Background glows */}
-      <div className="pointer-events-none absolute inset-0 -z-20">
-        <div
-          className="absolute -top-40 left-1/2 h-[60vh] w-[60vh] -translate-x-1/2 rounded-full blur-3xl"
-          style={{
-            background:
-              "radial-gradient(50%_50%_at_50%_50%, rgba(120,119,198,0.25), transparent 60%)",
-          }}
-        />
-        <div
-          className="absolute -bottom-40 right-10 h-[50vh] w-[50vh] rounded-full blur-3xl"
-          style={{
-            background:
-              "radial-gradient(50%_50%_at_50%_50%, rgba(253,186,116,0.25), transparent 60%)",
-          }}
-        />
-      </div>
 
       {/* Main Grid */}
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-4 py-8 sm:px-6 md:grid-cols-2 md:gap-10 md:py-16">

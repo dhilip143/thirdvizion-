@@ -6,7 +6,7 @@ const CRMPage = () => {
   return (
     <>
       <div className="bg-black">
-        <SparkleBg />
+        <SparkleBg count={20} speed={0.8} color="255, 100, 103" />
         <CrmHero />
         <CRMChallenges />
       </div>

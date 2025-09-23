@@ -6,16 +6,6 @@ import { Link } from "react-router-dom";
 export default function ComingSoon() {
   return (
     <section className="relative isolate w-full overflow-hidden text-white py-20">
-      {/* Background glow */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div
-          className="absolute top-1/2 left-1/2 h-[60vh] w-[60vh] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
-          style={{
-            background:
-              "radial-gradient(50%_50%_at_50%_50%, rgba(255,255,255,0.05), transparent 70%)",
-          }}
-        />
-      </div>
 
       <div className="mx-auto flex max-w-3xl flex-col items-center justify-center text-center px-6">
         {/* Small badge */}
@@ -23,11 +13,10 @@ export default function ComingSoon() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs text-white/70 backdrop-blur-md"
           >
-            <Sparkles className="h-4 w-4 text-white/60" />
+            <Sparkles className="h-4 w-4 text-white/60 inline mr-2" />
             New Experience Loading...
           </motion.div>
         </TextReveal>
@@ -37,14 +26,10 @@ export default function ComingSoon() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="mt-6 font-inter-tight text-5xl font-black leading-[1.1] tracking-tight md:text-7xl"
+            className="mt-6 font-inter-tight text-4xl font-black leading-[1.1] tracking-tight md:text-7xl"
           >
-            Coming{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">
-              Soon
-            </span>
+            Coming Soon
           </motion.h2>
         </TextReveal>
 
@@ -53,7 +38,6 @@ export default function ComingSoon() {
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.7 }}
             className="mt-4 max-w-xl text-white/70"
           >
@@ -63,19 +47,16 @@ export default function ComingSoon() {
         </TextReveal>
 
         {/* Notify me button */}
-        <TextReveal delay={0.5}>
-          <Link to={"/contact"}>
-            <motion.button
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.7 }}
-              className="mt-10 rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 hover:bg-white hover:text-black transition-all duration-500 px-6 py-3 text-sm font-semibold shadow-[0_0_20px_rgba(255,255,255,0.08)] backdrop-blur-md hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]"
-            >
-              Notify Me
-            </motion.button>
-          </Link>
-        </TextReveal>
+        <Link to={"/contact"}>
+          <motion.button
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+            className="mt-10 font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl border border-white/40 bg-transparent px-5 sm:px-6 md:px-8 py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-sm backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-105"
+          >
+            Notify Me
+          </motion.button>
+        </Link>
       </div>
     </section>
   );
