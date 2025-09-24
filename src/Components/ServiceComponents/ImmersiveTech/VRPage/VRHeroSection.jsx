@@ -8,7 +8,6 @@ gsap.registerPlugin(ScrollTrigger);
 function VRHeroSection() {
   const mainRef = useRef(null);
   const canvasRef = useRef(null);
-  const headerRef = useRef(null);
 
   const [loading, setLoading] = useState(true);
   const frameCount = 192; // ✅ total frames
@@ -169,18 +168,6 @@ function VRHeroSection() {
           },
         },
       })
-        // Header fade in/out
-        .fromTo(
-          headerRef.current,
-          { opacity: 0, scale: 0.7, yPercent: -50, xPercent: -50 },
-          { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }
-        )
-        .to(headerRef.current, {
-          opacity: 0,
-          scale: 1.2,
-          duration: 0.6,
-          ease: "power2.in",
-        });
     };
 
     const handleResize = () => {
@@ -212,19 +199,6 @@ function VRHeroSection() {
           </div>
         )}
 
-        {/* HEADER */}
-        <div
-          ref={headerRef}
-          className="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white z-20 opacity-0"
-        >
-          <h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold  
-             text-[#4bb1ff] drop-shadow-lg text-center font-inter-tight"
-          >
-            Your Gateway to Virtual Worlds
-          </h1>
-
-        </div>
       </section>
     </div>
   );

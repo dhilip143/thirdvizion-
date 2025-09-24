@@ -11,9 +11,9 @@ import {
 
 const Footer = () => {
   return (
-    <section className=" w-full h-full 2xl:h-[70vh] flex flex-col bg-black text-white z-50">
+    <section className=" w-full h-full 2xl:h-[70vh] flex flex-col bg-black text-white z-[999] backdrop-blur-2xl ">
       {/* Top Section */}
-      <div className="md:-mb-40 max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="md:-mb-40 max-w-7xl mx-auto bg-black px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {/* Links */}
         <div>
           <h3 className="font-semibold text-lg mb-4">Links</h3>
