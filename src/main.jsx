@@ -10,7 +10,7 @@ createRoot(document.getElementById("root")).render(
     <ReactLenis
       root
       options={{
-        lerp: 0.05,
+        lerp: 0.02,
         smoothWheel: true,
         syncTouch: true,
         smoothTouch: true,

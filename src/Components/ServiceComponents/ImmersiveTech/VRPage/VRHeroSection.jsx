@@ -17,7 +17,7 @@ function VRHeroSection() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.05,
+      lerp: 0.01,
       smoothWheel: true,
       smoothtouch: true,
     });
@@ -219,7 +219,7 @@ function VRHeroSection() {
         >
           <h1
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold  
-             text-purple-500 drop-shadow-lg text-center font-inter-tight"
+             text-[#4bb1ff] drop-shadow-lg text-center font-inter-tight"
           >
             Your Gateway to Virtual Worlds
           </h1>
