@@ -4,7 +4,7 @@ import video from "/src/assets/vr/vr.mp4";
 
 export default function Vrbike() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 text-white bg-gradient-to-b from-black via-gray-900 to-black">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 text-white ">
       {/* Glow Blobs for Atmosphere */}
       <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-purple-600/30 blur-[180px] rounded-full"></div>
       <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-indigo-600/30 blur-[180px] rounded-full"></div>

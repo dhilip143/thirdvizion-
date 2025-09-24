@@ -1,8 +1,10 @@
-import Hero from "/src/Components/AboutComponents/Hero";
-import Mission from "/src/Components/AboutComponents/Mission";
-import OurTeam from "/src/Components/AboutComponents/OurTeam";
-import Dummy from "/src/Components/AboutComponents/DummyAbout.jsx"
+import Hero from "/src/Components/AboutComponents/AboutHero.jsx";
+import Mission from "/src/Components/AboutComponents/MissionSection.jsx";
 import Journey from "/src/Components/AboutComponents/JourneySection.jsx";
+import AboutSection from "/src/Components/ReusableComponents/AboutSection.jsx";
+import OurTeam from "/src/Components/AboutComponents/OurTeam";
+
+
 import Partners from "/src/Components/AboutComponents/Partners.jsx";
 
 export default function About() {
@@ -12,10 +14,8 @@ export default function About() {
         <Hero />
         <Mission />
         <Journey />
-
-        <Dummy />
+        <AboutSection />
         <OurTeam />
-
         <Partners />
       </div>
     </>

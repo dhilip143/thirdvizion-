@@ -203,7 +203,7 @@ function VRHeroSection() {
 
   return (
     <div ref={mainRef}>
-      <section className="relative w-full h-[100svh] overflow-hidden bg-black">
+      <section className="relative w-full h-[100svh] flex overflow-hidden bg-black">
         <canvas ref={canvasRef} className="z-10"></canvas>
 
         {loading && (

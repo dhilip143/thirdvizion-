@@ -8,7 +8,7 @@ const text = "Scale Smarter With Remote Teams";
 const HeroDark = () => {
   return (
     <section className="relative ">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 min-h-[90vh] px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 min-h-screen px-6 pt-20">
         {/* Left: Illustration */}
         <div className="flex items-center justify-center">
           <motion.img
@@ -24,7 +24,7 @@ const HeroDark = () => {
         <div className="flex flex-col justify-center px-6 py-12 space-y-6 text-center md:text-left">
           {/* Animated Heading */}
           <motion.h1
-            className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight"
+            className="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight"
             initial="hidden"
             animate="visible"
             variants={{
@@ -53,7 +53,7 @@ const HeroDark = () => {
             ))}
           </motion.h1>
 
-          <p className="text-gray-300 text-lg max-w-lg mx-auto md:mx-0">
+          <p className="text-gray-300 text-sm max-w-lg mx-auto md:mx-0">
             Collaborate asynchronously, streamline workflows, and manage global
             teams with confidence. Our platform makes remote collaboration feel
             natural, so your team stays productive, no matter where they are.
@@ -61,15 +61,15 @@ const HeroDark = () => {
 
           {/* ✨ Extra Content (Bullet Points) */}
           <div className="flex flex-col gap-3 text-gray-400 max-w-md mx-auto md:mx-0">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col md:flex-row items-center gap-2">
               <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
               <span>Real-time messaging & file sharing</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col md:flex-row items-center gap-2">
               <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
               <span>Task management & progress tracking</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col md:flex-row items-center gap-2">
               <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
               <span>Seamless integrations with your tools</span>
             </div>

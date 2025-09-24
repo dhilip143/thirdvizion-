@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { motion } from "framer-motion";
 
 import lap from "/src/assets/AboutImages/lap.png";
 import mow from "/src/assets/AboutImages/mou.png";
@@ -79,7 +80,7 @@ function OurTeam() {
                 key={index}
                 onClick={() => setActiveIndex(index)}
                 ref={(el) => (imageRefs.current[index] = el)}
-                className={`absolute w-[160px] h-[160px] rounded-full shadow-xl border border-gray-700 overflow-hidden bg-gray-900 cursor-pointer transition-transform ${activeIndex === index ? "ring-4 ring-yellow-400" : ""
+                className={`absolute w-[160px] h-[160px] rounded-full shadow-xl border border-gray-700 overflow-hidden bg-gray-900 cursor-pointer hover:ring-2 hover:ring-orange-500 transition-transform ${activeIndex === index ? "ring-4 ring-orange-500" : ""
                   }`}
                 style={{
                   left: "50%",
@@ -108,7 +109,15 @@ function OurTeam() {
       </div>
 
       {/* Center Content */}
-      <div className="relative text-center max-w-xl px-6 z-10 top-[150px]">
+      {/* Center Content */}
+      <motion.div
+        key={activeIndex} // 🔑 re-mounts and triggers animation on index change
+        className="relative text-center max-w-xl px-6 z-10 top-[150px]"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -40 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <h2 className="text-white text-3xl md:text-5xl font-bold leading-snug">
           {teamData[activeIndex].name}
         </h2>
@@ -116,7 +125,9 @@ function OurTeam() {
           {teamData[activeIndex].role}
         </p>
         <p className="text-gray-300 text-xs mt-4">{teamData[activeIndex].desc}</p>
-      </div>
+      </motion.div>
+
+
     </div>
   );
 }

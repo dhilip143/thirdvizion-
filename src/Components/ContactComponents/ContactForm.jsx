@@ -84,7 +84,7 @@ const ContactForm = () => {
         {/* LEFT SIDE */}
         <div className="md:w-1/3 md:sticky md:top-24 self-start space-y-8">
           <motion.h1
-            className="text-4xl lg:text-5xl font-extrabold leading-tight bg-gradient-to-r from-yellow-400 via-blue-500 via-green-500 to-red-500 bg-clip-text text-transparent whitespace-pre-line"
+            className="text-4xl lg:text-5xl text-center md:text-start font-extrabold leading-tight bg-gradient-to-r from-yellow-400 via-blue-500 via-green-500 to-red-500 bg-clip-text text-transparent whitespace-pre-line"
             variants={typingContainer}
             initial="hidden"
             animate="visible"
@@ -96,13 +96,13 @@ const ContactForm = () => {
             ))}
           </motion.h1>
 
-          <p className="text-lg md:text-xl text-gray-300">
+          <p className="text-lg md:text-xl text-center md:text-start text-gray-300">
             If you are curious about what you saw, contact us or follow us{" "}
             <br />
             on social media.
           </p>
 
-          <div className="flex gap-6 text-2xl text-gray-300">
+          <div className="flex gap-6 text-2xl justify-center md:justify-start text-gray-300">
             {socialLinks.map(({ Icon, href }, i) => (
               <motion.a
                 key={i}

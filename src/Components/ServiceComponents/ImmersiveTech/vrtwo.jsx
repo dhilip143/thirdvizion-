@@ -66,7 +66,7 @@ import vrtwo from "/src/assets/vr/vrman.jpg";
 
 export default function Vrtwo() {
   return (
-    <section className="relative min-h-screen bg-zinc-950 flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen  flex flex-col items-center justify-center overflow-hidden">
       {/* Background neon blobs */}
       <div className="absolute top-[-200px] left-[-200px] w-[500px] sm:w-[600px] h-[500px] sm:h-[600px] bg-violet-700/30 rounded-full blur-[180px]"></div>
       <div className="absolute bottom-[-200px] right-[-200px] w-[500px] sm:w-[600px] h-[500px] sm:h-[600px] bg-indigo-600/30 rounded-full blur-[180px]"></div>
