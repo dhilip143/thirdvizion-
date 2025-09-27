@@ -1,5 +1,5 @@
-import React from 'react'
-import Threelanding from '../../../Components/3dservicecomp/threelanding';
+
+import Threelanding from '/src/Components/3dservicecomp/Threelanding.jsx';
 
 const ThreeDServices = () => {
   return (
