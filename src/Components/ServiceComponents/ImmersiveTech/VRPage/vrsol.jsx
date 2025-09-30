@@ -280,7 +280,7 @@ const Vrsol = () => {
     <>
 
       <div
-        className="min-h-screen bg-zinc-950 text-white px-4 md:px-10 py-16 relative overflow-hidden"
+        className="min-h-screen text-white px-4 md:px-10 py-16 relative overflow-hidden"
         ref={containerRef}
       >
         {/* ⬇️ VrVideo moved to the top */}

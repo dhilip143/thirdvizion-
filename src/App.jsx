@@ -13,7 +13,7 @@ import InnerBlog from "/src/Pages/Blog/InnerBlog.jsx";
 // Immersive Tech
 import VrPage from "/src/Pages/Services/ImmersiveTech/VirtualReality.jsx";
 import ArPage from "/src/Pages/Services/ImmersiveTech/AugmentedReality.jsx";
-import ThreeDServices from "/src/Pages/Services/ImmersiveTech/3DServices.jsx";
+import ThreeDServices from "/src/Pages/Services/ImmersiveTech/ThreeDServices.jsx";
 // Data & Cloud
 import CRM from "/src/Pages/Services/Data & Cloud/CRMPage.jsx";
 import IAM from "/src/Pages/Services/Data & Cloud/IAMPage.jsx";
