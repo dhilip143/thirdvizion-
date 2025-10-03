@@ -25,9 +25,9 @@ export default function Home() {
       {/* FAQ sticky container */}
       <div className="relative">
         {/* FAQ stays fixed at top while scrolling */}
-        <div className="sticky top-0 z-10">
+        {/* <div className="sticky top-0 z-10">
           <FAQ />
-        </div>
+        </div> */}
 
         {/* Contact section comes after FAQ, appears above it */}
         <div className="relative z-20 -mt-10">

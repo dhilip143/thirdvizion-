@@ -1,9 +1,22 @@
 // src/components/FAQSection.jsx
-import { useState } from "react";
-import { ChevronRight, X, Plus } from "lucide-react";
-import clsx from "clsx";
+// Cinematic Black FAQ Section - Static Sidebar + Animated FAQ List
+// React + Tailwind + GSAP
 
-// 🟠 Categories
+import React, { useEffect, useRef, useState, useId } from "react";
+import { ChevronRight, X, Plus, Search, Bot } from "lucide-react";
+import clsx from "clsx";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  try {
+    gsap.registerPlugin(ScrollTrigger);
+  } catch {}
+}
+
+/* --------------------------------------------------------------------------
+   Data
+   -------------------------------------------------------------------------- */
 const categories = [
   "Immersive Tech",
   "Development",
@@ -12,199 +25,389 @@ const categories = [
   "Support & Settings",
 ];
 
-// 🟠 FAQ Data for Thirdvizion
 const faqData = {
   "Immersive Tech": [
     {
-      question: "What immersive technologies does Thirdvizion provide?",
+      question: "What immersive technologies does Thirdvizion specialize in?",
       answer:
-        "We specialize in AR, VR, and 3D experiences that help businesses engage customers, improve training, and showcase products in interactive ways.",
+        "We are experts in AR, VR, and 3D experiences for training, engagement, and product visualization.",
     },
     {
-      question: "Can immersive tech be integrated with my existing systems?",
+      question: "Can immersive tech integrate with enterprise systems?",
       answer:
-        "Yes, our AR/VR solutions are designed to seamlessly integrate with enterprise workflows, websites, and applications.",
+        "Yes, our AR/VR integrates seamlessly with CRM, ERP, and e-commerce workflows.",
     },
     {
-      question: "Do you build custom 3D models?",
+      question: "Do you create custom 3D models?",
       answer:
-        "Absolutely. Our 3D team creates high-fidelity custom models for AR/VR apps, games, and enterprise visualization.",
+        "Absolutely, our in-house 3D art team builds high-fidelity models and environments.",
     },
   ],
-
   Development: [
     {
-      question: "What kind of development services do you offer?",
+      question: "What range of dev services do you offer?",
       answer:
-        "We provide end-to-end Web, Mobile App, and Game Development with modern frameworks and scalable architectures.",
-    },
-    {
-      question: "Do you handle both frontend and backend?",
-      answer:
-        "Yes. Our team covers full-stack development including UI/UX, APIs, databases, and cloud integration.",
+        "Full-stack Web, Mobile, and Game Development with React, Node, Unity, Unreal.",
     },
     {
       question: "Can you modernize legacy applications?",
       answer:
-        "Yes, we re-engineer and migrate old applications into modern, scalable, and secure platforms.",
+        "Yes, we migrate old systems to secure, scalable modern platforms.",
     },
   ],
-
   "Cloud & Infrastructure": [
     {
-      question: "Do you provide server and cloud management?",
+      question: "Which cloud platforms do you manage?",
       answer:
-        "Yes. We manage AWS, Azure, and GCP infrastructures, ensuring scalability, uptime, and cost optimization.",
+        "AWS, Azure, and GCP with uptime, scalability, and cost optimization.",
     },
     {
-      question: "What about security?",
+      question: "Do you support multi-cloud setups?",
       answer:
-        "We implement IAM solutions, firewalls, and compliance-based security layers to safeguard business data.",
-    },
-    {
-      question: "Can you support hybrid or multi-cloud setups?",
-      answer:
-        "Yes, we design cloud architectures that balance performance, cost, and flexibility across providers.",
+        "Yes, hybrid and multi-cloud strategies to balance performance and avoid lock-in.",
     },
   ],
-
   "Enterprise Solutions": [
     {
-      question: "What enterprise solutions does Thirdvizion build?",
+      question: "What enterprise solutions do you build?",
       answer:
-        "We develop ERP, CRM, and custom enterprise applications that streamline operations and improve efficiency.",
-    },
-    {
-      question: "Do you provide integration with third-party tools?",
-      answer:
-        "Yes. We integrate with payment systems, analytics, e-commerce platforms, and more.",
-    },
-    {
-      question: "Can solutions be scaled for large organizations?",
-      answer:
-        "All our solutions are built with scalability in mind, ready to grow with your business needs.",
+        "ERP, CRM, and custom enterprise apps to streamline operations and automate workflows.",
     },
   ],
-
   "Support & Settings": [
     {
-      question: "How can I reach the Thirdvizion support team?",
+      question: "How can I contact support?",
       answer:
-        "You can contact us via our support portal, email at support@thirdvizion.com, or live chat on the website.",
+        "Via our client portal, email support@thirdvizion.com, or live chat.",
     },
     {
-      question: "What are your support hours?",
+      question: "Do you offer AMCs?",
       answer:
-        "Our team is available 9 AM – 8 PM IST, Monday to Saturday. Priority support is available for enterprise clients.",
-    },
-    {
-      question: "Do you offer ongoing maintenance?",
-      answer:
-        "Yes. We provide AMC (Annual Maintenance Contracts) and flexible support packages for long-term assistance.",
+        "Yes, Annual Maintenance Contracts with flexible packages for long-term stability.",
     },
   ],
 };
 
+/* --------------------------------------------------------------------------
+   Helpers
+   -------------------------------------------------------------------------- */
+const usePrefersReducedMotion = () => {
+  const [prefers, setPrefers] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const onChange = () => setPrefers(mq.matches);
+    setPrefers(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  return prefers;
+};
+
+const measureHeight = (el) => {
+  if (!el) return 0;
+  const prev = el.style.display;
+  el.style.display = "block";
+  const h = el.scrollHeight;
+  el.style.display = prev;
+  return h;
+};
+
+/* --------------------------------------------------------------------------
+   Sub-components
+   -------------------------------------------------------------------------- */
+const FAQHeader = () => (
+  <header className="text-center mb-16 relative z-10">
+    <h2
+      id="faq-heading"
+      className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 drop-shadow-lg"
+    >
+      Frequently Asked Questions
+    </h2>
+    <p className="mt-4 text-base text-gray-400 max-w-2xl mx-auto">
+      Answers about immersive tech, development, cloud, and enterprise solutions.
+    </p>
+  </header>
+);
+
+const HelpBotCTA = () => (
+  <div className="mt-6 rounded-2xl border border-purple-500/40 bg-gradient-to-br from-purple-600/30 to-transparent p-6 text-center backdrop-blur-sm shadow-lg">
+    <div className="mx-auto w-14 h-14 mb-3 rounded-full flex items-center justify-center bg-gradient-to-br from-purple-500 to-blue-500 shadow-md shadow-purple-500/30">
+      <Bot size={28} className="text-black" />
+    </div>
+    <h4 className="font-bold text-white text-lg">Can't find an answer?</h4>
+    <p className="text-sm text-gray-400 mt-1 mb-4">
+      Our AI assistant will help you instantly.
+    </p>
+    <a
+      href="#ask-ai"
+      className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 shadow-md font-semibold text-black text-sm transition-transform hover:scale-105"
+    >
+      Ask our AI Assistant
+    </a>
+  </div>
+);
+
+const FAQSidebar = ({ categories, activeCategory, setActiveCategory, setQuery, setOpenIndex }) => (
+  <nav className="hidden md:flex md:flex-col gap-3 md:w-1/3 lg:w-1/4">
+    {categories.map((cat) => {
+      const active = cat === activeCategory;
+      return (
+        <button
+          key={cat}
+          onClick={() => {
+            setActiveCategory(cat);
+            setQuery("");
+            setOpenIndex(null);
+          }}
+          className={clsx(
+            "rounded-xl px-5 py-3 text-left font-semibold border transition-all duration-300 flex items-center justify-between group",
+            active
+              ? "bg-gradient-to-r from-purple-600/30 to-blue-600/30 border-purple-500/60 text-white shadow-lg"
+              : "bg-white/5 border-gray-700/30 text-gray-400 hover:bg-white/10 hover:text-white"
+          )}
+        >
+          <span>{cat}</span>
+          <ChevronRight
+            size={18}
+            className={clsx(
+              "transition-transform duration-300",
+              active ? "translate-x-1 text-purple-400" : "group-hover:translate-x-1"
+            )}
+          />
+        </button>
+      );
+    })}
+  </nav>
+);
+
+const FAQControls = ({ activeCategory, setActiveCategory, query, setQuery, setOpenIndex }) => (
+  <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
+    <div className="md:hidden w-full">
+      <select
+        className="w-full p-3 rounded-xl border border-gray-700 bg-black text-sm text-white focus:ring-2 focus:ring-purple-500"
+        value={activeCategory}
+        onChange={(e) => {
+          setActiveCategory(e.target.value);
+          setQuery("");
+          setOpenIndex(null);
+        }}
+      >
+        {categories.map((c) => (
+          <option key={c} value={c}>
+            {c}
+          </option>
+        ))}
+      </select>
+    </div>
+
+    <div className="relative w-full md:w-auto flex-grow">
+      <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+        <Search size={18} />
+      </div>
+      <input
+        type="search"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search questions..."
+        className="pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-gray-700 text-sm text-white w-full placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
+      />
+    </div>
+  </div>
+);
+
+const BackgroundDecorations = () => (
+  <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+    <div className="absolute top-0 left-0 right-0 h-[500px] bg-[radial-gradient(40%_40%_at_50%_0%,rgba(0,170,255,0.15)_0%,transparent_100%)] animate-pulse"></div>
+    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[radial-gradient(40%_40%_at_50%_100%,rgba(138,43,226,0.15)_0%,transparent_100%)] blur-3xl"></div>
+  </div>
+);
+
+const FAQItem = ({ faq, index, isOpen, onToggle, setRef }) => {
+  const iconRef = useRef(null);
+  const qId = useId();
+  const panelId = useId();
+
+  return (
+    <article
+      className={clsx(
+        "faq-card rounded-2xl border bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-md shadow-lg transition-all duration-300 overflow-hidden",
+        isOpen ? "ring-2 ring-purple-500/60 border-purple-400/50 scale-[1.02]" : "border-gray-700/60"
+      )}
+    >
+      <h3>
+        <button
+          id={qId}
+          className="faq-question-btn w-full flex justify-between items-center p-5 text-left text-white font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+          aria-controls={panelId}
+          aria-expanded={isOpen}
+          onClick={() => onToggle(index)}
+        >
+          <span className="flex-1 text-base md:text-lg">{faq.question}</span>
+          <span
+            ref={iconRef}
+            className="ml-6 flex items-center justify-center h-8 w-8 rounded-full bg-white/10 transition-transform"
+          >
+            {isOpen ? <X size={20} className="text-purple-400" /> : <Plus size={20} />}
+          </span>
+        </button>
+      </h3>
+      <div
+        id={panelId}
+        ref={(el) => setRef(el, iconRef.current, index)}
+        className="overflow-hidden px-5"
+        role="region"
+        aria-labelledby={qId}
+        aria-hidden={!isOpen}
+        style={{ height: 0, paddingTop: 0, paddingBottom: 0 }}
+      >
+        <div className="border-t border-gray-700/60">
+          <p className="pt-4 pb-4 text-sm md:text-base text-gray-300 leading-relaxed">
+            {faq.answer}
+          </p>
+        </div>
+      </div>
+    </article>
+  );
+};
+
+/* --------------------------------------------------------------------------
+   Main Component
+   -------------------------------------------------------------------------- */
 export default function FAQSection() {
-  const [activeCategory, setActiveCategory] = useState("Immersive Tech");
-  const [openIndex, setOpenIndex] = useState(0);
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const [openIndex, setOpenIndex] = useState(null);
+  const [query, setQuery] = useState("");
+  const [filteredFaqs, setFilteredFaqs] = useState(faqData[activeCategory] || []);
+  const itemRefs = useRef([]);
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const listRef = useRef(null);
+
+  useEffect(() => {
+    itemRefs.current = [];
+    const q = query.trim().toLowerCase();
+    const filtered = (faqData[activeCategory] || []).filter(
+      (f) => f.question.toLowerCase().includes(q) || f.answer.toLowerCase().includes(q)
+    );
+    setFilteredFaqs(filtered);
+    setOpenIndex(null);
+  }, [activeCategory, query]);
+
+  // ✅ Animate FAQ list only when category/search changes
+  useEffect(() => {
+    if (prefersReducedMotion || !listRef.current) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".faq-card",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: "power3.out",
+        }
+      );
+    }, listRef);
+
+    return () => ctx.revert();
+  }, [filteredFaqs, activeCategory]);
 
   const handleToggle = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+    const prev = openIndex;
+    if (prev !== null && itemRefs.current[prev]) {
+      const { contentEl, iconEl } = itemRefs.current[prev];
+      gsap.to(contentEl, {
+        height: 0,
+        paddingTop: 0,
+        paddingBottom: 0,
+        opacity: 0,
+        duration: 0.35,
+        ease: "power2.inOut",
+      });
+      gsap.to(iconEl, { rotation: 0, scale: 1, duration: 0.3 });
+    }
+    if (prev === index) {
+      setOpenIndex(null);
+      return;
+    }
+    if (itemRefs.current[index]) {
+      const { contentEl, iconEl } = itemRefs.current[index];
+      const h = measureHeight(contentEl);
+      gsap.fromTo(
+        contentEl,
+        { height: 0, paddingTop: 0, paddingBottom: 0, opacity: 0 },
+        {
+          height: h,
+          paddingTop: 4,
+          paddingBottom: 16,
+          opacity: 1,
+          duration: 0.45,
+          ease: "power3.out",
+          onComplete: () => (contentEl.style.height = "auto"),
+        }
+      );
+      gsap.to(iconEl, { rotation: 45, scale: 1.1, duration: 0.3 });
+      setOpenIndex(index);
+    }
+  };
+
+  const setItemRef = (el, iconEl, index) => {
+    if (el) itemRefs.current[index] = { contentEl: el, iconEl };
   };
 
   return (
-    <section className="bg-black text-gray-200 py-16 px-6  shadow-md font-sans mx-auto">
-      <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-3">
-        Frequently Asked Questions
-      </h2>
-      <p className="text-center text-sm text-gray-400 max-w-2xl mx-auto mb-10">
-        Thirdvizion is your trusted partner for immersive technologies, cloud
-        infrastructure, enterprise solutions, and development services. Here are
-        answers to some of the most common questions.
-      </p>
-
-      <div className="flex flex-col md:flex-row justify-center items-start gap-6 max-w-6xl mx-auto">
-        {/* Category Dropdown for Mobile */}
-        <div className="mb-4 md:hidden overflow-hidden w-full">
-          <select
-            className="w-full p-3 rounded-lg border border-gray-700 bg-gray-900 text-sm text-gray-200"
-            value={activeCategory}
-            onChange={(e) => {
-              setActiveCategory(e.target.value);
-              setOpenIndex(null);
-            }}
-          >
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Sidebar Category List for Desktop */}
-        <div className="hidden md:flex flex-col gap-3 md:w-1/3">
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={clsx(
-                "rounded-lg px-4 py-3 text-left font-semibold border transition",
-                activeCategory === category
-                  ? "bg-gray-900 border-gray-700 shadow text-white"
-                  : "bg-gray-800/50 border-transparent text-gray-400 hover:bg-gray-800 hover:text-gray-200"
-              )}
-              onClick={() => {
-                setActiveCategory(category);
-                setOpenIndex(null);
-              }}
-            >
-              <div className="flex justify-between items-center">
-                <span>{category}</span>
-                <ChevronRight size={18} />
-              </div>
-            </button>
-          ))}
-        </div>
-
-        {/* Right FAQ List */}
-        <div className="md:w-2/3 space-y-4">
-          {faqData[activeCategory]?.length > 0 ? (
-            faqData[activeCategory].map((faq, index) => (
-              <div
-                key={index}
-                className={clsx(
-                  "rounded-xl border border-gray-700 bg-gray-900 shadow transition-all duration-300",
-                  openIndex === index ? "ring-1 ring-orange-400" : ""
-                )}
-              >
-                <button
-                  onClick={() => handleToggle(index)}
-                  className="w-full flex justify-between items-center p-4 text-left text-gray-200 text-sm font-medium"
-                >
-                  <span>{faq.question}</span>
-                  {openIndex === index ? (
-                    <X size={20} className="text-orange-400" />
-                  ) : (
-                    <Plus size={20} className="text-orange-400" />
-                  )}
-                </button>
-
-                <div
-                  className={clsx(
-                    "overflow-hidden transition-all duration-500 ease-in-out",
-                    openIndex === index ? "max-h-40 p-4 pt-0" : "max-h-0 p-0"
-                  )}
-                >
-                  <p className="text-xs text-gray-400">{faq.answer}</p>
+    <section
+      className="relative bg-black text-white min-h-[600px] py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden"
+      aria-labelledby="faq-heading"
+    >
+      <div className="max-w-5xl mx-auto">
+        <FAQHeader />
+        <div className="flex flex-col md:flex-row gap-8 lg:gap-12 justify-center">
+          <FAQSidebar
+            categories={categories}
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+            setQuery={setQuery}
+            setOpenIndex={setOpenIndex}
+          />
+          <div className="md:w-2/3 lg:w-3/4">
+            <FAQControls
+              activeCategory={activeCategory}
+              setActiveCategory={setActiveCategory}
+              query={query}
+              setQuery={setQuery}
+              setOpenIndex={setOpenIndex}
+            />
+            <div ref={listRef} className="space-y-5 faq-list-container">
+              {filteredFaqs.length > 0 ? (
+                filteredFaqs.map((faq, i) => (
+                  <FAQItem
+                    key={`${activeCategory}-${i}`}
+                    faq={faq}
+                    index={i}
+                    isOpen={openIndex === i}
+                    onToggle={handleToggle}
+                    setRef={setItemRef}
+                  />
+                ))
+              ) : (
+                <div className="rounded-2xl border border-gray-700 bg-white/5 backdrop-blur-sm p-10 text-center">
+                  <p className="text-sm text-gray-400">No questions match your search.</p>
                 </div>
-              </div>
-            ))
-          ) : (
-            <p className="text-gray-500">No questions in this category.</p>
-          )}
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* ✅ Centered HelpBot */}
+        <div className="flex justify-center mt-12">
+          <div className="w-full max-w-md">
+            <HelpBotCTA />
+          </div>
         </div>
       </div>
+      <BackgroundDecorations />
     </section>
   );
 }
