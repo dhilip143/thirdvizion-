@@ -1,34 +1,33 @@
-name: Deploy to Thirdvizion Server
+name: Deploy to VPS
 
 on:
   push:
     branches:
-      - main  # Trigger deployment on push to main branch
+      - main
 
 jobs:
   deploy:
-    name: Deploy
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set up SSH
-        run: |
-          echo "${{ secrets.DEV_KEY }}" | base64 --decode > ec2_key.pem
-          chmod 400 ec2_key.pem
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: SSH and Pull Latest Code
-        env:
-          EC2_HOST: ${{ secrets.DEV_HOST }}
-          EC2_USER: ${{ secrets.DEV_USER }}
-        run: |
-          ssh -i ec2_key.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST << 'EOF'
-            cd /home/ubuntu/demo/deploy-node-vps-github-action
-            sudo git reset --hard
-            sudo git checkout main
-            sudo git pull origin main
-            sudo npm install
-            sudo pm2 restart github-action-demo
-          EOF
+    - name: Setup Node (if needed)
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
-      - name: Clean up
-        run: rm ec2_key.pem
+    - name: Copy & Run commands on VPS via SSH
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.VPS_SSH_KEY }}
+        port: ${{ secrets.VPS_PORT || 22 }}
+        script: |
+          cd /path/to/your/app
+          git pull origin main
+          npm install --production
+          npm run build
+          pm2 restart myapp
