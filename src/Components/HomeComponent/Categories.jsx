@@ -1,19 +1,19 @@
-
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 // ✅ Import images with clear names
-import DesignTool from "/src/assets/HomeImages/CategoryImages/DesignTool.jpg";
-import Layout from "/src/assets/HomeImages/CategoryImages/layout.jpg";
-import Component from "/src/assets/HomeImages/CategoryImages/component.jpg";
-import UserFocus from "/src/assets/HomeImages/CategoryImages/UserFocus.jpg";
+import DesignTool from "/src/assets/home/categories/Gemini_Generated_Image_nb1svjnb1svjnb1s.png";
+import Layout from "/src/assets/home/categories/Gemini_Generated_Image_prlzylprlzylprlz.png";
+import Component from "/src/assets/home/categories/Gemini_Generated_Image_udav5iudav5iudav.png";
+import UserFocus from "/src/assets/home/categories/Gemini_Generated_Image_n6yszmn6yszmn6ys.png";
 
-import Portal from "/src/assets/HomeImages/CategoryImages/portals.jpg";
-import Dashboard from "/src/assets/HomeImages/CategoryImages/DashBoard.jpg";
+import Portal from "/src/assets/home/categories/Gemini_Generated_Image_tmihoitmihoitmih.png";
+import Dashboard from "/src/assets/home/categories/Gemini_Generated_Image_hafb71hafb71hafb.png";
 
 import Aws from "/src/assets/HomeImages/CategoryImages/aws.jpg";
 import Azure from "/src/assets/HomeImages/CategoryImages/azure.jpg";
-import GoogleCloud from "/src/assets/HomeImages/CategoryImages/googlecloud.jpg";
+import GoogleCloud from "/src/assets/home/categories/Gemini_Generated_Image_qmsw01qmsw01qmsw.png";
 
 const capabilitiesData = [
   {
@@ -21,10 +21,9 @@ const capabilitiesData = [
     title: "Immersive Tech",
     desc: "Intuitive designs for seamless digital journeys.",
     children: [
-      { name: "VIRTUAL REALITY", img: DesignTool },
-      { name: "AUGUMENTED REALITY", img: Layout },
-      { name: "3D SERVICES", img: Component },
-      // { name: "User Focus", img: UserFocus },
+      { name: "VIRTUAL REALITY", img: DesignTool, link: "/virtual_reality" },
+      { name: "AUGMENTED REALITY", img: Layout, link: "/augmented_reality" },
+      { name: "3D SERVICES", img: Component, link: "/3d_services" },
     ],
   },
   {
@@ -32,10 +31,10 @@ const capabilitiesData = [
     title: "Data & Cloud",
     desc: "Custom-built, scalable platforms.",
     children: [
-      { name: "CRM SOLUTIONS", img: GoogleCloud },
-      { name: "IAM SOLUTIONS", img: Portal },
-      { name: "ERP SOLUTIONS", img: Dashboard },
-       { name: "SERVER MANAGEMENT", img: UserFocus },
+      { name: "CRM SOLUTIONS", img: GoogleCloud, link: "/client_relationship_management" },
+      { name: "IAM SOLUTIONS", img: Portal, link: "/identity_and_access_management" },
+      { name: "ERP SOLUTIONS", img: Dashboard, link: "/enterprise_resource_planning" },
+      { name: "SERVER MANAGEMENT", img: UserFocus, link: "/server_management" },
     ],
   },
   {
@@ -43,9 +42,9 @@ const capabilitiesData = [
     title: "Web Development & Software",
     desc: "Transforming businesses with secure, scalable infrastructure.",
     children: [
-      { name: "WEB DEVOLOPEMENT", img: Aws },
-      { name: "MOBILE APPS", img: Azure },
-      { name: "GAME DEVOLOPEMENT", img: GoogleCloud },
+      { name: "WEB DEVELOPMENT", img: Aws, link: "/web_development" },
+      { name: "MOBILE APPS", img: Azure, link: "/app_development" },
+      { name: "GAME DEVELOPMENT", img: GoogleCloud, link: "/game_development" },
     ],
   },
 ];
@@ -74,34 +73,38 @@ export default function Categories() {
             </div>
 
             {/* Right Side Cards with Animation */}
-            <div className="space-y-6">
+            <div className="flex flex-col gap-8">
               {cap.children.map((child, i) => (
-                <motion.div
-                  key={i}
-                  className="rounded-lg overflow-hidden shadow-lg cursor-pointer"
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow: "0px 8px 25px rgba(168, 85, 247, 0.5)", // purple glow
-                  }}
-                  transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                >
-                  {/* Top Black Card */}
-                  <div className="bg-black border border-gray-700 p-6 flex justify-between items-center rounded-t-lg">
-                    <span className="font-medium text-white">{child.name}</span>
-                    <div className="w-7 h-7 rounded-full bg-purple-400 flex items-center justify-center">
-                      <ArrowUpRight className="text-black w-4 h-4" />
+                <Link to={child.link} key={i}>
+                  <motion.div
+                    className="rounded-lg overflow-hidden shadow-lg cursor-pointer"
+                    whileHover={{
+                      scale: 1.03,
+                      boxShadow: "0px 8px 25px rgba(168, 85, 247, 0.5)", // purple glow
+                    }}
+                    transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                  >
+                    {/* Top Black Card */}
+                    <div className="bg-black border border-gray-700 p-6 flex justify-between items-center rounded-t-lg">
+                      <span className="font-medium text-white">{child.name}</span>
+                      <div className="w-7 h-7 rounded-full bg-purple-400 flex items-center justify-center">
+                        <ArrowUpRight className="text-black w-4 h-4" />
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Attached Grey Box with Image */}
-                  <div className="bg-gray-300 h-40 rounded-b-lg overflow-hidden">
-                    <img
-                      src={child.img}
-                      alt={child.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </motion.div>
+                    {/* Gap between top card and image */}
+                    <div className="mt-3">
+                      {/* Attached Grey Box with Image */}
+                      <div className="bg-gray-300 h-40 rounded-b-lg overflow-hidden">
+                        <img
+                          src={child.img}
+                          alt={child.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
           </div>
