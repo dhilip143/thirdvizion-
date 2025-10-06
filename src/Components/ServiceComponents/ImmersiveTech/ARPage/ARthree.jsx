@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Lottie from "lottie-react";
 import aiBrain from "../../../../assets/Animations/Digitalmedia3d.json";
+import { Link } from "react-router-dom";
 
 const App = () => {
   const [showForm, setShowForm] = useState(false);
@@ -78,14 +79,16 @@ const App = () => {
 
         {/* Get in Touch Button */}
         {!showForm && (
-          <div className="mb-6 xs:mb-7 sm:mb-8 md:mb-10 lg:mb-12 animate-fade-in-up px-2 xs:px-3 sm:px-4">
-            <button 
-              onClick={() => setShowForm(true)}
-              className="bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white font-semibold text-sm xs:text-base sm:text-lg md:text-xl py-2 xs:py-3 sm:py-4 px-6 xs:px-8 sm:px-10 md:px-12 lg:px-14 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-pink-500/25 animate-float-glow"
-            >
-              Get in Touch
-            </button>
-          </div>
+         <div className="mb-6 xs:mb-7 sm:mb-8 md:mb-10 lg:mb-12 animate-fade-in-up px-2 xs:px-3 sm:px-4">
+  <Link to="/contact">
+    <button
+      onClick={() => setShowForm(true)}
+      className="bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white font-semibold text-sm xs:text-base sm:text-lg md:text-xl py-2 xs:py-3 sm:py-4 px-6 xs:px-8 sm:px-10 md:px-12 lg:px-14 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-pink-500/25 animate-float-glow"
+    >
+      Get in Touch
+    </button>
+  </Link>
+</div>
         )}
 
         {/* Responsive Subtle glow behind text */}

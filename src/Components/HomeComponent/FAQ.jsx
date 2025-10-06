@@ -401,11 +401,11 @@ export default function FAQSection() {
         </div>
 
         {/* ✅ Centered HelpBot */}
-        <div className="flex justify-center mt-12">
+        {/* <div className="flex justify-center mt-12">
           <div className="w-full max-w-md">
             <HelpBotCTA />
           </div>
-        </div>
+        </div> */}
       </div>
       <BackgroundDecorations />
     </section>

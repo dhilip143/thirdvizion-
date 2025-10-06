@@ -402,7 +402,7 @@ const Vrsol = () => {
                     ))}
                   </ul>
                   <div className="flex flex-wrap gap-4 mt-8 relative z-10">
-                    <motion.button
+                    {/* <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg shadow-violet-500/20 transition-all relative overflow-hidden"
@@ -417,7 +417,7 @@ const Vrsol = () => {
                     >
                       <span className="relative z-10">View Case Studies</span>
                       <div className="absolute inset-0 bg-violet-900/20 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                    </motion.button>
+                    </motion.button> */}
                   </div>
                 </motion.div>
               </AnimatePresence>

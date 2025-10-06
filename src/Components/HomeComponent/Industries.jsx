@@ -33,7 +33,7 @@ export default function Industries() {
   }, []);
 
   const circles = [
-    { id: 1, cx: 200, cy: 200, label: "Enterprise Solutions", img: threed },
+    { id: 1, cx: 200, cy: 200, label: "Digital Enterprise", img: threed },
     { id: 2, cx: 350, cy: 600, label: "Healthcare", img: gam },
     { id: 3, cx: 100, cy: 1000, label: "Education", img: are },
     { id: 4, cx: 300, cy: 1400, label: "Retail & E-commerce", img: wih },

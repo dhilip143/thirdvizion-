@@ -140,191 +140,160 @@
 //     </section>
 //   );
 // }
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
+// --- Testimonials Data ---
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "Small Business Owner",
+    name: "Martin Goutry",
+    role: "Back-end developer at MyDodow",
     review:
-      "Third Vizion Labs transformed the way my business operates. Their innovative solutions helped us streamline processes and boost customer engagement like never before.",
-    img: "https://randomuser.me/api/portraits/women/68.jpg",
+      "Dico is finally addressing a long time problem we had when building UIs. It’s ease of use and workflow seems really intuitive. Promising!",
+    date: "2021.03.02",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
-    name: "David Patel",
-    role: "Project Manager",
+    name: "Agnes Remi",
+    role: "Product Designer at Stripe",
     review:
-      "The platforms developed by Third Vizion Labs are intuitive and scalable. Their team truly understands enterprise needs and delivers beyond expectations.",
-    img: "https://randomuser.me/api/portraits/men/32.jpg",
+      "The level of detail and the speed of the workflow is incredible. Dico is a game-changer for our design system.",
+    date: "2021.03.15",
+    avatar: "https://randomuser.me/api/portraits/women/45.jpg",
   },
   {
-    name: "Emily Carter",
-    role: "Operations Manager",
+    name: "Theo Champion",
+    role: "Lead Developer at Vercel",
     review:
-      "Partnering with Third Vizion Labs has been a game-changer. Their cloud-powered solutions gave us security, scalability, and seamless integration.",
-    img: "https://randomuser.me/api/portraits/women/45.jpg",
+      "I've never seen a tool that integrates so seamlessly with our existing stack. The team loves it. It's fast, reliable, and just works.",
+    date: "2021.04.20",
+    avatar: "https://randomuser.me/api/portraits/men/40.jpg",
   },
   {
-    name: "Michael Lee",
-    role: "Tech Lead",
+    name: "Roman Atwoods",
+    role: "CTO at Tech Innovations",
     review:
-      "We needed a robust enterprise platform, and Third Vizion Labs delivered exactly that. Their architecture is future-ready and incredibly reliable.",
-    img: "https://randomuser.me/api/portraits/men/64.jpg",
+      "The collaboration features are top-notch. Our entire team, from developers to marketers, can now work in sync. Highly recommended!",
+    date: "2021.05.01",
+    avatar: "https://randomuser.me/api/portraits/men/50.jpg",
   },
   {
-    name: "Sophia Martinez",
-    role: "Product Designer",
+    name: "Jessica Lyne",
+    role: "UI/UX Specialist at Google",
     review:
-      "The design expertise from Third Vizion Labs is unmatched. They focus on user experience, and it shows in every product they deliver.",
-    img: "https://randomuser.me/api/portraits/women/29.jpg",
-  },
-  {
-    name: "James Anderson",
-    role: "CTO",
-    review:
-      "Innovation and reliability—Third Vizion Labs combines both. Their cloud-first strategy has helped us scale our infrastructure effortlessly.",
-    img: "https://randomuser.me/api/portraits/men/12.jpg",
+      "Dico's intuitive interface allowed me to create stunning UIs in a fraction of the time. It has become an essential part of my toolkit.",
+    date: "2021.06.11",
+    avatar: "https://randomuser.me/api/portraits/women/60.jpg",
   },
 ];
 
-export default function TestimonialAnimation() {
-  const [current, setCurrent] = useState(0);
+export default function TestimonialsSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const len = testimonials.length;
 
-  // Auto-slide every 3s
+  const cardCount = testimonials.length;
+  const angle = 360 / cardCount;
+  const radius = (250 / Math.tan((angle / 2) * Math.PI / 180)) + 50;
+
+  // --- Auto Rotate ---
   useEffect(() => {
     if (paused) return;
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % len);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [len, paused]);
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % cardCount);
+    }, 2500); // rotation speed (ms)
+    return () => clearInterval(interval);
+  }, [paused, cardCount]);
 
   return (
-    <section className="relative bg-black py-24 text-white overflow-hidden">
-      {/* Background Glow Blobs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-32 left-1/4 w-96 h-96 bg-pink-600/30 rounded-full blur-[180px] animate-pulse-slow"></div>
-        <div className="absolute top-1/3 -right-32 w-80 h-80 bg-purple-600/20 rounded-full blur-[150px] animate-pulse-slow"></div>
-        <div className="absolute bottom-0 left-1/3 w-[700px] h-[700px] bg-red-700/15 rounded-full blur-[200px] animate-pulse-slow"></div>
-      </div>
-
-      {/* Heading */}
-      <div className="relative max-w-3xl mx-auto text-center mb-16 px-6 z-10">
-        <h2 className="text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent 
-                       bg-gradient-to-r from-pink-500 via-red-500 to-purple-500 
-                       drop-shadow-[0_0_30px_rgba(255,0,128,0.7)]">
-          What People Say
+    <section className="relative bg-gradient-to-br from-gray-900 via-black to-gray-800 py-24 text-center overflow-hidden">
+      <div className="container mx-auto px-6 relative">
+        {/* Heading */}
+        <h2 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400 drop-shadow-lg mb-6">
+          Users Testimonials
         </h2>
-        <p className="text-gray-400 mt-3 max-w-lg mx-auto text-lg">
-          See how Third Vizion Labs is helping businesses transform and innovate.
+        <p className="text-gray-400 max-w-2xl mx-auto mb-20">
+          Discover early user’s feedback on{" "}
+          <span className="text-purple-400">Dico integration</span> within their workflows.
         </p>
-      </div>
 
-      {/* Testimonial Carousel */}
-      <div
-        className="relative max-w-xl mx-auto h-96 overflow-hidden z-10"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, x: 120, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: -120, scale: 0.9 }}
-            transition={{
-              type: "spring",
-              stiffness: 220,
-              damping: 14,
-              duration: 0.35,
-            }}
-            className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-black/60 to-gray-950/80
-                       backdrop-blur-xl rounded-3xl p-8 shadow-[0_0_50px_rgba(255,0,128,0.4)]
-                       flex flex-col items-center justify-center text-center border border-pink-700/40"
-          >
-            {/* User Image */}
-            <motion.img
-              src={testimonials[current].img}
-              alt={testimonials[current].name}
-              className="w-20 h-20 rounded-full border-4 border-pink-500 mb-4 shadow-[0_0_20px_rgba(255,0,128,0.6)]"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.05 }}
-            />
-
-            {/* Rating Stars */}
-            <motion.div
-              className="flex gap-1 justify-center mb-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-            >
-              {Array(5)
-                .fill()
-                .map((_, i) => (
-                  <span key={i} className="text-yellow-400 text-xl drop-shadow-[0_0_6px_rgba(255,255,0,0.8)]">
-                    ★
-                  </span>
-                ))}
-            </motion.div>
-
-            {/* Review Text */}
-            <motion.p
-              className="text-gray-300 leading-relaxed text-base md:text-lg max-w-md mb-4"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15 }}
-            >
-              {testimonials[current].review}
-            </motion.p>
-
-            {/* Name & Role */}
-            <motion.div
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <h4 className="font-semibold text-xl text-pink-400 drop-shadow-[0_0_8px_rgba(255,0,128,0.7)]">
-                {testimonials[current].name}
-              </h4>
-              <span className="text-purple-300 text-sm">{testimonials[current].role}</span>
-            </motion.div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Left/Right Arrows */}
-        <button
-          onClick={() => setCurrent((prev) => (prev - 1 + len) % len)}
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-pink-600/40 hover:bg-pink-500/60 text-white p-3 rounded-full shadow-lg"
+        {/* --- 3D Carousel --- */}
+        <div
+          className="relative flex items-center justify-center h-[500px] w-full"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
         >
-          ‹
-        </button>
-        <button
-          onClick={() => setCurrent((prev) => (prev + 1) % len)}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-pink-600/40 hover:bg-pink-500/60 text-white p-3 rounded-full shadow-lg"
-        >
-          ›
-        </button>
+          <div className="w-full h-full" style={{ perspective: "1400px" }}>
+            <motion.div
+              className="relative w-full h-full"
+              style={{ transformStyle: "preserve-3d" }}
+              animate={{
+                rotateY: -activeIndex * angle,
+              }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+            >
+              {testimonials.map((testimonial, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-[320px] h-[400px] left-1/2 top-1/2 
+                  -ml-[160px] -mt-[200px] bg-gradient-to-br from-white via-gray-100 to-gray-200 
+                  text-gray-800 p-6 rounded-2xl shadow-2xl border border-gray-200 
+                  hover:shadow-[0_0_30px_5px_rgba(168,85,247,0.7)]
+                  transition-all duration-500"
+                  style={{
+                    transform: `rotateY(${i * angle}deg) translateZ(${radius}px)`,
+                  }}
+                  whileHover={{ scale: 0.9 }}
+                >
+                  <div className="flex flex-col h-full">
+                    {/* User Info */}
+                    <div className="flex items-center gap-4 mb-4">
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        className="w-16 h-16 rounded-full object-cover border-4 border-purple-400 shadow-lg"
+                      />
+                      <div>
+                        <h4 className="font-bold text-xl text-left text-gray-900">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-sm text-gray-500 text-left">{testimonial.role}</p>
+                      </div>
+                    </div>
 
-        {/* Navigation Bullets */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-3 z-20">
-          {testimonials.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrent(idx)}
-              className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                current === idx
-                  ? "bg-pink-400 scale-125 shadow-[0_0_10px_rgba(255,0,128,0.7)]"
-                  : "bg-gray-600 scale-100"
-              }`}
-            />
-          ))}
+                    {/* Review */}
+                    <div className="flex-grow my-4">
+                      <p className="text-gray-700 italic leading-relaxed text-left text-lg">
+                        &laquo; {testimonial.review} &raquo;
+                      </p>
+                    </div>
+
+                    {/* Date */}
+                    <p className="text-xs text-gray-500 text-left mt-auto">
+                      📅 Dico user, {testimonial.date}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
