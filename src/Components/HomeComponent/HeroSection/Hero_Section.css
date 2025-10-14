@@ -1,5 +1,6 @@
 /* General styling for the pattern */
 .pattern {
+  /* Adjusted margin-top to better position the visible pattern section */
   margin-top: -320px;
   padding-right: 80px;
   display: flex;
@@ -28,46 +29,39 @@
   transition: all 0.9s ease;
 }
 
+/* Margin adjustments for staggered pattern arrangement */
 .pattern ul:nth-child(1) {
   margin: 0px 200px 0px 0px;
 }
-
 .pattern ul:nth-child(2) {
   margin: -20px 200px 0px 60px;
 }
-
 .pattern ul:nth-child(3) {
   margin: -20px 200px 0px 100px;
 }
-
 .pattern ul:nth-child(4) {
   margin: -20px 200px 0px 145px;
 }
-
 .pattern ul:nth-child(5) {
   margin: -20px 200px 0px 190px;
 }
-
 .pattern ul:nth-child(6) {
   margin: -20px 200px 0px 235px;
 }
-
 .pattern ul:nth-child(7) {
   margin: -20px 200px 0px 285px;
 }
-
 .pattern ul:nth-child(8) {
   margin: -20px 200px 0px 330px;
 }
-
 .pattern ul:nth-child(9) {
   margin: -20px 200px 0px 380px;
 }
-
 .pattern ul:nth-child(10) {
   margin: -20px 200px 0px 425px;
 }
 
+/* 3D Hexagon structure pseudo-elements */
 .pattern ul li::before,
 .pattern ul li::after {
   content: "";
@@ -95,7 +89,7 @@
   transform: skewY(-49deg);
 }
 
-/* Span styles */
+/* Span styles for the central icon area */
 .pattern ul li #hexa {
   margin: 75px 0px 0px 50px;
   background-color: #1a1a1a;
@@ -121,6 +115,7 @@
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
+/* Inner 3D layers */
 .pattern ul li span::before,
 .pattern ul li span::after {
   content: "";
@@ -148,6 +143,7 @@
   transform: rotate(0deg) skewX(-45deg);
 }
 
+/* Hover effect: icon color and 3D movement */
 .pattern ul li:hover span {
   z-index: 0;
   color: #fff;
@@ -181,48 +177,115 @@
   background: #2a2a2a;
 }
 
-/* New Custom Hover Colors - Black Theme */
+/* ✅ Enhanced Gradient Hover Colors - Black/Dark Theme */
 .pattern ul li.custom1:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #000000, #333333);
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
 }
 
 .pattern ul li.custom2:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #111111, #444444);
+  background: linear-gradient(135deg, #4834d4, #686de0);
+  box-shadow: 0 0 20px rgba(72, 52, 212, 0.4);
 }
 
 .pattern ul li.custom3:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #000000, #222222);
+  background: linear-gradient(135deg, #00d2d3, #54a0ff);
+  box-shadow: 0 0 20px rgba(0, 210, 211, 0.4);
 }
 
 .pattern ul li.custom4:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #1a1a1a, #333333);
+  background: linear-gradient(135deg, #1dd1a1, #10ac84);
+  box-shadow: 0 0 20px rgba(29, 209, 161, 0.4);
 }
 
 .pattern ul li.custom5:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #000000, #2a2a2a);
+  background: linear-gradient(135deg, #f368e0, #ff9ff3);
+  box-shadow: 0 0 20px rgba(243, 104, 224, 0.4);
 }
 
 .pattern ul li.custom6:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #111111, #333333);
+  background: linear-gradient(135deg, #ff9f43, #feca57);
+  box-shadow: 0 0 20px rgba(255, 159, 67, 0.4);
 }
 
 .pattern ul li.custom7:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #000000, #1a1a1a);
+  background: linear-gradient(135deg, #0abde3, #48dbfb);
+  box-shadow: 0 0 20px rgba(10, 189, 227, 0.4);
 }
 
 .pattern ul li.custom8:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  background: linear-gradient(135deg, #a55eea, #8854d0);
+  box-shadow: 0 0 20px rgba(165, 94, 234, 0.4);
 }
 
 .pattern ul li.custom9:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #000000, #333333);
+  background: linear-gradient(135deg, #ff7f50, #ff6348);
+  box-shadow: 0 0 20px rgba(255, 127, 80, 0.4);
 }
 
 .pattern ul li.custom10:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #111111, #2a2a2a);
+  background: linear-gradient(135deg, #2ed573, #1e90ff);
+  box-shadow: 0 0 20px rgba(46, 213, 115, 0.4);
 }
 
-/* Contact Button Animations */
+/* Enhanced hover effects for all layers with gradient glow */
+.pattern ul li.custom1:hover span:nth-child(4) {
+  background: linear-gradient(135deg, #ff8e8e, #ff7f50);
+}
+
+.pattern ul li.custom2:hover span:nth-child(4) {
+  background: linear-gradient(135deg, #5a67d8, #4c51bf);
+}
+
+.pattern ul li.custom3:hover span:nth-child(4) {
+  background: linear-gradient(135deg, #34e3e3, #00b894);
+}
+
+.pattern ul li.custom4:hover span:nth-child(4) {
+  background: linear-gradient(135deg, #48cfad, #38a169);
+}
+
+.pattern ul li.custom5:hover span:nth-child(4) {
+  background: linear-gradient(135deg, #f78fb3, #e84393);
+}
+
+.pattern ul li.custom6:hover span:nth-child(4) {
+  background: linear-gradient(135deg, #ffb142, #ff793f);
+}
+
+.pattern ul li.custom7:hover span:nth-child(4) {
+  background: linear-gradient(135deg, #17c0eb, #0984e3);
+}
+
+.pattern ul li.custom8:hover span:nth-child(4) {
+  background: linear-gradient(135deg, #b381ea, #8e44ad);
+}
+
+.pattern ul li.custom9:hover span:nth-child(4) {
+  background: linear-gradient(135deg, #ff9a76, #ff6b6b);
+}
+
+.pattern ul li.custom10:hover span:nth-child(4) {
+  background: linear-gradient(135deg, #3ae374, #00cec9);
+}
+
+/* Add glowing animation to the gradient layers */
+.pattern ul li:hover span:nth-child(5) {
+  animation: gradientGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes gradientGlow {
+  0% {
+    filter: brightness(1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    filter: brightness(1.2);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* --- Contact Button Animations --- */
 .contact-btn {
   border: none;
   outline: none;
@@ -233,6 +296,7 @@
   transition: all 0.3s ease;
 }
 
+/* Glowing Border Effect (Outer layer) */
 .contact-btn::before {
   content: '';
   background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
@@ -241,7 +305,7 @@
   left: -2px;
   background-size: 400%;
   z-index: -1;
-  filter: blur(5px);
+  filter: blur(8px); /* Increased blur for a softer glow */
   width: calc(100% + 4px);
   height: calc(100% + 4px);
   animation: glowing 20s linear infinite;
@@ -254,12 +318,13 @@
   opacity: 1;
 }
 
+/* Inner Background */
 .contact-btn::after {
   content: '';
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #6d28d9, #4c1d95);
+  background: linear-gradient(135deg, #6d28d9, #4c1d95); /* Original background */
   left: 0;
   top: 0;
   border-radius: 50px;
@@ -267,52 +332,66 @@
 }
 
 .contact-btn:hover::after {
-  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  background: linear-gradient(135deg, #7c3aed, #5b21b6); /* Slightly lighter on hover */
 }
 
+/* Glowing Border Keyframes */
 @keyframes glowing {
   0% { background-position: 0 0; }
   50% { background-position: 400% 0; }
   100% { background-position: 0 0; }
 }
 
+/* Shine Effect Keyframes */
 @keyframes shine {
   0% { left: -100%; }
   100% { left: 200%; }
 }
 
-.animate-shine {
-  animation: shine 1.5s ease-in-out infinite;
+/* Pulse (Wave) Animation Keyframes */
+@keyframes button-pulse {
+  0% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.15); opacity: 0; }
+  100% { transform: scale(1); opacity: 0.2; }
 }
 
-/* Content Center Alignment */
+.group:hover .animate-shine {
+  animation: shine 1.5s ease-in-out forwards;
+}
+
+.group:hover .animate-button-pulse {
+  animation: button-pulse 1.5s ease-out infinite;
+}
+
+/* --- Content Center Alignment (Fallback/Confirmation) --- */
+/* This CSS ensures centering and uses transform: translate(-50%, -50%) as requested for centering logic. */
 .pattern > div:last-child {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* ✅ Use of translate Y (and X) for centering as requested */
+  transform: translate(-50%, -50%); 
   width: 100%;
   text-align: center;
 }
+
+/* Responsive Overrides (Kept for maintaining layout on different screens) */
 
 /* Extra small screens (phones) */
 @media (max-width: 480px) {
   .pattern {
     zoom: 0.5;
-    height: 180vh;
+    height: 180vh; 
     padding-top: 480px;
   }
-  
   .pattern > div:last-child h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
-  
   .pattern > div:last-child p {
     font-size: 0.9rem;
     margin-bottom: 1.5rem;
   }
-  
   .contact-btn {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
@@ -326,11 +405,9 @@
     height: 142vh;
     padding-top: 480px;
   }
-  
   .pattern > div:last-child h2 {
     font-size: 2rem;
   }
-  
   .pattern > div:last-child p {
     font-size: 1rem;
   }
@@ -343,11 +420,9 @@
     height: 120vh;
     padding-top: 480px;
   }
-  
   .pattern > div:last-child h2 {
     font-size: 2.5rem;
   }
-  
   .pattern > div:last-child p {
     font-size: 1.1rem;
   }
@@ -360,11 +435,9 @@
     height: 112vh;
     padding-top: 480px;
   }
-  
   .pattern > div:last-child h2 {
     font-size: 3rem;
   }
-  
   .pattern > div:last-child p {
     font-size: 1.2rem;
   }
@@ -377,11 +450,9 @@
     height: 112vh;
     padding-top: 480px;
   }
-  
   .pattern > div:last-child h2 {
     font-size: 3.5rem;
   }
-  
   .pattern > div:last-child p {
     font-size: 1.3rem;
   }

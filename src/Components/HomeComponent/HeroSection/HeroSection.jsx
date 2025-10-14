@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "/src/Components/HomeComponent/HeroSection/Hero_Section.css";
+// Image imports
 import service from "/src/assets/HeroImages/1.png";
 import service1 from "/src/assets/HeroImages/2.png";
 import service2 from "/src/assets/HeroImages/3.png";
@@ -39,9 +40,11 @@ const Landing = () => {
           <li className={currentIcon.class} key={liIndex}>
             <a>
               <div>
+                {/* Spans for the 3D-effect layers */}
                 {[...Array(4)].map((_, idx) => (
                   <span key={idx}></span>
                 ))}
+                {/* Span for the image */}
                 <span>
                   <img
                     src={currentIcon.src}
@@ -68,18 +71,18 @@ const Landing = () => {
 
   useEffect(() => {
     createDynamicLists(10, 10);
-  });
+  }, []);
 
   return (
     <div
       id="pattern"
       className="pattern 2xl:h-[112vh] overflow-hidden relative z-0"
     >
-      {/* This section contains the background pattern */}
+      {/* Background Pattern Elements */}
       {createDynamicLists(10, 10)}
 
-      {/* ✅ Centered Content - Improved Alignment */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-50 text-white px-4  ">
+      {/* ✅ Centered Content - Uses flexbox and absolute positioning for perfect centering */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-50 text-white px-4  pt-[300px]">
         {/* Main Heading */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-michroma font-bold text-center mb-6 max-w-6xl leading-tight">
           Engineering the Future,<br />Innovating the Present
@@ -94,17 +97,14 @@ const Landing = () => {
         {/* Animated Contact Button */}
         <Link
           to={"/contact"}
-          className="contact-btn relative bg-gradient-to-r from-purple-600 to-indigo-700 text-white px-10 py-4 text-xl font-semibold rounded-full overflow-hidden group hover:scale-105 transition-all duration-500 shadow-2xl"
+          className="contact-btn relative bg-gradient-to-r from-purple-600 to-indigo-700 text-white px-10  text-xl font-semibold rounded-full overflow-hidden group hover:scale-105 transition-all duration-500 shadow-2xl"
         >
-          <span className="relative z-10">CONTACT US</span>
+          {/* <span className="relative z-10">CONTACT US</span> */}
           
-          {/* Button Animation Elements */}
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          {/* Pulsating border animation element */}
+          <div className="absolute inset-0 rounded-full bg-white opacity-20 group-hover:animate-button-pulse"></div>
           
-          {/* Pulse Animation */}
-          <div className="absolute inset-0 rounded-full bg-white opacity-20 group-hover:animate-ping"></div>
-          
-          {/* Shine Effect */}
+          {/* Shine Effect animation element */}
           <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-40 group-hover:animate-shine"></div>
         </Link>
       </div>
