@@ -78,8 +78,315 @@
 //     </section>
 //   );
 // }
+// import React, { useEffect, useRef } from 'react';
+// import { gsap } from 'gsap';
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { EffectCube, Autoplay } from 'swiper/modules';
+// import 'swiper/css';
+// import 'swiper/css/effect-cube';
+
+// // Import your images
+// import service1a from "/src/assets/HomeImages/serviceimages/service1a.jpg";
+// import service1b from "/src/assets/HomeImages/serviceimages/service1b.jpg";
+// import service1c from "/src/assets/HomeImages/serviceimages/service1c.jpg";
+// import service2a from "/src/assets/HomeImages/serviceimages/service2a.jpg";
+// import service2b from "/src/assets/HomeImages/serviceimages/service2b.jpg";
+// import service2c from "/src/assets/HomeImages/serviceimages/service2c.jpg";
+// import service3a from "/src/assets/HomeImages/serviceimages/service3a.jpg";
+// import service3b from "/src/assets/HomeImages/serviceimages/service3b.jpg";
+// import service3c from "/src/assets/HomeImages/serviceimages/service3c.jpg";
+
+// const services= [
+//   { 
+//     id: "01", 
+//     title: "Immersive Tech Solutions", 
+//     description: "Cutting-edge virtual and augmented reality experiences that transform how you interact with digital content.",
+//     images: [service1a, service1b, service1c],
+//     features: ["VR/AR Development", "3D Modeling", "Interactive Experiences"]
+//   },
+//   { 
+//     id: "02", 
+//     title: "Data & Cloud Services", 
+//     description: "Secure cloud infrastructure and data analytics solutions to drive your business intelligence and growth.",
+//     images: [service2a, service2b, service2c],
+//     features: ["Cloud Migration", "Data Analytics", "AI Integration"]
+//   },
+//   { 
+//     id: "03", 
+//     title: "Custom Development", 
+//     description: "Tailored software solutions and web applications designed to meet your unique business requirements.",
+//     images: [service3a, service3b, service3c],
+//     features: ["Web Development", "Mobile Apps", "API Integration"]
+//   },
+// ];
+
+// const Services = () => {
+//   const contentRef = useRef(null);
+//   const swiperRef = useRef(null);
+//   const particlesRef = useRef(null);
+
+//   useEffect(() => {
+//     // GSAP animations
+//     const tl = gsap.timeline();
+    
+//     tl.fromTo(contentRef.current, 
+//       { opacity: 0, y: 50 }, 
+//       { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
+//     );
+    
+//     tl.fromTo('.swiper-slide', 
+//       { opacity: 0, scale: 0.8 }, 
+//       { opacity: 1, scale: 1, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)" }, 
+//       "-=0.5"
+//     );
+
+//     // Particle animation
+//     if (particlesRef.current) {
+//       gsap.fromTo(particlesRef.current, 
+//         { opacity: 0 }, 
+//         { opacity: 1, duration: 1.5, ease: "power2.inOut" }
+//       );
+//     }
+
+//     // Hover animations for buttons
+//     const buttons = document.querySelectorAll('button');
+//     buttons.forEach(button => {
+//       button.addEventListener('mouseenter', () => {
+//         gsap.to(button, { scale: 1.05, duration: 0.3, ease: "power2.out" });
+//       });
+//       button.addEventListener('mouseleave', () => {
+//         gsap.to(button, { scale: 1, duration: 0.3, ease: "power2.out" });
+//       });
+//     });
+//   }, []);
+
+//   return (
+//     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-indigo-900 to-gray-900 relative overflow-hidden">
+//       {/* Particle Background */}
+//       <div ref={particlesRef} className="absolute inset-0 z-0">
+//         <div className="absolute w-2 h-2 bg-blue-400 rounded-full top-1/4 left-1/4 animate-pulse"></div>
+//         <div className="absolute w-3 h-3 bg-green-400 rounded-full top-1/3 right-1/4 animate-pulse" style={{animationDelay: '0.5s'}}></div>
+//         <div className="absolute w-2 h-2 bg-purple-400 rounded-full bottom-1/4 left-1/3 animate-pulse" style={{animationDelay: '1s'}}></div>
+//         <div className="absolute w-3 h-3 bg-yellow-400 rounded-full bottom-1/3 right-1/3 animate-pulse" style={{animationDelay: '1.5s'}}></div>
+//         <div className="absolute w-2 h-2 bg-red-400 rounded-full top-2/3 left-1/2 animate-pulse" style={{animationDelay: '2s'}}></div>
+//       </div>
+
+//       <section className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-screen px-4 py-8 lg:px-16 lg:py-16">
+//         {/* Content Section */}
+//         <div ref={contentRef} className="text-center lg:text-left">
+//           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+//             Innovative Tech Solutions for Your Business
+//           </h1>
+//           <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+//             We deliver cutting-edge technology services designed to transform your business operations and drive digital growth. Our solutions help you stay ahead in the competitive landscape with innovative approaches and reliable implementations.
+//           </p>
+//           <button className="bg-white text-gray-900 font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:bg-indigo-500 hover:text-white transform hover:scale-105">
+//             Explore Services
+//           </button>
+//         </div>
+
+//         {/* Swiper Section */}
+//         <div className="w-full max-w-md mx-auto lg:max-w-lg">
+//           <Swiper
+//             ref={swiperRef}
+//             effect="cube"
+//             grabCursor={true}
+//             loop={true}
+//             speed={1000}
+//             cubeEffect={{
+//               shadow: false,
+//               slideShadows: true,
+//               shadowOffset: 10,
+//               shadowScale: 0.94,
+//             }}
+//             autoplay={{
+//               delay: 2600,
+//               pauseOnMouseEnter: true,
+//             }}
+//             modules={[EffectCube, Autoplay]}
+//             className="h-96 md:h-[490px] rounded-2xl shadow-2xl"
+//           >
+//             {/* Service 1 Slides */}
+//             <SwiperSlide className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+//               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+//               <img 
+//                 src={service1a} 
+//                 alt="Immersive Tech Solutions" 
+//                 className="w-full h-full object-cover"
+//               />
+//               <div className="absolute top-3 right-3 bg-black/30 backdrop-blur-md rounded-full px-4 py-2 text-white text-sm font-semibold z-20">
+//                 Service 01
+//               </div>
+//               <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white z-20 rounded-b-2xl">
+//                 <h3 className="text-xl font-bold mb-2">Immersive Tech Solutions</h3>
+//                 <p className="text-gray-300 text-sm mb-4">
+//                   Transform your digital presence with our cutting-edge VR and AR experiences.
+//                 </p>
+//                 <div className="flex items-center gap-2">
+//                   <div className="flex text-yellow-400">
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★½</span>
+//                   </div>
+//                   <span className="text-gray-400 text-sm">45 projects</span>
+//                 </div>
+//               </div>
+//             </SwiperSlide>
+
+//             <SwiperSlide className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+//               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+//               <img 
+//                 src={service1b} 
+//                 alt="VR Development" 
+//                 className="w-full h-full object-cover"
+//               />
+//               <div className="absolute top-3 right-3 bg-black/30 backdrop-blur-md rounded-full px-4 py-2 text-white text-sm font-semibold z-20">
+//                 VR/AR Tech
+//               </div>
+//               <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white z-20 rounded-b-2xl">
+//                 <h3 className="text-xl font-bold mb-2">Virtual Reality Development</h3>
+//                 <p className="text-gray-300 text-sm mb-4">
+//                   Create immersive virtual environments that engage and captivate your audience.
+//                 </p>
+//                 <div className="flex items-center gap-2">
+//                   <div className="flex text-yellow-400">
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                   </div>
+//                   <span className="text-gray-400 text-sm">32 projects</span>
+//                 </div>
+//               </div>
+//             </SwiperSlide>
+
+//             {/* Service 2 Slides */}
+//             <SwiperSlide className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+//               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+//               <img 
+//                 src={service2a} 
+//                 alt="Data & Cloud Services" 
+//                 className="w-full h-full object-cover"
+//               />
+//               <div className="absolute top-3 right-3 bg-white/80 backdrop-blur-md rounded-full px-4 py-2 text-gray-900 text-sm font-semibold z-20">
+//                 Service 02
+//               </div>
+//               <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white z-20 rounded-b-2xl">
+//                 <h3 className="text-xl font-bold mb-2">Data & Cloud Services</h3>
+//                 <p className="text-gray-300 text-sm mb-4">
+//                   Secure cloud infrastructure and advanced data analytics for business intelligence.
+//                 </p>
+//                 <div className="flex items-center gap-2">
+//                   <div className="flex text-yellow-400">
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★½</span>
+//                   </div>
+//                   <span className="text-gray-400 text-sm">67 projects</span>
+//                 </div>
+//               </div>
+//             </SwiperSlide>
+
+//             <SwiperSlide className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+//               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+//               <img 
+//                 src={service2b} 
+//                 alt="Cloud Infrastructure" 
+//                 className="w-full h-full object-cover"
+//               />
+//               <div className="absolute top-3 right-3 bg-white/80 backdrop-blur-md rounded-full px-4 py-2 text-gray-900 text-sm font-semibold z-20">
+//                 Cloud Solutions
+//               </div>
+//               <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white z-20 rounded-b-2xl">
+//                 <h3 className="text-xl font-bold mb-2">Cloud Infrastructure</h3>
+//                 <p className="text-gray-300 text-sm mb-4">
+//                   Scalable and secure cloud solutions tailored to your business needs.
+//                 </p>
+//                 <div className="flex items-center gap-2">
+//                   <div className="flex text-yellow-400">
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>☆</span>
+//                   </div>
+//                   <span className="text-gray-400 text-sm">89 projects</span>
+//                 </div>
+//               </div>
+//             </SwiperSlide>
+
+//             {/* Service 3 Slides */}
+//             <SwiperSlide className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+//               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+//               <img 
+//                 src={service3a} 
+//                 alt="Custom Development" 
+//                 className="w-full h-full object-cover"
+//               />
+//               <div className="absolute top-3 right-3 bg-black/30 backdrop-blur-md rounded-full px-4 py-2 text-white text-sm font-semibold z-20">
+//                 Service 03
+//               </div>
+//               <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white z-20 rounded-b-2xl">
+//                 <h3 className="text-xl font-bold mb-2">Custom Development</h3>
+//                 <p className="text-gray-300 text-sm mb-4">
+//                   Tailored software solutions designed to meet your unique business requirements.
+//                 </p>
+//                 <div className="flex items-center gap-2">
+//                   <div className="flex text-yellow-400">
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★½</span>
+//                   </div>
+//                   <span className="text-gray-400 text-sm">124 projects</span>
+//                 </div>
+//               </div>
+//             </SwiperSlide>
+
+//             <SwiperSlide className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+//               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
+//               <img 
+//                 src={service3b} 
+//                 alt="Web Development" 
+//                 className="w-full h-full object-cover"
+//               />
+//               <div className="absolute top-3 right-3 bg-black/30 backdrop-blur-md rounded-full px-4 py-2 text-white text-sm font-semibold z-20">
+//                 Web & Mobile
+//               </div>
+//               <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white z-20 rounded-b-2xl">
+//                 <h3 className="text-xl font-bold mb-2">Web & Mobile Development</h3>
+//                 <p className="text-gray-300 text-sm mb-4">
+//                   Responsive web applications and mobile solutions for modern businesses.
+//                 </p>
+//                 <div className="flex items-center gap-2">
+//                   <div className="flex text-yellow-400">
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                     <span>★</span>
+//                   </div>
+//                   <span className="text-gray-400 text-sm">156 projects</span>
+//                 </div>
+//               </div>
+//             </SwiperSlide>
+//           </Swiper>
+//         </div>
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default Services;
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCube, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -124,6 +431,12 @@ const Services = () => {
   const contentRef = useRef(null);
   const swiperRef = useRef(null);
   const particlesRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  // Register ScrollTrigger plugin
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  }, []);
 
   useEffect(() => {
     // GSAP animations
@@ -158,10 +471,38 @@ const Services = () => {
         gsap.to(button, { scale: 1, duration: 0.3, ease: "power2.out" });
       });
     });
+
+    // ScrollTrigger animation for the swiper/image
+    gsap.fromTo(swiperRef.current,
+      {
+        opacity: 0,
+        x: 100,
+        scale: 0.8
+      },
+      {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: swiperRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+          markers: false // Set to true for debugging
+        }
+      }
+    );
+
+    // Clean up ScrollTrigger instances
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-indigo-900 to-gray-900 relative overflow-hidden">
+    <div ref={sectionRef} className="min-h-screen bg-gradient-to-br from-gray-900 via-indigo-900 to-gray-900 relative overflow-hidden">
       {/* Particle Background */}
       <div ref={particlesRef} className="absolute inset-0 z-0">
         <div className="absolute w-2 h-2 bg-blue-400 rounded-full top-1/4 left-1/4 animate-pulse"></div>
@@ -172,8 +513,8 @@ const Services = () => {
       </div>
 
       <section className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-screen px-4 py-8 lg:px-16 lg:py-16">
-        {/* Content Section */}
-        <div ref={contentRef} className="text-center lg:text-left">
+        {/* Fixed Content Section */}
+        <div ref={contentRef} className="text-center lg:text-left sticky top-0 lg:top-1/4 self-start lg:transform lg:-translate-y-1/4">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
             Innovative Tech Solutions for Your Business
           </h1>
@@ -185,10 +526,9 @@ const Services = () => {
           </button>
         </div>
 
-        {/* Swiper Section */}
-        <div className="w-full max-w-md mx-auto lg:max-w-lg">
+        {/* Swiper Section with ScrollTrigger */}
+        <div ref={swiperRef} className="w-full max-w-md mx-auto lg:max-w-lg">
           <Swiper
-            ref={swiperRef}
             effect="cube"
             grabCursor={true}
             loop={true}

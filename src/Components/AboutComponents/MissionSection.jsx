@@ -134,7 +134,7 @@ import './Mission.css';
 
 const ServicesVisionMission = () => {
   return (
-    <section className="min-h-screen bg-gray-900 text-center py-20 px-8 xl:px-0 flex flex-col justify-center">
+    <section className="min-h-screen bg-black-900 text-center py-20 px-8 xl:px-0 flex flex-col justify-center">
       <span className="text-gray-400 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center justify-center">
         what we're offering 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="text-indigo-600 ml-3 w-6 h-6">
@@ -148,7 +148,7 @@ const ServicesVisionMission = () => {
       
       <div className="grid-offer text-left grid sm:grid-cols-2 md:grid-cols-2 gap-5 max-w-5xl mx-auto">
         {/* UI/UX Creative Design - Original First Card */}
-        <div className="card bg-gray-800 p-10 relative">
+        <div className="card bg-black-800 p-10 relative">
           <div className="circle ux-design-image"></div>
           <div className="relative lg:pr-52">
             <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl">
@@ -165,7 +165,7 @@ We envision a future where technology and imagination work hand in hand to shape
         </div>
 
         {/* Visual Graphic Design - Original Second Card */}
-        <div className="card bg-gray-800 p-10 relative">
+        <div className="card bg-black-800 p-10 relative">
           <div className="circle graphic-design-image"></div>
           <div className="relative lg:pl-48">
             <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl">
@@ -180,7 +180,7 @@ We aim to transform ideas into immersive experiences that inspire and engage.
         </div>
 
         {/* Our Vision - New Third Card */}
-        <div className="card bg-gray-800 p-10 relative">
+        <div className="card bg-black-800 p-10 relative">
           <div className="circle vision-image"></div>
           <div className="relative lg:pr-44">
             <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl">
@@ -195,7 +195,7 @@ We aim to transform ideas into immersive experiences that inspire and engage.
         </div>
 
         {/* Our Mission - New Fourth Card */}
-        <div className="card bg-gray-800 p-10 relative">
+        <div className="card bg-black-800 p-10 relative">
           <div className="circle mission-image"></div>
           <div className="relative lg:pl-48">
             <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl">
