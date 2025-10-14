@@ -15,6 +15,7 @@ export default function Industries() {
   const [radius, setRadius] = useState(120);
   const svgRef = useRef(null);
   const pathRef = useRef(null);
+  const containerRef = useRef(null);
   const circleRefs = useRef([]);
   const textRefs = useRef([]);
   const imageRefs = useRef([]);
@@ -34,41 +35,63 @@ export default function Industries() {
 
   const circles = [
     { id: 1, cx: 200, cy: 200, label: "Digital Enterprise", img: threed },
-    { id: 2, cx: 350, cy: 600, label: "Healthcare", img: gam },
-    { id: 3, cx: 100, cy: 1000, label: "Education", img: are },
-    { id: 4, cx: 300, cy: 1400, label: "Retail & E-commerce", img: wih },
-    { id: 5, cx: 200, cy: 1800, label: "Manufacturing", img: extra },
+    { id: 2, cx: 700, cy: 300, label: "Healthcare", img: gam },
+    { id: 3, cx: 1200, cy: 200, label: "Education", img: are },
+    { id: 4, cx: 1700, cy: 300, label: "Retail & E-commerce", img: wih },
+    { id: 5, cx: 2200, cy: 200, label: "Manufacturing", img: extra },
   ];
 
   const pathD = `
-    M ${circles[0].cx} ${circles[0].cy - 200}
+    M ${circles[0].cx - 150} ${circles[0].cy}
     ${circles
       .map((c, i) =>
         i > 0
-          ? `C ${circles[i - 1].cx - 100} ${circles[i - 1].cy + 150}, ${
-              c.cx + 100
-            } ${c.cy - 150}, ${c.cx} ${c.cy}`
+          ? `C ${circles[i - 1].cx + 150} ${circles[i - 1].cy - 80}, ${
+              c.cx - 150
+            } ${c.cy + 80}, ${c.cx} ${c.cy}`
           : ""
       )
       .join(" ")}
   `;
 
-  // GSAP Animations
   useEffect(() => {
+    const section = containerRef.current;
+    const svg = svgRef.current;
     const path = pathRef.current;
-    if (!path) return;
+    if (!section || !svg || !path) return;
 
     const totalLength = path.getTotalLength();
     gsap.set(path, { strokeDasharray: totalLength, strokeDashoffset: totalLength });
 
+    // Horizontal scroll setup
+    const totalScrollWidth = svg.scrollWidth;
+    const scrollTween = gsap.to(svg, {
+      x: () => -(svg.scrollWidth - window.innerWidth),
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: () => `+=${svg.scrollWidth}`,
+        scrub: true,
+        pin: true,
+        anticipatePin: 1,
+      },
+    });
+
+    // Animate path drawing
     gsap.to(path, {
       strokeDashoffset: 0,
       ease: "none",
-      scrollTrigger: { trigger: svgRef.current, start: "top 20%", end: "bottom 80%", scrub: true },
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: () => `+=${svg.scrollWidth}`,
+        scrub: true,
+      },
     });
 
+    // Animate each circle, image, and text
     circles.forEach((c, i) => {
-      // Floating circle animation
       gsap.fromTo(
         circleRefs.current[i],
         { scale: 0.3, opacity: 0, y: 50 },
@@ -78,11 +101,14 @@ export default function Industries() {
           y: 0,
           ease: "elastic.out(1,0.5)",
           duration: 1,
-          scrollTrigger: { trigger: circleRefs.current[i], start: "top 85%" },
+          scrollTrigger: {
+            trigger: svg,
+            start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
+            end: "+=200",
+          },
         }
       );
 
-      // Image fade in
       gsap.fromTo(
         imageRefs.current[i],
         { opacity: 0, scale: 0.7, y: 50 },
@@ -92,11 +118,14 @@ export default function Industries() {
           y: 0,
           ease: "power2.out",
           duration: 0.8,
-          scrollTrigger: { trigger: circleRefs.current[i], start: "top 85%" },
+          scrollTrigger: {
+            trigger: svg,
+            start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
+            end: "+=200",
+          },
         }
       );
 
-      // Floating labels
       gsap.fromTo(
         textRefs.current[i],
         { opacity: 0, y: 40 },
@@ -105,16 +134,26 @@ export default function Industries() {
           y: 0,
           ease: "power2.out",
           duration: 0.6,
-          scrollTrigger: { trigger: circleRefs.current[i], start: "top 85%" },
+          scrollTrigger: {
+            trigger: svg,
+            start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
+            end: "+=200",
+          },
         }
       );
     });
 
-    return () => ScrollTrigger.getAll().forEach((st) => st.kill());
+    return () => {
+      scrollTween.kill();
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
   }, [circles]);
 
   return (
-    <section className="relative w-full min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-950 text-white flex flex-col items-center justify-start py-16 sm:py-20 lg:py-28 overflow-hidden">
+    <section
+      ref={containerRef}
+      className="relative w-full min-h-screen overflow-hidden bg-gradient-to-b from-gray-900 via-black to-gray-950 text-white flex items-center justify-start py-16"
+    >
       {/* Floating Glow Backgrounds */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-32 left-1/2 w-[800px] h-[800px] bg-blue-600/20 rounded-full blur-[200px] animate-pulse-slow"></div>
@@ -123,22 +162,22 @@ export default function Industries() {
       </div>
 
       {/* Heading */}
-      <div className="relative text-center mb-12 sm:mb-16 px-4 z-10">
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 text-center z-10">
         <p className="text-xs sm:text-sm text-gray-400 tracking-wide uppercase">Industry Applications</p>
-        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-4xl 2xl:text-6xl font-extrabold mt-2 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 drop-shadow-[0_0_25px_rgba(200,200,255,0.3)]">
-          INDUSTRIES <br className="hidden sm:block" /> WE EMPOWER
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-2 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 drop-shadow-[0_0_25px_rgba(200,200,255,0.3)]">
+          INDUSTRIES WE EMPOWER
         </h1>
       </div>
 
       {/* SVG Path + Circles */}
-      <div className="relative w-full max-w-[95%] sm:max-w-[700px] lg:max-w-[900px] 2xl:max-w-[1100px] mx-auto z-10">
+      <div className="relative flex-shrink-0 w-[2500px] h-[600px] lg:h-[700px] 2xl:h-[800px] mx-auto z-10">
         <svg
           ref={svgRef}
-          viewBox="0 0 500 2000"
-          className="w-full h-[1500px] sm:h-[1800px] lg:h-[2000px] 2xl:h-[2200px] mx-auto"
+          viewBox="0 0 2500 600"
+          className="w-[2500px] h-full"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMin meet"
+          preserveAspectRatio="xMidYMid meet"
         >
           {/* Base path */}
           <path d={pathD} stroke="rgba(255,255,255,0.05)" strokeWidth="3" fill="none" strokeLinecap="round" />
@@ -156,7 +195,7 @@ export default function Industries() {
 
           {/* Gradient + Glow */}
           <defs>
-            <linearGradient id="gradientGlow" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="gradientGlow" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="#00ffff" />
               <stop offset="50%" stopColor="#ff00ff" />
               <stop offset="100%" stopColor="#ff0080" />
@@ -172,7 +211,7 @@ export default function Industries() {
 
           {/* Circles, Images, Labels */}
           {circles.map((c, idx) => {
-            const textX = c.cx + (idx % 2 === 0 ? -(radius + 70) : radius + 70);
+            const textY = c.cy + (idx % 2 === 0 ? -(radius + 50) : radius + 60);
             const fontSize =
               window.innerWidth >= 1536
                 ? 18 + radius / 7
@@ -235,9 +274,9 @@ export default function Industries() {
                 {/* Label */}
                 <text
                   ref={(el) => (textRefs.current[idx] = el)}
-                  x={textX}
-                  y={c.cy + 10}
-                  textAnchor={idx % 2 === 0 ? "end" : "start"}
+                  x={c.cx}
+                  y={textY}
+                  textAnchor="middle"
                   fill="#fff"
                   fontSize={fontSize * 0.75}
                   fontWeight={700}
