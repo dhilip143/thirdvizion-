@@ -1,5 +1,5 @@
 import Hero from "/src/Components/HomeComponent/HeroSection/HeroSection.jsx";
-import About from "/src/Components/ReusableComponents/AboutSection.jsx";
+// import About from "/src/Components/ReusableComponents/AboutSection.jsx";
 import Service from "/src/Components/HomeComponent/ServiceSection.jsx";
 import Categories from "/src/Components/HomeComponent/Categories";
 import VisionMission from "/src/Components/HomeComponent/VissionSection";
@@ -13,7 +13,7 @@ export default function Home() {
     <>
 
       <Hero />
-      <About />
+      {/* <About /> */}
       <Service />
       <Categories />
       <VisionMission />

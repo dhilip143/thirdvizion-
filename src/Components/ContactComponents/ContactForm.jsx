@@ -5,7 +5,7 @@ import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
-  FaGithub,
+  // FaGithub,
   FaYoutube,
   FaWordpress,
 } from "react-icons/fa";
@@ -14,7 +14,7 @@ const socialLinks = [
   { Icon: FaFacebookF, href: "https://facebook.com" },
   { Icon: FaInstagram, href: "https://instagram.com" },
   { Icon: FaLinkedinIn, href: "https://linkedin.com" },
-  { Icon: FaGithub, href: "https://github.com" },
+  // { Icon: FaGithub, href: "https://github.com" },
   { Icon: FaYoutube, href: "https://youtube.com" },
 ];
 
@@ -123,19 +123,19 @@ const ContactForm = () => {
           {/* Info Cards */}
           <div className="p-6 bg-gray-900/60 rounded-2xl shadow-lg">
             <h3 className="text-xl font-bold text-yellow-400">Address</h3>
-            <p className="text-gray-300 mt-2">123 Tech Street, City, Country</p>
+            <p className="text-gray-300 mt-2">11,1st Floor,Ramdos Nagar Kolathur,chennai-600099</p>
           </div>
           <div className="p-6 bg-gray-900/60 rounded-2xl shadow-lg">
             <h3 className="text-xl font-bold text-yellow-400">Phone</h3>
-            <p className="text-gray-300 mt-2">+91 98765 43210</p>
+            <p className="text-gray-300 mt-2">+91 89255 27548/+044-26284947</p>
           </div>
           <div className="p-6 bg-gray-900/60 rounded-2xl shadow-lg">
             <h3 className="text-xl font-bold text-yellow-400">Email</h3>
-            <p className="text-gray-300 mt-2">info@thirdvizion.com</p>
+            <p className="text-gray-300 mt-2">business@thirdvizion.com</p>
           </div>
           <div className="p-6 bg-gray-900/60 rounded-2xl shadow-lg">
             <h3 className="text-xl font-bold text-yellow-400">Support</h3>
-            <p className="text-gray-300 mt-2">support@thirdvizion.com</p>
+            <p className="text-gray-300 mt-2">www.thirdvizion.com</p>
           </div>
 
           {/* Contact Form */}

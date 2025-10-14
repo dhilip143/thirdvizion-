@@ -12,9 +12,10 @@ export default function About() {
     <>
       <div className="bg-black">
         <Hero />
-        <Mission />
-        <Journey />
         <AboutSection />
+        <Mission />
+        {/* <Journey /> */}
+        
         <OurTeam />
         <Partners />
       </div>

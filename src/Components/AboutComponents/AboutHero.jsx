@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import threed from "/src/assets/home/3d.png";
+import threed from "/src/assets/home/Clients/3d.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -216,10 +216,11 @@ export default function AboutHero() {
         className="fixed top-50 md:fixed  md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col justify-center md:h-screen items-center w-full z-30 pointer-events-none"
         aria-hidden
       >
-        <div className="about-text text-md xl:text-2xl md:mr-6 xl:mr-10 -mb-5 md:-mb-8 xl:-mb-10 font-medium text-white text-center uppercase transform font-stencil">
+        {/* <div className="about-text text-md xl:text-2xl md:mr-6 xl:mr-10 -mb-5 md:-mb-8 xl:-mb-10 font-medium text-white text-center uppercase transform font-stencil"> */}
+        <div className="about-text text-md xl:text-2xl md:mr-6 xl:mr-10 -mb-5 md:-mb-8 xl:-mb-10 font-medium text-white text-center uppercase transform  font-family: 'Inter Tight', sans-serif;">
           About
         </div>
-        <div className="flex gap-2 xl:gap-6 mt-4 font-stencil">
+        <div className="flex gap-2 xl:gap-6 mt-4  font-family: 'Inter Tight', sans-serif;">
           <div className="third-text text-4xl md:text-[5rem] xl:text-[12rem] font-medium text-white text-center uppercase">
             Third
           </div>
