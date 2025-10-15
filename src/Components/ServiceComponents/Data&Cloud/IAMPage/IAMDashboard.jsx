@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import DashBoardimage from "/src/assets/HeroImages/HeroHeader.webp";
 
+
 const IAMDashboard = () => {
     const { scrollYProgress } = useScroll();
 
