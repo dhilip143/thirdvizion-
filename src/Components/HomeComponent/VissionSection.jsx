@@ -588,78 +588,141 @@
 // };
 
 // export default VisionMission;
-import React, { useEffect, useRef } from "react";
+// import React, { useEffect, useRef } from "react";
+// import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const VisionMission = () => {
+//   const lineRefs = useRef([]);
+//   // Ref for the main container to control its height
+//   const containerRef = useRef(null);
+
+//   useEffect(() => {
+//     lineRefs.current = [];
+    
+//     // --- Setup for Content Lines Animation ---
+//     lineRefs.current.forEach((el, i) => {
+//       if (!el) return;
+      
+//       // We will keep the scrollTrigger logic mostly the same, 
+//       // but ensure 'el' is what drives the scroll position.
+//       const baseScrollTrigger = {
+//         trigger: el, 
+//         // Start the animation when the top of the element hits 85% of the viewport.
+//         start: "top 85%",
+//         // We might need to add markers for debugging: markers: true,
+//       };
+
+//       switch (i % 10) {
+//         case 0: // fade + float up
+//           gsap.from(el, { opacity: 0, y: 50, duration: 1, ease: "power2.out", scrollTrigger: baseScrollTrigger });
+//           break;
+//         case 1: // scale pop
+//           gsap.from(el, { scale: 0.5, opacity: 0, duration: 1, ease: "back.out(1.7)", scrollTrigger: baseScrollTrigger });
+//           break;
+//         case 2: // float left-right
+//           gsap.from(el, { x: -50, opacity: 0, duration: 1, ease: "power2.out", scrollTrigger: baseScrollTrigger });
+//           break;
+//         case 3: // float right-left
+//           gsap.from(el, { x: 50, opacity: 0, duration: 1, ease: "power2.out", scrollTrigger: baseScrollTrigger });
+//           break;
+//         case 4: // rotate + fade
+//           gsap.from(el, { rotation: 10, opacity: 0, duration: 1, ease: "power2.out", scrollTrigger: baseScrollTrigger });
+//           break;
+//         case 5: // yoyo float (continuous)
+//           gsap.to(el, { y: -10, repeat: -1, yoyo: true, duration: 2, ease: "sine.inOut" });
+//           break;
+//         case 6: // staggered letters
+//           // This requires the child <span>s to be available in the DOM when this runs
+//           if (el.querySelectorAll("span").length > 0) {
+//             gsap.from(el.querySelectorAll("span"), { y: 20, opacity: 0, stagger: 0.05, duration: 0.8, ease: "back.out(1.7)", scrollTrigger: baseScrollTrigger });
+//           }
+//           break;
+//         case 7: // scale + rotate
+//           gsap.from(el, { scale: 0.8, rotation: -5, opacity: 0, duration: 1, ease: "power2.out", scrollTrigger: baseScrollTrigger });
+//           break;
+//         case 8: // fade in with delay
+//           gsap.from(el, { opacity: 0, duration: 1, delay: 0.2, ease: "power2.out", scrollTrigger: baseScrollTrigger });
+//           break;
+//         case 9: // pulse effect (continuous)
+//           gsap.fromTo(el, { scale: 1 }, { scale: 1.05, repeat: -1, yoyo: true, duration: 1 });
+//           break;
+//         default:
+//           break;
+//       }
+//     });
+//     // --- End of Content Lines Animation Setup ---
+
+//   }, []); // Re-run effect when component mounts
+
+//   const lines = [
+      
+//     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">  Driving Innovation <span className="text-yellow-400">Beyond Boundaries</span></div>,      
+//     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">We're Not Just <span className="text-yellow-400">Technology</span></div>,
+//     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">We're Redefining How <span className="text-green-400">Businesses</span></div>,
+//     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">And <span className="text-blue-400">Interact</span> In a</div>,
+//     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2"><span className="text-purple-400">Digital-First</span> World</div>,
+//     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">Every Solution We Create <span className="text-red-400">Merges</span></div>,
+//     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2"><span className="text-cyan-400">Creativity</span>, Strategy, And</div>,
+//     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2"><span className="text-pink-400">Innovation</span> To Create</div>,
+//     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">Meaningful <span className="text-yellow-400">Impact</span></div>,
+//   ];
+
+//   return (
+//     // CHANGE 1: Use a custom class 'full-height-section' and set its height property.
+//     // CHANGE 2: Removed min-h-screen from the main div.
+//     <div 
+//       ref={containerRef}
+//       className="bg-black w-full flex items-start justify-center px-4 sm:px-6 lg:px-8 xl:px-12 pt-20"
+//       style={{ minHeight: '100vh', paddingBottom: '20vh' }} // Added extra padding to give initial room for scrolling the lines
+//     >
+//       <div className="text-center text-white w-full max-w-7xl">
+//         {/* Sticky Header */}
+       
+//         <div className="sticky top-12 z-10 pt-4 pb-8 bg-black/80 w-full backdrop-blur-sm">
+//           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-yellow-400 autoBlur mb-2 lg:mb-4">
+//             Vision & Mission
+//           </h2>
+        
+//         </div>
+        
+//         {/* Content Lines */}
+//         {/* CHANGE 4: Added mt-12 back to push the content below the header */}
+//         <div className="text-left space-y-1 lg:space-y-2 mt-12">
+//           {lines.map((line, idx) => (
+//             <div
+//               key={idx}
+//               ref={(el) => (lineRefs.current[idx] = el)}
+//               className="autoBlur leading-none"
+//             >
+//               {line}
+//             </div>
+//           ))}
+//         </div>
+
+//         {/* This is a spacer to ensure the last lines can scroll into view */}
+//         <div style={{ height: '50vh' }}></div> 
+        
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default VisionMission;
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const VisionMission = () => {
-  const lineRefs = useRef([]);
-  // Ref for the main container to control its height
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    lineRefs.current = [];
-    
-    // --- Setup for Content Lines Animation ---
-    lineRefs.current.forEach((el, i) => {
-      if (!el) return;
-      
-      // We will keep the scrollTrigger logic mostly the same, 
-      // but ensure 'el' is what drives the scroll position.
-      const baseScrollTrigger = {
-        trigger: el, 
-        // Start the animation when the top of the element hits 85% of the viewport.
-        start: "top 85%",
-        // We might need to add markers for debugging: markers: true,
-      };
-
-      switch (i % 10) {
-        case 0: // fade + float up
-          gsap.from(el, { opacity: 0, y: 50, duration: 1, ease: "power2.out", scrollTrigger: baseScrollTrigger });
-          break;
-        case 1: // scale pop
-          gsap.from(el, { scale: 0.5, opacity: 0, duration: 1, ease: "back.out(1.7)", scrollTrigger: baseScrollTrigger });
-          break;
-        case 2: // float left-right
-          gsap.from(el, { x: -50, opacity: 0, duration: 1, ease: "power2.out", scrollTrigger: baseScrollTrigger });
-          break;
-        case 3: // float right-left
-          gsap.from(el, { x: 50, opacity: 0, duration: 1, ease: "power2.out", scrollTrigger: baseScrollTrigger });
-          break;
-        case 4: // rotate + fade
-          gsap.from(el, { rotation: 10, opacity: 0, duration: 1, ease: "power2.out", scrollTrigger: baseScrollTrigger });
-          break;
-        case 5: // yoyo float (continuous)
-          gsap.to(el, { y: -10, repeat: -1, yoyo: true, duration: 2, ease: "sine.inOut" });
-          break;
-        case 6: // staggered letters
-          // This requires the child <span>s to be available in the DOM when this runs
-          if (el.querySelectorAll("span").length > 0) {
-            gsap.from(el.querySelectorAll("span"), { y: 20, opacity: 0, stagger: 0.05, duration: 0.8, ease: "back.out(1.7)", scrollTrigger: baseScrollTrigger });
-          }
-          break;
-        case 7: // scale + rotate
-          gsap.from(el, { scale: 0.8, rotation: -5, opacity: 0, duration: 1, ease: "power2.out", scrollTrigger: baseScrollTrigger });
-          break;
-        case 8: // fade in with delay
-          gsap.from(el, { opacity: 0, duration: 1, delay: 0.2, ease: "power2.out", scrollTrigger: baseScrollTrigger });
-          break;
-        case 9: // pulse effect (continuous)
-          gsap.fromTo(el, { scale: 1 }, { scale: 1.05, repeat: -1, yoyo: true, duration: 1 });
-          break;
-        default:
-          break;
-      }
-    });
-    // --- End of Content Lines Animation Setup ---
-
-  }, []); // Re-run effect when component mounts
+  const sectionRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const lines = [
-      
-    <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">  Driving Innovation <span className="text-yellow-400">Beyond Boundaries</span></div>,      
+    <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">Driving Innovation <span className="text-yellow-400">Beyond Boundaries</span></div>,
     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">We're Not Just <span className="text-yellow-400">Technology</span></div>,
     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">We're Redefining How <span className="text-green-400">Businesses</span></div>,
     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">And <span className="text-blue-400">Interact</span> In a</div>,
@@ -670,44 +733,134 @@ const VisionMission = () => {
     <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">Meaningful <span className="text-yellow-400">Impact</span></div>,
   ];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const totalItems = lines.length;
+
+      // ScrollTrigger logic - same as CRM component
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "+=4000", // Adjust scroll length based on content
+        scrub: true,
+        pin: true,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const index = Math.min(
+            totalItems - 1,
+            Math.floor(progress * totalItems)
+          );
+          setActiveIndex(index);
+        },
+      });
+
+      // Pre-setup animations for all lines
+      lines.forEach((_, index) => {
+        const element = document.getElementById(`line-${index}`);
+        if (element) {
+          gsap.set(element, {
+            opacity: 0,
+            y: 50,
+            scale: 0.8
+          });
+        }
+      });
+
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Animate lines when activeIndex changes
+  useEffect(() => {
+    // Animate current active line
+    const currentElement = document.getElementById(`line-${activeIndex}`);
+    if (currentElement) {
+      gsap.to(currentElement, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+    }
+
+    // Keep previous lines visible
+    for (let i = 0; i < activeIndex; i++) {
+      const prevElement = document.getElementById(`line-${i}`);
+      if (prevElement) {
+        gsap.to(prevElement, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.3
+        });
+      }
+    }
+
+    // Hide future lines
+    for (let i = activeIndex + 1; i < lines.length; i++) {
+      const futureElement = document.getElementById(`line-${i}`);
+      if (futureElement) {
+        gsap.to(futureElement, {
+          opacity: 0.3,
+          y: 20,
+          scale: 0.9,
+          duration: 0.3
+        });
+      }
+    }
+
+  }, [activeIndex]);
+
   return (
-    // CHANGE 1: Use a custom class 'full-height-section' and set its height property.
-    // CHANGE 2: Removed min-h-screen from the main div.
-    <div 
-      ref={containerRef}
-      className="bg-black w-full flex items-start justify-center px-4 sm:px-6 lg:px-8 xl:px-12 pt-20"
-      style={{ minHeight: '100vh', paddingBottom: '20vh' }} // Added extra padding to give initial room for scrolling the lines
+    <div
+      ref={sectionRef}
+      className="bg-black w-full flex items-start justify-center px-4 sm:px-6 lg:px-8 xl:px-12 pt-20 relative overflow-hidden"
+      style={{ minHeight: '100vh' }}
     >
       <div className="text-center text-white w-full max-w-7xl">
-        {/* Sticky Header */}
-       
+        {/* Sticky Header - Pinned during scroll */}
         <div className="sticky top-12 z-10 pt-4 pb-8 bg-black/80 w-full backdrop-blur-sm">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-yellow-400 autoBlur mb-2 lg:mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-yellow-400 mb-2 lg:mb-4">
             Vision & Mission
           </h2>
-        
         </div>
-        
-        {/* Content Lines */}
-        {/* CHANGE 4: Added mt-12 back to push the content below the header */}
-        <div className="text-left space-y-1 lg:space-y-2 mt-12">
+       
+        {/* Content Lines with Scroll Trigger Animation */}
+        <div className="text-left space-y-1 lg:space-y-2 mt-12 min-h-[60vh]">
           {lines.map((line, idx) => (
             <div
               key={idx}
-              ref={(el) => (lineRefs.current[idx] = el)}
-              className="autoBlur leading-none"
+              id={`line-${idx}`}
+              className={`leading-none transition-all duration-500 ${
+                idx === activeIndex
+                  ? "text-white scale-105"
+                  : idx < activeIndex
+                  ? "text-white/80 scale-100"
+                  : "text-white/30 scale-95"
+              }`}
+              style={{
+                transform: `translateY(${idx > activeIndex ? '20px' : '0px'})`,
+              }}
             >
               {line}
             </div>
           ))}
         </div>
 
-        {/* This is a spacer to ensure the last lines can scroll into view */}
-        <div style={{ height: '50vh' }}></div> 
-        
+        {/* Scroll progress indicator */}
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 text-sm">
+          {activeIndex + 1} / {lines.length}
+        </div>
+
+        {/* Spacer for smooth scrolling */}
+        <div style={{ height: '30vh' }}></div>
       </div>
     </div>
   );
 };
 
 export default VisionMission;
+
+

@@ -91,41 +91,41 @@ export default BlogsData;
 const VrData = [
   {
     id: "enterpriseVR",
-    title: "Enterprise VR Solutions",
+    title: "Enterprise Metaverse Solutions",
     description:
-      "Transform your business operations with our cutting-edge virtual reality solutions designed for enterprise applications.",
+      "Reimagine how your organization learns, collaborates, and innovates in a borderless 3D world. We design immersive VR ecosystems that empower enterprises to train smarter, visualize data dynamically, and connect teams across the globe in real time.",
     icon: "🏢",
     features: [
-      "Virtual training simulations",
-      "3D product visualizations",
-      "Remote collaboration spaces",
-      "Data visualization in VR",
+      "AI-powered virtual training environments",
+      "Real-time data visualization in 3D space",
+      "Global collaboration hubs in VR",
+      "Digital twins for business operations",
     ],
   },
   {
     id: "immersiveExperiences",
-    title: "Immersive Experiences",
+    title: "Immersive Brand Worlds",
     description:
-      "Create unforgettable virtual experiences that engage customers and elevate your brand presence.",
+      "Go beyond storytelling—create worlds your audience can *step into*. Our immersive VR experiences transform engagement into emotion, making your brand not just seen, but *felt*.",
     icon: "🌌",
     features: [
-      "Brand activation experiences",
-      "Virtual showrooms",
-      "Interactive product demos",
-      "360° marketing content",
+      "Virtual flagship stores & product universes",
+      "Interactive brand storytelling journeys",
+      "360° experiential marketing campaigns",
+      "Immersive events & metaverse exhibitions",
     ],
   },
   {
     id: "vrDevelopment",
-    title: "VR Development",
+    title: "Next-Gen VR Development",
     description:
-      "From concept to deployment, our team builds custom VR applications tailored to your specific needs.",
+      "We craft tailored VR experiences from the ground up — blending art, technology, and strategy to deliver next-generation virtual solutions that redefine user engagement.",
     icon: "🛠️",
     features: [
-      "Custom VR application development",
-      "Multi-platform compatibility",
-      "Performance optimization",
-      "Ongoing support & maintenance",
+      "Full-cycle VR app design & development",
+      "Cross-platform deployment (Meta, SteamVR, WebXR)",
+      "Realistic physics & spatial audio integration",
+      "Continuous optimization & live analytics support",
     ],
   },
 ];

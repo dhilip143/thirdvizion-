@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
-import { VrData, StatsData } from "/src/Data/Data.jsx";
+import { VrData } from "/src/Data/Data.jsx";
 
 const Vrsol = () => {
   const [activeService, setActiveService] = useState("enterpriseVR");
@@ -11,7 +11,7 @@ const Vrsol = () => {
   const headerRef = useRef(null);
   const serviceCardsRef = useRef([]);
   const detailsRef = useRef(null);
-  const statsRef = useRef([]);
+  // const statsRef = useRef([]);
   const backgroundElementsRef = useRef([]);
   const containerRef = useRef(null);
   const gridPatternRef = useRef(null);
@@ -116,35 +116,35 @@ const Vrsol = () => {
     });
 
     // Animation for stats
-    statsRef.current.forEach((stat, index) => {
-      if (stat) {
-        if (stat.textContent.includes("+") || stat.textContent.includes("%")) {
-          const value = stat.textContent;
-          gsap.fromTo(
-            stat,
-            { textContent: "0" },
-            {
-              textContent: value,
-              duration: 3,
-              delay: index * 0.3,
-              snap: { textContent: 1 },
-              onStart: () => {
-                stat.textContent = "0";
-              },
-              onComplete: () => {
-                gsap.to(stat, {
-                  scale: 1.05,
-                  duration: 1.5,
-                  repeat: -1,
-                  yoyo: true,
-                  ease: "sine.inOut",
-                });
-              },
-            }
-          );
-        }
-      }
-    });
+    // statsRef.current.forEach((stat, index) => {
+    //   if (stat) {
+    //     if (stat.textContent.includes("+") || stat.textContent.includes("%")) {
+    //       const value = stat.textContent;
+    //       gsap.fromTo(
+    //         stat,
+    //         { textContent: "0" },
+    //         {
+    //           textContent: value,
+    //           duration: 3,
+    //           delay: index * 0.3,
+    //           snap: { textContent: 1 },
+    //           onStart: () => {
+    //             stat.textContent = "0";
+    //           },
+    //           onComplete: () => {
+    //             gsap.to(stat, {
+    //               scale: 1.05,
+    //               duration: 1.5,
+    //               repeat: -1,
+    //               yoyo: true,
+    //               ease: "sine.inOut",
+    //             });
+    //           },
+    //         }
+    //       );
+    //     }
+    //   }
+    // });
 
     // Floating background elements
     backgroundElementsRef.current.forEach((element, index) => {
@@ -425,7 +425,7 @@ const Vrsol = () => {
           </div>
 
           {/* Stats Section */}
-          <motion.div
+          {/* <motion.div
             initial="hidden"
             whileInView="visible"
             variants={containerVariants}
@@ -451,7 +451,7 @@ const Vrsol = () => {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.div> */}
 
         </div>
 

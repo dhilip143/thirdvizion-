@@ -329,7 +329,7 @@ export default function Threelanding() {
       </section>
 
       {/* Tools section — lists common 3D tools used */}
-      <section className="relative z-20 py-12">
+      {/* <section className="relative z-20 py-12">
         <div className="max-w-6xl mx-auto px-6">
           <h3 className="text-xl font-semibold text-pink-300 mb-6">Tools & formats we use</h3>
 
@@ -344,10 +344,10 @@ export default function Threelanding() {
 
           <p className="mt-6 text-sm text-slate-400">Common export formats: <strong>FBX, OBJ, GLB/GLTF, USDZ</strong>. We optimize for target platforms — mobile, web or film.</p>
         </div>
-      </section>
+      </section> */}
 
       {/* Showcases / code samples */}
-      <section className="relative z-20 py-12 bg-gradient-to-b from-transparent to-white/2">
+      {/* <section className="relative z-20 py-12 bg-gradient-to-b from-transparent to-white/2">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
             <h4 className="text-2xl font-bold">Tiny code sample</h4>
@@ -372,7 +372,7 @@ useEffect(() => {
             </ul>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* LARGE CTA section */}
       <section className="relative z-20 py-20">
