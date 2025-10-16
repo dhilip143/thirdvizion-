@@ -24,7 +24,7 @@ const ProjectsData = [
     tools: ["Wordpress"],
   },
   {
-    id: 2,
+    id: 2,  
     title: "Madras Kitchen",
     image: madras,
     description:

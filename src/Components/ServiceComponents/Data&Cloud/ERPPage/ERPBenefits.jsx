@@ -21,7 +21,7 @@ export default function ERPBenefits() {
   ];
 
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-60 overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Heading */}
         <motion.h2
