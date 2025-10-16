@@ -12,43 +12,43 @@ import {
 import TextReveal from "/src/Hooks/TextReveal.jsx";
 import { Link } from "react-router-dom";
 
-const tools = [
-  { name: "Three.js", tag: "WebGL", hint: "3D in browser" },
-  { name: "React", tag: "JSX", hint: "Component-driven UI" },
-  { name: "Phaser", tag: "JS", hint: "2D game engine" },
-  { name: "Babylon.js", tag: "WebGL", hint: "Realtime rendering" },
-  { name: "Webpack/Vite", tag: "Tooling", hint: "Fast dev builds" },
-  { name: "TypeScript", tag: "Typed JS", hint: "Safer code" },
-  { name: "Blender", tag: "3D", hint: "Modeling & animation" },
-  { name: "Tiled", tag: "Level", hint: "Tilemap editor" },
-  { name: "A-Frame", tag: "VR", hint: "WebXR scenes" },
-  { name: "Playwright", tag: "Testing", hint: "E2E automation" },
-  { name: "GitHub Actions", tag: "CI", hint: "Auto builds & deploys" },
-  { name: "Sentry", tag: "Monitoring", hint: "Crash reporting" },
-];
+// const tools = [
+//   { name: "Three.js", tag: "WebGL", hint: "3D in browser" },
+//   { name: "React", tag: "JSX", hint: "Component-driven UI" },
+//   { name: "Phaser", tag: "JS", hint: "2D game engine" },
+//   { name: "Babylon.js", tag: "WebGL", hint: "Realtime rendering" },
+//   { name: "Webpack/Vite", tag: "Tooling", hint: "Fast dev builds" },
+//   { name: "TypeScript", tag: "Typed JS", hint: "Safer code" },
+//   { name: "Blender", tag: "3D", hint: "Modeling & animation" },
+//   { name: "Tiled", tag: "Level", hint: "Tilemap editor" },
+//   { name: "A-Frame", tag: "VR", hint: "WebXR scenes" },
+//   { name: "Playwright", tag: "Testing", hint: "E2E automation" },
+//   { name: "GitHub Actions", tag: "CI", hint: "Auto builds & deploys" },
+//   { name: "Sentry", tag: "Monitoring", hint: "Crash reporting" },
+// ];
 
-const features = [
-  {
-    icon: <Rocket className="w-5 h-5" />,
-    title: "Web First Prototypes",
-    text: "Rapid React/Three prototypes you can share in minutes.",
-  },
-  {
-    icon: <Cpu className="w-5 h-5" />,
-    title: "Performance Budgets",
-    text: "Frame-budgeting, draw-call tuning and memory profiling.",
-  },
-  {
-    icon: <Workflow className="w-5 h-5" />,
-    title: "Iterative Pipeline",
-    text: "Design -> Code -> Playtest -> Ship — iterate quickly.",
-  },
-  {
-    icon: <Gamepad2 className="w-5 h-5" />,
-    title: "Cross-Play Ready",
-    text: "Browser, mobile, desktop — same game logic, multiple targets.",
-  },
-];
+// const features = [
+//   {
+//     icon: <Rocket className="w-5 h-5" />,
+//     title: "Web First Prototypes",
+//     text: "Rapid React/Three prototypes you can share in minutes.",
+//   },
+//   {
+//     icon: <Cpu className="w-5 h-5" />,
+//     title: "Performance Budgets",
+//     text: "Frame-budgeting, draw-call tuning and memory profiling.",
+//   },
+//   {
+//     icon: <Workflow className="w-5 h-5" />,
+//     title: "Iterative Pipeline",
+//     text: "Design -> Code -> Playtest -> Ship — iterate quickly.",
+//   },
+//   {
+//     icon: <Gamepad2 className="w-5 h-5" />,
+//     title: "Cross-Play Ready",
+//     text: "Browser, mobile, desktop — same game logic, multiple targets.",
+//   },
+// ];
 
 function MarqueeRow({ items, reverse = false }) {
   return (
@@ -314,20 +314,20 @@ export default function GameLanding() {
           {/* </TextReveal> */}
 
           {/* Marquee Rows */}
-          <div className="mt-10 space-y-2">
+          {/* <div className="mt-10 space-y-2">
             <MarqueeRow items={tools.slice(0, Math.ceil(tools.length / 2))} />
             <MarqueeRow
               items={tools.slice(Math.ceil(tools.length / 2))}
               reverse
             />
-          </div>
+          </div> */}
         </div>
 
         <DragGame />
       </div>
 
       {/* Features */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 pb-20">
+      {/* <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 pb-20">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -364,7 +364,7 @@ export default function GameLanding() {
             </motion.div>
           ))}
         </motion.div>
-      </div>
+      </div> */}
 
       <style>{`
         .animate-marquee { animation: marquee 20s linear infinite; }

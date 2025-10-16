@@ -252,11 +252,11 @@ export default function Threelanding() {
             </div>
 
             {/* tiny stats */}
-            <div className="mt-10 flex gap-6 flex-wrap">
+            {/* <div className="mt-10 flex gap-6 flex-wrap">
               <Stat label="Models" value="500+" />
               <Stat label="PBR Materials" value="1200+" />
               <Stat label="Formats" value="FBX / GLB / USDZ" />
-            </div>
+            </div> */}
           </div>
 
           {/* Right column — 3D-ish assembled planets */}
