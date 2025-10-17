@@ -44,8 +44,22 @@ The outcome?
     description: "Explore VR applications and business use cases.",
     HeroImage: image1,
     innerContent: [
-      "Virtual Reality allows users to step inside computer-generated environments using VR headsets. It creates lifelike simulations for industries ranging from gaming to education.",
-      "Healthcare, real estate, and retail are using VR to enhance training, improve customer experiences, and provide immersive product demonstrations."
+    `“Can I see how this looks in real life?”
+ That’s the #1 question real estate buyers ask. And it’s exactly what Virtual Reality (VR) now answers—without needing to set foot on site.
+For one of our clients, we transformed their static listings into interactive 3D VR walkthroughs.
+ Buyers could now explore every room, every angle—from their phones or VR headsets. No more second-guessing room sizes. No more missed appointments. Just clarity.
+ • Compared to traditional photos or video calls, VR created
+ • 3x higher engagement
+ • 50% reduction in site visit
+ • Happier, faster-closing clients
+
+It’s more than a “cool feature.” It’s a smart selling tool.
+ If you're in real estate, VR can give your listings an edge that sells.
+
+Want to see how it works?
+ Let’s set up a demo tailored to your projects.
+
+Explore our VR tours → Contact us today.`
     ],
     sectionImages: [image1, image1, image1, image1, image1, image1],
   },
@@ -55,8 +69,25 @@ The outcome?
     description: "AR is revolutionizing shopping and interactive media.",
     HeroImage: image1,
     innerContent: [
-      "Augmented Reality overlays digital information onto the physical world. Apps like Pokémon Go and Snapchat filters brought AR into everyday life.",
-      "Retail, manufacturing, and healthcare industries use AR for virtual try-ons, assembly guidance, and advanced medical visualization."
+     ` “𝘞𝘢𝘪𝘵… 𝘈𝘙 𝘪𝘴𝘯’𝘵 𝘫𝘶𝘴𝘵 𝘧𝘰𝘳 𝘧𝘪𝘭𝘵𝘦𝘳𝘴?”
+We hear this a lot — and honestly, it’s outdated.
+Sure, gaming and face filters made AR popular.
+But today? AR is doing real work in real industries.
+
+Here’s how:
+𝗠𝗮𝗻𝘂𝗳𝗮𝗰𝘁𝘂𝗿𝗶𝗻𝗴: Technicians now use AR headsets that show repair steps directly on machines.
+
+𝗖𝗼𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻: Engineers can see the entire building layout in 3D before they build.
+Catch design issues early. Save time and money.
+
+𝗘𝗱𝘂𝗰𝗮𝘁𝗶𝗼𝗻 & 𝗧𝗿𝗮𝗶𝗻𝗶𝗻𝗴: No more boring PDF manuals. New employees learn through immersive, hands-on AR training. They remember more and learn faster.
+
+At Thirdvizion Labs, we help businesses use AR in practical ways — no hype, just results.
+
+👉 DM us “𝗔𝗥 𝗿𝗲𝗮𝗱𝘆” to see how it can work for your business.
+🔔 Follow @thirdvizionlabs for more updates.
+Want to explore ideas?
+ Book a free 15-minute AR consultation with us.`
     ],
     sectionImages: [image1, image1, image1, image1, image1, image1],
   },
@@ -77,8 +108,41 @@ The outcome?
     description: "Building responsive and scalable websites.",
     HeroImage: image1,
     innerContent: [
-      "Web development uses HTML, CSS, JavaScript, and frameworks like React and Angular to create user-friendly websites.",
-      "With mobile-first design becoming the standard, modern websites must be responsive, scalable, and optimized for performance."
+      `🚀 Running your website on WordPress?
+ You’re only as powerful as the tools you choose.
+
+So, What is Wordpress?🧐
+
+⋇WordPress is a simple tool to make your own website.
+⋇You don’t need to code.
+⋇Just pick a design, add text and pictures, and click publish.
+⋇It’s like using an app.
+⋇Great for blogs, shops, or portfolios. Easy for beginners, powerful for pros.
+⋇Your ideas, live online—fast and easy.
+
+From boosting SEO with Yoast, to scaling your store with WooCommerce, and even building full-blown online courses with LearnDash — WordPress isn’t just a platform, it’s a powerhouse ecosystem.
+
+Whether you're:
+ ≻ A blogger 🎯
+ ≻ A small business owner 💼
+ ≻ A designer, developer, or creator 🎨👨‍💻
+
+There are many tools or plug-ins. Here are 12 must-have WordPress tools that turn websites into engines of growth.
+
+ⅰ) Blogging - Yoast SEO 
+ii) Business website - Elementor 
+iii) E-Commerce - Woo commerce 
+iv) Portfolio websites - Envira gallery 
+v) Build membership websites - MemberPress 
+vi) Create and manage online courses - LearnDash 
+vii) Forum software - bbPress 
+viii) Google Analytics plugin - MonsterInsights 
+ix) Security & Backup - Wordfence security 
+x) Performance & optimization  - WP Rocket 
+xi) Visual page builder - Divi 
+xii) Custom field management for developers - Advanced custom fields(ACF) 
+
+👇 Which one is your favorite — or is missing from your stack?`
     ],
     sectionImages: [image1, image1, image1, image1, image1, image1],
   },
