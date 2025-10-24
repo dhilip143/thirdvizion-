@@ -96,8 +96,8 @@ const Services = () => {
     // ✅ Puzzle-like animation for swiper
     gsap.fromTo(
       ".swiper-container",
-      { 
-        opacity: 0, 
+      {
+        opacity: 0,
         scale: 0.8,
         rotation: -10,
         transformPerspective: 1000
@@ -163,7 +163,7 @@ const Services = () => {
     };
 
     // ✅ Button hover animations
-    const buttons = document.querySelectorAll("button");
+    const buttons = document.querySelectorAll(".button");
     buttons.forEach((button) => {
       const enter = () =>
         gsap.to(button, {
@@ -245,18 +245,18 @@ const Services = () => {
             We deliver cutting-edge technology services designed to transform your
             business operations and drive digital growth.
           </p>
-          <button className="bg-white text-gray-900 font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/30 relative overflow-hidden group">
+          <button className="button bg-white text-gray-900 font-semibold py-3 px-8 rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/30 relative overflow-hidden group">
             <span className="relative z-10">Contact Us</span>
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
           </button>
         </div>
 
-        {/* Swiper with Puzzle Effect */}
+        Swiper with Puzzle Effect
         <div className="swiper-container w-full max-w-md mx-auto lg:max-w-lg relative">
           {/* Puzzle Frame */}
           <div className="absolute inset-0 border-4 border-white/20 rounded-2xl pointer-events-none z-30 transform rotate-1 scale-105"></div>
           <div className="absolute inset-2 border-2 border-white/10 rounded-xl pointer-events-none z-30 transform -rotate-1"></div>
-          
+         
           <Swiper
             ref={swiperRef}
             grabCursor={true}
@@ -284,7 +284,7 @@ const Services = () => {
                 if (index === swiper.realIndex) {
                   const img = slide.querySelector('img');
                   const content = slide.querySelector('.slide-content');
-                  
+                 
                   // Puzzle piece animation
                   gsap.fromTo(img,
                     {
@@ -359,12 +359,12 @@ const Services = () => {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-20px) rotate(5deg); }
         }
-        
+       
         .swiper-slide {
           background: linear-gradient(45deg, #1f2937, #111827);
           border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+       
         .swiper-slide::before {
           content: '';
           position: absolute;
