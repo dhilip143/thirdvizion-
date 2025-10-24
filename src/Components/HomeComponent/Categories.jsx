@@ -47,90 +47,129 @@ const capabilitiesData = [
   },
 ];
 
-// Define a constant for the card's estimated height for the replacement effect
+// Constants for layout calculations
 const CARD_HEIGHT_FOR_REPLACEMENT = 380;
-// Define a padding value to ensure the next category's cards start far enough down
 const CATEGORY_BUFFER_SPACE = 450;
 
 export default function Categories() {
   return (
-    <section className="bg-gradient-to-br from-gray-900 via-black to-purple-900 text-white min-h-screen px-6 md:px-12 py-16">
+    <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 min-h-screen px-6 md:px-12 py-16">
       <div className="space-y-40">
         {capabilitiesData.map((cap, index) => (
           <div
             key={index}
-            className="grid grid-cols-1 md:grid-cols-2 gap-10"
+            className="grid grid-cols-1 md:grid-cols-2 gap-12"
             style={{
               minHeight: `${(cap.children.length - 1) * CATEGORY_BUFFER_SPACE + CARD_HEIGHT_FOR_REPLACEMENT + CATEGORY_BUFFER_SPACE}px`
             }}
           >
-            {/* Left Sticky Section - Enhanced Design */}
-            <div className="md:sticky md:top-20 h-fit bg-gradient-to-br from-purple-900/80 to-indigo-900/80 p-8 rounded-3xl shadow-2xl border border-purple-500/30 backdrop-blur-sm">
-              <div className="flex items-baseline gap-4">
-                <div className="text-5xl md:text-7xl text-white/10 font-bold select-none">
+            {/* Left Sticky Section - Deep Navy Theme */}
+            <div className="md:sticky md:top-24 h-fit bg-gradient-to-br from-slate-900 via-blue-900/50 to-emerald-900/30 p-10 rounded-3xl shadow-2xl border border-slate-700 relative overflow-hidden">
+              {/* Animated Background Glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent animate-pulse"></div>
+              
+              <div className="flex items-baseline gap-6 relative z-10">
+                <div className="text-6xl md:text-8xl text-white/5 font-bold select-none tracking-tighter">
                   {cap.id}
                 </div>
-                <div>
-                  <h3 className="text-3xl font-bold tracking-wide text-white mb-4">
+                <div className="flex-1">
+                  <h3 className="text-4xl font-bold tracking-tight text-white mb-6 leading-tight">
                     {cap.title}
                   </h3>
-                  <p className="text-white/80 mt-3 max-w-md leading-relaxed text-lg">
+                  <p className="text-emerald-200/80 mt-4 max-w-md leading-relaxed text-lg font-light">
                     {cap.desc}
                   </p>
                 </div>
               </div>
-              <div className="mt-8 flex items-center">
-                <div className="w-4 h-4 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse mr-3 shadow-lg shadow-green-500/25"></div>
-                <span className="text-white/80 text-base font-medium">{cap.children.length} services available</span>
+              
+              <div className="mt-10 flex items-center relative z-10">
+                <div className="w-5 h-5 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full animate-pulse mr-4 shadow-lg shadow-emerald-400/40 ring-2 ring-emerald-400/30"></div>
+                <span className="text-emerald-200 text-base font-semibold tracking-wide">
+                  {cap.children.length} premium services
+                </span>
               </div>
             </div>
 
-            {/* Right Side Cards with Enhanced Design */}
-            <div className="flex flex-col pt-[450px]">
+            {/* Right Side Cards - Glass Morphism Design */}
+            <div className="flex flex-col pt-[450px] gap-8">
               {cap.children.map((child, i) => (
                 <Link
                   to={child.link}
                   key={i}
-                  className={`relative md:sticky md:top-20 ${i > 0 ? `mt-[-${CARD_HEIGHT_FOR_REPLACEMENT}px]` : ''} z-10`}
+                  className={`relative md:sticky md:top-24 ${i > 0 ? `mt-[-${CARD_HEIGHT_FOR_REPLACEMENT}px]` : ''} z-10 group`}
                   style={{ zIndex: 10 + i }}
                 >
                   <motion.div
-                    className="rounded-3xl overflow-hidden shadow-2xl cursor-pointer border border-gray-600/30 bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm"
+                    className="rounded-3xl overflow-hidden shadow-2xl cursor-pointer bg-slate-800/30 backdrop-blur-md border border-slate-600/50 relative"
                     whileHover={{
-                      scale: 1.04,
-                      boxShadow: "0px 20px 40px rgba(168, 85, 247, 0.3)",
-                      borderColor: "rgba(168, 85, 247, 0.6)",
+                      scale: 1.02,
+                      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(16, 185, 129, 0.25)",
+                      y: -5,
                     }}
-                    transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                    transition={{ 
+                      type: "spring", 
+                      stiffness: 300, 
+                      damping: 20 
+                    }}
                   >
-                    {/* Top Card Header - Enhanced */}
-                    <div className="bg-gradient-to-r from-gray-800 to-gray-900 border-b border-gray-600/40 p-7 flex justify-between items-center">
-                      <div>
-                        <span className="font-bold text-white text-xl tracking-wide block">
+                    {/* Hover Glow Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+                    
+                    {/* Top Card Header */}
+                    <div className="bg-gradient-to-r from-slate-800 to-slate-900 p-8 flex justify-between items-center relative border-b border-slate-700">
+                      <div className="flex-1">
+                        <span className="font-bold text-white text-2xl tracking-tight block leading-tight">
                           {child.name}
                         </span>
                       </div>
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center shadow-2xl shadow-purple-500/30 group-hover:scale-110 transition-transform duration-300">
-                        <ArrowUpRight className="text-white w-6 h-6" />
+                      <motion.div 
+                        className="w-14 h-14 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 flex items-center justify-center shadow-2xl border border-emerald-300/50 group-hover:shadow-3xl transition-all duration-300"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                      >
+                        <ArrowUpRight className="text-slate-900 w-7 h-7 font-bold" />
+                      </motion.div>
+                    </div>
+
+                    {/* Image Container */}
+                    <div className="p-6 bg-transparent">
+                      <div className="h-72 rounded-2xl overflow-hidden border border-slate-600/50 shadow-lg relative group/image">
+                        <motion.img
+                          src={child.img}
+                          alt={child.name}
+                          className="w-full h-full object-cover"
+                          whileHover={{
+                            scale: 1.1,
+                            transition: { duration: 0.8, ease: "easeOut" }
+                          }}
+                        />
+                        
+                        {/* Enhanced Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-70 group-hover/image:opacity-30 transition-all duration-700"></div>
+                        
+                        {/* Hover Info Card */}
+                        <motion.div 
+                          className="absolute bottom-6 left-6 right-6"
+                          initial={{ opacity: 0, y: 20 }}
+                          whileHover={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.4 }}
+                        >
+                          <div className="bg-slate-800/95 backdrop-blur-md rounded-xl p-5 border border-slate-600/50 shadow-2xl transform-gpu">
+                            <div className="flex items-center justify-between">
+                              <span className="text-white font-bold text-lg tracking-wide">
+                                Explore {child.name.split(' ')[0]}
+                              </span>
+                              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                            </div>
+                            <p className="text-slate-300 text-sm mt-2 font-medium">
+                              Click to discover innovative solutions
+                            </p>
+                          </div>
+                        </motion.div>
                       </div>
                     </div>
 
-                    {/* Image Box - Enhanced */}
-                    <div className="p-4 bg-gradient-to-br from-gray-900 to-black">
-                      <div className="h-64 rounded-xl overflow-hidden border border-gray-600/30 shadow-2xl relative group">
-                        <img
-                          src={child.img}
-                          alt={child.name}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-70 group-hover:opacity-30 transition-all duration-500"></div>
-                        <div className="absolute bottom-4 left-4 right-4">
-                          <div className="bg-gradient-to-r from-purple-600/90 to-pink-600/90 backdrop-blur-sm rounded-lg p-3 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                            <span className="text-white font-medium text-sm">Discover {child.name.split(' ')[0]}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    {/* Subtle Border Glow */}
+                    <div className="absolute inset-0 rounded-3xl border border-emerald-500/10 pointer-events-none"></div>
                   </motion.div>
                 </Link>
               ))}
@@ -139,15 +178,22 @@ export default function Categories() {
         ))}
       </div>
 
-      {/* Enhanced Bottom Section */}
-      <div className="text-center mt-40">
+      {/* Bottom Section */}
+      <div className="text-center mt-48">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl mx-auto"
         >
-          
+          <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-12 border border-slate-700 shadow-2xl">
+            <h3 className="text-3xl font-bold text-white mb-4 tracking-tight">
+              Ready to Transform Your Vision?
+            </h3>
+            <p className="text-emerald-200/70 text-lg font-light max-w-2xl mx-auto leading-relaxed">
+              Explore our premium services and discover how we can bring your ideas to life with cutting-edge technology and innovative solutions.
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -1,4 +1,3 @@
-import WebStack from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebStack";
 import WebProjects from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebProjects.jsx";
 import WebHero from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebHero";
 import WebDesignScroll from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebDesignScroll.jsx";
@@ -19,13 +18,7 @@ const WebsitePage = () => {
         <WebHero />
         <WebDesignScroll />
 
-        <section className="mt-20 lg:mt-0 lg:min-h-screen w-full flex flex-col items-center justify-center px-6 font-inter-tight">
-          {/* Tech Stack Section */}
-          
-          <div className="w-full">
-            <WebStack />
-          </div>
-        </section>
+        
 
         
         <WebAbt/>
