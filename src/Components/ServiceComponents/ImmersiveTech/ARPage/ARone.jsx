@@ -251,10 +251,10 @@ export default function ArPage() {
         {/* Engaging Hook Section */}
         <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16">
          <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight">
-  Unlock the <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+  Unlock the <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text text-transparent">
     Power
   </span> of <br className="hidden sm:block" />
-  <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+  <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text text-transparent">
     Augmented Reality
   </span>
 </h1>

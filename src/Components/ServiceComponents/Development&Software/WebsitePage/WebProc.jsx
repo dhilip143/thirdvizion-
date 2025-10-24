@@ -185,11 +185,11 @@ const TimelineStep = ({ step, index }) => {
       {/* Connector Circle (Center of the Timeline) */}
       <div 
         ref={circleRef}
-        className="absolute top-0 w-8 h-8 rounded-full z-10 -translate-x-1/2 bg-black/40 border-4 border-[#00d3f3] backdrop-blur-md"
+        className="absolute top-0 w-10 h-10 rounded-full z-10 -translate-x-1/2 bg-black/40 border-4 border-[#00d3f3] backdrop-blur-md"
         style={{ left: '50%' }}
       >
         {/* Number inside the circle */}
-        <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-[#00d3f3] font-inter-tight">
+        <div className="absolute inset-0 flex items-center justify-center text-sm font-bold text-[#00d3f3] font-inter-tight">
           {step.id}
         </div>
       </div>
@@ -197,28 +197,28 @@ const TimelineStep = ({ step, index }) => {
       {/* Content Card */}
       <div 
         ref={contentRef}
-        className="p-6 rounded-xl border-t-4 bg-black/40 border-[#00d3f3] shadow-2xl transform-gpu backdrop-blur-md"
+        className="p-7 rounded-xl border-t-4 bg-black/40 border-[#00d3f3] shadow-2xl transform-gpu backdrop-blur-md"
         style={{ transformStyle: 'preserve-3d' }}
       >
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-4">
           <div ref={iconRef}>
-            <Icon className="w-6 h-6 text-[#00d3f3]" />
+            <Icon className="w-8 h-8 text-[#00d3f3]" />
           </div>
-          <h3 className="text-xl font-bold text-white font-inter-tight">
+          <h3 className="text-2xl font-bold text-white font-inter-tight">
             {step.title}
           </h3>
         </div>
         
         {/* Pointer Arrow (Desktop Only) */}
         <div 
-          className={`hidden md:block absolute top-4 w-0 h-0 border-y-[10px] border-y-transparent ${
+          className={`hidden md:block absolute top-4 w-0 h-0 border-y-[12px] border-y-transparent ${
             isLeft 
-              ? 'border-l-[10px] border-l-black/40 right-0 translate-x-full' 
-              : 'border-r-[10px] border-r-black/40 left-0 -translate-x-full'
+              ? 'border-l-[12px] border-l-black/40 right-0 translate-x-full' 
+              : 'border-r-[12px] border-r-black/40 left-0 -translate-x-full'
           }`}
         ></div>
         
-        <p className="mt-2 text-white/70 text-sm font-inter-tight">
+        <p className="mt-3 text-white/70 text-base font-inter-tight">
           {isLeft 
             ? 'Focus on client interviews, functional specifications, and initial project scope definition.' 
             : 'Analyze architectural needs, select primary programming languages, frameworks, and deployment services.'}
@@ -378,7 +378,7 @@ const App = () => {
       <div className="w-full max-w-5xl mt-16 mb-16 text-center">
         <h1 
           ref={titleRef}
-          className="text-6xl md:text-7xl font-extrabold pb-2 tracking-tight opacity-0 font-inter-tight"
+          className="text-7xl md:text-8xl font-extrabold pb-2 tracking-tight opacity-0 font-inter-tight"
           style={{
             background: 'linear-gradient(90deg, #00d3f3, #00a3cc)',
             WebkitBackgroundClip: 'text',
@@ -388,10 +388,10 @@ const App = () => {
         >
           Website
         </h1>
-        <h2 ref={subtitleRef} className="text-3xl md:text-5xl font-extrabold text-white flex items-center justify-center mt-2 opacity-0 font-inter-tight">
+        <h2 ref={subtitleRef} className="text-4xl md:text-6xl font-extrabold text-white flex items-center justify-center mt-3 opacity-0 font-inter-tight">
           Development Process
-          <span className="text-[#00d3f3] ml-3">
-            <Diamond className="w-6 h-6 md:w-8 md:h-8 fill-[#00d3f3] rotate-45" />
+          <span className="text-[#00d3f3] ml-4">
+            <Diamond className="w-8 h-8 md:w-10 md:h-10 fill-[#00d3f3] rotate-45" />
           </span>
         </h2>
       </div>
@@ -423,12 +423,7 @@ const App = () => {
       </div>
       
       {/* Final Launch Rocket Icon */}
-      <div 
-        ref={rocketRef}
-        className="relative w-8 h-8 flex items-center justify-center bg-[#00d3f3] rounded-full mt-4 z-10 shadow-2xl shadow-[#00d3f3]/80 backdrop-blur-md"
-      >
-        <Rocket className="w-6 h-6 text-gray-900" />
-      </div>
+      
     </div>
   );
 }

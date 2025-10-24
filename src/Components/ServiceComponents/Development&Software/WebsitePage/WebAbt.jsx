@@ -10,7 +10,7 @@ if (typeof window !== 'undefined') {
 
 // === Inline SVG Icons (Enhanced with animation-ready props) ===
 
-const IconCommunication = ({ className = "w-10 h-10" }) => (
+const IconCommunication = ({ className = "w-12 h-12" }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="6" cy="18" r="3" />
     <circle cx="18" cy="6" r="3" />
@@ -19,7 +19,7 @@ const IconCommunication = ({ className = "w-10 h-10" }) => (
   </svg>
 );
 
-const IconDelivery = ({ className = "w-10 h-10" }) => (
+const IconDelivery = ({ className = "w-12 h-12" }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M10 13l-4 4 1.5 1.5L13 10m-3 3l-2-2M13 10l2 2m-2 2l2-2" />
     <path d="M13 10l5-5 4 4-5 5-4-4z" />
@@ -27,7 +27,7 @@ const IconDelivery = ({ className = "w-10 h-10" }) => (
   </svg>
 );
 
-const IconQuality = ({ className = "w-10 h-10" }) => (
+const IconQuality = ({ className = "w-12 h-12" }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="3" width="20" height="15" rx="2" ry="2" />
     <line x1="12" y1="21" x2="12" y2="18" />
@@ -36,7 +36,7 @@ const IconQuality = ({ className = "w-10 h-10" }) => (
   </svg>
 );
 
-const IconSecurity = ({ className = "w-10 h-10" }) => (
+const IconSecurity = ({ className = "w-12 h-12" }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     <rect x="10" y="9" width="4" height="6" rx="1" ry="1" />
@@ -44,7 +44,7 @@ const IconSecurity = ({ className = "w-10 h-10" }) => (
   </svg>
 );
 
-const IconDesign = ({ className = "w-10 h-10" }) => (
+const IconDesign = ({ className = "w-12 h-12" }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="3" width="20" height="15" rx="2" ry="2" />
     <path d="M12 21h0" />
@@ -54,7 +54,7 @@ const IconDesign = ({ className = "w-10 h-10" }) => (
   </svg>
 );
 
-const IconScalability = ({ className = "w-10 h-10" }) => (
+const IconScalability = ({ className = "w-12 h-12" }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="3" />
     <path d="M19.4 15a1.4 1.4 0 0 0 0-2.8L16.2 12l.3-.4a9.4 9.4 0 0 0 1-2.6 1.4 1.4 0 0 0-1.4-1.6l-2.4-.4-.3-2.6a1.4 1.4 0 0 0-2.8 0L12 4.2l-2.6-.3a1.4 1.4 0 0 0-1.6 1.4 9.4 9.4 0 0 0-2.6 1l-.4.3-2.8-.2a1.4 1.4 0 0 0 0 2.8l2.6.3-.3 2.6a9.4 9.4 0 0 0 1 2.6 1.4 1.4 0 0 0 1.6 1.4l2.4.4.3 2.6a1.4 1.4 0 0 0 2.8 0L12 19.8l2.6.3a1.4 1.4 0 0 0 1.6-1.4 9.4 9.4 0 0 0 2.6-1l.4-.3 2.8.2z" />
@@ -182,7 +182,7 @@ const VisualElement = ({ icon: Icon, isReversed, index }) => {
           </div>
 
           <div ref={iconRef}>
-            <Icon className="w-20 h-20 text-[#00d3f3] stroke-1 relative z-10" />
+            <Icon className="w-24 h-24 text-[#00d3f3] stroke-1 relative z-10" />
           </div>
         </div>
       </div>
@@ -334,20 +334,16 @@ const App = () => {
         Develop Your Web 
       </>
     ),
-    description: "With up-to-date tech and your satisfaction in mind, Thirdvizion delivers web development that revolves around you. We engage your audience with a site that is not only visually captivating but also optimized for conversion.",
   };
 
   return (
-    <div className="min-h-screen bg-transparent  flex items-center justify-center p-4 sm:p-8 font-inter-tight relative overflow-hidden">
+    <div className="min-h-screen bg-black flex items-center justify-center p-4 sm:p-8 font-inter-tight relative overflow-hidden">
       
       {/* Animated Background Elements */}
       <FloatingBackground />
       
-      {/* Gradient Orbs */}
-      
-
       {/* Outer Container */}
-      <div className="max-w-6xl mx-auto py-16 px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 md:px-10 lg:px-16 relative z-10">
         
         {/* === Header Section with GSAP Animations === */}
         <div ref={headerRef} className="text-center max-w-4xl mx-auto mb-20">
@@ -356,7 +352,7 @@ const App = () => {
             className="mb-8"
             initial={false}
           >
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-7xl md:text-8xl font-inter-tight font-extrabold tracking-tight text-white leading-tight">
               {React.Children.map(titleContent.title.props.children, (child, index) => (
                 <motion.span
                   key={index}
@@ -372,7 +368,7 @@ const App = () => {
           <motion.p 
             ref={descriptionRef}
             initial={false}
-            className="text-lg text-white/80 leading-relaxed max-w-3xl mx-auto font-inter-tight"
+            className="text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto font-inter-tight"
           >
             {titleContent.description}
           </motion.p>
@@ -399,13 +395,13 @@ const App = () => {
                     ${isReversed ? 'lg:col-start-2' : ''}`}
                 >
                   <motion.h3 
-                    className="text-3xl font-bold text-white mb-4 feature-text-animate font-inter-tight"
+                    className="text-3xl font-inter-tight font-bold text-[#00d3f3] mb-4 tracking-tight feature-text-animate"
                     initial={false}
                   >
                     {feature.title}
                   </motion.h3>
                   <motion.p 
-                    className="text-md text-white/70 leading-relaxed feature-text-animate font-inter-tight"
+                    className="text-xl text-gray-300 leading-relaxed feature-text-animate font-inter-tight"
                     initial={false}
                   >
                     {feature.description}
@@ -422,9 +418,6 @@ const App = () => {
             );
           })}
         </div>
-
-    
-        
       </div>
     </div>
   );

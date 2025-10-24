@@ -1,88 +1,167 @@
-import sampleImage from "/src/assets/MobileTransparent.png";
+import sampleImage from "/src/assets/Animations/iso.json";
 import { motion } from "framer-motion";
+import Lottie from "lottie-react";
 
 const AppAbout = () => {
+  // Animation variants matching the first component
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+
   return (
-    <section className=" w-full min-h-screen flex flex-col md:flex-row gap-10 lg:gap-16 items-center justify-center px-4 sm:px-8 md:px-12 lg:px-20 xl:pl-50 py-12 font-inter-tight">
-
-      {/* Left Content */}
-      <div className="w-full md:w-1/2">
-        <motion.h2
+    <section className="w-full min-h-screen bg-black flex items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16 py-20 font-inter-tight">
+      <div className="max-w-7xl mx-auto w-full">
+        {/* Header Section */}
+        <motion.div
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ amount: 0.5 }}
-          className="text-3xl md:text-4xl xl:text-5xl font-extrabold mb-6 text-[#ff8904] tracking-wide drop-shadow-[0_0_10px_rgba(255,137,4,0.4)]"
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
-          Building the Future of Mobile Experiences
-        </motion.h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-6">
+            Building the Future of Mobile Experiences
+          </h2>
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            Crafting premium mobile applications that combine elegant design, seamless interactions, 
+            and scalable technology for your digital advantage.
+          </p>
+        </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ amount: 0.5 }}
-          className="text-gray-300 mb-6 text-base md:text-lg leading-relaxed"
-        >
-          At <span className="text-[#ff8904] font-semibold">ThirdVizion</span>, we craft
-          cutting-edge mobile applications that feel premium, perform flawlessly,
-          and keep your users coming back. Every app we build combines
-          <span className="text-[#ff8904] font-semibold"> elegant design</span>,
-          <span className="text-[#ff8904] font-semibold"> seamless interactions</span>,
-          and <span className="text-[#ff8904] font-semibold">scalable technology</span>
-          — giving your business a true digital advantage.
-        </motion.p>
-
-        <ul className="space-y-4 text-gray-300 text-sm md:text-base">
-          <motion.li
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ amount: 0.5 }}
-            className="flex items-start"
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+          {/* Left Content - Text */}
+          <motion.div
+            className="w-full lg:w-1/2"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
           >
-            <span className="text-[#ff8904] font-bold mr-2">•</span>
-            <span><span className="text-[#ff8904] font-semibold">Human-Centered Design</span> — We create apps that are intuitive, engaging, and loved by users.</span>
-          </motion.li>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-gray-300 mb-8 leading-relaxed"
+            >
+              At <span className="text-[#ff8904] font-semibold">ThirdVizion</span>, we specialize in creating 
+              cutting-edge mobile applications that feel premium, perform flawlessly, and keep your users 
+              engaged. Our approach combines innovative design with robust technology to deliver exceptional 
+              digital experiences.
+            </motion.p>
 
-          <motion.li
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ amount: 0.5 }}
-            className="flex items-start"
-          >
-            <span className="text-[#ff8904] font-bold mr-2">•</span>
-            <span><span className="text-[#ff8904] font-semibold">Future-Ready Tech</span> — We leverage the latest frameworks to build apps that scale with your growth.</span>
-          </motion.li>
+            {/* Features Grid */}
+            <div className="space-y-6">
+              <motion.div
+                variants={itemVariants}
+                className="p-6 rounded-2xl border border-[#ff8904]/20 bg-black/50 backdrop-blur-sm hover:border-[#ff8904]/40 hover:shadow-[0_0_20px_rgba(255,137,4,0.2)] transition-all duration-500"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-[#ff8904]/10 flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl text-[#ff8904] font-bold">◆</span>
+                  </div>
+                  <div>
+                    <h3 className="text-[#ff8904] font-semibold text-xl mb-2">Human-Centered Design</h3>
+                    <p className="text-gray-300">We create intuitive, engaging apps that users love to interact with.</p>
+                  </div>
+                </div>
+              </motion.div>
 
-          <motion.li
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ amount: 0.5 }}
-            className="flex items-start"
+              <motion.div
+                variants={itemVariants}
+                className="p-6 rounded-2xl border border-[#ff8904]/20 bg-black/50 backdrop-blur-sm hover:border-[#ff8904]/40 hover:shadow-[0_0_20px_rgba(255,137,4,0.2)] transition-all duration-500"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-[#ff8904]/10 flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl text-[#ff8904] font-bold">⚡</span>
+                  </div>
+                  <div>
+                    <h3 className="text-[#ff8904] font-semibold text-xl mb-2">Future-Ready Technology</h3>
+                    <p className="text-gray-300">Leveraging the latest frameworks to build scalable, high-performance apps.</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                variants={itemVariants}
+                className="p-6 rounded-2xl border border-[#ff8904]/20 bg-black/50 backdrop-blur-sm hover:border-[#ff8904]/40 hover:shadow-[0_0_20px_rgba(255,137,4,0.2)] transition-all duration-500"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-[#ff8904]/10 flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl text-[#ff8904] font-bold">🤝</span>
+                  </div>
+                  <div>
+                    <h3 className="text-[#ff8904] font-semibold text-xl mb-2">Collaborative Approach</h3>
+                    <p className="text-gray-300">Working closely with your team to bring your vision to life effectively.</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* CTA Button */}
+            
+          </motion.div>
+
+          {/* Right Content - Lottie Animation */}
+          <motion.div
+            className="w-full lg:w-1/2 flex justify-center"
+            variants={imageVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
           >
-            <span className="text-[#ff8904] font-bold mr-2">•</span>
-            <span><span className="text-[#ff8904] font-semibold">Collaborative Approach</span> — We work closely with your team to bring your vision to life.</span>
-          </motion.li>
-        </ul>
+            <div className="relative">
+              <motion.div
+                className="relative p-8 rounded-2xl border border-[#ff8904]/20 shadow-[0_0_30px_rgba(255,137,4,0.2)] bg-black/50 backdrop-blur-sm"
+                whileHover={{
+                  boxShadow: '0 0 40px rgba(255, 137, 4, 0.4)',
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <Lottie
+                  animationData={sampleImage}
+                  className="w-full max-w-md object-cover transform hover:scale-105 transition-transform duration-500"
+                  loop={true}
+                  autoplay={true}
+                />
+                
+                {/* Floating decorative elements */}
+                <div className="absolute -top-3 -right-3 w-6 h-6 bg-[#ff8904] rounded-full opacity-20 animate-pulse"></div>
+                <div className="absolute -bottom-3 -left-3 w-4 h-4 bg-[#ff8904] rounded-full opacity-30 animate-pulse delay-1000"></div>
+              </motion.div>
+              
+              {/* Background glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#ff8904]/10 to-transparent rounded-2xl blur-xl -z-10"></div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Bottom Stats/Highlights */}
+        
       </div>
-
-      {/* Right Content - Image */}
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ amount: 0.5 }}
-        className="w-full md:w-1/2 flex justify-center overflow-hidden"
-      >
-        <img
-          src={sampleImage}
-          alt="ThirdVizion Mobile Development"
-          className="w-3/4 md:w-[22rem] lg:w-[20rem] 2xl:w-[22rem] p-4 sm:p-6 md:p-10 object-cover"
-        />
-      </motion.div>
     </section>
   );
 };
