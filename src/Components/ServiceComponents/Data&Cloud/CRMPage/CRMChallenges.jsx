@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -42,7 +41,7 @@ export default function CRMShowcase() {
     },
     {
       title: "Complete Customer View",
-      desc: "Instant access to every customer’s interaction, journey, and engagement timeline.",
+      desc: "Instant access to every customer's interaction, journey, and engagement timeline.",
     },
     {
       title: "AI Analytics Dashboard",
@@ -113,7 +112,7 @@ export default function CRMShowcase() {
   }, [activeIndex]);
 
   const radius = 230;
-  const center = { x: 500, y: 380 }; // slightly down
+  const center = { x: 500, y: 380 };
 
   return (
     <section
@@ -121,8 +120,8 @@ export default function CRMShowcase() {
       className="relative w-full min-h-screen bg-gradient-to-b from-[#020202] via-[#0A0A0A] to-[#050505] text-white flex flex-col items-center justify-center overflow-hidden"
     >
       {/* Header */}
-      <div className="absolute top-16 text-center"> {/* 👈 moved slightly down */}
-        <h2 className="text-3xl md:text-4xl font-extrabold text-[#00C6FF] mb-3">
+      <div className="absolute top-16 text-center">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-[#FF6467] mb-3">
           Your CRM Universe
         </h2>
         <p className="text-white/60 text-xs md:text-sm max-w-xl mx-auto mt-1">
@@ -147,7 +146,7 @@ export default function CRMShowcase() {
                 key={i}
                 ref={addLineRef}
                 d={`M${x},${y} Q${(x + center.x) / 2},${(y + center.y) / 2 - 40} ${center.x},${center.y}`}
-                stroke="#00C6FF"
+                stroke="#FF6467"
                 strokeWidth="1.5"
                 fill="none"
                 opacity="0.15"
@@ -167,9 +166,9 @@ export default function CRMShowcase() {
         </svg>
 
         {/* CRM Core */}
-        <div className="absolute w-48 h-48 rounded-full bg-gradient-to-br from-[#00C6FF] to-[#0072FF] flex items-center justify-center font-bold text-4xl shadow-[0_0_60px_rgba(0,114,255,0.8)] z-20">
+        <div className="absolute w-48 h-48 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-4xl shadow-[0_0_60px_rgba(255,100,103,0.8)] z-20">
           CRM
-          <div className="absolute inset-0 rounded-full border-2 border-[#00C6FF] animate-ping opacity-20"></div>
+          <div className="absolute inset-0 rounded-full border-2 border-[#FF6467] animate-ping opacity-20"></div>
         </div>
 
         {/* Orbiting Icons */}
@@ -191,15 +190,15 @@ export default function CRMShowcase() {
               <div
                 className={`w-12 h-12 flex items-center justify-center rounded-full border transition-all duration-500 ${
                   activeIndex === i
-                    ? "bg-[#00C6FF] border-[#00C6FF] text-white shadow-[0_0_25px_rgba(0,198,255,0.8)]"
-                    : "bg-white/5 border-white/20 text-white/70"
+                    ? "bg-[#FF6467] border-[#FF6467] text-white shadow-[0_0_25px_rgba(255,100,103,0.8)]"
+                    : "bg-[#FF646710] border-[#FF646730] text-white/70"
                 }`}
               >
                 {p.icon}
               </div>
               <span
                 className={`text-xs mt-2 font-medium ${
-                  activeIndex === i ? "text-[#00C6FF]" : "text-white/50"
+                  activeIndex === i ? "text-[#FF6467]" : "text-white/50"
                 }`}
               >
                 {p.label}
@@ -208,10 +207,9 @@ export default function CRMShowcase() {
           );
         })}
 
-        {/* Feature Card (LEFT SIDE) */}
-        <div className="absolute left-[-90px] top-1/2 -translate-y-1/2 w-[340px] text-left bg-gradient-to-b from-[#0A0A0A]/90 to-[#050505]/80 backdrop-blur-2xl border border-[#00C6FF]/40 rounded-2xl p-6 shadow-[0_0_25px_rgba(0,198,255,0.3)]">
-          {/* 👆 moved slightly more left */}
-          <h3 className="text-lg font-bold text-[#00C6FF] mb-2">
+        {/* Feature Card */}
+        <div className="absolute left-[-90px] top-1/2 -translate-y-1/2 w-[340px] text-left bg-[#FF646710] backdrop-blur-md border border-[#FF646740] rounded-2xl p-6 shadow-[0_0_30px_rgba(255,100,103,0.15)] hover:shadow-[0_0_50px_rgba(255,100,103,0.3)] transition-all duration-500">
+          <h3 className="text-lg font-bold text-[#FF6467] mb-2">
             {cardData[activeIndex].title}
           </h3>
           <p className="text-xs text-white/70 leading-relaxed">
@@ -222,4 +220,3 @@ export default function CRMShowcase() {
     </section>
   );
 }
-
