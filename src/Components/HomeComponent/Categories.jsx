@@ -1023,6 +1023,7 @@ const CATEGORY_BUFFER_SPACE = 450;
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Search, PenTool, Hammer, Rocket, LifeBuoy } from "lucide-react";
 
 import video1 from "/src/assets/CategoriesVedio/vedio1.mp4";
 import video2 from "/src/assets/CategoriesVedio/vedio2.mp4";
@@ -1033,81 +1034,141 @@ import video5 from "/src/assets/CategoriesVedio/vedio5.mp4";
 gsap.registerPlugin(ScrollTrigger);
 
 const slides = [
-  { video: video1, content: "Discover new possibilities. We analyze, research, and strategize to uncover opportunities that align with your vision." },
-  { video: video2, content: "With clarity and purpose, we design a robust strategy that aligns innovation with your objectives. Whether it’s AR/VR experiences, cloud infrastructure, or identity management systems, we architect scalable, secure, and future-ready solutions that drive sustainable growth." },
-  { video: video3, content: "Our engineers and designers bring your ideas to life with precision and creativity. From mobile and web app development to immersive 3D experiences, we ensure every product is crafted to perform seamlessly and deliver exceptional user experiences." },
-  { video: video4, content: "Innovation doesn’t stop at launch. We continuously optimize, enhance, and adapt your solutions to keep pace with evolving technologies and market needs—ensuring your business stays ahead of the curve." },
-  { video: video5, content: "At ThirdVizion Labs, our partnership doesn’t end when the project is delivered. Our dedicated support team ensures your systems remain efficient, secure, and optimized—every hour of every day." },
+  {
+    icon: Search,
+    title: "Discover",
+    content:
+      "We start by deeply understanding your business vision, challenges, and aspirations. Our team dives into every detail to uncover insights that guide us in crafting tailored technology solutions designed to transform your goals into measurable outcomes.",
+    video: video1,
+  },
+  {
+    icon: PenTool,
+    title: "Architect",
+    content:
+      "With clarity and purpose, we design a robust strategy that aligns innovation with your objectives. Whether it's AR/VR experiences, cloud infrastructure, or identity management systems, we architect scalable, secure, and future-ready solutions that drive sustainable growth.",
+    video: video2,
+  },
+  {
+    icon: Hammer,
+    title: "Build",
+    content:
+      "Our engineers and designers bring your ideas to life with precision and creativity. From mobile and web app development to immersive 3D experiences, we ensure every product is crafted to perform seamlessly and deliver exceptional user experiences.",
+    video: video3,
+  },
+  {
+    icon: Rocket,
+    title: "Elevate",
+    content:
+      "Innovation doesn't stop at launch. We continuously optimize, enhance, and adapt your solutions to keep pace with evolving technologies and market needs—ensuring your business stays ahead of the curve.",
+    video: video4,
+  },
+  {
+    icon: LifeBuoy,
+    title: "Support",
+    content:
+      "At ThirdVizion Labs, our partnership doesn't end when the project is delivered. Our dedicated support team ensures your systems remain efficient, secure, and optimized—every hour of every day.",
+    video: video5,
+  },
 ];
 
 export default function ServiceSection() {
   const sectionRef = useRef(null);
-  const titleRef = useRef(null);
   const videoRefs = useRef([]);
   const contentRefs = useRef([]);
   const lineRefs = useRef([]);
-
-  videoRefs.current = [];
-  contentRefs.current = [];
-  lineRefs.current = [];
+  const logoRefs = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title zoom out first
       const mainTl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: `+=${slides.length * 500}%`,
+          end: `+=${slides.length * 250}%`,
           scrub: 2,
           pin: true,
         },
       });
 
-      mainTl.to(titleRef.current, {
-        scale: 0.5,
-        opacity: 0,
-        duration: 1.5,
-        ease: "power2.out",
-      });
-
-      slides.forEach((slide, i) => {
+      slides.forEach((_, i) => {
         const tl = gsap.timeline();
 
-        // Show video and content
-        tl.fromTo(
-          videoRefs.current[i],
-          { opacity: 0, scale: 0.95 },
-          { opacity: 1, scale: 1, duration: 1.5, ease: "power2.out" }
-        );
+        // Content (text) animation — enter from right, exit to left
         tl.fromTo(
           contentRefs.current[i],
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
-          "<"
+          { opacity: 0, x: 300 },
+          { opacity: 1, x: 0, duration: 1.5, ease: "power3.out" }
         );
 
-        // Animate the white line from the center to right
+        // Line animation (unchanged)
         tl.fromTo(
           lineRefs.current[i],
-          { scaleX: 0 },
-          { scaleX: 1, transformOrigin: "left", duration: 1.5, ease: "none" },
+          { scaleX: 0, transformOrigin: "right" },
+          {
+            scaleX: 1,
+            transformOrigin: "right",
+            duration: 1.2,
+            ease: "power2.out",
+          },
+          "<0.3"
+        );
+
+        // Video fade-in
+        tl.fromTo(
+          videoRefs.current[i],
+          { opacity: 0, scale: 1.05 },
+          { opacity: 1, scale: 1, duration: 1.2, ease: "power2.out" },
           "<"
         );
 
-        // Hide video, content, and line
-        tl.to(
-          [videoRefs.current[i], contentRefs.current[i]],
-          { opacity: 0, duration: 1, ease: "power1.inOut" },
-          ">0.3"
+        // Logo in
+        tl.fromTo(
+          logoRefs.current[i],
+          { opacity: 0, scale: 0, rotation: -180 },
+          {
+            opacity: 1,
+            scale: 1,
+            rotation: 0,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.3"
         );
+
+        // Hold
+        tl.to({}, { duration: 0.6 });
+
+        // Exit animation — content & logo go left
         tl.to(
-          lineRefs.current[i],
-          { scaleX: 0, transformOrigin: "right", duration: 1.5, ease: "none" },
+          contentRefs.current[i],
+          {
+            opacity: 0,
+            x: -300,
+            duration: 1.2,
+            ease: "power3.inOut",
+          },
           "<"
         );
 
-        mainTl.add(tl, i * 2);
+        tl.to(
+          logoRefs.current[i],
+          {
+            opacity: 0,
+            scale: 0,
+            rotation: 90,
+            duration: 0.6,
+            ease: "power1.inOut",
+          },
+          "<0.2"
+        );
+
+        tl.to(videoRefs.current[i], {
+          opacity: 0,
+          duration: 1.2,
+          ease: "power1.inOut",
+        });
+
+        mainTl.add(tl);
       });
     }, sectionRef);
 
@@ -1117,53 +1178,79 @@ export default function ServiceSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex flex-col items-center justify-center bg-black text-white overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center text-white overflow-hidden bg-black"
     >
-      {/* Title */}
-      <h1
-        ref={titleRef}
-        className="text-6xl md:text-8xl font-extrabold text-center z-10 tracking-widest"
-      >
-        EFFECTIVE
-      </h1>
-
-      {/* Slides */}
+      {/* Background Videos */}
       {slides.map((slide, i) => (
-        <div
+        <video
           key={i}
           ref={(el) => (videoRefs.current[i] = el)}
-          className="absolute inset-0 flex items-center justify-center opacity-0"
-        >
-          <video
-            src={slide.video}
-            autoPlay
-            muted
-            loop
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+          src={slide.video}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-0"
+        />
+      ))}
 
+      {/* Horizontal Gradient Background - Reduced height */}
+      <div
+        className="absolute bottom-0 left-0 w-full h-1/2 z-5"
+        style={{
+          background:
+            "linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0.9) 100%)",
+        }}
+      ></div>
+
+      {/* Slide Content - Positioned lower */}
+      {slides.map((slide, i) => {
+        return (
           <div
+            key={i}
             ref={(el) => (contentRefs.current[i] = el)}
-            className="absolute bottom-24 flex items-center justify-center w-full opacity-0"
+            className="absolute left-1/2 top-2/3 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-center opacity-0 px-8 z-10 w-full max-w-4xl"
           >
-            <p className="text-xl md:text-3xl font-medium text-center px-8 max-w-3xl backdrop-blur-sm bg-black/40 rounded-2xl p-6 leading-relaxed shadow-lg">
+            <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-wide text-white">
+              {slide.title}
+            </h2>
+            <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
               {slide.content}
             </p>
           </div>
+        );
+      })}
 
-          {/* Line animation for each video */}
-          <div className="absolute bottom-10 left-1/2 w-3/4 h-1 bg-white/20 transform -translate-x-1/2">
-            <div
-              ref={(el) => (lineRefs.current[i] = el)}
-              className="h-1 bg-white origin-left scale-x-0"
-            ></div>
-          </div>
+      {/* Lines */}
+      {slides.map((_, i) => (
+        <div
+          key={`line-${i}`}
+          className="absolute bottom-16 left-1/2 w-3/4 h-1 bg-white/20 transform -translate-x-1/2 overflow-hidden"
+        >
+          <div
+            ref={(el) => (lineRefs.current[i] = el)}
+            className="h-1 bg-white scale-x-0"
+          ></div>
         </div>
       ))}
 
-      {/* Fixed Yellow Circle */}
-      <div className="absolute bottom-9 left-1/2 -translate-x-1/2 w-6 h-6 bg-yellow-500 rounded-full shadow-lg z-50"></div>
+      {/* Yellow Circle with Logos */}
+      <div className="absolute bottom-14 left-1/2 -translate-x-1/2 w-14 h-14 bg-yellow-500 rounded-full shadow-lg z-50 flex items-center justify-center">
+        {slides.map((slide, i) => {
+          const Icon = slide.icon;
+          return (
+            <div
+              key={`logo-${i}`}
+              ref={(el) => (logoRefs.current[i] = el)}
+              className="absolute opacity-0"
+            >
+              <Icon className="w-6 h-6 text-black" />
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 }
+
+
