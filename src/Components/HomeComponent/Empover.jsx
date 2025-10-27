@@ -1,148 +1,248 @@
-import { useEffect, useRef, useState, useCallback } from "react";
-import edu from "/src/assets/ERPimage.jpg";
-import sd from "/src/assets/BlogGiff.jpg";
-import nd from "/src/assets/bg-data.jpg";
-import yd from "/src/assets/BlogGiff.jpg";
-import bd from "/src/assets/image3.jpg";
-import vr from "/src/assets/VR.png";
+import { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 
-function Empover() {
-  const sectionRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const rafRef = useRef();
+gsap.registerPlugin(ScrollTrigger);
 
-  const handleScroll = useCallback(() => {
-    if (rafRef.current) return;
+// Services data
+const servicesData = [
+  {
+    title: "Architecture & Cloud Scalability",
+    description:
+      "Designing robust, modular enterprise and software architectures for the cloud. We ensure the foundational base for high-performance solutions and future growth.",
+    items: [
+      { title: "Enterprise and Software Architecture Design" },
+      { title: "Cloud Integration (OCI & AWS Fundamentals)" },
+      { title: "Microservices Design & Scalability" },
+    ],
+  },
+  {
+    title: "Full Stack Engineering & CI/CD",
+    description:
+      "End-to-end development of high-performance applications, from backend APIs to modern frontends, integrating DevOps practices for fast, automated delivery.",
+    items: [
+      { title: "Full Stack: Java/Spring Boot & React.js" },
+      { title: "CI/CD Pipelines with Jenkins & Docker" },
+      { title: "Version Control & Code Review Workflows" },
+    ],
+  },
+  {
+    title: "Data Analytics & ML Modeling",
+    description:
+      "Building Machine Learning (ML) models and advanced data analysis systems to extract predictive value, addressing challenges like handling imbalanced data.",
+    items: [
+      { title: "Predictive Modeling (Python/Scikit-learn)" },
+      { title: "Anomaly Detection (DBSCAN, Isolation Forest)" },
+      { title: "Data Management & Administration" },
+    ],
+  },
+  {
+    title: "Optimization & Decision Intelligence",
+    description:
+      "Direct application of AI solutions to automate core processes, optimize operational efficiency, and enable data-informed strategic decision-making.",
+    items: [
+      { title: "Operational Efficiency & Automation" },
+      { title: "Data-Informed Decision-Making" },
+      { title: "Model Validation (Precision-Recall Curves)" },
+    ],
+  },
+];
 
-    rafRef.current = requestAnimationFrame(() => {
-      const section = sectionRef.current;
-      if (!section) return;
+// AnimatedTextLines Component
+const AnimatedTextLines = ({ text, className }) => {
+  const containerRef = useRef(null);
+  const textRef = useRef(null);
 
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      
-      // Calculate progress based on visibility in viewport
-      const progress = 1 - (rect.top / (windowHeight + rect.height));
-      const clampedProgress = Math.max(0, Math.min(1, progress));
-      
-      setScrollProgress(clampedProgress);
-      rafRef.current = null;
-    });
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
-    };
-  }, [handleScroll]);
-
-  const industries = [
-    { name: "Education Technology", image: edu, description: "edu tect" },
-    { name: "Shipping & Logistics", image: sd, description: "shipping" },
-    { name: "Data Analytics", image: nd, description: "gaming" },
-    { name: "Blogging Platform", image: yd, description: "content creation" },
-    { name: "Business Development", image: bd, description: "business growth" },
-    { name: "Virtual Reality", image: vr, description: "immersive experiences" }
-  ];
-
-  const getImageStyle = (index) => {
-    const staggerDelay = index * 0.12;
-    const individualProgress = Math.max(0, Math.min(1, (scrollProgress - staggerDelay) * 4));
-    
-    if (individualProgress > 0 && individualProgress < 1) {
-      // Smooth easing function for more natural motion
-      const easeOut = 1 - Math.pow(1 - individualProgress, 3);
-      const scale = Math.sin(easeOut * Math.PI);
-      const opacity = Math.sin(easeOut * Math.PI);
-      const blur = Math.max(0, (1 - scale) * 4);
-      const translateY = (1 - scale) * 30;
-      const rotate = (individualProgress - 0.5) * 10;
-
-      return {
-        transform: `scale(${scale}) translateY(${translateY}px) rotate(${rotate}deg)`,
-        opacity: opacity,
-        filter: `blur(${blur}px)`,
-      };
-    } else {
-      return {
-        transform: 'scale(0) translateY(30px) rotate(-5deg)',
+  useGSAP(() => {
+    if (textRef.current) {
+      gsap.from(textRef.current, {
+        y: 100,
         opacity: 0,
-        filter: 'blur(4px)',
-      };
+        duration: 1,
+        ease: "back.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+        },
+      });
     }
-  };
+  });
 
   return (
-    <section 
-      ref={sectionRef} 
-      className="min-h-[200vh] py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden"
-    >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div 
-          className="absolute w-[800px] h-[800px] bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full -top-400 -left-400 animate-pulse"
-          style={{ animationDuration: '8s' }}
-        ></div>
-        <div 
-          className="absolute w-[600px] h-[600px] bg-gradient-to-r from-pink-500/10 to-rose-500/10 rounded-full -bottom-300 -right-300 animate-pulse"
-          style={{ animationDuration: '6s', animationDelay: '1s' }}
-        ></div>
-      </div>
+    <div ref={containerRef} className={className}>
+      <span
+        ref={textRef}
+        className="block leading-relaxed tracking-wide text-pretty whitespace-pre-line"
+      >
+        {text}
+      </span>
+    </div>
+  );
+};
 
-      {/* Sticky title */}
-      <div className="sticky top-0 pt-20 pb-10 z-20">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white text-center mb-8 leading-tight">
-          Industries We<br />
-          <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Empower
-          </span>
-        </h1>
-        <p className="text-lg sm:text-xl text-gray-300 text-center max-w-2xl mx-auto">
-          Scroll to discover the industries we're transforming with innovative solutions
-        </p>
-      </div>
+// AnimatedHeaderSection Component (with custom classNames)
+const AnimatedHeaderSection = ({
+  subTitle,
+  title,
+  text,
+  textColor,
+  withScrollTrigger = false,
+  titleClassName = "",
+  subTitleClassName = "",
+  textClassName = "",
+}) => {
+  const contextRef = useRef(null);
+  const headerRef = useRef(null);
+  const shouldSplitTitle = title.includes(" ");
+  const titleParts = shouldSplitTitle ? title.split(" ") : [title];
 
-      {/* Industries grid */}
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-16 lg:gap-20">
-          {industries.map((industry, index) => (
-            <div 
-              key={index} 
-              className="flex flex-col items-center group cursor-pointer transform transition-all duration-500 hover:scale-105"
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: withScrollTrigger
+        ? {
+            trigger: contextRef.current,
+            start: "top 80%",
+          }
+        : undefined,
+    });
+    tl.from(contextRef.current, {
+      y: "50vh",
+      duration: 1,
+      ease: "circ.out",
+    });
+    tl.from(
+      headerRef.current,
+      {
+        opacity: 0,
+        y: "200",
+        duration: 1,
+        ease: "circ.out",
+      },
+      "<+0.2"
+    );
+  }, []);
+
+  return (
+    <div ref={contextRef}>
+      <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}>
+        <div
+          ref={headerRef}
+          className="flex flex-col justify-center gap-12 pt-16 sm:gap-16"
+        >
+          {/* Subtitle */}
+          <p
+            className={`font-light tracking-[0.5rem] uppercase px-10 ${textColor} ${subTitleClassName}`}
+          >
+            {subTitle}
+          </p>
+
+          {/* Title */}
+          <div className="px-10">
+            <h1
+              className={`flex flex-col gap-12 uppercase sm:gap-16 md:block ${textColor} ${titleClassName}`}
             >
-              <div className="relative mb-8">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-                <img 
-                  src={industry.image} 
-                  alt={industry.name}
-                  className="relative w-48 h-48 sm:w-56 sm:h-56 object-cover rounded-2xl shadow-2xl border-2 border-white/10 transition-all duration-500 ease-out backdrop-blur-sm"
-                  style={getImageStyle(index)}
-                />
-              </div>
-              
-              <div className="text-center space-y-3">
-                <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors duration-300">
-                  {industry.name}
-                </h3>
-                <p className="text-lg text-gray-300 font-medium group-hover:text-white transition-colors duration-300">
-                  {industry.description}
-                </p>
-              </div>
-            </div>
-          ))}
+              {titleParts.map((part, index) => (
+                <span key={index}>{part} </span>
+              ))}
+            </h1>
+          </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      
+      {/* Description Text */}
+      <div className={`relative px-10 ${textColor}`}>
+        <div className="absolute inset-x-0 border-t-2" />
+        <div className="py-12 sm:py-16 text-end">
+          <AnimatedTextLines
+            text={text}
+            className={`font-light uppercase ${textClassName} ${textColor}`}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Main Services Component
+const Empover= () => {
+  const text = `We engineer scalable enterprise / software architectures and deploy 
+AI-powered solutions to automate core processes, 
+ensuring zero headaches and maximum competitive advantage`;
+
+  const serviceRefs = useRef([]);
+  const isDesktop = useMediaQuery({ minWidth: "48rem" }); //768px
+
+  useGSAP(() => {
+    serviceRefs.current.forEach((el) => {
+      if (!el) return;
+      gsap.from(el, {
+        y: 200,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 80%",
+        },
+        duration: 1,
+        ease: "circ.out",
+      });
+    });
+  }, []);
+
+  return (
+    <section id="services" className="min-h-screen bg-black rounded-t-4xl">
+      <AnimatedHeaderSection
+        subTitle="Behind the scene, Beyond the screen"
+        title="Service"
+        text={text}
+        textColor="text-white"
+        withScrollTrigger={true}
+        titleClassName="text-6xl sm:text-9xl "
+        subTitleClassName="text-xl tracking-widest"
+        textClassName="text-lg sm:text-3xl leading-relaxed tracking-wide"
+      />
+
+      {servicesData.map((service, index) => (
+        <div
+          ref={(el) => (serviceRefs.current[index] = el)}
+          key={index}
+          className="sticky px-10 pt-6 pb-12 text-white bg-black border-t-2 border-white/30"
+          style={
+            isDesktop
+              ? {
+                  top: `calc(10vh + ${index * 5}em)`,
+                  marginBottom: `${(servicesData.length - index - 1) * 5}rem`,
+                }
+              : { top: 0 }
+          }
+        >
+          <div className="flex items-center justify-between gap-4 font-light">
+            <div className="flex flex-col gap-6">
+              <h2 className="text-4xl lg:text-5xl">{service.title}</h2>
+              <p className="text-xl leading-relaxed tracking-widest lg:text-2xl text-white/60 text-pretty">
+                {service.description}
+              </p>
+              <div className="flex flex-col gap-2 text-2xl sm:gap-4 lg:text-3xl text-white/80">
+                {service.items.map((item, itemIndex) => (
+                  <div key={`item-${index}-${itemIndex}`}>
+                    <h3 className="flex">
+                      <span className="mr-12 text-lg text-blue-600">
+                        0{itemIndex + 1}
+                      </span>
+                      {item.title}
+                    </h3>
+                    {itemIndex < service.items.length - 1 && (
+                      <div className="w-full h-px my-2 bg-blue-400" />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
     </section>
   );
-}
+};
 
 export default Empover;

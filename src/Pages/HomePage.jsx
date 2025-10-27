@@ -1,7 +1,8 @@
+
 import Hero from "/src/Components/HomeComponent/HeroSection/HeroSection.jsx";
 
 // import Service from "/src/Components/HomeComponent/ServiceSection.jsx";
-import Categories from "/src/Components/HomeComponent/Categories";
+// import Categories from "/src/Components/HomeComponent/Categories";
 import VisionMission from "/src/Components/HomeComponent/VissionSection";
 // import Hovercard from "/src/Components/HomeComponent/HoverCard.jsx";
 import FAQ from "/src/Components/HomeComponent/FAQ.jsx";
@@ -22,7 +23,7 @@ export default function Home() {
     
       {/* <Service/> */}
       
-      <Categories />
+      {/* <Categories /> */}
       <VisionMission />
       {/* <Hovercard /> */}
       

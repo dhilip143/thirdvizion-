@@ -711,156 +711,223 @@
 // };
 
 // export default VisionMission;
-import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { Icon } from "@iconify/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VisionMission = () => {
-  const sectionRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+// --- SUBCOMPONENTE CLAVE: PASTILLA ANIMADA CON EFECTO WIPE ---
+const AnimatedPill = ({ text, isItalic, isLast, iconName, isTitle }) => {
+  const pillRef = useRef(null);
 
-  const lines = [
-    <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">Driving Innovation <span className="text-yellow-400">Beyond Boundaries</span></div>,
-    <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">We're Not Just <span className="text-yellow-400">Technology</span></div>,
-    <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">We're Redefining How <span className="text-green-400">Businesses</span></div>,
-    <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">And <span className="text-blue-400">Interact</span> In a</div>,
-    <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2"><span className="text-purple-400">Digital-First</span> World</div>,
-    <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">Every Solution We Create <span className="text-red-400">Merges</span></div>,
-    <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2"><span className="text-cyan-400">Creativity</span>, Strategy, And</div>,
-    <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2"><span className="text-pink-400">Innovation</span> To Create</div>,
-    <div className="text-2xl lg:text-4xl xl:text-5xl font-bold py-2">Meaningful <span className="text-yellow-400">Impact</span></div>,
-  ];
+  const pillClasses = isTitle
+    ? "border-2 border-blue-600 shadow-lg shadow-blue-500/50"
+    : "border-2 border-blue-600 shadow-md shadow-blue-400/40";
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const totalItems = lines.length;
+  const textClasses = `relative z-10 text-black lg:text-[32px] md:text-[26px] text-[20px] leading-none uppercase ${
+    isItalic ? "italic" : "font-normal"
+  }`;
+  const iconSize = isTitle ? "size-6" : "size-5";
 
-      // ScrollTrigger logic - same as CRM component
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "+=4000", // Adjust scroll length based on content
-        scrub: true,
-        pin: true,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          const index = Math.min(
-            totalItems - 1,
-            Math.floor(progress * totalItems)
-          );
-          setActiveIndex(index);
-        },
-      });
+  const handleMouseEnter = () => {
+    gsap.to(pillRef.current.querySelector(".wipe-overlay"), {
+      scaleX: 1,
+      duration: 0.8,
+      ease: "power2.out",
+    });
+    gsap.to(pillRef.current.querySelector("p"), {
+      color: "white",
+      duration: 0.3,
+    });
+    gsap.to(pillRef.current.querySelector("svg"), {
+      color: "white",
+      duration: 0.3,
+    });
+  };
 
-      // Pre-setup animations for all lines
-      lines.forEach((_, index) => {
-        const element = document.getElementById(`line-${index}`);
-        if (element) {
-          gsap.set(element, {
-            opacity: 0,
-            y: 50,
-            scale: 0.8
-          });
-        }
-      });
-
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  // Animate lines when activeIndex changes
-  useEffect(() => {
-    // Animate current active line
-    const currentElement = document.getElementById(`line-${activeIndex}`);
-    if (currentElement) {
-      gsap.to(currentElement, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        ease: "power2.out"
-      });
-    }
-
-    // Keep previous lines visible
-    for (let i = 0; i < activeIndex; i++) {
-      const prevElement = document.getElementById(`line-${i}`);
-      if (prevElement) {
-        gsap.to(prevElement, {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.3
-        });
-      }
-    }
-
-    // Hide future lines
-    for (let i = activeIndex + 1; i < lines.length; i++) {
-      const futureElement = document.getElementById(`line-${i}`);
-      if (futureElement) {
-        gsap.to(futureElement, {
-          opacity: 0.3,
-          y: 20,
-          scale: 0.9,
-          duration: 0.3
-        });
-      }
-    }
-
-  }, [activeIndex]);
+  const handleMouseLeave = () => {
+    gsap.to(pillRef.current.querySelector(".wipe-overlay"), {
+      scaleX: 0,
+      duration: 0.5,
+      ease: "power2.out",
+    });
+    gsap.to(pillRef.current.querySelector("p"), {
+      color: "black",
+      duration: 0.3,
+    });
+    gsap.to(pillRef.current.querySelector("svg"), {
+      color: "black",
+      duration: 0.3,
+    });
+  };
 
   return (
-    <div
-      ref={sectionRef}
-      className="bg-black w-full flex items-start justify-center px-4 sm:px-6 lg:px-8 xl:px-12 pt-20 relative overflow-hidden"
-      style={{ minHeight: '100vh' }}
-    >
-      <div className="text-center text-white w-full max-w-7xl">
-        {/* Sticky Header - Pinned during scroll */}
-        <div className="sticky top-12 z-10 pt-4 pb-8 bg-black/80 w-full backdrop-blur-sm">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-yellow-400 mb-2 lg:mb-4">
-            Vision & Mission
-          </h2>
-        </div>
-       
-        {/* Content Lines with Scroll Trigger Animation */}
-        <div className="text-left space-y-1 lg:space-y-2 mt-12 min-h-[60vh]">
-          {lines.map((line, idx) => (
-            <div
-              key={idx}
-              id={`line-${idx}`}
-              className={`leading-none transition-all duration-500 ${
-                idx === activeIndex
-                  ? "text-white scale-105"
-                  : idx < activeIndex
-                  ? "text-white/80 scale-100"
-                  : "text-white/30 scale-95"
-              }`}
-              style={{
-                transform: `translateY(${idx > activeIndex ? '20px' : '0px'})`,
-              }}
-            >
-              {line}
-            </div>
-          ))}
-        </div>
-
-        {/* Scroll progress indicator */}
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 text-sm">
-          {activeIndex + 1} / {lines.length}
-        </div>
-
-        {/* Spacer for smooth scrolling */}
-        <div style={{ height: '30vh' }}></div>
+    <>
+      <div className="hidden xl:flex items-center gap-1.5">
+        <div className="w-5 h-0.5 bg-blue-600" />
+        <div className="size-1.5 rounded-full bg-blue-600" />
       </div>
-    </div>
+
+      <div
+        ref={pillRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className={
+          pillClasses +
+          " relative flex items-center rounded-full px-3 py-1.5 overflow-hidden cursor-pointer"
+        }
+      >
+        <div
+          className="wipe-overlay absolute inset-0 rounded-full origin-right"
+          style={{
+            background: "linear-gradient(to right, #007bff, #0047AB)",
+            transform: "scaleX(0)",
+          }}
+        ></div>
+
+        <Icon
+          icon={iconName}
+          className={
+            iconSize +
+            " mr-1.5 relative z-10 text-black transition-colors duration-300"
+          }
+        />
+        <p className={textClasses}>{text}</p>
+      </div>
+
+      {!isLast && (
+        <div className="hidden xl:flex items-center gap-1.5">
+          <div className="size-1.5 rounded-full bg-blue-600" />
+          <div className="w-5 h-0.5 bg-blue-600" />
+        </div>
+      )}
+    </>
+  );
+};
+
+const VisionMission = () => {
+  useGSAP(() => {
+    gsap.to("#title-service-1", {
+      xPercent: 20,
+      scrollTrigger: {
+        trigger: "#title-service-1",
+        scrub: true,
+        start: "top 60%",
+      },
+    });
+    gsap.to("#title-service-2", {
+      xPercent: -30,
+      scrollTrigger: {
+        trigger: "#title-service-2",
+        scrub: true,
+        start: "top 60%",
+      },
+    });
+    gsap.to("#title-service-3", {
+      xPercent: 100,
+      scrollTrigger: {
+        trigger: "#title-service-3",
+        scrub: true,
+        start: "top 60%",
+      },
+    });
+    gsap.to("#title-service-4", {
+      xPercent: -100,
+      scrollTrigger: {
+        trigger: "#title-service-4",
+        scrub: true,
+        start: "top 60%",
+      },
+    });
+    gsap.to("#title-service-5", {
+      xPercent: 50,
+      scrollTrigger: {
+        trigger: "#title-service-5",
+        scrub: true,
+        start: "top 60%",
+      },
+    });
+  });
+
+  return (
+    <section className="mt-20 overflow-hidden font-light leading-snug text-center mb-42 contact-text-responsive flex flex-col gap-y-8">
+      {/* LÍNEA 1 */}
+      <div id="title-service-1" className="flex justify-center items-center px-4">
+        <AnimatedPill
+          text="DRIVING INNOVATION BEYOND BOUNDARIES"
+          iconName="material-symbols:rocket-launch-outline"
+          isTitle={true}
+          isLast={true}
+        />
+      </div>
+
+      {/* LÍNEA 2 */}
+      <div
+        id="title-service-2"
+        className="flex flex-wrap items-center justify-center gap-2"
+      >
+        <AnimatedPill
+          text="WE'RE NOT JUST TECHNOLOGY"
+          iconName="material-symbols:memory-outline"
+          isLast={true}
+        />
+      </div>
+
+      {/* LÍNEA 3 */}
+      <div
+        id="title-service-3"
+        className="flex flex-wrap items-center justify-center gap-2"
+      >
+        <AnimatedPill
+          text="WE'RE REDEFINING HOW BUSINESSES"
+          iconName="mdi:domain"
+        />
+        <AnimatedPill
+          text="AND INTERACT IN A"
+          iconName="mdi:gesture-tap"
+          isItalic={true}
+          isLast={true}
+        />
+      </div>
+
+      {/* LÍNEA 4 */}
+      <div
+        id="title-service-4"
+        className="flex flex-wrap items-center justify-center gap-2"
+      >
+        <AnimatedPill
+          text="DIGITAL-FIRST WORLD"
+          iconName="mdi:earth"
+          isLast={true}
+        />
+      </div>
+
+      {/* LÍNEA 5 */}
+      <div
+        id="title-service-5"
+        className="flex flex-wrap items-center justify-center gap-2"
+      >
+        <AnimatedPill
+          text="EVERY SOLUTION WE CREATE MERGES"
+          iconName="mdi:lightbulb-outline"
+        />
+        <AnimatedPill text="CREATIVITY, STRATEGY, AND" iconName="mdi:brain" />
+        <AnimatedPill text="INNOVATION TO CREATE" iconName="mdi:rocket-launch" />
+        <AnimatedPill
+          text="MEANINGFUL IMPACT"
+          iconName="mdi:handshake-outline"
+          isLast={true}
+        />
+      </div>
+    </section>
   );
 };
 
 export default VisionMission;
+
+
 
 
