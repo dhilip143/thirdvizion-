@@ -28,7 +28,7 @@ function CrmVideo() {
     };
 
     return (
-        <section className="w-full min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white py-16 px-4 sm:px-6 font-sans">
+        <section className="w-full min-h-screen  text-white py-16 px-4 sm:px-6 font-sans">
             {/* Header Section */}
             <div className="max-w-7xl mx-auto text-center mb-16">
                 <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF646710] to-[#FF8E9E10] border border-[#FF646730] mb-8">

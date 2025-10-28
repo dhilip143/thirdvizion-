@@ -9,43 +9,34 @@ gsap.registerPlugin(ScrollTrigger);
 // Services data
 const servicesData = [
   {
-    title: "Architecture & Cloud Scalability",
+    title: "Immersive Tech",
     description:
-      "Designing robust, modular enterprise and software architectures for the cloud. We ensure the foundational base for high-performance solutions and future growth.",
+      "Intuitive designs for seamless digital journeys.",
     items: [
-      { title: "Enterprise and Software Architecture Design" },
-      { title: "Cloud Integration (OCI & AWS Fundamentals)" },
-      { title: "Microservices Design & Scalability" },
+      { title: "VIRTUAL REALITY" },
+      { title: "AUGMENTED REALITY" },
+      { title: "3D SERVICES" },
     ],
   },
   {
-    title: "Full Stack Engineering & CI/CD",
+    title: "Data & Cloud",
     description:
-      "End-to-end development of high-performance applications, from backend APIs to modern frontends, integrating DevOps practices for fast, automated delivery.",
+      "Custom-built, scalable platforms.",
     items: [
-      { title: "Full Stack: Java/Spring Boot & React.js" },
-      { title: "CI/CD Pipelines with Jenkins & Docker" },
-      { title: "Version Control & Code Review Workflows" },
+      { title: "CRM SOLUTIONS" },
+      { title: "IAM SOLUTIONS" },
+      { title: "ERP SOLUTIONS" },
+      { title: "SERVER MANAGEMENT" },
     ],
   },
   {
-    title: "Data Analytics & ML Modeling",
+    title: "Web Development & Software",
     description:
-      "Building Machine Learning (ML) models and advanced data analysis systems to extract predictive value, addressing challenges like handling imbalanced data.",
+      "Transforming businesses with secure, scalable infrastructure.",
     items: [
-      { title: "Predictive Modeling (Python/Scikit-learn)" },
-      { title: "Anomaly Detection (DBSCAN, Isolation Forest)" },
-      { title: "Data Management & Administration" },
-    ],
-  },
-  {
-    title: "Optimization & Decision Intelligence",
-    description:
-      "Direct application of AI solutions to automate core processes, optimize operational efficiency, and enable data-informed strategic decision-making.",
-    items: [
-      { title: "Operational Efficiency & Automation" },
-      { title: "Data-Informed Decision-Making" },
-      { title: "Model Validation (Precision-Recall Curves)" },
+      { title: "WEB DEVELOPMENT" },
+      { title: "MOBILE APPS" },
+      { title: "GAME DEVELOPMENT" },
     ],
   },
 ];
@@ -166,10 +157,9 @@ const AnimatedHeaderSection = ({
 };
 
 // Main Services Component
-const Empover= () => {
-  const text = `We engineer scalable enterprise / software architectures and deploy 
-AI-powered solutions to automate core processes, 
-ensuring zero headaches and maximum competitive advantage`;
+const Empover = () => {
+  const text = `We create immersive digital experiences and build scalable platforms 
+that transform businesses with cutting-edge technology and intuitive design`;
 
   const serviceRefs = useRef([]);
   const isDesktop = useMediaQuery({ minWidth: "48rem" }); //768px
@@ -190,10 +180,10 @@ ensuring zero headaches and maximum competitive advantage`;
   }, []);
 
   return (
-    <section id="services" className="min-h-screen bg-black rounded-t-4xl">
+    <section id="services" className="min-h-screen bg-black ">
       <AnimatedHeaderSection
-        subTitle="Behind the scene, Beyond the screen"
-        title="Service"
+        subTitle="Digital Innovation & Technology Solutions"
+        title="Services"
         text={text}
         textColor="text-white"
         withScrollTrigger={true}
@@ -217,19 +207,19 @@ ensuring zero headaches and maximum competitive advantage`;
           }
         >
           <div className="flex items-center justify-between gap-4 font-light">
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col w-full gap-6">
               <h2 className="text-4xl lg:text-5xl">{service.title}</h2>
               <p className="text-xl leading-relaxed tracking-widest lg:text-2xl text-white/60 text-pretty">
                 {service.description}
               </p>
-              <div className="flex flex-col gap-2 text-2xl sm:gap-4 lg:text-3xl text-white/80">
+              <div className="flex flex-col w-full gap-2 text-2xl sm:gap-4 lg:text-3xl text-white/80">
                 {service.items.map((item, itemIndex) => (
-                  <div key={`item-${index}-${itemIndex}`}>
-                    <h3 className="flex">
+                  <div key={`item-${index}-${itemIndex}`} className="w-full">
+                    <h3 className="flex items-center w-full">
                       <span className="mr-12 text-lg text-blue-600">
                         0{itemIndex + 1}
                       </span>
-                      {item.title}
+                      <span className="flex-1">{item.title}</span>
                     </h3>
                     {itemIndex < service.items.length - 1 && (
                       <div className="w-full h-px my-2 bg-blue-400" />

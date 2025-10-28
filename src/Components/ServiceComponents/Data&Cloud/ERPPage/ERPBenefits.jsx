@@ -21,17 +21,33 @@ export default function ERPBenefits() {
   ];
 
   return (
-    <section className="relative py-60 overflow-hidden">
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
-        {/* Heading */}
+    <section className="relative isolate w-full py-60 overflow-hidden">
+      {/* Subtle gradient overlay with soft glow - same as HeroSection */}
+      <div className="absolute inset-0  to-transparent pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Heading - same styling as HeroSection heading */}
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl xl:text-6xl font-extrabold text-center bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent mb-12"
+          transition={{ duration: 0.9 }}
+          viewport={{ amount: 0.3 }}
+          className="font-inter-tight text-4xl md:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight text-center bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent mb-12"
         >
           Benefits of Our ERP
         </motion.h2>
+
+        {/* Subtitle - same styling as HeroSection subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.7 }}
+          viewport={{ amount: 0.8 }}
+          className="mt-5 max-w-2xl mx-auto text-[#c7cbff] text-lg leading-relaxed text-center mb-16"
+        >
+          Discover how our next-generation ERP system transforms your business operations
+          and drives sustainable growth.
+        </motion.p>
 
         {/* Benefits Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -40,15 +56,26 @@ export default function ERPBenefits() {
               key={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
-              className="p-6 rounded-2xl bg-[#7C86FF10] border border-[#7C86FF20] shadow-[0_0_30px_rgba(124,134,255,0.1)] hover:shadow-[0_0_40px_rgba(124,134,255,0.25)] hover:border-[#7C86FF60] hover:scale-105 transition-all duration-300 backdrop-blur-md"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="p-6 rounded-2xl bg-[#7C86FF10] border border-[#7C86FF30] shadow-[0_0_20px_rgba(124,134,255,0.15)] backdrop-blur-md hover:shadow-[0_0_40px_rgba(124,134,255,0.35)] hover:border-[#7C86FF40] hover:scale-105 transition-all duration-300"
             >
               <h3 className="text-xl font-semibold text-white mb-3">{b.title}</h3>
               <p className="text-[#c7cbff] text-sm leading-relaxed">{b.text}</p>
             </motion.div>
           ))}
         </div>
+
+        {/* Optional CTA Button - matching HeroSection style */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.7 }}
+          viewport={{ amount: 1 }}
+          className="mt-16 text-center"
+        >
+          
+        </motion.div>
       </div>
     </section>
   );

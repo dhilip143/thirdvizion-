@@ -4,96 +4,124 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 
+// Import local images
+import digitalEnterpriseImage from "/src/assets/HomeImages/m.jpg";
+import digitalEnterpriseBg from "/src/assets/HomeImages/m.jpg";
+import healthcareImage from "/src/assets/HomeImages/mm.jpg";
+import healthcareBg from "/src/assets/HomeImages/mm.jpg";
+import educationImage from "/src/assets/HomeImages/mmm.jpg";
+import educationBg from "/src/assets/HomeImages/mmm.jpg";
+import retailImage from "/src/assets/HomeImages/mmmm.jpg";
+import retailBg from "/src/assets/HomeImages/mmmm.jpg";
+import manufacturingImage from "/src/assets/HomeImages/mmmmm.jpg";
+import manufacturingBg from "/src/assets/HomeImages/mmmmm.jpg";
+
 gsap.registerPlugin(ScrollTrigger);
 
 // ---- DATA ----
-const servicesData = [
+const industriesData = [
   {
-    title: "Architecture & Cloud Scalability",
-    description:
-      "Designing robust, modular enterprise and software architectures for the cloud. We ensure the foundational base for high-performance solutions and future growth.",
+    title: "Digital Enterprise",
+    description: "Transforming traditional businesses into agile, data-driven digital enterprises with scalable cloud infrastructure and intelligent automation solutions.",
     items: [
-      { title: "Enterprise and Software Architecture Design" },
-      { title: "Cloud Integration (OCI & AWS Fundamentals)" },
-      { title: "Microservices Design & Scalability" },
+      { title: "Cloud Migration & Digital Transformation" },
+      { title: "Enterprise Architecture Modernization" },
+      { title: "Workflow Automation & Process Optimization" },
     ],
   },
   {
-    title: "Full Stack Engineering & CI/CD",
-    description:
-      "End-to-end development of high-performance applications, from backend APIs to modern frontends, integrating DevOps practices for fast, automated delivery.",
+    title: "Healthcare",
+    description: "Building secure, compliant healthcare solutions that leverage AI and data analytics to improve patient outcomes and operational efficiency.",
     items: [
-      { title: "Full Stack: Java/Spring Boot & React.js" },
-      { title: "CI/CD Pipelines with Jenkins & Docker" },
-      { title: "Version Control & Code Review Workflows" },
+      { title: "Predictive Analytics for Patient Care" },
+      { title: "HIPAA Compliant System Architecture" },
+      { title: "Medical Data Management & Analysis" },
     ],
   },
   {
-    title: "Data Analytics & ML Modeling",
-    description:
-      "Building Machine Learning (ML) models and advanced data analysis systems to extract predictive value, addressing challenges like handling imbalanced data.",
+    title: "Education",
+    description: "Creating innovative edtech platforms and learning management systems that enhance educational accessibility and personalized learning experiences.",
     items: [
-      { title: "Predictive Modeling (Python/Scikit-learn)" },
-      { title: "Anomaly Detection (DBSCAN, Isolation Forest)" },
-      { title: "Data Management & Administration" },
+      { title: "Learning Management Systems (LMS)" },
+      { title: "Personalized Learning Algorithms" },
+      { title: "Educational Data Analytics" },
     ],
   },
   {
-    title: "Optimization & Decision Intelligence",
-    description:
-      "Direct application of AI solutions to automate core processes, optimize operational efficiency, and enable data-informed strategic decision-making.",
+    title: "Retail & E-commerce",
+    description: "Developing sophisticated e-commerce platforms and retail analytics systems that drive sales, optimize inventory, and enhance customer experiences.",
     items: [
-      { title: "Operational Efficiency & Automation" },
-      { title: "Data-Informed Decision-Making" },
-      { title: "Model Validation (Precision-Recall Curves)" },
+      { title: "E-commerce Platform Development" },
+      { title: "Customer Behavior Analytics" },
+      { title: "Inventory & Supply Chain Optimization" },
+    ],
+  },
+  {
+    title: "Manufacturing",
+    description: "Implementing Industry 4.0 solutions with IoT integration, predictive maintenance, and production optimization for smart manufacturing.",
+    items: [
+      { title: "Predictive Maintenance Systems" },
+      { title: "Production Line Optimization" },
+      { title: "Quality Control Automation" },
     ],
   },
 ];
 
-const projects = [
+const industries = [
   {
     id: 1,
-    name: "Anomaly Detection Engine",
+    name: "Digital Enterprise",
     frameworks: [
-      { id: 1, name: "Python / Unsupervised Machine Learning" },
-      { id: 2, name: "Scikit-learn" },
-      { id: 3, name: "DBSCAN/Isolation Forest/K-means/HDBSCAN/PCA" },
+      { id: 1, name: "Online Storage" },
+      { id: 2, name: "Work Management" },
+      { id: 3, name: "Task Simplification" },
     ],
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    image: digitalEnterpriseImage,
+    bgImage: digitalEnterpriseBg,
   },
   {
     id: 2,
-    name: "RoomScout (Hotel Booking Platform)",
+    name: "Healthcare Innovation",
     frameworks: [
-      { id: 1, name: "React.js" },
-      { id: 2, name: "Java Spring Boot" },
-      { id: 3, name: "CI/CD (Jenkins/Docker/SonarQube/Github Actions)" },
+      { id: 1, name: "Smart Health Checks" },
+      { id: 2, name: "Safe Patient Records" },
+      { id: 3, name: "Online Doctor Visits" },
     ],
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    bgImage: "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    image: healthcareImage,
+    bgImage: healthcareBg,
   },
   {
     id: 3,
-    name: "Geramirez Real Estate App",
+    name: "Education Technology",
     frameworks: [
-      { id: 1, name: "Mobile Development / automation" },
-      { id: 2, name: "Backend Logic / Glide" },
-      { id: 3, name: "Automatic Data Sheets" },
+      { id: 1, name: "Online Classes" },
+      { id: 2, name: "Personal Study Help" },
+      { id: 3, name: "Student Progress Tracking" },
     ],
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    bgImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    image: educationImage,
+    bgImage: educationBg,
   },
   {
     id: 4,
-    name: "Bender E-commerce Store",
+    name: "Retail & E-commerce Solutions",
     frameworks: [
-      { id: 1, name: "E-commerce Workflow" },
-      { id: 2, name: "PHP / HTML5 / JavaScript" },
-      { id: 3, name: "Payment Gateway Integration" },
+      { id: 1, name: "Better Shopping Experience" },
+      { id: 2, name: "Customer Understanding" },
+      { id: 3, name: "Smooth Delivery Process" },
     ],
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    bgImage: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    image: retailImage,
+    bgImage: retailBg,
+  },
+  {
+    id: 5,
+    name: "Smart Manufacturing",
+    frameworks: [
+      { id: 1, name: "Connected Machines" },
+      { id: 2, name: "Early Problem Detection" },
+      { id: 3, name: "Faster Production Flow" },
+    ],
+    image: manufacturingImage,
+    bgImage: manufacturingBg,
   },
 ];
 
@@ -158,14 +186,14 @@ const AnimatedHeaderSection = ({
             {subTitle}
           </p>
           <div className="px-10">
-            <h1 className={`flex flex-col gap-12 uppercase text-9xl sm:text-9xl md:text-9xl lg:text-9xl  sm:gap-16 md:block ${textColor}`}>
+            <h1 className={`flex flex-col gap-12 uppercase text-9xl sm:text-9xl md:text-9xl lg:text-9xl sm:gap-16 md:block ${textColor}`}>
               {titleParts.map((part, index) => (<span key={index}>{part} </span>))}
             </h1>
           </div>
         </div>
       </div>
       <div className={`relative px-10 ${textColor}`}>
-        <div className="absolute inset-x-0 border-t-2" />
+        <div className="absolute inset-x-0 border-t-2 border-cyan-400" />
         <div className="py-12 sm:py-16 text-end">
           <AnimatedTextLines text={text} className={`font-light uppercase text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed ${textColor}`} />
         </div>
@@ -182,22 +210,22 @@ const Industries = () => {
   const moveX = useRef(null);
   const moveY = useRef(null);
 
-  const text = `Featured engineering projects where robust 
-architecture meets data science to drive  
-measurable results and tangible business impact`;
+  const text = `Transforming industries through innovative technology solutions 
+that drive efficiency, enhance customer experiences, and create 
+sustainable competitive advantages in the digital age`;
 
   useGSAP(() => {
     moveX.current = gsap.quickTo(previewRef.current, "x", { duration: 1.5, ease: "power3.out" });
     moveY.current = gsap.quickTo(previewRef.current, "y", { duration: 2, ease: "power3.out" });
 
-    gsap.from("#project", {
+    gsap.from("#industry", {
       y: 100,
       opacity: 0,
       delay: 0.5,
       duration: 1,
       stagger: 0.3,
       ease: "back.out",
-      scrollTrigger: { trigger: "#project" },
+      scrollTrigger: { trigger: "#industry" },
     });
   }, []);
 
@@ -236,51 +264,62 @@ measurable results and tangible business impact`;
   };
 
   return (
-    <section id="work" className="flex flex-col min-h-screen">
+    <section id="industries" className="flex flex-col min-h-screen bg-black">
       <AnimatedHeaderSection
-        subTitle={"Logic meets Aesthetics, Seamlessly"}
-        title={"Works"}
+        subTitle={"Industry Applications"}
+        title={" WE EMPOWER"}
         text={text}
-        textColor={"text-black"}
+        textColor={"text-white"}
         withScrollTrigger={true}
       />
-      <div className="relative flex flex-col font-light" onMouseMove={handleMouseMove}>
-        {projects.map((project, index) => (
+      <div className="relative flex flex-col font-light bg-black" onMouseMove={handleMouseMove}>
+        {industries.map((industry, index) => (
           <div
-            key={project.id}
-            id="project"
-            className="relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0"
+            key={industry.id}
+            id="industry"
+            className="relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0 bg-black border-b border-gray-800"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
             <div
               ref={(el) => { overlayRefs.current[index] = el; }}
-              className="absolute inset-0 hidden md:block duration-200 bg-black -z-10 clip-path"
+              className="absolute inset-0 hidden md:block duration-200 bg-cyan-500 -z-10 clip-path"
             />
-            <div className="flex justify-between px-10 text-black transition-all duration-500 md:group-hover:px-12 md:group-hover:text-white">
-              <h2 className="lg:text-[32px] text-[26px] leading-none">{project.name}</h2>
-              <Icon icon="lucide:arrow-up-right" className="md:size-6 size-5" />
+            <div className="flex justify-between px-10 text-white transition-all duration-500 md:group-hover:px-12">
+              <h2 className="lg:text-[32px] text-[26px] leading-none">
+                {industry.name}
+              </h2>
+              <Icon icon="lucide:dot" className="md:size-6 size-5" />
             </div>
-            <div className="w-full h-0.5 bg-blue-600" />
+            <div className="w-full h-0.5 bg-cyan-400" />
             <div className="flex px-10 text-xs leading-loose uppercase transtion-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
-              {project.frameworks.map((framework) => (
-                <p key={framework.id} className="text-black transition-colors duration-500 md:group-hover:text-white">
+              {industry.frameworks.map((framework) => (
+                <p key={framework.id} className="text-gray-300 transition-colors duration-500">
                   {framework.name}
                 </p>
               ))}
             </div>
             <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
-              <img src={project.bgImage} alt={`${project.name}-bg-image`} className="object-cover w-full h-full rounded-md brightness-50" />
-              <img src={project.image} alt={`${project.name}-image`} className="absolute bg-center px-14 rounded-xl" />
+              <img src={industry.bgImage} alt={`${industry.name}-bg-image`} className="object-cover w-full h-full rounded-md brightness-50" />
+              <img src={industry.image} alt={`${industry.name}-image`} className="absolute bg-center px-14 rounded-xl" />
             </div>
           </div>
         ))}
-        <div ref={previewRef} className="fixed -top-2/6 left-0 z-50 overflow-hidden border-4 border-blue-950 pointer-events-none w-[400px] md:block hidden opacity-0 rounded-3xl">
-          {currentIndex !== null && <img src={projects[currentIndex].image} alt="preview" className="object-cover w-full h-full" />}
+        <div 
+          ref={previewRef} 
+          className="fixed -top-2/6 left-0 z-50 overflow-hidden border-4 border-cyan-400 pointer-events-none w-[400px] md:block hidden opacity-0 shadow-2xl shadow-cyan-500/20 rounded-2xl"
+        >
+          {currentIndex !== null && (
+            <img 
+              src={industries[currentIndex].image} 
+              alt="preview" 
+              className="object-cover w-full h-full rounded-xl" 
+            />
+          )}
         </div>
       </div>
     </section>
   );
 };
 
-export default Industries ;
+export default Industries;

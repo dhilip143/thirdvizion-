@@ -113,7 +113,7 @@ export default function WebProject() {
     <>
       {/* Portfolio Heading */}
       <motion.div
-        className="mt-20 lg:mt-0 h-[20vh] bg-transparent text-cyan-300 flex flex-col justify-center items-center text-center"
+        className="mt-20 lg:mt-0 h-[20vh] bg-transparent text-[#7C86FF] flex flex-col justify-center items-center text-center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -132,24 +132,24 @@ export default function WebProject() {
             <div className="w-full lg:w-1/2 h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-screen flex items-center justify-center">
               <img
                 src={project.image}
-                className="w-full h-full object-cover rounded-2xl shadow-[0_0_25px_rgba(0,255,255,0.2)]"
+                className="w-full h-full object-cover rounded-2xl shadow-[0_0_25px_rgba(124,134,255,0.2)]"
                 alt={project.title}
               />
             </div>
 
             {/* Content Overlay - Responsive for Mobile & Tablet */}
             <div
-              className={`overlay-content backdrop-blur-md bg-cyan-950/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)] border border-cyan-400/30 rounded-2xl 
+              className={`overlay-content backdrop-blur-md bg-[#7C86FF10] shadow-[0_8px_32px_rgba(124,134,255,0.3)] border border-[#7C86FF30] rounded-2xl 
                 w-full max-w-2xl lg:max-w-none lg:absolute lg:top-1/2 lg:-translate-y-1/2 
                 ${index % 2 === 0 ? "lg:right-10 xl:right-24 2xl:right-28" : "lg:left-10 xl:left-22 2xl:left-26"} 
                 px-6 py-6 mt-6 lg:mt-0 text-center lg:text-inherit
                 lg:w-96 xl:w-[28rem] 2xl:w-[32rem]`}
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-cyan-300 drop-shadow-[0_0_10px_rgba(0,255,255,0.3)] mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-[#7C86FF] drop-shadow-[0_0_10px_rgba(124,134,255,0.3)] mb-4">
                 {project.title}
               </h2>
 
-              <p className="text-base sm:text-lg md:text-xl lg:text-lg xl:text-xl max-w-lg mx-auto mb-6 text-cyan-100/90 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl lg:text-lg xl:text-xl max-w-lg mx-auto mb-6 text-[#c7cbff] leading-relaxed">
                 {project.description}
               </p>
 

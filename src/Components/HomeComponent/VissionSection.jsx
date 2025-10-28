@@ -711,6 +711,7 @@
 // };
 
 // export default VisionMission;
+
 import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -724,10 +725,10 @@ const AnimatedPill = ({ text, isItalic, isLast, iconName, isTitle }) => {
   const pillRef = useRef(null);
 
   const pillClasses = isTitle
-    ? "border-2 border-blue-600 shadow-lg shadow-blue-500/50"
-    : "border-2 border-blue-600 shadow-md shadow-blue-400/40";
+    ? "border-2 border-cyan-400 shadow-lg shadow-cyan-500/50 "
+    : "border-2 border-cyan-400 shadow-md shadow-cyan-400/40 bg-gray-900";
 
-  const textClasses = `relative z-10 text-black lg:text-[32px] md:text-[26px] text-[20px] leading-none uppercase ${
+  const textClasses = `relative z-10 text-white lg:text-[32px] md:text-[26px] text-[20px] leading-none uppercase ${
     isItalic ? "italic" : "font-normal"
   }`;
   const iconSize = isTitle ? "size-6" : "size-5";
@@ -739,11 +740,11 @@ const AnimatedPill = ({ text, isItalic, isLast, iconName, isTitle }) => {
       ease: "power2.out",
     });
     gsap.to(pillRef.current.querySelector("p"), {
-      color: "white",
+      color: "black",
       duration: 0.3,
     });
     gsap.to(pillRef.current.querySelector("svg"), {
-      color: "white",
+      color: "black",
       duration: 0.3,
     });
   };
@@ -755,11 +756,11 @@ const AnimatedPill = ({ text, isItalic, isLast, iconName, isTitle }) => {
       ease: "power2.out",
     });
     gsap.to(pillRef.current.querySelector("p"), {
-      color: "black",
+      color: "white",
       duration: 0.3,
     });
     gsap.to(pillRef.current.querySelector("svg"), {
-      color: "black",
+      color: "white",
       duration: 0.3,
     });
   };
@@ -767,8 +768,8 @@ const AnimatedPill = ({ text, isItalic, isLast, iconName, isTitle }) => {
   return (
     <>
       <div className="hidden xl:flex items-center gap-1.5">
-        <div className="w-5 h-0.5 bg-blue-600" />
-        <div className="size-1.5 rounded-full bg-blue-600" />
+        <div className="w-5 h-0.5 bg-cyan-400" />
+        <div className="size-1.5 rounded-full bg-cyan-400" />
       </div>
 
       <div
@@ -777,13 +778,13 @@ const AnimatedPill = ({ text, isItalic, isLast, iconName, isTitle }) => {
         onMouseLeave={handleMouseLeave}
         className={
           pillClasses +
-          " relative flex items-center rounded-full px-3 py-1.5 overflow-hidden cursor-pointer"
+          " relative flex items-center rounded-full px-3 py-1.5 overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-cyan-400/60"
         }
       >
         <div
           className="wipe-overlay absolute inset-0 rounded-full origin-right"
           style={{
-            background: "linear-gradient(to right, #007bff, #0047AB)",
+            background: "linear-gradient(to right, #040505ff, #0099b4ff)",
             transform: "scaleX(0)",
           }}
         ></div>
@@ -792,7 +793,7 @@ const AnimatedPill = ({ text, isItalic, isLast, iconName, isTitle }) => {
           icon={iconName}
           className={
             iconSize +
-            " mr-1.5 relative z-10 text-black transition-colors duration-300"
+            " mr-1.5 relative z-10 text-white transition-colors duration-300"
           }
         />
         <p className={textClasses}>{text}</p>
@@ -800,8 +801,8 @@ const AnimatedPill = ({ text, isItalic, isLast, iconName, isTitle }) => {
 
       {!isLast && (
         <div className="hidden xl:flex items-center gap-1.5">
-          <div className="size-1.5 rounded-full bg-blue-600" />
-          <div className="w-5 h-0.5 bg-blue-600" />
+          <div className="size-1.5 rounded-full bg-cyan-400" />
+          <div className="w-5 h-0.5 bg-cyan-400" />
         </div>
       )}
     </>
@@ -850,10 +851,18 @@ const VisionMission = () => {
         start: "top 60%",
       },
     });
+    gsap.to("#title-service-6", {
+      xPercent: -50,
+      scrollTrigger: {
+        trigger: "#title-service-6",
+        scrub: true,
+        start: "top 60%",
+      },
+    });
   });
 
   return (
-    <section className="mt-20 overflow-hidden font-light leading-snug text-center mb-42 contact-text-responsive flex flex-col gap-y-8">
+    <section className="mt-0 pt-50 overflow-hidden font-light leading-snug text-center mb-0 contact-text-responsive flex flex-col gap-y-8 bg-black py-16">
       {/* LÍNEA 1 */}
       <div id="title-service-1" className="flex justify-center items-center px-4">
         <AnimatedPill
@@ -915,6 +924,13 @@ const VisionMission = () => {
           iconName="mdi:lightbulb-outline"
         />
         <AnimatedPill text="CREATIVITY, STRATEGY, AND" iconName="mdi:brain" />
+      </div>
+
+      {/* LÍNEA 6 */}
+      <div
+        id="title-service-6"
+        className="flex flex-wrap items-center justify-center gap-2"
+      >
         <AnimatedPill text="INNOVATION TO CREATE" iconName="mdi:rocket-launch" />
         <AnimatedPill
           text="MEANINGFUL IMPACT"
@@ -927,7 +943,3 @@ const VisionMission = () => {
 };
 
 export default VisionMission;
-
-
-
-

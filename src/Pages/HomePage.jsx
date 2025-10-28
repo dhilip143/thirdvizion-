@@ -24,11 +24,12 @@ export default function Home() {
       {/* <Service/> */}
       
       {/* <Categories /> */}
-      <VisionMission />
+      
       {/* <Hovercard /> */}
       
       {/* <Testimonial /> */}
       <Industries />
+      <VisionMission />
       <Empover/>
       <FAQ />
 
