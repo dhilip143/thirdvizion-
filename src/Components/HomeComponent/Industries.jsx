@@ -83,9 +83,9 @@ const industries = [
     id: 2,
     name: "Healthcare Innovation",
     frameworks: [
-      { id: 1, name: "Smart Health Checks" },
+      { id: 1, name: "Smart Health dashboard" },
       { id: 2, name: "Safe Patient Records" },
-      { id: 3, name: "Online Doctor Visits" },
+      { id: 3, name: "Online pharmacy database" },
     ],
     image: healthcareImage,
     bgImage: healthcareBg,
@@ -124,6 +124,15 @@ const industries = [
     bgImage: manufacturingBg,
   },
 ];
+
+// Custom font styles for each industry
+const industryFontStyles = {
+  1: "font-sans font-semibold tracking-tight", // Digital Enterprise - Inter style
+  2: "font-sans font-medium tracking-normal", // Healthcare Innovation - SF Pro Display style
+  3: "font-sans font-normal tracking-wide", // Education Technology - SF Pro Text style
+  4: "font-sans font-semibold tracking-tighter", // Retail & E-commerce - Manrope style
+  5: "font-sans font-bold tracking-tight" // Smart Manufacturing - Space Grotesk style
+};
 
 // ---- COMPONENTS ----
 const AnimatedTextLines = ({ text, className }) => {
@@ -182,20 +191,22 @@ const AnimatedHeaderSection = ({
     <div ref={contextRef}>
       <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}>
         <div ref={headerRef} className="flex flex-col justify-center gap-12 pt-16 sm:gap-16">
-          <p className={`text-lg sm:text-xl font-light tracking-[0.5rem] uppercase px-10 ${textColor}`}>
+          <p className={`text-lg sm:text-xl font-normal tracking-[0.3em] uppercase px-10 ${textColor} font-sans`}>
             {subTitle}
           </p>
           <div className="px-10">
-            <h1 className={`flex flex-col gap-12 uppercase text-9xl sm:text-9xl md:text-9xl lg:text-9xl sm:gap-16 md:block ${textColor}`}>
-              {titleParts.map((part, index) => (<span key={index}>{part} </span>))}
+            <h1 className={`flex flex-col gap-12 uppercase text-7xl sm:text-8xl md:text-9xl lg:text-9xl sm:gap-16 md:block ${textColor} font-serif leading-[0.9]`}>
+              {titleParts.map((part, index) => (
+                <span key={index} className="font-light">{part} </span>
+              ))}
             </h1>
           </div>
         </div>
       </div>
       <div className={`relative px-10 ${textColor}`}>
-        <div className="absolute inset-x-0 border-t-2 border-cyan-400" />
+        <div className="absolute inset-x-0 border-t-2 border-amber-400" />
         <div className="py-12 sm:py-16 text-end">
-          <AnimatedTextLines text={text} className={`font-light uppercase text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed ${textColor}`} />
+          <AnimatedTextLines text={text} className={`font-light uppercase text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed tracking-wide ${textColor} font-sans`} />
         </div>
       </div>
     </div>
@@ -267,9 +278,9 @@ sustainable competitive advantages in the digital age`;
     <section id="industries" className="flex flex-col min-h-screen bg-black">
       <AnimatedHeaderSection
         subTitle={"Industry Applications"}
-        title={" WE EMPOWER"}
+        title={"WE EMPOWER"}
         text={text}
-        textColor={"text-white"}
+        textColor={"text-amber-50"}
         withScrollTrigger={true}
       />
       <div className="relative flex flex-col font-light bg-black" onMouseMove={handleMouseMove}>
@@ -277,24 +288,24 @@ sustainable competitive advantages in the digital age`;
           <div
             key={industry.id}
             id="industry"
-            className="relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0 bg-black border-b border-gray-800"
+            className="relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0 bg-black border-b border-amber-800"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
             <div
               ref={(el) => { overlayRefs.current[index] = el; }}
-              className="absolute inset-0 hidden md:block duration-200 bg-cyan-500 -z-10 clip-path"
+              className="absolute inset-0 hidden md:block duration-200 bg-gradient-to-r from-yellow-100 to-amber-600 -z-10 clip-path"
             />
-            <div className="flex justify-between px-10 text-white transition-all duration-500 md:group-hover:px-12">
-              <h2 className="lg:text-[32px] text-[26px] leading-none">
+            <div className="flex justify-between px-10 text-amber-50 transition-all duration-500 md:group-hover:px-12 md:group-hover:text-amber-900">
+              <h2 className={`lg:text-[32px] text-[26px] leading-none ${industryFontStyles[industry.id]}`}>
                 {industry.name}
               </h2>
               <Icon icon="lucide:dot" className="md:size-6 size-5" />
             </div>
-            <div className="w-full h-0.5 bg-cyan-400" />
-            <div className="flex px-10 text-xs leading-loose uppercase transtion-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
+            <div className="w-full h-0.5 bg-amber-900" />
+            <div className="flex px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
               {industry.frameworks.map((framework) => (
-                <p key={framework.id} className="text-gray-300 transition-colors duration-500">
+                <p key={framework.id} className="text-amber-400 transition-colors duration-500 md:group-hover:text-amber-800 font-sans font-normal tracking-wider">
                   {framework.name}
                 </p>
               ))}
@@ -307,7 +318,7 @@ sustainable competitive advantages in the digital age`;
         ))}
         <div 
           ref={previewRef} 
-          className="fixed -top-2/6 left-0 z-50 overflow-hidden border-4 border-cyan-400 pointer-events-none w-[400px] md:block hidden opacity-0 shadow-2xl shadow-cyan-500/20 rounded-2xl"
+          className="fixed -top-2/6 left-0 z-50 overflow-hidden border-4 border-amber-500 pointer-events-none w-[400px] md:block hidden opacity-0 shadow-2xl shadow-amber-500/50 rounded-2xl"
         >
           {currentIndex !== null && (
             <img 

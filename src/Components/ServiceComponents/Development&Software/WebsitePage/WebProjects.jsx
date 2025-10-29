@@ -67,10 +67,10 @@ export default function WebProject() {
       const text = section.querySelector(".overlay-content"); // ✅ select text container
       gsap.set(img, { transformOrigin: "center center" });
 
-      // Alternate direction: even index = left → right, odd index = right → left
-      const fromX = index % 2 === 0 ? -800 : 400;
-      const toX = index % 2 === 0 ? 400 : -400;
-      const centerX = isMobile ? 0 : index % 2 === 0 ? -300 : 300;
+      // REVERSED DIRECTION: even index = right → left, odd index = left → right
+      const fromX = index % 2 === 0 ? 400 : -800;
+      const toX = index % 2 === 0 ? -400 : 400;
+      const centerX = isMobile ? 0 : index % 2 === 0 ? 300 : -300;
 
       const textFromX = isLapScreen
         ? (index % 2 === 0 ? 300 : 300) // ✅ laptop screens (custom values)
@@ -107,87 +107,6 @@ export default function WebProject() {
   }, []);
 
   return (
-    // <>
-    //   {/* Portfolio Heading */}
-    //   <motion.div
-    //     className="mt-20 lg:mt-0 h-[20vh] bg-transparent text-white flex flex-col justify-center items-center text-center"
-    //     initial={{ opacity: 0, y: 50 }}
-    //     whileInView={{ opacity: 1, y: 0 }}
-    //     transition={{ duration: 0.8, ease: "easeOut" }}
-    //     viewport={{ amount: 0 }}
-    //   >
-    //     <TextReveal>
-    //       <motion.h1 className="text-4xl md:text-6xl font-extrabold font-inter-tight tracking-wide overflow-hidden text-white drop-shadow-lg">
-    //         Our Portfolio
-    //       </motion.h1>
-    //     </TextReveal>
-
-    //     {/* Small Description Below Portfolio */}
-    //     <TextReveal delay={0.2}>
-    //       <motion.p
-    //         className="mt-4 text-md md:text-xl text-gray-300 leading-relaxed max-w-4xl"
-    //         initial={{ opacity: 0, y: 20 }}
-    //         whileInView={{ opacity: 1, y: 0 }}
-    //         transition={{ duration: 0.6 }}
-    //         viewport={{ amount: 0 }}
-    //       >
-    //         A curated collection of our favorite projects — each one crafted
-    //         with passion, precision, and modern web technologies.
-    //       </motion.p>
-    //     </TextReveal>
-    //   </motion.div>
-
-    //   <div className="h-[400vh] bg-transparent text-white">
-    //     {ProjectsData.map((project, index) => (
-    //       <section
-    //         key={project.id}
-    //         id="section"
-    //         className="h-screen flex flex-col xl:flex-row items-center justify-center overflow-hidden relative"
-    //       >
-    //         {/* Image */}
-    //         <img
-    //           src={project.image}
-    //           className="w-full lg:w-1/2 h-[50vh] lg:h-screen object-cover"
-    //         />
-
-    //         {/* Overlay Content */}
-    //         <div
-    //           className={`overlay-content lg:absolute lg:top-1/2 lg:-translate-y-1/2 
-    //   ${index % 2 === 0
-    //               ? "lg:right-40 lg:text-left"
-    //               : "lg:left-40 lg:text-right"
-    //             } 
-    //   w-full lg:w-auto px-6 mt-6 lg:mt-0 text-center lg:text-inherit`}
-    //         >
-    //           <h2 className="text-2xl md:text-5xl lg:text-3xl font-bold">
-    //             {project.title}
-    //           </h2>
-
-    //           <p className="text-base md:text-md lg:text-lg max-w-lg mx-auto mb-3">
-    //             {project.description}
-    //           </p>
-
-    //           {/* Tools */}
-    //           <div
-    //             className={`flex ${index % 2 === 0
-    //               ? "justify-center lg:justify-start"
-    //               : "justify-center lg:justify-end"
-    //               } gap-3 flex-wrap text-xs lg:text-sm text-gray-300 mb-3`}
-    //           >
-    //             {project.tools.map((tool, i) => (
-    //               <span
-    //                 key={i}
-    //                 className="px-3 py-1 border border-gray-500 rounded-full"
-    //               >
-    //                 {tool}
-    //               </span>
-    //             ))}
-    //           </div>
-    //         </div>
-    //       </section>
-    //     ))}
-    //   </div>
-    // </>
     <>
       {/* Portfolio Heading */}
       <motion.div
@@ -206,14 +125,13 @@ export default function WebProject() {
         {/* Small Description Below Portfolio */}
         <TextReveal delay={0.2}>
           <motion.p
-            className="mt-4 text-sm md:text-xl text-gray-300 leading-relaxed max-w-4xl px-5"
+            className="mt-2 text-sm md:text-xl text-gray-300 leading-relaxed max-w-4xl px-5"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0 }}
           >
-            A curated collection of our favorite projects each one crafted with
-            passion, precision, and modern web technologies.
+           
           </motion.p>
         </TextReveal>
       </motion.div>
@@ -232,7 +150,7 @@ export default function WebProject() {
 
             {/* Overlay Content */}
             <div
-              className={`backdrop-blur-md bg-cyan-950/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)] border border-cyan-400/30 rounded-2xl 
+              className={`overlay-content backdrop-blur-md bg-cyan-950/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)] border border-cyan-400/30 rounded-2xl 
           lg:absolute lg:top-1/2 lg:-translate-y-1/2 
           ${index % 2 === 0 ? "lg:right-10 xl:right-24 2xl:right-28 lg:text-center" : "lg:left-10 xl:left-22 2xl:left-26 lg:text-center"} 
           w-full md:w-2xl lg:w-auto px-6 py-6 mt-6 lg:mt-0 text-center lg:text-inherit`}
@@ -266,6 +184,5 @@ export default function WebProject() {
         ))}
       </div>
     </>
-
   );
 }

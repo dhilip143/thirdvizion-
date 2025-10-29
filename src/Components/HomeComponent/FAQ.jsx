@@ -1,7 +1,3 @@
-// src/components/FAQSection.jsx
-// Cinematic Black FAQ Section - Static Sidebar + Animated FAQ List
-// React + Tailwind + GSAP
-
 import React, { useEffect, useRef, useState, useId } from "react";
 import { ChevronRight, X, Plus, Search, Bot } from "lucide-react";
 import clsx from "clsx";
@@ -120,28 +116,28 @@ const FAQHeader = () => (
   <header className="text-center mb-16 relative z-10">
     <h2
       id="faq-heading"
-      className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 drop-shadow-lg"
+      className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-600 drop-shadow-lg font-serif"
     >
       Frequently Asked Questions
     </h2>
-    <p className="mt-4 text-base text-gray-400 max-w-2xl mx-auto">
+    <p className="mt-4 text-base text-amber-200/80 max-w-2xl mx-auto font-sans font-normal tracking-wide">
       Answers about immersive tech, development, cloud, and enterprise solutions.
     </p>
   </header>
 );
 
 const HelpBotCTA = () => (
-  <div className="mt-6 rounded-2xl border border-purple-500/40 bg-gradient-to-br from-purple-600/30 to-transparent p-6 text-center backdrop-blur-sm shadow-lg">
-    <div className="mx-auto w-14 h-14 mb-3 rounded-full flex items-center justify-center bg-gradient-to-br from-purple-500 to-blue-500 shadow-md shadow-purple-500/30">
+  <div className="mt-6 rounded-2xl border border-amber-500/40 bg-gradient-to-br from-amber-600/30 to-transparent p-6 text-center backdrop-blur-sm shadow-lg">
+    <div className="mx-auto w-14 h-14 mb-3 rounded-full flex items-center justify-center bg-gradient-to-br from-amber-500 to-yellow-500 shadow-md shadow-amber-500/30">
       <Bot size={28} className="text-black" />
     </div>
-    <h4 className="font-bold text-white text-lg">Can't find an answer?</h4>
-    <p className="text-sm text-gray-400 mt-1 mb-4">
+    <h4 className="font-bold text-amber-50 text-lg font-sans font-semibold">Can't find an answer?</h4>
+    <p className="text-sm text-amber-200/80 mt-1 mb-4 font-sans font-normal">
       Our AI assistant will help you instantly.
     </p>
     <a
       href="#ask-ai"
-      className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 shadow-md font-semibold text-black text-sm transition-transform hover:scale-105"
+      className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 shadow-md font-semibold text-black text-sm transition-transform hover:scale-105 font-sans"
     >
       Ask our AI Assistant
     </a>
@@ -161,10 +157,10 @@ const FAQSidebar = ({ categories, activeCategory, setActiveCategory, setQuery, s
             setOpenIndex(null);
           }}
           className={clsx(
-            "rounded-xl px-5 py-3 text-left font-semibold border transition-all duration-300 flex items-center justify-between group",
+            "rounded-xl px-5 py-3 text-left font-semibold border transition-all duration-300 flex items-center justify-between group font-sans",
             active
-              ? "bg-gradient-to-r from-purple-600/30 to-blue-600/30 border-purple-500/60 text-white shadow-lg"
-              : "bg-white/5 border-gray-700/30 text-gray-400 hover:bg-white/10 hover:text-white"
+              ? "bg-gradient-to-r from-amber-600/30 to-yellow-600/30 border-amber-500/60 text-amber-50 shadow-lg"
+              : "bg-white/5 border-amber-800/30 text-amber-200/80 hover:bg-white/10 hover:text-amber-50"
           )}
         >
           <span>{cat}</span>
@@ -172,7 +168,7 @@ const FAQSidebar = ({ categories, activeCategory, setActiveCategory, setQuery, s
             size={18}
             className={clsx(
               "transition-transform duration-300",
-              active ? "translate-x-1 text-purple-400" : "group-hover:translate-x-1"
+              active ? "translate-x-1 text-amber-400" : "group-hover:translate-x-1 text-amber-400/70"
             )}
           />
         </button>
@@ -185,7 +181,7 @@ const FAQControls = ({ activeCategory, setActiveCategory, query, setQuery, setOp
   <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
     <div className="md:hidden w-full">
       <select
-        className="w-full p-3 rounded-xl border border-gray-700 bg-black text-sm text-white focus:ring-2 focus:ring-purple-500"
+        className="w-full p-3 rounded-xl border border-amber-800 bg-black text-sm text-amber-50 focus:ring-2 focus:ring-amber-500 font-sans"
         value={activeCategory}
         onChange={(e) => {
           setActiveCategory(e.target.value);
@@ -202,7 +198,7 @@ const FAQControls = ({ activeCategory, setActiveCategory, query, setQuery, setOp
     </div>
 
     <div className="relative w-full md:w-auto flex-grow">
-      <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+      <div className="absolute left-3 top-1/2 -translate-y-1/2 text-amber-400">
         <Search size={18} />
       </div>
       <input
@@ -210,7 +206,7 @@ const FAQControls = ({ activeCategory, setActiveCategory, query, setQuery, setOp
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search questions..."
-        className="pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-gray-700 text-sm text-white w-full placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
+        className="pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-amber-800 text-sm text-amber-50 w-full placeholder:text-amber-400/50 focus:outline-none focus:ring-2 focus:ring-amber-500 font-sans font-normal tracking-wide"
       />
     </div>
   </div>
@@ -218,8 +214,8 @@ const FAQControls = ({ activeCategory, setActiveCategory, query, setQuery, setOp
 
 const BackgroundDecorations = () => (
   <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-    <div className="absolute top-0 left-0 right-0 h-[500px] bg-[radial-gradient(40%_40%_at_50%_0%,rgba(0,170,255,0.15)_0%,transparent_100%)] animate-pulse"></div>
-    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[radial-gradient(40%_40%_at_50%_100%,rgba(138,43,226,0.15)_0%,transparent_100%)] blur-3xl"></div>
+    <div className="absolute top-0 left-0 right-0 h-[500px] bg-[radial-gradient(40%_40%_at_50%_0%,rgba(251,191,36,0.15)_0%,transparent_100%)] animate-pulse"></div>
+    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[radial-gradient(40%_40%_at_50%_100%,rgba(245,158,11,0.15)_0%,transparent_100%)] blur-3xl"></div>
   </div>
 );
 
@@ -232,13 +228,13 @@ const FAQItem = ({ faq, index, isOpen, onToggle, setRef }) => {
     <article
       className={clsx(
         "faq-card rounded-2xl border bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-md shadow-lg transition-all duration-300 overflow-hidden",
-        isOpen ? "ring-2 ring-purple-500/60 border-purple-400/50 scale-[1.02]" : "border-gray-700/60"
+        isOpen ? "ring-2 ring-amber-500/60 border-amber-400/50 scale-[1.02]" : "border-amber-800/60"
       )}
     >
       <h3>
         <button
           id={qId}
-          className="faq-question-btn w-full flex justify-between items-center p-5 text-left text-white font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+          className="faq-question-btn w-full flex justify-between items-center p-5 text-left text-amber-50 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 font-sans tracking-tight"
           aria-controls={panelId}
           aria-expanded={isOpen}
           onClick={() => onToggle(index)}
@@ -246,9 +242,9 @@ const FAQItem = ({ faq, index, isOpen, onToggle, setRef }) => {
           <span className="flex-1 text-base md:text-lg">{faq.question}</span>
           <span
             ref={iconRef}
-            className="ml-6 flex items-center justify-center h-8 w-8 rounded-full bg-white/10 transition-transform"
+            className="ml-6 flex items-center justify-center h-8 w-8 rounded-full bg-amber-400/10 transition-transform"
           >
-            {isOpen ? <X size={20} className="text-purple-400" /> : <Plus size={20} />}
+            {isOpen ? <X size={20} className="text-amber-400" /> : <Plus size={20} className="text-amber-400" />}
           </span>
         </button>
       </h3>
@@ -261,8 +257,8 @@ const FAQItem = ({ faq, index, isOpen, onToggle, setRef }) => {
         aria-hidden={!isOpen}
         style={{ height: 0, paddingTop: 0, paddingBottom: 0 }}
       >
-        <div className="border-t border-gray-700/60">
-          <p className="pt-4 pb-4 text-sm md:text-base text-gray-300 leading-relaxed">
+        <div className="border-t border-amber-800/60">
+          <p className="pt-4 pb-4 text-sm md:text-base text-amber-200/80 leading-relaxed font-sans font-normal tracking-wide">
             {faq.answer}
           </p>
         </div>
@@ -358,7 +354,7 @@ export default function FAQSection() {
 
   return (
     <section
-      className="relative bg-black text-white min-h-[600px] py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden"
+      className="relative bg-black text-amber-50 min-h-[600px] py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden"
       aria-labelledby="faq-heading"
     >
       <div className="max-w-5xl mx-auto">
@@ -392,8 +388,8 @@ export default function FAQSection() {
                   />
                 ))
               ) : (
-                <div className="rounded-2xl border border-gray-700 bg-white/5 backdrop-blur-sm p-10 text-center">
-                  <p className="text-sm text-gray-400">No questions match your search.</p>
+                <div className="rounded-2xl border border-amber-800 bg-white/5 backdrop-blur-sm p-10 text-center">
+                  <p className="text-sm text-amber-200/80 font-sans font-normal">No questions match your search.</p>
                 </div>
               )}
             </div>
