@@ -10,6 +10,7 @@ import Testimonial from "/src/Components/HomeComponent/Testimonial.jsx";
 import Industries from "/src/Components/HomeComponent/Industries.jsx";
 import ContactSection from "/src/Components/HomeComponent/ContactSection.jsx";
 import Empover from "../Components/HomeComponent/Empover";
+import Indhu from "../Components/HomeComponent/indhu";
 
 
 
@@ -31,6 +32,7 @@ export default function Home() {
       <Industries />
       <VisionMission />
       <Empover/>
+      <Indhu/>
       <FAQ />
 
       {/* FAQ sticky container */}

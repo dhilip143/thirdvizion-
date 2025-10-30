@@ -116,11 +116,11 @@ const FAQHeader = () => (
   <header className="text-center mb-16 relative z-10">
     <h2
       id="faq-heading"
-      className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-600 drop-shadow-lg font-serif"
+      className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-600 drop-shadow-lg font-open-sans-condensed"
     >
       Frequently Asked Questions
     </h2>
-    <p className="mt-4 text-base text-amber-200/80 max-w-2xl mx-auto font-sans font-normal tracking-wide">
+    <p className="mt-4 text-lg text-amber-200/80 max-w-2xl mx-auto font-open-sans font-normal tracking-wide">
       Answers about immersive tech, development, cloud, and enterprise solutions.
     </p>
   </header>
@@ -131,13 +131,13 @@ const HelpBotCTA = () => (
     <div className="mx-auto w-14 h-14 mb-3 rounded-full flex items-center justify-center bg-gradient-to-br from-amber-500 to-yellow-500 shadow-md shadow-amber-500/30">
       <Bot size={28} className="text-black" />
     </div>
-    <h4 className="font-bold text-amber-50 text-lg font-sans font-semibold">Can't find an answer?</h4>
-    <p className="text-sm text-amber-200/80 mt-1 mb-4 font-sans font-normal">
+    <h4 className="font-bold text-amber-50 text-lg font-open-sans font-semibold">Can't find an answer?</h4>
+    <p className="text-sm text-amber-200/80 mt-1 mb-4 font-open-sans font-normal">
       Our AI assistant will help you instantly.
     </p>
     <a
       href="#ask-ai"
-      className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 shadow-md font-semibold text-black text-sm transition-transform hover:scale-105 font-sans"
+      className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 shadow-md font-semibold text-black text-sm transition-transform hover:scale-105 font-open-sans"
     >
       Ask our AI Assistant
     </a>
@@ -157,7 +157,7 @@ const FAQSidebar = ({ categories, activeCategory, setActiveCategory, setQuery, s
             setOpenIndex(null);
           }}
           className={clsx(
-            "rounded-xl px-5 py-3 text-left font-semibold border transition-all duration-300 flex items-center justify-between group font-sans",
+            "rounded-xl px-5 py-3 text-left font-semibold border transition-all duration-300 flex items-center justify-between group font-open-sans",
             active
               ? "bg-gradient-to-r from-amber-600/30 to-yellow-600/30 border-amber-500/60 text-amber-50 shadow-lg"
               : "bg-white/5 border-amber-800/30 text-amber-200/80 hover:bg-white/10 hover:text-amber-50"
@@ -181,7 +181,7 @@ const FAQControls = ({ activeCategory, setActiveCategory, query, setQuery, setOp
   <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
     <div className="md:hidden w-full">
       <select
-        className="w-full p-3 rounded-xl border border-amber-800 bg-black text-sm text-amber-50 focus:ring-2 focus:ring-amber-500 font-sans"
+        className="w-full p-3 rounded-xl border border-amber-800 bg-black text-sm text-amber-50 focus:ring-2 focus:ring-amber-500 font-open-sans"
         value={activeCategory}
         onChange={(e) => {
           setActiveCategory(e.target.value);
@@ -206,7 +206,7 @@ const FAQControls = ({ activeCategory, setActiveCategory, query, setQuery, setOp
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search questions..."
-        className="pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-amber-800 text-sm text-amber-50 w-full placeholder:text-amber-400/50 focus:outline-none focus:ring-2 focus:ring-amber-500 font-sans font-normal tracking-wide"
+        className="pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-amber-800 text-sm text-amber-50 w-full placeholder:text-amber-400/50 focus:outline-none focus:ring-2 focus:ring-amber-500 font-open-sans font-normal tracking-wide"
       />
     </div>
   </div>
@@ -234,7 +234,7 @@ const FAQItem = ({ faq, index, isOpen, onToggle, setRef }) => {
       <h3>
         <button
           id={qId}
-          className="faq-question-btn w-full flex justify-between items-center p-5 text-left text-amber-50 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 font-sans tracking-tight"
+          className="faq-question-btn w-full flex justify-between items-center p-5 text-left text-amber-50 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 font-open-sans-condensed tracking-tight"
           aria-controls={panelId}
           aria-expanded={isOpen}
           onClick={() => onToggle(index)}
@@ -258,7 +258,7 @@ const FAQItem = ({ faq, index, isOpen, onToggle, setRef }) => {
         style={{ height: 0, paddingTop: 0, paddingBottom: 0 }}
       >
         <div className="border-t border-amber-800/60">
-          <p className="pt-4 pb-4 text-sm md:text-base text-amber-200/80 leading-relaxed font-sans font-normal tracking-wide">
+          <p className="pt-4 pb-4 text-lg text-amber-200/80 leading-relaxed font-open-sans font-normal tracking-wide">
             {faq.answer}
           </p>
         </div>
@@ -354,7 +354,7 @@ export default function FAQSection() {
 
   return (
     <section
-      className="relative bg-black text-amber-50 min-h-[600px] py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden"
+      className="relative bg-black text-amber-50 min-h-[600px] py-24 px-4 sm:px-6 lg:px-8 font-open-sans overflow-hidden"
       aria-labelledby="faq-heading"
     >
       <div className="max-w-5xl mx-auto">
@@ -389,7 +389,7 @@ export default function FAQSection() {
                 ))
               ) : (
                 <div className="rounded-2xl border border-amber-800 bg-white/5 backdrop-blur-sm p-10 text-center">
-                  <p className="text-sm text-amber-200/80 font-sans font-normal">No questions match your search.</p>
+                  <p className="text-lg text-amber-200/80 font-open-sans font-normal">No questions match your search.</p>
                 </div>
               )}
             </div>

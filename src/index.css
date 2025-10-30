@@ -1,9 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Diphylleia&family=Michroma&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Jura:wght@300..700&family=Michroma&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Diphylleia&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Jura:wght@300..700&family=Michroma&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Diphylleia&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Jura:wght@300..700&family=Michroma&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Saira+Stencil+One&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap');
 @import "tailwindcss";
-/* ensure root heights are normal */
+
+/* ✅ Import only necessary Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap');
+
+/* ✅ Font Family Classes */
+.font-open-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.font-open-sans-condensed {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+/* Root */
 html,
 body,
 #root {
@@ -12,46 +21,34 @@ body,
   padding: 0;
 }
 
-/* ...and so on for the rest */
-
-/* Makes the Selected Text Transparent in the Browser */
+/* Selection Style */
 ::selection {
-  background-color: transparent; 
-  color: white; 
-  /* background-clip: text; */
-  /* -webkit-background-clip: text;  */
-  /* background-image: linear-gradient(90deg, #3b82f6, #8b5cf6); */
+  background-color: transparent;
+  color: white;
 }
 ::-moz-selection {
   background-color: transparent;
-  /* color: transparent; */
-  /* background-clip: text; */
-  /* -moz-background-clip: text; */
-  /* background-image: linear-gradient(90deg, #3b82f6, #8b5cf6); */
 }
 
+/* Other Font Classes */
 .font-michroma {
   font-family: "Michroma", sans-serif;
 }
-
 .font-jura {
   font-family: "Jura", sans-serif;
 }
-
 .font-inter-tight {
   font-family: "Inter Tight", sans-serif;
   font-optical-sizing: auto;
 }
-
 .font-stencil {
   font-family: "Saira Stencil One", sans-serif;
 }
 
-
+/* Animation: Blur */
 .blurAnimated {
   animation: blurFadeIn 1.5s ease forwards;
 }
-
 @keyframes blurFadeIn {
   0% {
     filter: blur(40px);
@@ -63,35 +60,29 @@ body,
   }
 }
 
+/* Animation: Gradient */
 .animate-gradient-x {
   background-size: 200% 200%;
   animation: gradient-x 6s ease infinite;
 }
-
 @keyframes gradient-x {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
+/* Auto Blur */
 .autoBlur {
   animation: blur linear both;
   animation-timeline: view();
 }
-
 @keyframes blur {
   0% {
     filter: blur(40px);
     opacity: 0;
     transform: translateY(40px);
   }
-  45%,
-  55% {
-    filter: blur(0px);
+  45%, 55% {
+    filter: blur(0);
     opacity: 1;
     transform: translateY(0);
   }
@@ -102,6 +93,7 @@ body,
   }
 }
 
+/* Fade In Up Animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -112,84 +104,12 @@ body,
     transform: translateY(0);
   }
 }
-
 .animate-fadeInUp {
   animation: fadeInUp 0.3s ease-out forwards;
   opacity: 0;
 }
 
-/* Website Stack Component */
-
-/* .slider {
-  width: 100%;
-  height: var(--height);
-  overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    #ffffff 10% 90%,
-    transparent
-  );
-} */
-
-/* .slider .list {
-  display: flex;
-  /* margin-top: 8px;
-  width: 100%;
-  min-width: calc(var(--width) * var(--quantity));
-  position: relative;
-  /* inset : 0; */
-  /* justify-content:start; 
-  /* align-items: center; 
-} */
-
-/* .slider:hover .item {
-  animation-play-state: paused !important;
-}
-
-.slider .list .item img {
-  width: 100%;
-}
-
-.slider .list .item {
-  width: var(--width);
-  height: var(--height);
-  position: absolute;
-  left: 100%;
-  animation: corosal var(--time) linear infinite;
-  animation-delay: calc(
-    var(--time) / var(--quantity) * (var(--position) - 1) - 48s
-  );
-}
-
-@keyframes corosal {
-  from {
-    left: 100%;
-  }
-  to {
-    left: calc(var(--width) * -1);
-  }
-}
-
-/* Reverse Corosal
-.slider[reverse="true"] .item {
-  animation: reverse_corosal var(--time) linear infinite;
-  animation-delay: calc(
-    var(--time) / var(--quantity) * (var(--position) - 1) - 48s
-  );
-}
-
-@keyframes reverse_corosal {
-  from {
-    left: calc(var(--width) * -1);
-  }
-  to {
-    left: 100%;
-  }
-} */
-
-
-
+/* Slider Styles */
 .slider {
   width: 100%;
   height: var(--height);
@@ -199,25 +119,21 @@ body,
   mask-repeat: no-repeat;
   mask-composite: exclude;
 }
-
 .slider .list {
   display: flex;
   width: 100%;
   min-width: calc(var(--width) * var(--quantity));
   position: relative;
 }
-
 .slider:hover .item {
   animation-play-state: paused !important;
 }
-
 .slider .list .item img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* avoids stretching when size shrinks */
-  border-radius: 0.5rem; /* small rounding for modern look */
+  object-fit: cover;
+  border-radius: 0.5rem;
 }
-
 .slider .list .item {
   width: var(--width);
   height: var(--height);
@@ -226,80 +142,53 @@ body,
   animation: corosal var(--time) linear infinite;
   animation-delay: calc(var(--time) / var(--quantity) * (var(--position) - 1) - 48s);
 }
-
 @keyframes corosal {
-  from {
-    left: 100%;
-  }
-  to {
-    left: calc(var(--width) * -1);
-  }
+  from { left: 100%; }
+  to { left: calc(var(--width) * -1); }
 }
-
-/* Reverse */
+/* Reverse Slider */
 .slider[reverse="true"] .item {
   animation: reverse_corosal var(--time) linear infinite;
   animation-delay: calc(var(--time) / var(--quantity) * (var(--position) - 1) - 48s);
 }
-
 @keyframes reverse_corosal {
-  from {
-    left: calc(var(--width) * -1);
-  }
-  to {
-    left: 100%;
-  }
+  from { left: calc(var(--width) * -1); }
+  to { left: 100%; }
 }
 
-
-
-
-
-
-
-
-
-/* Web Hero Section */
-
+/* Gradient Background Animation */
 @keyframes gradient-move {
   to {
     background-position: 300% center;
   }
 }
-
 .animate-gradient {
   background-size: 400% auto;
   animation: gradient-move 15s linear infinite;
 }
 
-/* Keyboard Game  */
-
+/* Keyboard Keys */
 .keyboard {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .key {
   position: relative;
   width: 60px;
   height: 60px;
   margin: 3px;
-  background: linear-gradient(
-    180deg,
-    #fdfcf8,
-    #f5f1e6
-  ); /* soft beige + white */
+  background: linear-gradient(180deg, #fdfcf8, #f5f1e6);
   border-radius: 8px;
   box-shadow: inset -6px 0 6px rgba(0, 0, 0, 0.08),
-    inset 0 -6px 6px rgba(0, 0, 0, 0.12), 8px 16px 20px rgba(0, 0, 0, 0.2),
+    inset 0 -6px 6px rgba(0, 0, 0, 0.12),
+    8px 16px 20px rgba(0, 0, 0, 0.2),
     0 0 0 1px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
-
 .key::before {
   content: "";
   position: absolute;
@@ -307,43 +196,27 @@ body,
   left: 4px;
   bottom: 10px;
   right: 8px;
-  background: linear-gradient(
-    90deg,
-    #ffffff,
-    #ede5d3
-  ); /* white highlight + mild beige */
+  background: linear-gradient(90deg, #ffffff, #ede5d3);
   box-shadow: -4px -4px 5px rgba(255, 255, 255, 0.6),
     6px 4px 8px rgba(0, 0, 0, 0.1);
   border-left: 1px solid rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 8px;
 }
-
 .key.active {
-  background: #f7e8d2; /* mild beige active */
+  background: #f7e8d2;
 }
-
 .key.active::before {
-  background: linear-gradient(
-    90deg,
-    #f9f4e8,
-    #ffffff
-  ); /* active key highlight */
+  background: linear-gradient(90deg, #f9f4e8, #ffffff);
   border-left: 1px solid rgba(255, 255, 255, 0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-
-
-/* Contact Page > Map Section */
-
+/* Map Section */
 .map {
-    -webkit-filter: invert(100%);
-       -moz-filter: invert(100%);
-        -ms-filter: invert(100%);
-         -o-filter: invert(100%);
-            filter: invert(100%);
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
 }
 .card::before {
   position: absolute;
@@ -355,15 +228,14 @@ body,
   background-color: #4f46e5;
   opacity: 0.7;
 }
-
 .card:hover::before {
   clip-path: circle(110vw at 100% 100%);
 }
-
 .card:hover p {
   color: #fff;
 }
 
+/* Headings */
 h2 {
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;

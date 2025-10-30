@@ -127,11 +127,11 @@ const industries = [
 
 // Custom font styles for each industry
 const industryFontStyles = {
-  1: "font-sans font-semibold tracking-tight", // Digital Enterprise - Inter style
-  2: "font-sans font-medium tracking-normal", // Healthcare Innovation - SF Pro Display style
-  3: "font-sans font-normal tracking-wide", // Education Technology - SF Pro Text style
-  4: "font-sans font-semibold tracking-tighter", // Retail & E-commerce - Manrope style
-  5: "font-sans font-bold tracking-tight" // Smart Manufacturing - Space Grotesk style
+  1: "font-open-sans-condensed font-bold tracking-tight uppercase", // Digital Enterprise
+  2: "font-open-sans-condensed font-semibold tracking-normal uppercase", // Healthcare Innovation
+  3: "font-open-sans-condensed font-medium tracking-wide uppercase", // Education Technology
+  4: "font-open-sans-condensed font-bold tracking-tighter uppercase", // Retail & E-commerce
+  5: "font-open-sans-condensed font-extrabold tracking-tight uppercase" // Smart Manufacturing
 };
 
 // ---- COMPONENTS ----
@@ -191,13 +191,13 @@ const AnimatedHeaderSection = ({
     <div ref={contextRef}>
       <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}>
         <div ref={headerRef} className="flex flex-col justify-center gap-12 pt-16 sm:gap-16">
-          <p className={`text-lg sm:text-xl font-normal tracking-[0.3em] uppercase px-10 ${textColor} font-sans`}>
+          <p className={`text-lg sm:text-xl font-normal tracking-[0.3em] uppercase px-10 ${textColor} font-open-sans`}>
             {subTitle}
           </p>
           <div className="px-10">
-            <h1 className={`flex flex-col gap-12 uppercase text-7xl sm:text-8xl md:text-9xl lg:text-9xl sm:gap-16 md:block ${textColor} font-serif leading-[0.9]`}>
+            <h1 className={`flex flex-col gap-12 uppercase text-7xl sm:text-8xl md:text-9xl lg:text-9xl sm:gap-16 md:block ${textColor} font-open-sans-condensed leading-[0.9]`}>
               {titleParts.map((part, index) => (
-                <span key={index} className="font-light">{part} </span>
+                <span key={index} className="font-bold text-[153px]">{part} </span>
               ))}
             </h1>
           </div>
@@ -205,9 +205,8 @@ const AnimatedHeaderSection = ({
       </div>
       <div className={`relative px-10 ${textColor}`}>
         <div className="absolute inset-x-0 border-t-2 border-amber-400" />
-        <div className="py-12 sm:py-16 text-end">
-          <AnimatedTextLines text={text} className={`font-light uppercase text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed tracking-wide ${textColor} font-sans`} />
-        </div>
+<div className="pt-6 sm:pt-5  pb-17 text-end">
+          <AnimatedTextLines text={text} className={`font-regular  text-lg sm:text-2xl md:text-2xl lg:text-[24px] leading-relaxed tracking-wide ${textColor} font-open-sans`} />        </div>
       </div>
     </div>
   );
@@ -277,12 +276,13 @@ sustainable competitive advantages in the digital age`;
   return (
     <section id="industries" className="flex flex-col min-h-screen bg-black">
       <AnimatedHeaderSection
-        subTitle={"Industry Applications"}
-        title={"WE EMPOWER"}
+        subTitle="Industry Applications"
+        title="WE EMPOWER"
         text={text}
-        textColor={"text-amber-50"}
+        textColor="text-amber-50"
         withScrollTrigger={true}
       />
+
       <div className="relative flex flex-col font-light bg-black" onMouseMove={handleMouseMove}>
         {industries.map((industry, index) => (
           <div
@@ -303,9 +303,9 @@ sustainable competitive advantages in the digital age`;
               <Icon icon="lucide:dot" className="md:size-6 size-5" />
             </div>
             <div className="w-full h-0.5 bg-amber-900" />
-            <div className="flex px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
+            <div className="flex px-10 text-xs leading-loose  transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
               {industry.frameworks.map((framework) => (
-                <p key={framework.id} className="text-amber-400 transition-colors duration-500 md:group-hover:text-amber-800 font-sans font-normal tracking-wider">
+                <p key={framework.id} className="text-amber-400 transition-colors duration-500 md:group-hover:text-amber-800 font-open-sans font-normal tracking-wider">
                   {framework.name}
                 </p>
               ))}
@@ -316,15 +316,15 @@ sustainable competitive advantages in the digital age`;
             </div>
           </div>
         ))}
-        <div 
-          ref={previewRef} 
+        <div
+          ref={previewRef}
           className="fixed -top-2/6 left-0 z-50 overflow-hidden border-4 border-amber-500 pointer-events-none w-[400px] md:block hidden opacity-0 shadow-2xl shadow-amber-500/50 rounded-2xl"
         >
           {currentIndex !== null && (
-            <img 
-              src={industries[currentIndex].image} 
-              alt="preview" 
-              className="object-cover w-full h-full rounded-xl" 
+            <img
+              src={industries[currentIndex].image}
+              alt="preview"
+              className="object-cover w-full h-full rounded-xl"
             />
           )}
         </div>

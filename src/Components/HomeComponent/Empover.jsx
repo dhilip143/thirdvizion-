@@ -100,13 +100,13 @@ const AnimatedHeaderSection = ({
     <div ref={contextRef}>
       <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}>
         <div ref={headerRef} className="flex flex-col justify-center gap-12 pt-16 sm:gap-16">
-          <p className={`text-lg sm:text-xl font-normal tracking-[0.3em] uppercase px-10 ${textColor} font-sans`}>
+          <p className={`text-lg sm:text-xl font-normal tracking-[0.3em] uppercase px-10 ${textColor} font-open-sans`}>
             {subTitle}
           </p>
           <div className="px-10">
-            <h1 className={`flex flex-col gap-12 uppercase text-7xl sm:text-8xl md:text-9xl lg:text-9xl sm:gap-16 md:block ${textColor} font-serif leading-[0.9]`}>
+            <h1 className={`flex flex-col gap-12 uppercase text-7xl sm:text-8xl md:text-9xl lg:text-9xl sm:gap-16 md:block ${textColor} font-open-sans-condensed leading-[0.9]`}>
               {titleParts.map((part, index) => (
-                <span key={index} className="font-light">{part} </span>
+                <span key={index} className="font-bold text-[153px]">{part} </span>
               ))}
             </h1>
           </div>
@@ -114,8 +114,8 @@ const AnimatedHeaderSection = ({
       </div>
       <div className={`relative px-10 ${textColor}`}>
         <div className="absolute inset-x-0 border-t-2 border-amber-400" />
-        <div className="py-12 sm:py-16 text-end">
-          <AnimatedTextLines text={text} className={`font-light uppercase text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed tracking-wide ${textColor} font-sans`} />
+        <div className="pt-6 sm:pt-5 pb-17 text-end">
+          <AnimatedTextLines text={text} className={`font-regular text-lg sm:text-2xl md:text-2xl lg:text-[24px] leading-relaxed tracking-wide ${textColor} font-open-sans`} />
         </div>
       </div>
     </div>
@@ -124,9 +124,9 @@ const AnimatedHeaderSection = ({
 
 // Service-specific font styles matching the industries pattern
 const serviceFontStyles = {
-  0: "font-sans font-semibold tracking-tight", // Immersive Tech - Digital Enterprise style
-  1: "font-sans font-medium tracking-normal", // Data & Cloud - Healthcare style
-  2: "font-sans font-normal tracking-wide", // Web Development - Education style
+  0: "font-open-sans-condensed font-bold tracking-tight", // Immersive Tech - Digital Enterprise style
+  1: "font-open-sans-condensed font-semibold tracking-normal", // Data & Cloud - Healthcare style
+  2: "font-open-sans-condensed font-medium tracking-wide", // Development & Software - Education style
 };
 
 // Main Services Component
@@ -180,12 +180,12 @@ that transform businesses with cutting-edge technology `;
             <div className="flex items-center justify-between gap-4">
               <div className="flex flex-col w-full gap-6">
                 {/* Service Title with industry-matched styling */}
-                <h2 className={`text-4xl lg:text-5xl text-amber-50 ${serviceFontStyles[index]}`}>
+                <h2 className={`lg:text-[32px] text-[26px] leading-none text-amber-50 ${serviceFontStyles[index]}`}>
                   {service.title}
                 </h2>
                 
                 {/* Service Description */}
-                <p className="text-xl leading-relaxed tracking-widest lg:text-2xl text-amber-400 text-pretty font-sans font-normal">
+                <p className="text-lg leading-relaxed tracking-wider text-amber-400 text-pretty font-open-sans font-normal">
                   {service.description}
                 </p>
                 
@@ -194,10 +194,10 @@ that transform businesses with cutting-edge technology `;
                   {service.items.map((item, itemIndex) => (
                     <div key={`item-${index}-${itemIndex}`} className="w-full group">
                       <h3 className="flex items-center w-full transition-all duration-300 group-hover:translate-x-2">
-                        <span className="mr-12 text-lg text-amber-400 font-mono font-medium">
+                        <span className="mr-12 text-xs md:text-sm text-amber-400 font-open-sans font-normal tracking-wider">
                           0{itemIndex + 1}
                         </span>
-                        <span className="flex-1 font-sans font-normal tracking-wider uppercase text-amber-50">
+                        <span className="flex-1 font-open-sans font-normal tracking-wider uppercase text-amber-50">
                           {item.title}
                         </span>
                       </h3>
