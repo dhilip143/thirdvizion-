@@ -32,7 +32,7 @@ export default function Home() {
       <Industries />
       <VisionMission />
       <Empover/>
-      <Indhu/>
+     
       <FAQ />
 
       {/* FAQ sticky container */}
