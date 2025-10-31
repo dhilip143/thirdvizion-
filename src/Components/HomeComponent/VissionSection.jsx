@@ -1,58 +1,193 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const MissionVision = () => {
+  const sectionRef = useRef(null);
+  const visionHeadingRef = useRef(null);
+  const visionLineRef = useRef(null);
+  const visionTextRef = useRef(null);
+  const missionHeadingRef = useRef(null);
+  const missionLineRef = useRef(null);
+  const missionTextRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Vision section sequential animation
+      const visionTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: visionLineRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        }
+      });
+
+      visionTimeline
+        // First: Line reveal
+        .fromTo(visionLineRef.current,
+          { 
+            scaleX: 0,
+            transformOrigin: "left center"
+          },
+          {
+            scaleX: 1,
+            duration: 1.5,
+            ease: "power3.out"
+          }
+        )
+        // Second: Heading animation after line
+        .fromTo(visionHeadingRef.current,
+          {
+            opacity: 0,
+            y: 30
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out"
+          },
+          "-=0.5" // Start slightly before line completes
+        )
+        // Third: Text reveal after heading
+        .fromTo(visionTextRef.current,
+          {
+            opacity: 0,
+            y: 40
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out"
+          },
+          "-=0.3" // Start after heading begins
+        );
+
+      // Mission section sequential animation
+      const missionTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: missionLineRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        }
+      });
+
+      missionTimeline
+        // First: Line reveal
+        .fromTo(missionLineRef.current,
+          { 
+            scaleX: 0,
+            transformOrigin: "right center"
+          },
+          {
+            scaleX: 1,
+            duration: 1.5,
+            ease: "power3.out"
+          }
+        )
+        // Second: Heading animation after line
+        .fromTo(missionHeadingRef.current,
+          {
+            opacity: 0,
+            y: 30
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out"
+          },
+          "-=0.5" // Start slightly before line completes
+        )
+        // Third: Text reveal after heading
+        .fromTo(missionTextRef.current,
+          {
+            opacity: 0,
+            y: 40
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out"
+          },
+          "-=0.3" // Start after heading begins
+        );
+
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="bg-black text-white py-16 px-6 md:px-20 font-sans">
-      {/* Outer border box */}
-     
-        {/* Two-column layout inside the box */}
-        <div className="grid md:grid-cols-2 gap-12">
-          
-          {/* --- MISSION --- */}
-          <div className="relative">
-            {/* Decorative left gold line */}
-            <div className="absolute -left-14 top-4 hidden md:block">
-              <div className="h-[3px] w-108 bg-yellow-500 relative">
-                <div className="absolute -left-5 top-[5px] w-[3px] w-3 h-8 bg-yellow-500 rotate-45"></div>
-              </div>
-            </div>
-
-            <h2 className="text-2xl ml-96 font-bold tracking-wider mb-6 flex items-center">
-              MISSION
-            </h2>
-
-            <p className="text-gray-300 leading-relaxed max-w-md">
-              At ThirdVizion, we’re more than just a technology company. Our
-              mission is to deliver cutting-edge solutions that not only solve
-              challenges but also create new opportunities across industries.
-              With a dedicated team of experts, we bring ideas to life with
-              seamless technology that transforms businesses.
-            </p>
+    <section ref={sectionRef} className="bg-black pt-100 text-white py-16 px-6 md:px-20 font-sans">
+      {/* Vision section */}
+      <div className="relative">
+        {/* Decorative left gold line */}
+        <div className="absolute -left-14 top-7 hidden md:block">
+          <div ref={visionLineRef} className="h-[2.5px] w-70 bg-yellow-500 ml-[58px]">
+            <div className="absolute -right-1 mt-[-2.3px] w-2 h-2 bg-yellow-500 rounded-full"></div>
+            <div className="absolute -left-12 top-[-20.5px] w-[2px] w-3 h-34 bg-yellow-500 rotate-46"></div>
           </div>
-
-          {/* --- VISION --- */}
-          <div className="relative md:text-left text-right">
-            {/* Decorative right gold line */}
-            <div className="absolute -right-14 top-94 hidden md:block">
-              <div className="h-[3px] w-153  bg-yellow-500 relative">
-                <div className="absolute -right-5 top-[5px] w-[3px] h-10 bg-yellow-500 -rotate-45"></div>
-              </div>
-            </div>
-
-            <h2 className="text-2xl pt-90 font-bold tracking-wider mb-6 flex justify-end md:justify-start">
-              VISION
-            </h2>
-
-            <p className="text-gray-300 leading-relaxed max-w-md ml-auto md:ml-0">
-              At ThirdVizion, we’re more than just a technology company. Our
-              vision is to deliver cutting-edge solutions that not only solve
-              challenges but also create new opportunities across industries.
-              With a dedicated team of experts, we bring ideas to life with
-              seamless technology that transforms businesses.
-            </p>
-          </div>
-
         </div>
+
+        <h2 ref={visionHeadingRef} className="text-6xl ml-76 font-bold tracking-wider mb-6 flex">
+          VISION
+        </h2>
+
+        <div ref={visionTextRef}>
+          <p className="text-gray-300 text-[18px]  ml-20 leading-relaxed max-w-4xl">
+            To redefine the boundaries of digital interaction by creating immersive, intelligent, and human-centered 3D experiences that bridge the real and virtual worlds.
+          </p>
+        </div>
+      </div>
+
+      {/* Mission section */}
+      <div className="relative md:text-left text-right -mt-38 mb-40">
+        {/* Decorative right gold line */}
+        <div className="absolute -right-[-17px] h-9 top-94 hidden md:block">
+          <div ref={missionLineRef} className="h-[2.5px] w-70 bg-yellow-500 relative ml-[-15px]">
+            <div className="absolute -left-2 mt-[-3px] w-2 h-2 bg-yellow-500 rounded-full"></div>
+            <div className="absolute -right-[49px] top-[-18.8px] w-[2px] h-34 bg-yellow-500 -rotate-45"></div>
+          </div>
+        </div>
+
+        <h2 ref={missionHeadingRef} className="text-6xl pt-86 pl-193 font-bold tracking-wider mb-6 flex justify-end md:justify-start">
+          MISSION
+        </h2>
+
+        <div ref={missionTextRef}>
+          <p className="text-gray-300 text-[18px] leading-relaxed pl-93">
+            At ThirdVizion Labs, our mission is to empower businesses and creators through
+            cutting-edge Augmented Reality (AR), Virtual Reality (VR), and 3D web
+            technologies.
+          </p>
+
+          <p className="text-gray-300 text-[18px] leading-relaxed pl-93 mt-4">
+            We strive to:
+          </p>
+
+          <p className="text-gray-300 text-[18px] leading-relaxed pl-93 mt-2">
+            <span className="text-yellow-500 font-semibold">Innovate</span> immersive solutions that transform the way people learn, work, and connect.
+          </p>
+
+          <p className="text-gray-300 text-[18px]  leading-relaxed pl-93 mt-2">
+            <span className="text-yellow-500 font-semibold">Integrate</span> seamless 3D experiences across digital platforms for accessibility and engagement.
+          </p>
+
+          <p className="text-gray-300 text-[18px] leading-relaxed pl-93 mt-2">
+            <span className="text-yellow-500 font-semibold">Inspire</span> creativity and future-ready thinking by blending design, technology, and storytelling.
+          </p>
+        </div>
+      </div>
     </section>
   );
 };

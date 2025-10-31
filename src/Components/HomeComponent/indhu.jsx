@@ -19,6 +19,7 @@ export default function Indhu() {
   const circleRefs = useRef([]);
   const textRefs = useRef([]);
   const imageRefs = useRef([]);
+  const animationRefs = useRef([]);
 
   // Responsive circle radius
   useEffect(() => {
@@ -58,13 +59,25 @@ export default function Indhu() {
     const section = containerRef.current;
     const svg = svgRef.current;
     const path = pathRef.current;
+    
     if (!section || !svg || !path) return;
+
+    // Clear any existing animations first
+    if (animationRefs.current.length > 0) {
+      animationRefs.current.forEach(ref => ref?.kill?.());
+      animationRefs.current = [];
+    }
+
+    ScrollTrigger.getAll().forEach(st => {
+      if (st.trigger === section || st.trigger === svg) {
+        st.kill();
+      }
+    });
 
     const totalLength = path.getTotalLength();
     gsap.set(path, { strokeDasharray: totalLength, strokeDashoffset: totalLength });
 
     // Horizontal scroll setup
-    const totalScrollWidth = svg.scrollWidth;
     const scrollTween = gsap.to(svg, {
       x: () => -(svg.scrollWidth - window.innerWidth),
       ease: "none",
@@ -75,11 +88,14 @@ export default function Indhu() {
         scrub: true,
         pin: true,
         anticipatePin: 1,
+        invalidateOnRefresh: true,
+        markers: false, // Set to true for debugging
       },
     });
+    animationRefs.current.push(scrollTween);
 
     // Animate path drawing
-    gsap.to(path, {
+    const pathAnimation = gsap.to(path, {
       strokeDashoffset: 0,
       ease: "none",
       scrollTrigger: {
@@ -87,12 +103,14 @@ export default function Indhu() {
         start: "top top",
         end: () => `+=${svg.scrollWidth}`,
         scrub: true,
+        invalidateOnRefresh: true,
       },
     });
+    animationRefs.current.push(pathAnimation);
 
     // Animate each circle, image, and text
     circles.forEach((c, i) => {
-      gsap.fromTo(
+      const circleAnimation = gsap.fromTo(
         circleRefs.current[i],
         { scale: 0.3, opacity: 0, y: 50 },
         {
@@ -105,11 +123,13 @@ export default function Indhu() {
             trigger: svg,
             start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
             end: "+=200",
+            invalidateOnRefresh: true,
           },
         }
       );
+      animationRefs.current.push(circleAnimation);
 
-      gsap.fromTo(
+      const imageAnimation = gsap.fromTo(
         imageRefs.current[i],
         { opacity: 0, scale: 0.7, y: 50 },
         {
@@ -122,11 +142,13 @@ export default function Indhu() {
             trigger: svg,
             start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
             end: "+=200",
+            invalidateOnRefresh: true,
           },
         }
       );
+      animationRefs.current.push(imageAnimation);
 
-      gsap.fromTo(
+      const textAnimation = gsap.fromTo(
         textRefs.current[i],
         { opacity: 0, y: 40 },
         {
@@ -138,21 +160,37 @@ export default function Indhu() {
             trigger: svg,
             start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
             end: "+=200",
+            invalidateOnRefresh: true,
           },
         }
       );
+      animationRefs.current.push(textAnimation);
     });
 
     return () => {
-      scrollTween.kill();
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      // Cleanup function
+      animationRefs.current.forEach(ref => ref?.kill?.());
+      animationRefs.current = [];
+      
+      ScrollTrigger.getAll().forEach(st => {
+        if (st.trigger === section || st.trigger === svg) {
+          st.kill();
+        }
+      });
     };
   }, [circles, radius]);
+
+  // Initialize ref arrays
+  useEffect(() => {
+    circleRefs.current = circleRefs.current.slice(0, circles.length);
+    textRefs.current = textRefs.current.slice(0, circles.length);
+    imageRefs.current = imageRefs.current.slice(0, circles.length);
+  }, [circles.length]);
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-screen overflow-hidden bg-black text-white flex items-center justify-start py-16"
+      className="relative w-full min-h-screen overflow-hidden bg-black text-white flex items-center justify-start py-16 isolate"
     >
       {/* Floating Glow Backgrounds */}
       <div className="absolute inset-0 pointer-events-none">
