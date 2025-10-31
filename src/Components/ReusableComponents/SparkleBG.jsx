@@ -16,7 +16,7 @@ export default function SparkleBg({
     let raf;
     const DPR = Math.min(2, window.devicePixelRatio || 1);
 
-    const resize = () => {
+    const resize = () => { 
       canvas.width = canvas.clientWidth * DPR;
       canvas.height = canvas.clientHeight * DPR;
     };

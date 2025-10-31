@@ -28,7 +28,7 @@ export default function Home() {
       
       {/* <Hovercard /> */}
       
-      {/* <Testimonial /> */}
+      <Testimonial />
       <Industries />
       <VisionMission />
       <Empover/>
