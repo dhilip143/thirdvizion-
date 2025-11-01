@@ -7,7 +7,6 @@ import threed from "/src/assets/HomeImages/3d development.webp";
 import gam from "/src/assets/HomeImages/gam.png";
 import are from "/src/assets/HomeImages/ar.png";
 import wih from "/src/assets/HomeImages/hiw.png";
-import extra from "/src/assets/HomeImages/pon.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,39 +34,39 @@ export default function Indhu() {
     return () => window.removeEventListener("resize", updateRadius);
   }, []);
 
-  // Increased SVG width and equal spacing between circles with left shift
+  // SVG dimensions and circle positioning
   const svgWidth = 5000;
-  const leftShift = 150; // Amount to shift circles to the left
-  const circleSpacing = svgWidth / (4 + 1); // Equal spacing for 4 circles with padding on both sides
+  const leftShift = 150;
+  const circleSpacing = svgWidth / (4 + 1);
   
   const circles = [
     {
       id: 1,
-      cx: circleSpacing * 0.92 - leftShift, // First circle position shifted left
+      cx: circleSpacing * 0.92 - leftShift,
       cy: 200,
       label: "Discover",
-      description: "We start by deeply understanding your business vision, challenges, and aspirations. Our team dives into every detail to uncover insights that guide us in crafting tailored technology solutions designed to transform your goals into measurable outcomes.",
+      description: "We start by deeply understanding your business vision, challenges, and aspirations. Our team dives into every detail to uncover insights that guide us in crafting tailored technology solutions.",
       img: threed
     },
     {
       id: 2,
-      cx: circleSpacing * 2.4 - leftShift, // Equal spacing shifted left
+      cx: circleSpacing * 2.1 - leftShift,
       cy: 300,
       label: "Architect",
-      description: "Design robust scalable systems architecture with cutting-edge technologies and best practices to ensure your solution is future-proof and performs optimally under any load conditions.",
+      description: "We design robust, scalable system architectures using cutting-edge technologies and best practices, ensuring your solution remains future-proof, efficient, and capable of delivering optimal performance under any scale or load conditions.",
       img: gam
     },
     {
       id: 3,
-      cx: circleSpacing * 3.6- leftShift, // Equal spacing shifted left
+      cx: circleSpacing * 3.3 - leftShift,
       cy: 200,
       label: "Build",
-      description: "Develop with precision and excellence using agile methodologies and continuous integration to deliver high-quality, maintainable code that exceeds expectations and drives business value.",
+      description: "Develop with precision and excellence using agile methodologies and continuous integration maintainable code that exceeds expectations .",
       img: are
     },
     {
       id: 4,
-      cx: circleSpacing * 4.7 - leftShift, // Equal spacing shifted left
+      cx: circleSpacing * 4.7 - leftShift,
       cy: 300,
       label: "Elevate",
       description: "Scale your business to new heights with optimized performance, enhanced user experiences, and data-driven insights that propel your growth and competitive advantage in the market.",
@@ -75,24 +74,41 @@ export default function Indhu() {
     },
   ];
 
-  // Function to split description into exactly 3 lines
+  // Function to split description into balanced lines
   const splitDescription = (description) => {
     const words = description.split(' ');
     const totalWords = words.length;
-    const wordsPerLine = Math.ceil(totalWords / 3);
+    const targetLines = 3;
+    const wordsPerLine = Math.ceil(totalWords / targetLines);
 
     const lines = [];
-    for (let i = 0; i < 3; i++) {
-      const start = i * wordsPerLine;
-      const end = Math.min(start + wordsPerLine, totalWords);
-      const line = words.slice(start, end).join(' ');
-      lines.push(line);
+    let currentLine = [];
+    let currentWordCount = 0;
+
+    words.forEach((word, index) => {
+      currentLine.push(word);
+      currentWordCount++;
+
+      // Break into new line when reaching target word count or at natural breaks
+      if (currentWordCount >= wordsPerLine || index === words.length - 1) {
+        // Don't break if it's a very short line or we're at the end
+        if (currentLine.length > 2 || index === words.length - 1) {
+          lines.push(currentLine.join(' '));
+          currentLine = [];
+          currentWordCount = 0;
+        }
+      }
+    });
+
+    // Ensure we have exactly 3 lines, padding with empty strings if needed
+    while (lines.length < targetLines) {
+      lines.push('');
     }
 
-    return lines;
+    return lines.slice(0, targetLines);
   };
 
-  // Create smooth connecting path with proper spacing
+  // Create smooth connecting path
   const pathD = `
     M ${circles[0].cx} ${circles[0].cy}
     ${circles
@@ -134,14 +150,14 @@ export default function Indhu() {
     const totalLength = path.getTotalLength();
     gsap.set(path, { strokeDasharray: totalLength, strokeDashoffset: totalLength });
 
-    // Enhanced horizontal scroll setup with more distance
+    // Enhanced horizontal scroll setup
     const scrollTween = gsap.to(svg, {
       x: () => -(svg.scrollWidth - window.innerWidth),
       ease: "none",
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.2}`, // Increased scroll distance
+        end: () => `+=${svg.scrollWidth * 1.2}`,
         scrub: true,
         pin: true,
         anticipatePin: 1,
@@ -179,7 +195,7 @@ export default function Indhu() {
           scrollTrigger: {
             trigger: svg,
             start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
-            end: "+=300", // Increased trigger range
+            end: "+=300",
             invalidateOnRefresh: true,
           },
         }
@@ -198,7 +214,7 @@ export default function Indhu() {
           scrollTrigger: {
             trigger: svg,
             start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
-            end: "+=300", // Increased trigger range
+            end: "+=300",
             invalidateOnRefresh: true,
           },
         }
@@ -216,7 +232,7 @@ export default function Indhu() {
           scrollTrigger: {
             trigger: svg,
             start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
-            end: "+=300", // Increased trigger range
+            end: "+=300",
             invalidateOnRefresh: true,
           },
         }
@@ -229,17 +245,17 @@ export default function Indhu() {
         if (descLine) {
           const descAnimation = gsap.fromTo(
             descLine,
-            { opacity: 0, y: 50 + (lineIndex * 10) },
+            { opacity: 0, y: 30 + (lineIndex * 8) },
             {
               opacity: 1,
               y: 0,
               ease: "power2.out",
               duration: 0.6,
-              delay: lineIndex * 0.1,
+              delay: lineIndex * 0.08,
               scrollTrigger: {
                 trigger: svg,
                 start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
-                end: "+=300", // Increased trigger range
+                end: "+=300",
                 invalidateOnRefresh: true,
               },
             }
@@ -283,15 +299,17 @@ export default function Indhu() {
       </div>
 
       {/* Heading */}
-      <div className="absolute top-12 left-1/2 -translate-x-1/2 text-center z-10">
-        <p className="text-xs sm:text-sm text-gray-400 tracking-wide uppercase">Industry Applications</p>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-2 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 drop-shadow-[0_0_25px_rgba(200,200,255,0.3)]">
-          INDUSTRIES WE EMPOWER
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4">
+        <p className="text-xs sm:text-sm text-gray-400 tracking-wide uppercase mb-2">
+          Our Process
+        </p>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 drop-shadow-[0_0_25px_rgba(200,200,255,0.3)]">
+          HOW WE DELIVER EXCELLENCE
         </h1>
       </div>
 
-      {/* SVG Path + Circles - Increased width */}
-      <div className="relative flex-shrink-0 w-[5000px] h-[600px] lg:h-[700px] 2xl:h-[800px] mx-auto z-10">
+      {/* SVG Path + Circles */}
+      <div className="relative flex-shrink-0 w-[9000px] h-[600px] lg:h-[700px] 2xl:h-[800px] mx-auto z-10">
         <svg
           ref={svgRef}
           viewBox={`0 0 ${svgWidth} 600`}
@@ -301,7 +319,13 @@ export default function Indhu() {
           preserveAspectRatio="xMidYMid meet"
         >
           {/* Base path */}
-          <path d={pathD} stroke="rgba(255,255,255,0.05)" strokeWidth="3" fill="none" strokeLinecap="round" />
+          <path 
+            d={pathD} 
+            stroke="rgba(255,255,255,0.05)" 
+            strokeWidth="3" 
+            fill="none" 
+            strokeLinecap="round" 
+          />
 
           {/* Animated glowing path */}
           <path
@@ -332,24 +356,39 @@ export default function Indhu() {
 
           {/* Circles, Images, Labels */}
           {circles.map((c, idx) => {
-            // Position all text labels below the circles
-            const labelY = c.cy + radius + 40;
-            const descStartY = labelY + 25;
-            const lineHeight = 20;
+            // All text positioned below circles with consistent spacing
+            const labelY = c.cy + radius + 50;
+            const descStartY = labelY + 30;
+            const lineHeight = 22;
 
-            const fontSize =
-              window.innerWidth >= 1536
-                ? 18 + radius / 7
-                : window.innerWidth >= 1024
-                  ? 16 + radius / 9
-                  : window.innerWidth >= 640
-                    ? 14 + radius / 10
-                    : 12;
+            const fontSize = window.innerWidth >= 1536 ? 18 + radius / 7 :
+                            window.innerWidth >= 1024 ? 16 + radius / 9 :
+                            window.innerWidth >= 640 ? 14 + radius / 10 : 12;
 
             const descriptionLines = splitDescription(c.description);
 
             return (
               <g key={c.id}>
+                {/* Floating outer rings */}
+                <circle
+                  cx={c.cx}
+                  cy={c.cy}
+                  r={radius + 15}
+                  fill="none"
+                  stroke="rgba(0,255,255,0.5)"
+                  strokeWidth="2"
+                  style={{ filter: "url(#softGlow)" }}
+                />
+                <circle
+                  cx={c.cx}
+                  cy={c.cy}
+                  r={radius + 30}
+                  fill="none"
+                  stroke="rgba(255,0,255,0.3)"
+                  strokeWidth="1.5"
+                  style={{ filter: "url(#softGlow)" }}
+                />
+
                 {/* Circle */}
                 <circle
                   ref={(el) => (circleRefs.current[idx] = el)}
@@ -378,34 +417,25 @@ export default function Indhu() {
                   clipPath={`url(#clip-${c.id})`}
                 />
 
-                {/* Floating outer rings */}
-                <circle
-                  cx={c.cx}
-                  cy={c.cy}
-                  r={radius + 15}
-                  fill="none"
-                  stroke="rgba(0,255,255,0.5)"
-                  strokeWidth="2"
-                  style={{ filter: "url(#softGlow)" }}
-                />
-                <circle
-                  cx={c.cx}
-                  cy={c.cy}
-                  r={radius + 30}
-                  fill="none"
-                  stroke="rgba(255,0,255,0.3)"
-                  strokeWidth="1.5"
+                {/* Text Container Background for better readability */}
+                <rect
+                  x={c.cx - 220}
+                  y={labelY - 25}
+                  width="440"
+                  height="130"
+                  fill="rgba(0, 0, 0, 0.7)"
+                  rx="15"
                   style={{ filter: "url(#softGlow)" }}
                 />
 
-                {/* Label - Positioned below the circle */}
+                {/* Label */}
                 <text
                   ref={(el) => (textRefs.current[idx] = el)}
                   x={c.cx}
                   y={labelY}
                   textAnchor="middle"
                   fill="#fff"
-                  fontSize={fontSize * 0.75}
+                  fontSize={fontSize * 0.9}
                   fontWeight={700}
                   style={{
                     fontFamily: "inherit",
@@ -416,7 +446,7 @@ export default function Indhu() {
                   {c.label}
                 </text>
 
-                {/* Description - Exactly 3 lines */}
+                {/* Description Lines */}
                 {descriptionLines.map((line, lineIndex) => (
                   <text
                     key={lineIndex}
@@ -425,16 +455,15 @@ export default function Indhu() {
                       descRefs.current[idx][lineIndex] = el;
                     }}
                     x={c.cx}
-                    // 👇 Increase space between each line (here +12 gives more vertical gap)
-                    y={descStartY + lineIndex * (lineHeight + 12)}
+                    y={descStartY + lineIndex * lineHeight}
                     textAnchor="middle"
-                    fill="#ccc"
-                    fontSize={fontSize * 0.45}
+                    fill="#e5e7eb"
+                    fontSize={fontSize * 0.5}
                     fontWeight={400}
                     style={{
                       fontFamily: "inherit",
                       textShadow: "0 0 8px rgba(0,255,255,0.3)",
-                      letterSpacing: "1px", // ✅ space between letters
+                      letterSpacing: "0.3px",
                     }}
                   >
                     {line}
