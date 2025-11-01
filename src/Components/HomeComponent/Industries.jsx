@@ -1,334 +1,227 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
+// Note: Icon is imported in your file but not used, I've left it.
 import { Icon } from "@iconify/react/dist/iconify.js";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 
-// Import local images
 import digitalEnterpriseImage from "/src/assets/HomeImages/m.jpg";
-import digitalEnterpriseBg from "/src/assets/HomeImages/m.jpg";
 import healthcareImage from "/src/assets/HomeImages/mm.jpg";
-import healthcareBg from "/src/assets/HomeImages/mm.jpg";
 import educationImage from "/src/assets/HomeImages/mmm.jpg";
-import educationBg from "/src/assets/HomeImages/mmm.jpg";
 import retailImage from "/src/assets/HomeImages/mmmm.jpg";
-import retailBg from "/src/assets/HomeImages/mmmm.jpg";
-import manufacturingImage from "/src/assets/HomeImages/mmmmm.jpg";
-import manufacturingBg from "/src/assets/HomeImages/mmmmm.jpg";
+import manufacturingImage from "/src/assets/HomeImages/mmmmm.jpg"; // Note: This 5th image is not used as there are 4 industries
 
 gsap.registerPlugin(ScrollTrigger);
-
-// ---- DATA ----
-const industriesData = [
-  {
-    title: "Digital Enterprise",
-    description: "Transforming traditional businesses into agile, data-driven digital enterprises with scalable cloud infrastructure and intelligent automation solutions.",
-    items: [
-      { title: "Cloud Migration & Digital Transformation" },
-      { title: "Enterprise Architecture Modernization" },
-      { title: "Workflow Automation & Process Optimization" },
-    ],
-  },
-  {
-    title: "Healthcare",
-    description: "Building secure, compliant healthcare solutions that leverage AI and data analytics to improve patient outcomes and operational efficiency.",
-    items: [
-      { title: "Predictive Analytics for Patient Care" },
-      { title: "HIPAA Compliant System Architecture" },
-      { title: "Medical Data Management & Analysis" },
-    ],
-  },
-  {
-    title: "Education",
-    description: "Creating innovative edtech platforms and learning management systems that enhance educational accessibility and personalized learning experiences.",
-    items: [
-      { title: "Learning Management Systems (LMS)" },
-      { title: "Personalized Learning Algorithms" },
-      { title: "Educational Data Analytics" },
-    ],
-  },
-  {
-    title: "Retail & E-commerce",
-    description: "Developing sophisticated e-commerce platforms and retail analytics systems that drive sales, optimize inventory, and enhance customer experiences.",
-    items: [
-      { title: "E-commerce Platform Development" },
-      { title: "Customer Behavior Analytics" },
-      { title: "Inventory & Supply Chain Optimization" },
-    ],
-  },
-  {
-    title: "Manufacturing",
-    description: "Implementing Industry 4.0 solutions with IoT integration, predictive maintenance, and production optimization for smart manufacturing.",
-    items: [
-      { title: "Predictive Maintenance Systems" },
-      { title: "Production Line Optimization" },
-      { title: "Quality Control Automation" },
-    ],
-  },
-];
 
 const industries = [
   {
     id: 1,
+    number: "01/",
     name: "Digital Enterprise",
-    frameworks: [
-      { id: 1, name: "Cloud Migration & Digital Transformation" },
-      { id: 2, name: "Enterprise Architecture Modernization" },
-      { id: 3, name: "Workflow Automation & Process Optimization" },
-    ],
-    image: digitalEnterpriseImage,
-    bgImage: digitalEnterpriseBg,
   },
   {
     id: 2,
-    name: "Healthcare",
-    frameworks: [
-      { id: 1, name: "Predictive Analytics for Patient Care" },
-      { id: 2, name: "HIPAA Compliant System Architecture" },
-      { id: 3, name: "Medical Data Management & Analysis" },
-    ],
-    image: healthcareImage,
-    bgImage: healthcareBg,
+    number: "02/",
+    name: "Healthcare Innovation",
   },
   {
     id: 3,
-    name: "Education",
-    frameworks: [
-      { id: 1, name: "Learning Management Systems (LMS)" },
-      { id: 2, name: "Personalized Learning Algorithms" },
-      { id: 3, name: "Educational Data Analytics" },
-    ],
-    image: educationImage,
-    bgImage: educationBg,
+    number: "03/",
+    name: "Education Technology",
   },
   {
     id: 4,
-    name: "Retail & E-commerce",
-    frameworks: [
-      { id: 1, name: "E-commerce Platform Development" },
-      { id: 2, name: "Customer Behavior Analytics" },
-      { id: 3, name: "Inventory & Supply Chain Optimization" },
-    ],
-    image: retailImage,
-    bgImage: retailBg,
-  },
-  {
-    id: 5,
-    name: "Manufacturing",
-    frameworks: [
-      { id: 1, name: "Predictive Maintenance Systems" },
-      { id: 2, name: "Production Line Optimization" },
-      { id: 3, name: "Quality Control Automation" },
-    ],
-    image: manufacturingImage,
-    bgImage: manufacturingBg,
+    number: "04/",
+    name: "Retail & E-commerce Solutions",
   },
 ];
 
-// Custom font styles for each industry
-const industryFontStyles = {
-  1: "font-outfit font-bold tracking-tight uppercase", // Digital Enterprise
-  2: "font-outfit font-semibold tracking-normal uppercase", // Healthcare
-  3: "font-outfit font-medium tracking-wide uppercase", // Education
-  4: "font-outfit font-bold tracking-tighter uppercase", // Retail & E-commerce
-  5: "font-outfit font-extrabold tracking-tight uppercase" // Manufacturing
-};
-
-// ---- COMPONENTS ----
-const AnimatedTextLines = ({ text, className }) => {
-  const containerRef = useRef(null);
-  const lineRefs = useRef([]);
-  const lines = text.split("\n").filter((line) => line.trim() !== "");
-
-  useGSAP(() => {
-    if (lineRefs.current.length > 0) {
-      gsap.from(lineRefs.current, {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.3,
-        ease: "back.out",
-        scrollTrigger: { trigger: containerRef.current },
-      });
-    }
-  });
-
-  return (
-    <div ref={containerRef} className={className}>
-      {lines.map((line, index) => (
-        <span
-          key={index}
-          ref={(el) => (lineRefs.current[index] = el)}
-          className="block leading-relaxed tracking-wide text-pretty"
-        >
-          {line}
-        </span>
-      ))}
-    </div>
-  );
-};
-
-const AnimatedHeaderSection = ({
-  subTitle,
-  title,
-  text,
-  textColor,
-  withScrollTrigger = false,
-}) => {
-  const contextRef = useRef(null);
-  const headerRef = useRef(null);
-  const titleParts = title.includes(" ") ? title.split(" ") : [title];
-
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: withScrollTrigger ? { trigger: contextRef.current } : undefined,
-    });
-    tl.from(contextRef.current, { y: "50vh", duration: 1, ease: "circ.out" });
-    tl.from(headerRef.current, { opacity: 0, y: 200, duration: 1, ease: "circ.out" }, "<+0.2");
-  }, []);
-
-  return (
-    <div ref={contextRef}>
-      <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}>
-        <div ref={headerRef} className="flex flex-col justify-center gap-12 pt-16 sm:gap-16">
-          <p className={`text-lg sm:text-xl font-normal tracking-[0.3em] uppercase px-10 ${textColor} font-outfit`}>
-            {subTitle}
-          </p>
-          <div className="px-10">
-            <h1 className={`flex flex-col gap-12 uppercase text-7xl sm:text-8xl md:text-9xl lg:text-9xl sm:gap-16 md:block ${textColor} font-outfit leading-[0.9]`}>
-              {titleParts.map((part, index) => (
-                <span key={index} className="font-bold text-[153px]">{part} </span>
-              ))}
-            </h1>
-          </div>
-        </div>
-      </div>
-      <div className={`relative px-10 ${textColor}`}>
-        <div className="absolute inset-x-0 border-t-2 border-amber-400" />
-        <div className="pt-6 sm:pt-5 pb-17 text-end">
-          <AnimatedTextLines text={text} className={`font-regular text-lg sm:text-2xl md:text-2xl lg:text-[24px] leading-relaxed tracking-wide ${textColor} font-work-sans`} />
-        </div>
-      </div>
-    </div>
-  );
-};
+// Array of images to match the industries array
+const industryImages = [
+  digitalEnterpriseImage,
+  healthcareImage,
+  educationImage,
+  retailImage,
+];
 
 const Industries = () => {
   const overlayRefs = useRef([]);
-  const previewRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(null);
-  const mouse = useRef({ x: 0, y: 0 });
-  const moveX = useRef(null);
-  const moveY = useRef(null);
-
-  const text = `Transforming industries through innovative technology solutions 
-that drive efficiency, enhance customer experiences, and create 
-sustainable competitive advantages in the digital age`;
+  // *** MODIFIED REFS ***: We now need separate refs for the number and the name
+  const numberTextRefs = useRef([]);
+  const nameTextRefs = useRef([]);
 
   useGSAP(() => {
-    moveX.current = gsap.quickTo(previewRef.current, "x", { duration: 1.5, ease: "power3.out" });
-    moveY.current = gsap.quickTo(previewRef.current, "y", { duration: 2, ease: "power3.out" });
-
-    gsap.from("#industry", {
-      y: 100,
+    // Scroll-in animation for the list (This is unchanged)
+    gsap.from("#industry-item", {
+      y: 80,
       opacity: 0,
-      delay: 0.5,
-      duration: 1,
-      stagger: 0.3,
-      ease: "back.out",
-      scrollTrigger: { trigger: "#industry" },
+      delay: 0.3,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: { trigger: "#industry-item" },
     });
   }, []);
 
+  // *** UPDATED FUNCTION ***
   const handleMouseEnter = (index) => {
     if (window.innerWidth < 768) return;
-    setCurrentIndex(index);
-    const el = overlayRefs.current[index];
-    if (!el) return;
 
-    gsap.killTweensOf(el);
+    // Get all elements to animate
+    const overlayEl = overlayRefs.current[index];
+    const numberEl = numberTextRefs.current[index];
+    const nameEl = nameTextRefs.current[index];
+    if (!overlayEl || !numberEl || !nameEl) return;
+
+    // Kill any existing tweens on all elements
+    gsap.killTweensOf([overlayEl, numberEl, nameEl]);
+
+    // 1. Animate the yellow bar in (Unchanged)
     gsap.fromTo(
-      el,
-      { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)" },
-      { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)", duration: 0.15, ease: "power2.out" }
+      overlayEl,
+      { clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)" }, // Start
+      {
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)", // End
+        duration: 0.3,
+        ease: "power2.out",
+      }
     );
-    gsap.to(previewRef.current, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
+
+    // 2. Animate the Number (Fade Out)
+    gsap.to(numberEl, {
+      opacity: 0,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+
+    // 3. Animate the Name (Slide Left)
+    // We calculate the exact distance to move
+    const distance =
+      numberEl.getBoundingClientRect().left -
+      nameEl.getBoundingClientRect().left;
+
+    gsap.to(nameEl, {
+      x: distance, // Move to the number's position
+      duration: 0.3,
+      ease: "power2.out",
+    });
   };
 
+  // *** UPDATED FUNCTION ***
   const handleMouseLeave = (index) => {
     if (window.innerWidth < 768) return;
-    setCurrentIndex(null);
-    const el = overlayRefs.current[index];
-    if (!el) return;
 
-    gsap.killTweensOf(el);
-    gsap.to(el, { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)", duration: 0.2, ease: "power2.in" });
-    gsap.to(previewRef.current, { opacity: 0, scale: 0.95, duration: 0.3, ease: "power2.out" });
-  };
+    // Get all elements
+    const overlayEl = overlayRefs.current[index];
+    const numberEl = numberTextRefs.current[index];
+    const nameEl = nameTextRefs.current[index];
+    if (!overlayEl || !numberEl || !nameEl) return;
 
-  const handleMouseMove = (e) => {
-    if (window.innerWidth < 768) return;
-    mouse.current.x = e.clientX + 24;
-    mouse.current.y = e.clientY + 24;
-    moveX.current(mouse.current.x);
-    moveY.current(mouse.current.y);
+    // Kill any existing tweens
+    gsap.killTweensOf([overlayEl, numberEl, nameEl]);
+
+    // 1. Animate the yellow bar out (Unchanged)
+    gsap.to(overlayEl, {
+      clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)", // End
+      duration: 0.3,
+      ease: "power2.in",
+    });
+
+    // 2. Bring the Number back (Fade In)
+    gsap.to(numberEl, {
+      opacity: 1, // Fade back in
+      duration: 0.3,
+      ease: "power2.in",
+    });
+
+    // 3. Bring the Name back (Slide Right)
+    gsap.to(nameEl, {
+      x: 0, // Back to original position
+      duration: 0.3,
+      ease: "power2.in",
+    });
   };
 
   return (
-    <section id="industries" className="flex flex-col min-h-screen bg-black">
-      <AnimatedHeaderSection
-        subTitle="Industry Applications"
-        title="WE EMPOWER"
-        text={text}
-        textColor="text-amber-50"
-        withScrollTrigger={true}
-      />
+    <section
+      id="industries"
+      className="bg-black text-white font-outfit py-24 px-6 md:px-20 lg:px-32 overflow-hidden"
+    >
+      {/* --- TOP CONTENT (Title + Paragraph) --- (Unchanged) */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8">
+        <div className="flex-1">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            Turning <span className="text-yellow-400">vision</span> into impact.
+          </h2>
+        </div>
+        <div className="flex-1 font-work-sans text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed">
+          We partner with organizations to unlock new opportunities and strengthen
+          workforce capabilities. Through technology, training, and strategic
+          collaboration, we enable industries to thrive. Our goal is to bridge
+          skill gaps and foster sustainable business ecosystems.
+        </div>
+      </div>
 
-      <div className="relative flex flex-col font-light bg-black" onMouseMove={handleMouseMove}>
+      {/* --- UPDATED LIST --- */}
+      <div className="relative flex flex-col font-work-sans bg-black border-t border-gray-700">
         {industries.map((industry, index) => (
           <div
             key={industry.id}
-            id="industry"
-            className="relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0 bg-black border-b border-amber-800"
+            id="industry-item"
+            className="relative flex justify-between items-center py-8 px-2 md:px-6 border-b border-gray-700 cursor-pointer group overflow-hidden"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
+            {/* --- 1. Animated Overlay (Yellow + Image + HOVER TEXT) --- (Unchanged) */}
             <div
-              ref={(el) => { overlayRefs.current[index] = el; }}
-              className="absolute inset-0 hidden md:block duration-200 bg-gradient-to-r from-yellow-100 to-amber-600 -z-10 clip-path"
-            />
-            <div className="flex justify-between px-10 text-amber-50 transition-all duration-500 md:group-hover:px-12 md:group-hover:text-amber-900">
-              <h2 className={`lg:text-[32px] text-[26px] leading-none ${industryFontStyles[industry.id]}`}>
-                {industry.name}
-              </h2>
-              <Icon icon="lucide:dot" className="md:size-6 size-5" />
-            </div>
-            <div className="w-full h-0.5 bg-amber-900" />
-            <div className="flex px-10 text-xs leading-loose transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
-              {industry.frameworks.map((framework) => (
-                <p key={framework.id} className="text-amber-400 transition-colors duration-500 md:group-hover:text-amber-800 font-work-sans font-normal tracking-wider">
-                  {framework.name}
+              ref={(el) => (overlayRefs.current[index] = el)}
+              className="absolute inset-0 z-10 hidden md:block"
+              style={{
+                backgroundImage: `url(${industryImages[index]})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)",
+              }}
+            >
+              {/* Yellow Gradient Blend (matches your image) */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(to right, #FFC016 45%, rgba(255, 192, 22, 0.7) 70%, transparent 90%)",
+                }}
+              />
+
+              {/* --- 3. Hover Text (Black) --- (Unchanged) */}
+              <div className="absolute inset-0 flex items-center py-8 px-2 md:px-6 z-30">
+                <p className="text-xl md:text-2xl lg:text-[28px] font-outfit text-black font-medium">
+                  {industry.name}
                 </p>
-              ))}
+              </div>
             </div>
-            <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
-              <img src={industry.bgImage} alt={`${industry.name}-bg-image`} className="object-cover w-full h-full rounded-md brightness-50" />
-              <img src={industry.image} alt={`${industry.name}-image`} className="absolute bg-center px-14 rounded-xl" />
+
+            {/* --- 2. Default Text (White/Gray) --- */}
+            {/* *** MODIFIED ***: Removed the ref from this container */}
+            <div
+              className="relative flex justify-between items-center w-full z-0"
+            >
+              <h3
+                // *** ADDED REF ***
+                ref={(el) => (numberTextRefs.current[index] = el)}
+                className="text-2xl md:text-3xl font-outfit text-gray-300"
+              >
+                {industry.number}
+              </h3>
+              <p
+                // *** ADDED REF ***
+                ref={(el) => (nameTextRefs.current[index] = el)}
+                className="text-xl md:text-2xl lg:text-[28px] font-outfit text-gray-100"
+              >
+                {industry.name}
+              </p>
             </div>
           </div>
         ))}
-        <div
-          ref={previewRef}
-          className="fixed -top-2/6 left-0 z-50 overflow-hidden border-4 border-amber-500 pointer-events-none w-[400px] md:block hidden opacity-0 shadow-2xl shadow-amber-500/50 rounded-2xl"
-        >
-          {currentIndex !== null && (
-            <img
-              src={industries[currentIndex].image}
-              alt="preview"
-              className="object-cover w-full h-full rounded-xl"
-            />
-          )}
-        </div>
       </div>
     </section>
   );

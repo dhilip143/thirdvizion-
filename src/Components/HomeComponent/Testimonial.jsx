@@ -31,13 +31,6 @@ const testimonials = [
       "A refreshing approach to UI presentation — clean visuals, soft motion, and a premium black theme.",
     avatar: "https://randomuser.me/api/portraits/men/50.jpg",
   },
-  {
-    name: "Jessica Lyne",
-    role: "UI/UX Specialist at Google",
-    review:
-      "I love the motion balance and typography choice. Feels futuristic yet human. Absolutely stunning.",
-    avatar: "https://randomuser.me/api/portraits/women/60.jpg",
-  },
 ];
 
 export default function TestimonialsSection() {
@@ -58,7 +51,7 @@ export default function TestimonialsSection() {
     setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="relative bg-black text-white py-24 font-work-sans overflow-hidden">
+    <section className="relative bg-black text-white py-24 font-['Work_Sans'] overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-3xl" />
@@ -66,77 +59,120 @@ export default function TestimonialsSection() {
       </div>
 
       <div className="relative z-10 container mx-auto px-6 text-center">
-        <h2 className="font-outfit text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400 text-transparent bg-clip-text">
+        <h2 className="font-['Outfit'] text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400 text-transparent bg-clip-text">
           What People Say
         </h2>
-        <p className="text-gray-400 text-lg mb-16 max-w-2xl mx-auto">
-          Hear from creators and developers using{" "}
-          <span className="text-purple-400 font-semibold">Dico</span> to craft
+        <p className="text-gray-400 text-lg mb-16 max-w-2xl mx-auto font-['Work_Sans']">
+          Hear from creators and developers using our services to craft
           immersive digital experiences.
         </p>
 
-        {/* --- Carousel --- */}
-        <div
-          className="relative max-w-xl mx-auto h-[400px] flex items-center justify-center"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="absolute w-full bg-gradient-to-b from-gray-900 to-gray-800 border border-gray-700 rounded-2xl shadow-[0_0_30px_rgba(168,85,247,0.2)] p-8"
-            >
-              <div className="flex flex-col items-center text-center">
-                <img
-                  src={testimonials[activeIndex].avatar}
-                  alt={testimonials[activeIndex].name}
-                  className="w-20 h-20 rounded-full border-2 border-purple-500 object-cover shadow-lg mb-4"
-                />
-                <h4 className="font-outfit text-xl font-semibold text-white">
-                  {testimonials[activeIndex].name}
-                </h4>
-                <p className="text-gray-400 text-sm mb-4">
-                  {testimonials[activeIndex].role}
-                </p>
-                <p className="text-gray-300 italic leading-relaxed text-lg max-w-md">
-                  “{testimonials[activeIndex].review}”
-                </p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+        {/* --- Carousel Container --- */}
+        <div className="relative max-w-6xl mx-auto">
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            {/* Main Featured Card */}
+            <div className="lg:col-span-2">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -40 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="w-full bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-2xl shadow-[0_0_30px_rgba(168,85,247,0.15)] p-8 h-full"
+                >
+                  <div className="flex flex-col items-center text-center">
+                    <img
+                      src={testimonials[activeIndex].avatar}
+                      alt={testimonials[activeIndex].name}
+                      className="w-24 h-24 rounded-full border-2 border-purple-500 object-cover shadow-lg mb-6"
+                    />
+                    <h4 className="font-['Outfit'] text-2xl font-semibold text-white mb-2">
+                      {testimonials[activeIndex].name}
+                    </h4>
+                    <p className="text-gray-400 text-base mb-6 font-['Work_Sans']">
+                      {testimonials[activeIndex].role}
+                    </p>
+                    <p className="text-gray-300 italic leading-relaxed text-lg max-w-md font-['Work_Sans']">
+                      “{testimonials[activeIndex].review}”
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
-          {/* Nav buttons */}
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4">
+            {/* Side Cards */}
+            <div className="space-y-6">
+              {testimonials
+                .filter((_, index) => index !== activeIndex)
+                .slice(0, 2)
+                .map((testimonial, index) => (
+                  <motion.div
+                    key={testimonial.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl shadow-lg p-6 hover:shadow-[0_0_20px_rgba(168,85,247,0.1)] transition-all duration-300 cursor-pointer"
+                    onClick={() => setActiveIndex(testimonials.indexOf(testimonial))}
+                  >
+                    <div className="flex items-start space-x-4">
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        className="w-12 h-12 rounded-full border border-purple-500 object-cover flex-shrink-0"
+                      />
+                      <div className="text-left">
+                        <h5 className="font-['Outfit'] font-semibold text-white text-sm">
+                          {testimonial.name}
+                        </h5>
+                        <p className="text-gray-400 text-xs mb-2 font-['Work_Sans']">
+                          {testimonial.role}
+                        </p>
+                        <p className="text-gray-300 text-sm italic font-['Work_Sans'] line-clamp-3">
+                          “{testimonial.review}”
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+            </div>
+          </div>
+
+          {/* Navigation Buttons */}
+          <div className="flex justify-center items-center mt-12 space-x-8">
             <button
               onClick={prev}
-              className="text-gray-400 hover:text-purple-400 text-3xl transition"
+              className="w-12 h-12 rounded-full bg-gray-800 hover:bg-purple-600 border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110 font-['Work_Sans']"
             >
               ‹
             </button>
+            
+            {/* Dots Indicator */}
+            <div className="flex space-x-3">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveIndex(i)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    i === activeIndex 
+                      ? "bg-purple-400 w-8" 
+                      : "bg-gray-600 hover:bg-gray-400"
+                  }`}
+                />
+              ))}
+            </div>
+
             <button
               onClick={next}
-              className="text-gray-400 hover:text-purple-400 text-3xl transition"
+              className="w-12 h-12 rounded-full bg-gray-800 hover:bg-purple-600 border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110 font-['Work_Sans']"
             >
               ›
             </button>
           </div>
-        </div>
-
-        {/* Dots Indicator */}
-        <div className="flex justify-center mt-10 gap-2">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveIndex(i)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                i === activeIndex ? "bg-purple-400 w-6" : "bg-gray-600"
-              }`}
-            />
-          ))}
         </div>
       </div>
     </section>

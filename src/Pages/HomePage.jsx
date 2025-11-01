@@ -11,7 +11,7 @@ import Industries from "/src/Components/HomeComponent/Industries.jsx";
 import ContactSection from "/src/Components/HomeComponent/ContactSection.jsx";
 import Empover from "../Components/HomeComponent/Empover";
 import Indhu from "../Components/HomeComponent/indhu";
-
+import Partners from "/src/Components/AboutComponents/Partners.jsx";
 
 
 export default function Home() {
@@ -33,7 +33,9 @@ export default function Home() {
       <VisionMission />
       <Empover/>
      <Indhu/>
+     <Partners className="bg-black" />
      <Testimonial />
+     
       <FAQ />
 
       {/* FAQ sticky container */}
