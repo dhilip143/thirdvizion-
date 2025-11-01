@@ -72,53 +72,53 @@ const industries = [
     id: 1,
     name: "Digital Enterprise",
     frameworks: [
-      { id: 1, name: "Online Storage" },
-      { id: 2, name: "Work Management" },
-      { id: 3, name: "Task Simplification" },
+      { id: 1, name: "Cloud Migration & Digital Transformation" },
+      { id: 2, name: "Enterprise Architecture Modernization" },
+      { id: 3, name: "Workflow Automation & Process Optimization" },
     ],
     image: digitalEnterpriseImage,
     bgImage: digitalEnterpriseBg,
   },
   {
     id: 2,
-    name: "Healthcare Innovation",
+    name: "Healthcare",
     frameworks: [
-      { id: 1, name: "Smart Health dashboard" },
-      { id: 2, name: "Safe Patient Records" },
-      { id: 3, name: "Online pharmacy database" },
+      { id: 1, name: "Predictive Analytics for Patient Care" },
+      { id: 2, name: "HIPAA Compliant System Architecture" },
+      { id: 3, name: "Medical Data Management & Analysis" },
     ],
     image: healthcareImage,
     bgImage: healthcareBg,
   },
   {
     id: 3,
-    name: "Education Technology",
+    name: "Education",
     frameworks: [
-      { id: 1, name: "Online Classes" },
-      { id: 2, name: "Personal Study Help" },
-      { id: 3, name: "Student Progress Tracking" },
+      { id: 1, name: "Learning Management Systems (LMS)" },
+      { id: 2, name: "Personalized Learning Algorithms" },
+      { id: 3, name: "Educational Data Analytics" },
     ],
     image: educationImage,
     bgImage: educationBg,
   },
   {
     id: 4,
-    name: "Retail & E-commerce Solutions",
+    name: "Retail & E-commerce",
     frameworks: [
-      { id: 1, name: "Better Shopping Experience" },
-      { id: 2, name: "Customer Understanding" },
-      { id: 3, name: "Smooth Delivery Process" },
+      { id: 1, name: "E-commerce Platform Development" },
+      { id: 2, name: "Customer Behavior Analytics" },
+      { id: 3, name: "Inventory & Supply Chain Optimization" },
     ],
     image: retailImage,
     bgImage: retailBg,
   },
   {
     id: 5,
-    name: "Smart Manufacturing",
+    name: "Manufacturing",
     frameworks: [
-      { id: 1, name: "Connected Machines" },
-      { id: 2, name: "Early Problem Detection" },
-      { id: 3, name: "Faster Production Flow" },
+      { id: 1, name: "Predictive Maintenance Systems" },
+      { id: 2, name: "Production Line Optimization" },
+      { id: 3, name: "Quality Control Automation" },
     ],
     image: manufacturingImage,
     bgImage: manufacturingBg,
@@ -127,11 +127,11 @@ const industries = [
 
 // Custom font styles for each industry
 const industryFontStyles = {
-  1: "font-open-sans-condensed font-bold tracking-tight uppercase", // Digital Enterprise
-  2: "font-open-sans-condensed font-semibold tracking-normal uppercase", // Healthcare Innovation
-  3: "font-open-sans-condensed font-medium tracking-wide uppercase", // Education Technology
-  4: "font-open-sans-condensed font-bold tracking-tighter uppercase", // Retail & E-commerce
-  5: "font-open-sans-condensed font-extrabold tracking-tight uppercase" // Smart Manufacturing
+  1: "font-outfit font-bold tracking-tight uppercase", // Digital Enterprise
+  2: "font-outfit font-semibold tracking-normal uppercase", // Healthcare
+  3: "font-outfit font-medium tracking-wide uppercase", // Education
+  4: "font-outfit font-bold tracking-tighter uppercase", // Retail & E-commerce
+  5: "font-outfit font-extrabold tracking-tight uppercase" // Manufacturing
 };
 
 // ---- COMPONENTS ----
@@ -191,11 +191,11 @@ const AnimatedHeaderSection = ({
     <div ref={contextRef}>
       <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}>
         <div ref={headerRef} className="flex flex-col justify-center gap-12 pt-16 sm:gap-16">
-          <p className={`text-lg sm:text-xl font-normal tracking-[0.3em] uppercase px-10 ${textColor} font-open-sans`}>
+          <p className={`text-lg sm:text-xl font-normal tracking-[0.3em] uppercase px-10 ${textColor} font-outfit`}>
             {subTitle}
           </p>
           <div className="px-10">
-            <h1 className={`flex flex-col gap-12 uppercase text-7xl sm:text-8xl md:text-9xl lg:text-9xl sm:gap-16 md:block ${textColor} font-open-sans-condensed leading-[0.9]`}>
+            <h1 className={`flex flex-col gap-12 uppercase text-7xl sm:text-8xl md:text-9xl lg:text-9xl sm:gap-16 md:block ${textColor} font-outfit leading-[0.9]`}>
               {titleParts.map((part, index) => (
                 <span key={index} className="font-bold text-[153px]">{part} </span>
               ))}
@@ -205,8 +205,9 @@ const AnimatedHeaderSection = ({
       </div>
       <div className={`relative px-10 ${textColor}`}>
         <div className="absolute inset-x-0 border-t-2 border-amber-400" />
-<div className="pt-6 sm:pt-5  pb-17 text-end">
-          <AnimatedTextLines text={text} className={`font-regular  text-lg sm:text-2xl md:text-2xl lg:text-[24px] leading-relaxed tracking-wide ${textColor} font-open-sans`} />        </div>
+        <div className="pt-6 sm:pt-5 pb-17 text-end">
+          <AnimatedTextLines text={text} className={`font-regular text-lg sm:text-2xl md:text-2xl lg:text-[24px] leading-relaxed tracking-wide ${textColor} font-work-sans`} />
+        </div>
       </div>
     </div>
   );
@@ -303,9 +304,9 @@ sustainable competitive advantages in the digital age`;
               <Icon icon="lucide:dot" className="md:size-6 size-5" />
             </div>
             <div className="w-full h-0.5 bg-amber-900" />
-            <div className="flex px-10 text-xs leading-loose  transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
+            <div className="flex px-10 text-xs leading-loose transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
               {industry.frameworks.map((framework) => (
-                <p key={framework.id} className="text-amber-400 transition-colors duration-500 md:group-hover:text-amber-800 font-open-sans font-normal tracking-wider">
+                <p key={framework.id} className="text-amber-400 transition-colors duration-500 md:group-hover:text-amber-800 font-work-sans font-normal tracking-wider">
                   {framework.name}
                 </p>
               ))}

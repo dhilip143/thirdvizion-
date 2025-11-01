@@ -28,11 +28,12 @@ export default function Home() {
       
       {/* <Hovercard /> */}
       
-      <Testimonial />
+     
       <Industries />
       <VisionMission />
       <Empover/>
      <Indhu/>
+     <Testimonial />
       <FAQ />
 
       {/* FAQ sticky container */}

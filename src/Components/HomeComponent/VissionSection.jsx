@@ -25,49 +25,49 @@ const MissionVision = () => {
           start: "top 80%",
           end: "bottom 20%",
           toggleActions: "play none none reverse",
-        }
+        },
       });
 
       visionTimeline
-        // First: Line reveal
-        .fromTo(visionLineRef.current,
-          { 
+        .fromTo(
+          visionLineRef.current,
+          {
             scaleX: 0,
-            transformOrigin: "left center"
+            transformOrigin: "left center",
           },
           {
             scaleX: 1,
             duration: 1.5,
-            ease: "power3.out"
+            ease: "power3.out",
           }
         )
-        // Second: Heading animation after line
-        .fromTo(visionHeadingRef.current,
+        .fromTo(
+          visionHeadingRef.current,
           {
             opacity: 0,
-            y: 30
+            y: 30,
           },
           {
             opacity: 1,
             y: 0,
             duration: 1,
-            ease: "power3.out"
+            ease: "power3.out",
           },
-          "-=0.5" // Start slightly before line completes
+          "-=0.5"
         )
-        // Third: Text reveal after heading
-        .fromTo(visionTextRef.current,
+        .fromTo(
+          visionTextRef.current,
           {
             opacity: 0,
-            y: 40
+            y: 40,
           },
           {
             opacity: 1,
             y: 0,
             duration: 1.2,
-            ease: "power3.out"
+            ease: "power3.out",
           },
-          "-=0.3" // Start after heading begins
+          "-=0.3"
         );
 
       // Mission section sequential animation
@@ -77,75 +77,87 @@ const MissionVision = () => {
           start: "top 80%",
           end: "bottom 20%",
           toggleActions: "play none none reverse",
-        }
+        },
       });
 
       missionTimeline
-        // First: Line reveal
-        .fromTo(missionLineRef.current,
-          { 
+        .fromTo(
+          missionLineRef.current,
+          {
             scaleX: 0,
-            transformOrigin: "right center"
+            transformOrigin: "right center",
           },
           {
             scaleX: 1,
             duration: 1.5,
-            ease: "power3.out"
+            ease: "power3.out",
           }
         )
-        // Second: Heading animation after line
-        .fromTo(missionHeadingRef.current,
+        .fromTo(
+          missionHeadingRef.current,
           {
             opacity: 0,
-            y: 30
+            y: 30,
           },
           {
             opacity: 1,
             y: 0,
             duration: 1,
-            ease: "power3.out"
+            ease: "power3.out",
           },
-          "-=0.5" // Start slightly before line completes
+          "-=0.5"
         )
-        // Third: Text reveal after heading
-        .fromTo(missionTextRef.current,
+        .fromTo(
+          missionTextRef.current,
           {
             opacity: 0,
-            y: 40
+            y: 40,
           },
           {
             opacity: 1,
             y: 0,
             duration: 1.2,
-            ease: "power3.out"
+            ease: "power3.out",
           },
-          "-=0.3" // Start after heading begins
+          "-=0.3"
         );
-
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-black pt-100 text-white py-16 px-6 md:px-20 font-sans">
+    <section
+      ref={sectionRef}
+      className="bg-black pt-100 text-white py-16 px-6 md:px-20"
+      style={{ fontFamily: "'Work Sans', sans-serif" }}
+    >
       {/* Vision section */}
       <div className="relative">
         {/* Decorative left gold line */}
         <div className="absolute -left-14 top-7 hidden md:block">
-          <div ref={visionLineRef} className="h-[2.5px] w-70 bg-yellow-500 ml-[58px]">
+          <div
+            ref={visionLineRef}
+            className="h-[2.5px] w-70 bg-yellow-500 ml-[58px]"
+          >
             <div className="absolute -right-1 mt-[-2.3px] w-2 h-2 bg-yellow-500 rounded-full"></div>
             <div className="absolute -left-12 top-[-20.5px] w-[2px] w-3 h-34 bg-yellow-500 rotate-46"></div>
           </div>
         </div>
 
-        <h2 ref={visionHeadingRef} className="text-6xl ml-76 font-bold tracking-wider mb-6 flex">
+        <h2
+          ref={visionHeadingRef}
+          className="text-6xl ml-76 font-bold tracking-wider mb-6 flex"
+          style={{ fontFamily: "'Outfit', sans-serif" }}
+        >
           VISION
         </h2>
 
         <div ref={visionTextRef}>
-          <p className="text-gray-300 text-[18px]  ml-20 leading-relaxed max-w-4xl">
-            To redefine the boundaries of digital interaction by creating immersive, intelligent, and human-centered 3D experiences that bridge the real and virtual worlds.
+          <p className="text-gray-300 text-[18px] ml-30 leading-relaxed max-w-4xl pr-[]">
+            To redefine the boundaries of digital interaction by creating
+            immersive, intelligent, and human<br />-centered 3D experiences that
+            bridge the real and virtual worlds.
           </p>
         </div>
       </div>
@@ -154,37 +166,51 @@ const MissionVision = () => {
       <div className="relative md:text-left text-right -mt-38 mb-40">
         {/* Decorative right gold line */}
         <div className="absolute -right-[-17px] h-9 top-94 hidden md:block">
-          <div ref={missionLineRef} className="h-[2.5px] w-70 bg-yellow-500 relative ml-[-15px]">
+          <div
+            ref={missionLineRef}
+            className="h-[2.5px] w-70 bg-yellow-500 relative ml-[-15px]"
+          >
             <div className="absolute -left-2 mt-[-3px] w-2 h-2 bg-yellow-500 rounded-full"></div>
             <div className="absolute -right-[49px] top-[-18.8px] w-[2px] h-34 bg-yellow-500 -rotate-45"></div>
           </div>
         </div>
 
-        <h2 ref={missionHeadingRef} className="text-6xl pt-86 pl-193 font-bold tracking-wider mb-6 flex justify-end md:justify-start">
+        <h2
+          ref={missionHeadingRef}
+          className="text-6xl pt-86 pl-193 font-bold tracking-wider mb-6 flex justify-end md:justify-start"
+          style={{ fontFamily: "'Outfit', sans-serif" }}
+        >
           MISSION
         </h2>
 
-        <div ref={missionTextRef}>
-          <p className="text-gray-300 text-[18px] leading-relaxed pl-93">
-            At ThirdVizion Labs, our mission is to empower businesses and creators through
-            cutting-edge Augmented Reality (AR), Virtual Reality (VR), and 3D web
+        <div ref={missionTextRef} className="pl-[200px]">
+          <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px]">
+            At ThirdVizion Labs, our mission is to empower businesses and
+            creators through cutting-edge <br />
+            Augmented Reality (AR), Virtual Reality (VR), and 3D web
             technologies.
           </p>
 
-          <p className="text-gray-300 text-[18px] leading-relaxed pl-93 mt-4">
+          <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-4">
             We strive to:
           </p>
 
-          <p className="text-gray-300 text-[18px] leading-relaxed pl-93 mt-2">
-            <span className="text-yellow-500 font-semibold">Innovate</span> immersive solutions that transform the way people learn, work, and connect.
+          <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
+            <span className="text-yellow-500 font-semibold">Innovate</span>{" "}
+            immersive solutions that transform the way people learn, work, and
+            connect.
           </p>
 
-          <p className="text-gray-300 text-[18px]  leading-relaxed pl-93 mt-2">
-            <span className="text-yellow-500 font-semibold">Integrate</span> seamless 3D experiences across digital platforms for accessibility and engagement.
+          <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
+            <span className="text-yellow-500 font-semibold">Integrate</span>{" "}
+            seamless 3D experiences across digital platforms for accessibility
+            and engagement.
           </p>
 
-          <p className="text-gray-300 text-[18px] leading-relaxed pl-93 mt-2">
-            <span className="text-yellow-500 font-semibold">Inspire</span> creativity and future-ready thinking by blending design, technology, and storytelling.
+          <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
+            <span className="text-yellow-500 font-semibold">Inspire</span>{" "}
+            creativity and future-ready thinking by blending design, technology,
+            and storytelling.
           </p>
         </div>
       </div>
