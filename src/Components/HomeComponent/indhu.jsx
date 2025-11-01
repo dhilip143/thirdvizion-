@@ -18,6 +18,7 @@ export default function Indhu() {
   const containerRef = useRef(null);
   const circleRefs = useRef([]);
   const textRefs = useRef([]);
+  const descRefs = useRef([]);
   const imageRefs = useRef([]);
   const animationRefs = useRef([]);
 
@@ -34,24 +35,80 @@ export default function Indhu() {
     return () => window.removeEventListener("resize", updateRadius);
   }, []);
 
+  // Increased SVG width and equal spacing between circles with left shift
+  const svgWidth = 5000;
+  const leftShift = 150; // Amount to shift circles to the left
+  const circleSpacing = svgWidth / (4 + 1); // Equal spacing for 4 circles with padding on both sides
+  
   const circles = [
-    { id: 1, cx: 200, cy: 200, label: "Digital Enterprise", img: threed },
-    { id: 2, cx: 700, cy: 300, label: "Healthcare", img: gam },
-    { id: 3, cx: 1200, cy: 200, label: "Education", img: are },
-    { id: 4, cx: 1700, cy: 300, label: "Retail & E-commerce", img: wih },
-    { id: 5, cx: 2200, cy: 200, label: "Manufacturing", img: extra },
+    {
+      id: 1,
+      cx: circleSpacing * 0.92 - leftShift, // First circle position shifted left
+      cy: 200,
+      label: "Discover",
+      description: "We start by deeply understanding your business vision, challenges, and aspirations. Our team dives into every detail to uncover insights that guide us in crafting tailored technology solutions designed to transform your goals into measurable outcomes.",
+      img: threed
+    },
+    {
+      id: 2,
+      cx: circleSpacing * 2.4 - leftShift, // Equal spacing shifted left
+      cy: 300,
+      label: "Architect",
+      description: "Design robust scalable systems architecture with cutting-edge technologies and best practices to ensure your solution is future-proof and performs optimally under any load conditions.",
+      img: gam
+    },
+    {
+      id: 3,
+      cx: circleSpacing * 3.6- leftShift, // Equal spacing shifted left
+      cy: 200,
+      label: "Build",
+      description: "Develop with precision and excellence using agile methodologies and continuous integration to deliver high-quality, maintainable code that exceeds expectations and drives business value.",
+      img: are
+    },
+    {
+      id: 4,
+      cx: circleSpacing * 4.7 - leftShift, // Equal spacing shifted left
+      cy: 300,
+      label: "Elevate",
+      description: "Scale your business to new heights with optimized performance, enhanced user experiences, and data-driven insights that propel your growth and competitive advantage in the market.",
+      img: wih
+    },
   ];
 
+  // Function to split description into exactly 3 lines
+  const splitDescription = (description) => {
+    const words = description.split(' ');
+    const totalWords = words.length;
+    const wordsPerLine = Math.ceil(totalWords / 3);
+
+    const lines = [];
+    for (let i = 0; i < 3; i++) {
+      const start = i * wordsPerLine;
+      const end = Math.min(start + wordsPerLine, totalWords);
+      const line = words.slice(start, end).join(' ');
+      lines.push(line);
+    }
+
+    return lines;
+  };
+
+  // Create smooth connecting path with proper spacing
   const pathD = `
-    M ${circles[0].cx - 150} ${circles[0].cy}
+    M ${circles[0].cx} ${circles[0].cy}
     ${circles
-      .map((c, i) =>
-        i > 0
-          ? `C ${circles[i - 1].cx + 150} ${circles[i - 1].cy - 80}, ${
-              c.cx - 150
-            } ${c.cy + 80}, ${c.cx} ${c.cy}`
-          : ""
-      )
+      .slice(1)
+      .map((circle, i) => {
+        const prevCircle = circles[i];
+        const controlPoint1 = {
+          x: prevCircle.cx + (circle.cx - prevCircle.cx) * 0.25,
+          y: prevCircle.cy
+        };
+        const controlPoint2 = {
+          x: circle.cx - (circle.cx - prevCircle.cx) * 0.25,
+          y: circle.cy
+        };
+        return `C ${controlPoint1.x} ${controlPoint1.y}, ${controlPoint2.x} ${controlPoint2.y}, ${circle.cx} ${circle.cy}`;
+      })
       .join(" ")}
   `;
 
@@ -59,7 +116,7 @@ export default function Indhu() {
     const section = containerRef.current;
     const svg = svgRef.current;
     const path = pathRef.current;
-    
+
     if (!section || !svg || !path) return;
 
     // Clear any existing animations first
@@ -77,19 +134,19 @@ export default function Indhu() {
     const totalLength = path.getTotalLength();
     gsap.set(path, { strokeDasharray: totalLength, strokeDashoffset: totalLength });
 
-    // Horizontal scroll setup
+    // Enhanced horizontal scroll setup with more distance
     const scrollTween = gsap.to(svg, {
       x: () => -(svg.scrollWidth - window.innerWidth),
       ease: "none",
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth}`,
+        end: () => `+=${svg.scrollWidth * 1.2}`, // Increased scroll distance
         scrub: true,
         pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
-        markers: false, // Set to true for debugging
+        markers: false,
       },
     });
     animationRefs.current.push(scrollTween);
@@ -101,7 +158,7 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth}`,
+        end: () => `+=${svg.scrollWidth * 1.2}`,
         scrub: true,
         invalidateOnRefresh: true,
       },
@@ -122,7 +179,7 @@ export default function Indhu() {
           scrollTrigger: {
             trigger: svg,
             start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
-            end: "+=200",
+            end: "+=300", // Increased trigger range
             invalidateOnRefresh: true,
           },
         }
@@ -141,7 +198,7 @@ export default function Indhu() {
           scrollTrigger: {
             trigger: svg,
             start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
-            end: "+=200",
+            end: "+=300", // Increased trigger range
             invalidateOnRefresh: true,
           },
         }
@@ -159,19 +216,44 @@ export default function Indhu() {
           scrollTrigger: {
             trigger: svg,
             start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
-            end: "+=200",
+            end: "+=300", // Increased trigger range
             invalidateOnRefresh: true,
           },
         }
       );
       animationRefs.current.push(textAnimation);
+
+      // Animate all description lines
+      const descLines = descRefs.current[i] || [];
+      descLines.forEach((descLine, lineIndex) => {
+        if (descLine) {
+          const descAnimation = gsap.fromTo(
+            descLine,
+            { opacity: 0, y: 50 + (lineIndex * 10) },
+            {
+              opacity: 1,
+              y: 0,
+              ease: "power2.out",
+              duration: 0.6,
+              delay: lineIndex * 0.1,
+              scrollTrigger: {
+                trigger: svg,
+                start: () => `${(c.cx / svg.scrollWidth) * 100}% center`,
+                end: "+=300", // Increased trigger range
+                invalidateOnRefresh: true,
+              },
+            }
+          );
+          animationRefs.current.push(descAnimation);
+        }
+      });
     });
 
     return () => {
       // Cleanup function
       animationRefs.current.forEach(ref => ref?.kill?.());
       animationRefs.current = [];
-      
+
       ScrollTrigger.getAll().forEach(st => {
         if (st.trigger === section || st.trigger === svg) {
           st.kill();
@@ -184,6 +266,7 @@ export default function Indhu() {
   useEffect(() => {
     circleRefs.current = circleRefs.current.slice(0, circles.length);
     textRefs.current = textRefs.current.slice(0, circles.length);
+    descRefs.current = descRefs.current.slice(0, circles.length);
     imageRefs.current = imageRefs.current.slice(0, circles.length);
   }, [circles.length]);
 
@@ -207,12 +290,12 @@ export default function Indhu() {
         </h1>
       </div>
 
-      {/* SVG Path + Circles */}
-      <div className="relative flex-shrink-0 w-[2500px] h-[600px] lg:h-[700px] 2xl:h-[800px] mx-auto z-10">
+      {/* SVG Path + Circles - Increased width */}
+      <div className="relative flex-shrink-0 w-[5000px] h-[600px] lg:h-[700px] 2xl:h-[800px] mx-auto z-10">
         <svg
           ref={svgRef}
-          viewBox="0 0 2500 600"
-          className="w-[2500px] h-full"
+          viewBox={`0 0 ${svgWidth} 600`}
+          className="w-[5000px] h-full"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid meet"
@@ -249,15 +332,21 @@ export default function Indhu() {
 
           {/* Circles, Images, Labels */}
           {circles.map((c, idx) => {
-            const textY = c.cy + (idx % 2 === 0 ? -(radius + 50) : radius + 60);
+            // Position all text labels below the circles
+            const labelY = c.cy + radius + 40;
+            const descStartY = labelY + 25;
+            const lineHeight = 20;
+
             const fontSize =
               window.innerWidth >= 1536
                 ? 18 + radius / 7
                 : window.innerWidth >= 1024
-                ? 16 + radius / 9
-                : window.innerWidth >= 640
-                ? 14 + radius / 10
-                : 12;
+                  ? 16 + radius / 9
+                  : window.innerWidth >= 640
+                    ? 14 + radius / 10
+                    : 12;
+
+            const descriptionLines = splitDescription(c.description);
 
             return (
               <g key={c.id}>
@@ -309,11 +398,11 @@ export default function Indhu() {
                   style={{ filter: "url(#softGlow)" }}
                 />
 
-                {/* Label */}
+                {/* Label - Positioned below the circle */}
                 <text
                   ref={(el) => (textRefs.current[idx] = el)}
                   x={c.cx}
-                  y={textY}
+                  y={labelY}
                   textAnchor="middle"
                   fill="#fff"
                   fontSize={fontSize * 0.75}
@@ -326,6 +415,31 @@ export default function Indhu() {
                 >
                   {c.label}
                 </text>
+
+                {/* Description - Exactly 3 lines */}
+                {descriptionLines.map((line, lineIndex) => (
+                  <text
+                    key={lineIndex}
+                    ref={(el) => {
+                      if (!descRefs.current[idx]) descRefs.current[idx] = [];
+                      descRefs.current[idx][lineIndex] = el;
+                    }}
+                    x={c.cx}
+                    // 👇 Increase space between each line (here +12 gives more vertical gap)
+                    y={descStartY + lineIndex * (lineHeight + 12)}
+                    textAnchor="middle"
+                    fill="#ccc"
+                    fontSize={fontSize * 0.45}
+                    fontWeight={400}
+                    style={{
+                      fontFamily: "inherit",
+                      textShadow: "0 0 8px rgba(0,255,255,0.3)",
+                      letterSpacing: "1px", // ✅ space between letters
+                    }}
+                  >
+                    {line}
+                  </text>
+                ))}
               </g>
             );
           })}

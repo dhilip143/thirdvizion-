@@ -1,29 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom"; // ✅ Import Link for routing
+import { Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaInstagram,
   FaYoutube,
-  FaWordpress,
+ 
   FaLinkedinIn,
-  FaGithub, // ✅ Added GitHub
+  FaGithub,
 } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <section className=" w-full h-full 2xl:h-[70vh] flex flex-col bg-black text-white z-[999] backdrop-blur-2xl ">
+    <section className=" flex flex-col bg-black text-white z-[999] backdrop-blur-2xl">
       {/* Top Section */}
-      <div className="md:-mb-40 max-w-7xl mx-auto bg-black px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {/* Links */}
+      <div className="max-w-7xl mx-auto mt-15 bg-black px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {/* --- Links --- */}
         <div>
           <h3 className="font-semibold text-lg mb-4">Links</h3>
           <ul className="space-y-2 text-sm text-gray-300">
             <li>
               <Link
                 to="/"
-                onClick={() =>
-                  window.scrollTo({ top: 0, behavior: "smooth" })
-                }
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="hover:text-white cursor-pointer"
               >
                 Home
@@ -52,7 +50,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Services */}
+        {/* --- Services --- */}
         <div>
           <h3 className="font-semibold text-lg mb-4">Services</h3>
           <ul className="space-y-2 text-sm text-gray-300">
@@ -74,18 +72,19 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Contact */}
+        {/* --- Contact --- */}
         <div>
           <h3 className="font-semibold text-lg mb-4">Contact Us</h3>
           <p className="text-sm text-gray-300">
-            <span className="font-semibold">Phone:</span> 123-456-7890
+            <span className="font-semibold">Phone:</span> +91 8925527548
           </p>
           <p className="text-sm text-gray-300 mt-2">
-            <span className="font-semibold">Address:</span> Your Address Here
+            <span className="font-semibold">Address:</span> 11, 1st Floor,
+            Ramdoss Nagar Kolathur, Chennai - 600099, Tamil Nadu, India
           </p>
         </div>
 
-        {/* Social */}
+        {/* --- Social --- */}
         <div>
           <h3 className="font-semibold text-lg mb-4">Social</h3>
           <div className="flex flex-wrap gap-4 text-xl text-gray-300">
@@ -124,19 +123,16 @@ const Footer = () => {
             >
               <FaYoutube className="hover:text-white" />
             </a>
-            <FaWordpress className="hover:text-white cursor-pointer" />
           </div>
         </div>
       </div>
-      {/* CopyRight Section */}
-      <div className="md:mt-40 pt-2 text-center text-gray-400 text-xs border-t border-gray-700 leading-none">
-        © 2024 Thirdvizion Labs | All Rights Reserved
-      </div>
 
       {/* Brand Text */}
-      <div className=" w-full h-full text-center bg-black text-[48px] md:text-[110px] lg:text-[150px] xl:text-[200px] 2xl:text-[220px] overflow-hidden ">
-        <p className="md:-mt-4 md:-mb-8 lg:-mb-12 xl:-mb-16 2xl:-mt-16 bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 
-    bg-clip-text text-transparent tracking-wider ">
+      <div className="text-center mt-5   bg-black text-[48px] md:text-[110px] lg:text-[150px] xl:text-[200px] 2xl:text-[230px] leading-none overflow-hidden ">
+        <p
+          className="bg-gradient-to-r from-yellow-400  via-green-500 to-red-500 
+    bg-clip-text text-transparent tracking-wider"
+        >
           THIRDVIZION
         </p>
       </div>
