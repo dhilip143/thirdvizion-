@@ -12,6 +12,7 @@ import ContactSection from "/src/Components/HomeComponent/ContactSection.jsx";
 import Empover from "../Components/HomeComponent/Empover";
 import Indhu from "../Components/HomeComponent/indhu";
 import Partners from "/src/Components/AboutComponents/Partners.jsx";
+import Newservice from "../Components/HomeComponent/newservice";
 
 
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
      
       <Industries />
       <VisionMission />
+      <Newservice/>
       <Empover/>
      <Indhu/>
      <Partners className="bg-black" />
