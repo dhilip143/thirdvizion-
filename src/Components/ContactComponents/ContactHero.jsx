@@ -22,21 +22,6 @@ export default function ContactHero() {
       const touchText = header.querySelector(".touch-text");
       const innerImg = imgHolder.querySelector("img");
 
-      // 🔥 Page load fade-in animation for texts
-      gsap.fromTo([contactText, getText, touchText], 
-        {
-          opacity: 0,
-          y: 30
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          ease: "power2.out",
-          stagger: 0.2
-        }
-      );
-
       ScrollTrigger.matchMedia({
         // Desktop
         "(min-width: 1024px)": () => {
@@ -178,14 +163,24 @@ export default function ContactHero() {
         className="fixed md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col justify-center items-center w-full z-30 pointer-events-none"
         aria-hidden
       >
-        <div className="contact-text text-md xl:text-2xl mb-4 font-semibold text-center uppercase font-[Inter_Tight] opacity-0">
+        <div className="contact-text text-md xl:text-2xl mb-4 font-semibold text-center uppercase font-[Inter_Tight]">
           Contact
         </div>
         <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight]">
-          <div className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-bold uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent opacity-0">
+          <div 
+            className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-bold uppercase bg-clip-text text-transparent"
+            style={{
+              backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)"
+            }}
+          >
             Get in
           </div>
-          <div className="touch-text text-5xl md:text-[6rem] xl:text-[12rem] font-bold uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent opacity-0">
+          <div 
+            className="touch-text text-5xl md:text-[6rem] xl:text-[12rem] font-bold uppercase bg-clip-text text-transparent"
+            style={{
+              backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)"
+            }}
+          >
             Touch
           </div>
         </div>
