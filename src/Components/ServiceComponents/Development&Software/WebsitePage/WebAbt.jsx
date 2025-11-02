@@ -3,13 +3,11 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register GSAP ScrollTrigger plugin
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// === Inline SVG Icons (Enhanced with animation-ready props) ===
-
+// === SVG Icons ===
 const IconCommunication = ({ className = "w-12 h-12" }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="6" cy="18" r="3" />
@@ -94,8 +92,7 @@ const features = [
   },
 ];
 
-
-// Enhanced Visual Element with GSAP animations
+// === VisualElement Component ===
 const VisualElement = ({ icon: Icon, isReversed, index }) => {
   const iconRef = useRef(null);
   const containerRef = useRef(null);
@@ -104,13 +101,8 @@ const VisualElement = ({ icon: Icon, isReversed, index }) => {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Container animation
       gsap.fromTo(containerRef.current,
-        {
-          opacity: 0,
-          x: isReversed ? 100 : -100,
-          rotationY: isReversed ? -10 : 10,
-        },
+        { opacity: 0, x: isReversed ? 100 : -100, rotationY: isReversed ? -10 : 10 },
         {
           opacity: 1,
           x: 0,
@@ -122,11 +114,10 @@ const VisualElement = ({ icon: Icon, isReversed, index }) => {
             start: "top 80%",
             end: "bottom 20%",
             toggleActions: "play none none reverse",
-          }
+          },
         }
       );
 
-      // Icon animation with floating effect
       gsap.to(iconRef.current, {
         y: -10,
         rotation: 5,
@@ -134,20 +125,18 @@ const VisualElement = ({ icon: Icon, isReversed, index }) => {
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
-        delay: index * 0.2
+        delay: index * 0.2,
       });
 
-      // Hover animation
       const hoverAnimation = gsap.to(containerRef.current, {
         scale: 1.05,
         boxShadow: "0 0 30px rgba(0, 211, 243, 0.4)",
         duration: 0.3,
-        paused: true
+        paused: true,
       });
 
       containerRef.current.addEventListener("mouseenter", () => hoverAnimation.play());
       containerRef.current.addEventListener("mouseleave", () => hoverAnimation.reverse());
-
     }, containerRef);
 
     return () => ctx.revert();
@@ -156,17 +145,11 @@ const VisualElement = ({ icon: Icon, isReversed, index }) => {
   return (
     <div className={`order-1 lg:order-2 ${isReversed ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
       <div className={`w-full flex ${isReversed ? 'lg:justify-start' : 'lg:justify-end'} justify-center`}>
-        <div 
+        <div
           ref={containerRef}
-          className="
-            p-8 md:p-12 rounded-2xl bg-black/40 border border-[#00d3f3]/30 shadow-2xl cursor-pointer
-            relative overflow-hidden group backdrop-blur-md
-          "
+          className="p-8 md:p-12 rounded-2xl bg-black/40 border border-[#00d3f3]/30 shadow-2xl cursor-pointer relative overflow-hidden group backdrop-blur-md"
         >
-          {/* Animated background gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#00d3f3]/10 to-cyan-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          
-          {/* Floating particles */}
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(3)].map((_, i) => (
               <div
@@ -175,7 +158,7 @@ const VisualElement = ({ icon: Icon, isReversed, index }) => {
                 style={{
                   top: `${20 + i * 30}%`,
                   left: `${10 + i * 40}%`,
-                  animation: `float ${3 + i}s ease-in-out infinite ${i * 0.5}s`
+                  animation: `float ${3 + i}s ease-in-out infinite ${i * 0.5}s`,
                 }}
               />
             ))}
@@ -197,37 +180,13 @@ const VisualElement = ({ icon: Icon, isReversed, index }) => {
   );
 };
 
-// Floating background elements for parallax effect
 const FloatingBackground = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.to(".floating-bg-1", {
-        y: -20,
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut"
-      });
-
-      gsap.to(".floating-bg-2", {
-        y: 20,
-        duration: 5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: 1
-      });
-
-      gsap.to(".floating-bg-3", {
-        x: 15,
-        duration: 6,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: 2
-      });
+      gsap.to(".floating-bg-1", { y: -20, duration: 4, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      gsap.to(".floating-bg-2", { y: 20, duration: 5, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 1 });
+      gsap.to(".floating-bg-3", { x: 15, duration: 6, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 2 });
     });
-
     return () => ctx.revert();
   }, []);
 
@@ -246,65 +205,30 @@ const App = () => {
   const descriptionRef = useRef(null);
   const featureRefs = useRef([]);
 
-  // Header animation with GSAP
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Main title animation
-      gsap.fromTo(titleRef.current?.children || [],
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          stagger: 0.1,
-          ease: "power3.out",
-          delay: 0.5
-        }
-      );
+      gsap.fromTo(titleRef.current?.children || [], { opacity: 0, y: 50 }, {
+        opacity: 1, y: 0, duration: 1.2, stagger: 0.1, ease: "power3.out", delay: 0.5,
+      });
 
-      // Description animation
-      gsap.fromTo(descriptionRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.out",
-          delay: 1.2
-        }
-      );
+      gsap.fromTo(descriptionRef.current, { opacity: 0, y: 30 }, {
+        opacity: 1, y: 0, duration: 1, ease: "power2.out", delay: 1.2,
+      });
 
-      // Background elements animation
-      gsap.fromTo(".bg-element",
-        { opacity: 0, scale: 0 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1.5,
-          stagger: 0.2,
-          ease: "back.out(1.7)",
-          delay: 0.8
-        }
-      );
+      gsap.fromTo(".bg-element", { opacity: 0, scale: 0 }, {
+        opacity: 1, scale: 1, duration: 1.5, stagger: 0.2, ease: "back.out(1.7)", delay: 0.8,
+      });
     }, headerRef);
-
     return () => ctx.revert();
   }, []);
 
-  // Features text animation with GSAP ScrollTrigger
   useEffect(() => {
     const ctx = gsap.context(() => {
-      featureRefs.current.forEach((ref, index) => {
+      featureRefs.current.forEach((ref) => {
         if (!ref) return;
-
         const textElements = ref.querySelectorAll('.feature-text-animate');
-        
         gsap.fromTo(textElements,
-          {
-            opacity: 0,
-            y: 60,
-            rotationX: 45
-          },
+          { opacity: 0, y: 60, rotationX: 45 },
           {
             opacity: 1,
             y: 0,
@@ -317,103 +241,63 @@ const App = () => {
               start: "top 70%",
               end: "bottom 30%",
               toggleActions: "play none none reverse",
-            }
+            },
           }
         );
       });
     });
-
     return () => ctx.revert();
   }, []);
 
   const titleContent = {
     title: (
       <>
-        Why- <span className="text-[#00d3f3]">Choose Us</span>  -to 
-        <br className="hidden sm:block" />
-        Develop Your Web 
+        Why- <span className="text-[#00d3f3]">Choose Us</span>
+        <br />
+        to Develop Your Web
       </>
     ),
   };
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4 sm:p-8 font-inter-tight relative overflow-hidden">
-      
-      {/* Animated Background Elements */}
       <FloatingBackground />
-      
-      {/* Outer Container */}
       <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 md:px-10 lg:px-16 relative z-10">
-        
-        {/* === Header Section with GSAP Animations === */}
         <div ref={headerRef} className="text-center max-w-4xl mx-auto mb-20">
-          <motion.div
-            ref={titleRef}
-            className="mb-8"
-            initial={false}
-          >
+          <motion.div ref={titleRef} className="mb-8" initial={false}>
             <h1 className="text-7xl md:text-8xl font-inter-tight font-extrabold tracking-tight text-white leading-tight">
               {React.Children.map(titleContent.title.props.children, (child, index) => (
-                <motion.span
-                  key={index}
-                  className="inline-block"
-                  initial={false}
-                >
+                <motion.span key={index} className="inline-block" initial={false}>
                   {child}
                 </motion.span>
               ))}
             </h1>
           </motion.div>
-          
-          <motion.p 
-            ref={descriptionRef}
-            initial={false}
-            className="text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto font-inter-tight"
-          >
+
+          <motion.p ref={descriptionRef} initial={false} className="text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto font-inter-tight">
             {titleContent.description}
           </motion.p>
         </div>
 
-        {/* === Features with Advanced Animations === */}
         <div className="space-y-20">
           {features.map((feature, index) => {
             const isReversed = index % 2 !== 0;
-            
             return (
-              <motion.div 
+              <motion.div
                 key={index}
                 ref={(el) => (featureRefs.current[index] = el)}
-                className={`
-                  grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center 
-                  ${isReversed ? 'lg:flex-row-reverse' : ''}
-                `}
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${isReversed ? 'lg:flex-row-reverse' : ''}`}
                 initial={false}
               >
-                {/* Text Content with 3D transform animation */}
-                <div 
-                  className={`order-2 lg:order-1 feature-text-animate 
-                    ${isReversed ? 'lg:col-start-2' : ''}`}
-                >
-                  <motion.h3 
-                    className="text-3xl font-inter-tight font-bold text-[#00d3f3] mb-4 tracking-tight feature-text-animate"
-                    initial={false}
-                  >
+                <div className={`order-2 lg:order-1 feature-text-animate ${isReversed ? 'lg:col-start-2' : ''}`}>
+                  <motion.h3 className="text-3xl font-inter-tight font-bold text-[#00d3f3] mb-4 tracking-tight feature-text-animate" initial={false}>
                     {feature.title}
                   </motion.h3>
-                  <motion.p 
-                    className="text-xl text-gray-300 leading-relaxed feature-text-animate font-inter-tight"
-                    initial={false}
-                  >
+                  <motion.p className="text-xl text-gray-300 leading-relaxed feature-text-animate font-inter-tight" initial={false}>
                     {feature.description}
                   </motion.p>
                 </div>
-                
-                {/* Enhanced Visual Element */}
-                <VisualElement 
-                  icon={feature.icon} 
-                  isReversed={isReversed} 
-                  index={index}
-                />
+                <VisualElement icon={feature.icon} isReversed={isReversed} index={index} />
               </motion.div>
             );
           })}

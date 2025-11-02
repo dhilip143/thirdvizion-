@@ -2,19 +2,23 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-6 pb-16  text-white">
+    <section className="min-h-screen flex flex-col items-center justify-center px-6 pb-16 text-white">
       {/* Heading Section */}
       <motion.div
-        className=" flex flex-col justify-center items-center max-w-4xl text-center"
+        className="flex flex-col justify-center items-center max-w-4xl text-center"
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight font-inter-tight">
-          <span className="bg-gradient-to-r from-[#FDC700] to-[#ffd84c] bg-clip-text text-transparent">
-            Empower Your Business with Smarter Access
+        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-extrabold leading-tight font-inter-tight">
+          <span className="bg-gradient-to-r from-[#FDC700] to-[#ffd84c] bg-clip-text text-transparent block">
+            Empower Your Business
+          </span>
+          <span className="bg-gradient-to-r from-[#FDC700] to-[#ffd84c] bg-clip-text text-transparent block">
+            with Smarter Access
           </span>
         </h1>
+
         <p className="mt-4 text-[#f5f5f5] text-base md:text-sm max-w-2xl mx-auto">
           Identity & Access Management solutions made secure, scalable, and
           future-ready.
@@ -29,7 +33,6 @@ export default function HeroSection() {
           Get Started
         </motion.button>
       </motion.div>
-
     </section>
   );
 }

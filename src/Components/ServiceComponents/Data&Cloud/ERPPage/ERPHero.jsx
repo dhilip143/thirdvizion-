@@ -10,16 +10,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl h-screen text-center px-6 flex flex-col justify-center items-center">
         {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          viewport={{ amount: 0 }}
-          className="inline-flex items-center gap-2 rounded-full border border-[#7C86FF30] bg-[#7C86FF10] px-4 py-1.5 text-xs text-[#c7cbff] backdrop-blur-md shadow-[0_0_20px_rgba(124,134,255,0.15)]"
-        >
-          <Sparkles className="h-4 w-4 text-[#7C86FF]" />
-          Next-Gen ERP System
-        </motion.div>
+       
 
         {/* Heading */}
         <motion.h1
@@ -27,7 +18,7 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
           viewport={{ amount: 0.3 }}
-          className="mt-6 font-inter-tight text-4xl md:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
+          className="mt-6 font-inter-tight text-4xl md:text-6xl xl:text-6xl font-extrabold leading-[1.05] tracking-tight bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
         >
           The operating system of the future, <br className="hidden xl:flex" />
           built for now.
