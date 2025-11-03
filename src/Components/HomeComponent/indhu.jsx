@@ -3,10 +3,10 @@ import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import threed from "/src/assets/HomeImages/3d development.webp";
-import gam from "/src/assets/HomeImages/gam.png";
-import are from "/src/assets/HomeImages/ar.png";
-import wih from "/src/assets/HomeImages/hiw.png";
+import threed from "/src/assets/HomeImages/fff1.png";
+import gam from "/src/assets/HomeImages/fff2.png";
+import are from "/src/assets/HomeImages/fff3.png";
+import wih from "/src/assets/HomeImages/fff4.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,7 +18,7 @@ fontLink.rel = "stylesheet";
 document.head.appendChild(fontLink);
 
 export default function Indhu() {
-  const [radius, setRadius] = useState(120);
+  const [radius, setRadius] = useState(90);
   const svgRef = useRef(null);
   const pathRef = useRef(null);
   const containerRef = useRef(null);
@@ -387,7 +387,7 @@ export default function Indhu() {
                   cx={c.cx}
                   cy={c.cy}
                   r={radius}
-                  fill="url(#gradientGlow)"
+                  fill="url(black)"
                   stroke="#00ffff"
                   strokeWidth="3"
                   opacity="0.95"
