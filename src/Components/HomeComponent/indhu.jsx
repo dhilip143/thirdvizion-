@@ -10,6 +10,13 @@ import wih from "/src/assets/HomeImages/hiw.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// ✅ Google Fonts import
+const fontLink = document.createElement("link");
+fontLink.href =
+  "https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Work+Sans:wght@400;500;600&display=swap";
+fontLink.rel = "stylesheet";
+document.head.appendChild(fontLink);
+
 export default function Indhu() {
   const [radius, setRadius] = useState(120);
   const svgRef = useRef(null);
@@ -38,45 +45,49 @@ export default function Indhu() {
   const svgWidth = 5000;
   const leftShift = 150;
   const circleSpacing = svgWidth / (4 + 1);
-  
+
   const circles = [
     {
       id: 1,
       cx: circleSpacing * 0.92 - leftShift,
       cy: 200,
       label: "Discover",
-      description: "We start by deeply understanding your business vision, challenges, and aspirations. Our team dives into every detail to uncover insights that guide us in crafting tailored technology solutions.",
-      img: threed
+      description:
+        "We start by deeply understanding your business vision, challenges, and aspirations. Our team dives into every detail to uncover insights that guide us in crafting tailored technology solutions.",
+      img: threed,
     },
     {
       id: 2,
       cx: circleSpacing * 2.1 - leftShift,
       cy: 300,
       label: "Architect",
-      description: "We design robust, scalable system architectures using cutting-edge technologies and best practices, ensuring your solution remains future-proof, efficient, and capable of delivering optimal performance under any scale or load conditions.",
-      img: gam
+      description:
+        "We design robust, scalable system architectures using cutting-edge technologies and best practices, ensuring your solution remains future-proof, efficient, and capable of delivering optimal performance under any scale or load conditions.",
+      img: gam,
     },
     {
       id: 3,
       cx: circleSpacing * 3.3 - leftShift,
       cy: 200,
       label: "Build",
-      description: "Develop with precision and excellence using agile methodologies and continuous integration maintainable code that exceeds expectations .",
-      img: are
+      description:
+        "Develop with precision and excellence using agile methodologies and continuous integration maintainable code that exceeds expectations .",
+      img: are,
     },
     {
       id: 4,
       cx: circleSpacing * 4.7 - leftShift,
       cy: 300,
       label: "Elevate",
-      description: "Scale your business to new heights with optimized performance, enhanced user experiences, and data-driven insights that propel your growth and competitive advantage in the market.",
-      img: wih
+      description:
+        "Scale your business to new heights with optimized performance, enhanced user experiences, and data-driven insights that propel your growth and competitive advantage in the market.",
+      img: wih,
     },
   ];
 
   // Function to split description into balanced lines
   const splitDescription = (description) => {
-    const words = description.split(' ');
+    const words = description.split(" ");
     const totalWords = words.length;
     const targetLines = 3;
     const wordsPerLine = Math.ceil(totalWords / targetLines);
@@ -89,20 +100,17 @@ export default function Indhu() {
       currentLine.push(word);
       currentWordCount++;
 
-      // Break into new line when reaching target word count or at natural breaks
       if (currentWordCount >= wordsPerLine || index === words.length - 1) {
-        // Don't break if it's a very short line or we're at the end
         if (currentLine.length > 2 || index === words.length - 1) {
-          lines.push(currentLine.join(' '));
+          lines.push(currentLine.join(" "));
           currentLine = [];
           currentWordCount = 0;
         }
       }
     });
 
-    // Ensure we have exactly 3 lines, padding with empty strings if needed
     while (lines.length < targetLines) {
-      lines.push('');
+      lines.push("");
     }
 
     return lines.slice(0, targetLines);
@@ -117,11 +125,11 @@ export default function Indhu() {
         const prevCircle = circles[i];
         const controlPoint1 = {
           x: prevCircle.cx + (circle.cx - prevCircle.cx) * 0.25,
-          y: prevCircle.cy
+          y: prevCircle.cy,
         };
         const controlPoint2 = {
           x: circle.cx - (circle.cx - prevCircle.cx) * 0.25,
-          y: circle.cy
+          y: circle.cy,
         };
         return `C ${controlPoint1.x} ${controlPoint1.y}, ${controlPoint2.x} ${controlPoint2.y}, ${circle.cx} ${circle.cy}`;
       })
@@ -135,13 +143,12 @@ export default function Indhu() {
 
     if (!section || !svg || !path) return;
 
-    // Clear any existing animations first
     if (animationRefs.current.length > 0) {
-      animationRefs.current.forEach(ref => ref?.kill?.());
+      animationRefs.current.forEach((ref) => ref?.kill?.());
       animationRefs.current = [];
     }
 
-    ScrollTrigger.getAll().forEach(st => {
+    ScrollTrigger.getAll().forEach((st) => {
       if (st.trigger === section || st.trigger === svg) {
         st.kill();
       }
@@ -150,7 +157,6 @@ export default function Indhu() {
     const totalLength = path.getTotalLength();
     gsap.set(path, { strokeDasharray: totalLength, strokeDashoffset: totalLength });
 
-    // Enhanced horizontal scroll setup
     const scrollTween = gsap.to(svg, {
       x: () => -(svg.scrollWidth - window.innerWidth),
       ease: "none",
@@ -167,7 +173,6 @@ export default function Indhu() {
     });
     animationRefs.current.push(scrollTween);
 
-    // Animate path drawing
     const pathAnimation = gsap.to(path, {
       strokeDashoffset: 0,
       ease: "none",
@@ -181,7 +186,6 @@ export default function Indhu() {
     });
     animationRefs.current.push(pathAnimation);
 
-    // Animate each circle, image, and text
     circles.forEach((c, i) => {
       const circleAnimation = gsap.fromTo(
         circleRefs.current[i],
@@ -239,13 +243,12 @@ export default function Indhu() {
       );
       animationRefs.current.push(textAnimation);
 
-      // Animate all description lines
       const descLines = descRefs.current[i] || [];
       descLines.forEach((descLine, lineIndex) => {
         if (descLine) {
           const descAnimation = gsap.fromTo(
             descLine,
-            { opacity: 0, y: 30 + (lineIndex * 8) },
+            { opacity: 0, y: 30 + lineIndex * 8 },
             {
               opacity: 1,
               y: 0,
@@ -266,11 +269,10 @@ export default function Indhu() {
     });
 
     return () => {
-      // Cleanup function
-      animationRefs.current.forEach(ref => ref?.kill?.());
+      animationRefs.current.forEach((ref) => ref?.kill?.());
       animationRefs.current = [];
 
-      ScrollTrigger.getAll().forEach(st => {
+      ScrollTrigger.getAll().forEach((st) => {
         if (st.trigger === section || st.trigger === svg) {
           st.kill();
         }
@@ -278,7 +280,6 @@ export default function Indhu() {
     };
   }, [circles, radius]);
 
-  // Initialize ref arrays
   useEffect(() => {
     circleRefs.current = circleRefs.current.slice(0, circles.length);
     textRefs.current = textRefs.current.slice(0, circles.length);
@@ -291,24 +292,27 @@ export default function Indhu() {
       ref={containerRef}
       className="relative w-full min-h-screen overflow-hidden bg-black text-white flex items-center justify-start py-16 isolate"
     >
-      {/* Floating Glow Backgrounds */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-32 left-1/2 w-[800px] h-[800px] bg-blue-900/10 rounded-full blur-[200px] animate-pulse-slow"></div>
-        <div className="absolute top-1/3 -left-40 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[180px] animate-pulse-slow"></div>
-        <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-cyan-900/10 rounded-full blur-[220px] animate-pulse-slow"></div>
-      </div>
+      {/* ❌ Removed all glow backgrounds */}
+      <div className="absolute inset-0 bg-black" />
 
-      {/* Heading */}
-      <div className="absolute top-12 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4">
+      {/* ✅ Heading (no glow, black theme) */}
+      <div
+        className="absolute top-12 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4"
+        style={{ fontFamily: "Outfit, sans-serif" }}
+      >
         <p className="text-xs sm:text-sm text-gray-400 tracking-wide uppercase mb-2">
           Our Process
         </p>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 drop-shadow-[0_0_25px_rgba(200,200,255,0.3)]">
+        <h1
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-[#FFC016]"
+          style={{
+            textShadow: "none",
+          }}
+        >
           HOW WE DELIVER EXCELLENCE
         </h1>
       </div>
 
-      {/* SVG Path + Circles */}
       <div className="relative flex-shrink-0 w-[9000px] h-[600px] lg:h-[700px] 2xl:h-[800px] mx-auto z-10">
         <svg
           ref={svgRef}
@@ -318,16 +322,14 @@ export default function Indhu() {
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid meet"
         >
-          {/* Base path */}
-          <path 
-            d={pathD} 
-            stroke="rgba(255,255,255,0.05)" 
-            strokeWidth="3" 
-            fill="none" 
-            strokeLinecap="round" 
+          <path
+            d={pathD}
+            stroke="rgba(255,255,255,0.05)"
+            strokeWidth="3"
+            fill="none"
+            strokeLinecap="round"
           />
 
-          {/* Animated glowing path */}
           <path
             ref={pathRef}
             d={pathD}
@@ -335,41 +337,34 @@ export default function Indhu() {
             strokeWidth="5"
             strokeLinecap="round"
             fill="none"
-            style={{ filter: "url(#softGlow)" }}
           />
 
-          {/* Gradient + Glow */}
           <defs>
             <linearGradient id="gradientGlow" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="#00ffff" />
               <stop offset="50%" stopColor="#ff00ff" />
               <stop offset="100%" stopColor="#ff0080" />
             </linearGradient>
-            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="20" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
           </defs>
 
-          {/* Circles, Images, Labels */}
           {circles.map((c, idx) => {
-            // All text positioned below circles with consistent spacing
             const labelY = c.cy + radius + 50;
             const descStartY = labelY + 30;
             const lineHeight = 22;
 
-            const fontSize = window.innerWidth >= 1536 ? 18 + radius / 7 :
-                            window.innerWidth >= 1024 ? 16 + radius / 9 :
-                            window.innerWidth >= 640 ? 14 + radius / 10 : 12;
+            const fontSize =
+              window.innerWidth >= 1536
+                ? 18 + radius / 7
+                : window.innerWidth >= 1024
+                ? 16 + radius / 9
+                : window.innerWidth >= 640
+                ? 14 + radius / 10
+                : 12;
 
             const descriptionLines = splitDescription(c.description);
 
             return (
               <g key={c.id}>
-                {/* Floating outer rings */}
                 <circle
                   cx={c.cx}
                   cy={c.cy}
@@ -377,7 +372,6 @@ export default function Indhu() {
                   fill="none"
                   stroke="rgba(0,255,255,0.5)"
                   strokeWidth="2"
-                  style={{ filter: "url(#softGlow)" }}
                 />
                 <circle
                   cx={c.cx}
@@ -386,10 +380,8 @@ export default function Indhu() {
                   fill="none"
                   stroke="rgba(255,0,255,0.3)"
                   strokeWidth="1.5"
-                  style={{ filter: "url(#softGlow)" }}
                 />
 
-                {/* Circle */}
                 <circle
                   ref={(el) => (circleRefs.current[idx] = el)}
                   cx={c.cx}
@@ -399,10 +391,8 @@ export default function Indhu() {
                   stroke="#00ffff"
                   strokeWidth="3"
                   opacity="0.95"
-                  style={{ filter: "url(#softGlow)" }}
                 />
 
-                {/* Image */}
                 <clipPath id={`clip-${c.id}`}>
                   <circle cx={c.cx} cy={c.cy} r={radius} />
                 </clipPath>
@@ -417,36 +407,34 @@ export default function Indhu() {
                   clipPath={`url(#clip-${c.id})`}
                 />
 
-                {/* Text Container Background for better readability */}
                 <rect
                   x={c.cx - 220}
                   y={labelY - 25}
                   width="440"
                   height="130"
-                  fill="rgba(0, 0, 0, 0.7)"
+                  fill="rgba(0, 0, 0, 0.85)"
                   rx="15"
-                  style={{ filter: "url(#softGlow)" }}
                 />
 
-                {/* Label */}
+                {/* ✅ Label text clean (no glow) */}
                 <text
                   ref={(el) => (textRefs.current[idx] = el)}
                   x={c.cx}
                   y={labelY}
                   textAnchor="middle"
-                  fill="#fff"
+                  fill="#FFC016"
                   fontSize={fontSize * 0.9}
                   fontWeight={700}
                   style={{
-                    fontFamily: "inherit",
-                    textShadow: "0 0 15px rgba(0,255,255,0.5), 0 0 15px rgba(255,0,255,0.3)",
+                    fontFamily: "Outfit, sans-serif",
                     letterSpacing: "0.5px",
+                    textShadow: "none",
                   }}
                 >
                   {c.label}
                 </text>
 
-                {/* Description Lines */}
+                {/* ✅ Description pure white, no glow */}
                 {descriptionLines.map((line, lineIndex) => (
                   <text
                     key={lineIndex}
@@ -457,13 +445,13 @@ export default function Indhu() {
                     x={c.cx}
                     y={descStartY + lineIndex * lineHeight}
                     textAnchor="middle"
-                    fill="#e5e7eb"
+                    fill="#FFFFFF"
                     fontSize={fontSize * 0.5}
                     fontWeight={400}
                     style={{
-                      fontFamily: "inherit",
-                      textShadow: "0 0 8px rgba(0,255,255,0.3)",
+                      fontFamily: "Work Sans, sans-serif",
                       letterSpacing: "0.3px",
+                      textShadow: "none",
                     }}
                   >
                     {line}
