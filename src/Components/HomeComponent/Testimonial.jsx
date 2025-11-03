@@ -52,17 +52,14 @@ export default function TestimonialsSection() {
 
   return (
     <section className="relative bg-black text-white py-24 font-['Work_Sans'] overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-1/4 w-[300px] h-[300px] bg-pink-500/10 rounded-full blur-3xl" />
-      </div>
+      {/* ✅ Removed glow background — solid black theme only */}
 
       <div className="relative z-10 container mx-auto px-6 text-center">
-        <h2 className="font-['Outfit'] text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-400 text-transparent bg-clip-text">
+        {/* ✅ Heading & Paragraph Style */}
+        <h2 className="font-['Outfit'] text-5xl font-bold mb-4 text-[#FFD54F]">
           What People Say
         </h2>
-        <p className="text-gray-400 text-lg mb-16 max-w-2xl mx-auto font-['Work_Sans']">
+        <p className="text-white text-lg mb-16 max-w-2xl mx-auto font-['Work_Sans']">
           Hear from creators and developers using our services to craft
           immersive digital experiences.
         </p>
@@ -83,13 +80,13 @@ export default function TestimonialsSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -40 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="w-full bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-2xl shadow-[0_0_30px_rgba(168,85,247,0.15)] p-8 h-full"
+                  className="w-full bg-black border border-gray-800 rounded-2xl shadow-lg p-8 h-full"
                 >
                   <div className="flex flex-col items-center text-center">
                     <img
                       src={testimonials[activeIndex].avatar}
                       alt={testimonials[activeIndex].name}
-                      className="w-24 h-24 rounded-full border-2 border-purple-500 object-cover shadow-lg mb-6"
+                      className="w-24 h-24 rounded-full border-2 border-gray-600 object-cover shadow-md mb-6"
                     />
                     <h4 className="font-['Outfit'] text-2xl font-semibold text-white mb-2">
                       {testimonials[activeIndex].name}
@@ -116,14 +113,14 @@ export default function TestimonialsSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl shadow-lg p-6 hover:shadow-[0_0_20px_rgba(168,85,247,0.1)] transition-all duration-300 cursor-pointer"
+                    className="bg-black border border-gray-800 rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300 cursor-pointer"
                     onClick={() => setActiveIndex(testimonials.indexOf(testimonial))}
                   >
                     <div className="flex items-start space-x-4">
                       <img
                         src={testimonial.avatar}
                         alt={testimonial.name}
-                        className="w-12 h-12 rounded-full border border-purple-500 object-cover flex-shrink-0"
+                        className="w-12 h-12 rounded-full border border-gray-600 object-cover flex-shrink-0"
                       />
                       <div className="text-left">
                         <h5 className="font-['Outfit'] font-semibold text-white text-sm">
@@ -146,11 +143,11 @@ export default function TestimonialsSection() {
           <div className="flex justify-center items-center mt-12 space-x-8">
             <button
               onClick={prev}
-              className="w-12 h-12 rounded-full bg-gray-800 hover:bg-purple-600 border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110 font-['Work_Sans']"
+              className="w-12 h-12 rounded-full bg-gray-900 hover:bg-gray-700 border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110 font-['Work_Sans']"
             >
               ‹
             </button>
-            
+
             {/* Dots Indicator */}
             <div className="flex space-x-3">
               {testimonials.map((_, i) => (
@@ -158,8 +155,8 @@ export default function TestimonialsSection() {
                   key={i}
                   onClick={() => setActiveIndex(i)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    i === activeIndex 
-                      ? "bg-purple-400 w-8" 
+                    i === activeIndex
+                      ? "bg-yellow-400 w-8"
                       : "bg-gray-600 hover:bg-gray-400"
                   }`}
                 />
@@ -168,7 +165,7 @@ export default function TestimonialsSection() {
 
             <button
               onClick={next}
-              className="w-12 h-12 rounded-full bg-gray-800 hover:bg-purple-600 border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110 font-['Work_Sans']"
+              className="w-12 h-12 rounded-full bg-gray-900 hover:bg-gray-700 border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110 font-['Work_Sans']"
             >
               ›
             </button>
