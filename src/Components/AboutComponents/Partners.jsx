@@ -42,10 +42,12 @@ const CarousalRow = ({ reverse = false, duration = 14 }) => {
 export default function Partners() {
   return (
     <div className="bg-black text-white py-12 relative font-['Outfit']">
-      <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-3 font-['Outfit']">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-3 "
+ style={{ fontFamily: "Outfit, sans-serif" }}>
         Our Clients
       </h2>
-      <p className="text-center text-gray-400 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8 font-['Outfit']">
+      <p className="text-center text-gray-400 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8 "
+      >
         Creating impact alongside our valued clients.
       </p>
 

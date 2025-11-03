@@ -218,10 +218,10 @@ export default function Categories() {
     const specialTags = ["VIRTUAL REALITY", "SERVER MANAGEMENT", "GAME DEVELOPMENT"];
     
     if (specialTags.includes(tag)) {
-      return "px-4 py-2 border border-yellow-500 bg-yellow-500 rounded-full text-white text-sm font-medium";
+      return "px-4 py-2 border border-yellow-500 bg-yellow-500 rounded-full text-black text-sm font-medium hover:bg-black hover:text-yellow-500 hover:border-yellow-500 transition-all duration-300";
     }
     
-    return "px-4 py-2 border border-white rounded-full text-yellow-500 text-sm font-medium";
+    return "px-4 py-2 border border-white rounded-full text-white text-sm font-medium hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300";
   };
 
   // Function to get navigation link for tags (for the left section)
@@ -254,12 +254,18 @@ export default function Categories() {
           >
             <div className="flex flex-col">
               <div>
-                <h3 className="text-4xl md:text-5xl font-bold tracking-wider text-yellow-500 mb-6 uppercase">
+                <h3 
+                  className="text-4xl md:text-5xl font-bold tracking-wider text-yellow-500 mb-6 uppercase"
+                  style={{ fontFamily: "Outfit, sans-serif" }}
+                >
                   {activeCategory.title}
                 </h3>
                 <div className="mt-6 h-px w-full bg-gradient-to-r from-yellow-600 via-yellow-500/80 to-transparent"></div>
                 <div className="relative">
-                  <p className="text-white/90 mt-6 max-w-md leading-relaxed text-lg md:text-xl font-light tracking-wide">
+                  <p 
+                    className="text-white/90 mt-6 max-w-md leading-relaxed text-lg md:text-xl font-light tracking-wide"
+                    style={{ fontFamily: "Work Sans, sans-serif" }}
+                  >
                     {activeCategory.desc.split('. ')[0]}.
                   </p>
                   <div className="mt-8 flex flex-wrap gap-3">
@@ -269,7 +275,8 @@ export default function Categories() {
                         key={index}
                       >
                         <span 
-                          className={`${getTagStyle(tag)} hover:opacity-80 transition-opacity duration-200 cursor-pointer`}
+                          className={`${getTagStyle(tag)} cursor-pointer`}
+                          style={{ fontFamily: "outfit, sans-serif" }}
                         >
                           {tag}
                         </span>
