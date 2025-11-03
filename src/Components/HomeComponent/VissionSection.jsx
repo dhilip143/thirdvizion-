@@ -22,8 +22,8 @@ const MissionVision = () => {
       const visionTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: visionLineRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
+          start: "top 130%",
+          end: "bottom 150%",
           toggleActions: "play none none reverse",
         },
       });
@@ -37,12 +37,26 @@ const MissionVision = () => {
           },
           {
             scaleX: 1,
-            duration: 1.5,
-            ease: "power3.out",
+            duration: 1,
+            ease: "power2.out",
           }
         )
         .fromTo(
           visionHeadingRef.current,
+          {
+            opacity: 0,
+            y: 20,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.3"
+        )
+        .fromTo(
+          visionTextRef.current,
           {
             opacity: 0,
             y: 30,
@@ -50,32 +64,18 @@ const MissionVision = () => {
           {
             opacity: 1,
             y: 0,
-            duration: 1,
-            ease: "power3.out",
+            duration: 0.8,
+            ease: "power2.out",
           },
-          "-=0.5"
-        )
-        .fromTo(
-          visionTextRef.current,
-          {
-            opacity: 0,
-            y: 40,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            ease: "power3.out",
-          },
-          "-=0.3"
+          "-=0.2"
         );
 
       // Mission section sequential animation
       const missionTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: missionLineRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
+          start: "top 85%",
+          end: "bottom 15%",
           toggleActions: "play none none reverse",
         },
       });
@@ -89,12 +89,26 @@ const MissionVision = () => {
           },
           {
             scaleX: 1,
-            duration: 1.5,
-            ease: "power3.out",
+            duration: 1,
+            ease: "power2.out",
           }
         )
         .fromTo(
           missionHeadingRef.current,
+          {
+            opacity: 0,
+            y: 20,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          },
+          "-=0.3"
+        )
+        .fromTo(
+          missionTextRef.current,
           {
             opacity: 0,
             y: 30,
@@ -102,24 +116,10 @@ const MissionVision = () => {
           {
             opacity: 1,
             y: 0,
-            duration: 1,
-            ease: "power3.out",
+            duration: 0.8,
+            ease: "power2.out",
           },
-          "-=0.5"
-        )
-        .fromTo(
-          missionTextRef.current,
-          {
-            opacity: 0,
-            y: 40,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            ease: "power3.out",
-          },
-          "-=0.3"
+          "-=0.2"
         );
     }, sectionRef);
 

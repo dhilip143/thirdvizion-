@@ -129,7 +129,7 @@ export default function WebProject() {
             className="h-screen flex flex-col lg:flex-row items-center justify-center overflow-hidden relative px-4 sm:px-6 md:px-8"
           >
             {/* Image Container */}
-            <div className="w-full lg:w-1/2 h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-screen flex items-center justify-center">
+            <div className="w-full lg:w-1/2 h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[150vh]flex items-center justify-center">
               <img
                 src={project.image}
                 className="w-full h-full object-cover rounded-2xl shadow-[0_0_25px_rgba(124,134,255,0.2)]"
