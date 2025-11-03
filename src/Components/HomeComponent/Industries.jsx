@@ -138,11 +138,13 @@ const Industries = () => {
       {/* --- TOP SECTION --- */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8">
         <div className="flex-1">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight font-outfit">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-medium leading-tight font-Outfit"
+           style={{ fontFamily: "Outfit, sans-serif" }}>
+            
             Turning <span className="text-yellow-400">vision</span> into impact.
           </h2>
         </div>
-        <div className="flex-1 font-work-sans text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed">
+        <div className="flex-1 font-worksans text-gray-300 text-sm md:text-base lg:text-lg leading-relaxed">
           We partner with organizations to unlock new opportunities and strengthen
           workforce capabilities. Through technology, training, and strategic
           collaboration, we enable industries to thrive. Our goal is to bridge

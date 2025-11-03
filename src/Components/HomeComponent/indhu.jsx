@@ -11,11 +11,7 @@ import wih from "/src/assets/HomeImages/hiw.png";
 gsap.registerPlugin(ScrollTrigger);
 
 // ✅ Google Fonts import
-const fontLink = document.createElement("link");
-fontLink.href =
-  "https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Work+Sans:wght@400;500;600&display=swap";
-fontLink.rel = "stylesheet";
-document.head.appendChild(fontLink);
+
 
 export default function Indhu() {
   const [radius, setRadius] = useState(120);
