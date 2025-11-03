@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
 
-import image1 from "/src/assets/AboutImages/wow.png";
-import image2 from "/src/assets/AboutImages/vow.png";
-import image3 from "/src/assets/AboutImages/tow.png";
-import image4 from "/src/assets/AboutImages/wow.png";
-import image5 from "/src/assets/AboutImages/vow.png";
-import image6 from "/src/assets/AboutImages/tow.png";
-import image7 from "/src/assets/AboutImages/wow.png";
-import image8 from "/src/assets/AboutImages/vow.png";
-import image9 from "/src/assets/AboutImages/tow.png";
-import image10 from "/src/assets/AboutImages/tow.png";
+import image1 from "/src/assets/AboutImages/we.png";
+import image2 from "/src/assets/AboutImages/wee.png";
+import image3 from "/src/assets/AboutImages/weee.png";
+import image4 from "/src/assets/AboutImages/weeee.png";
+import image5 from "/src/assets/AboutImages/weeeee.png";
+import image6 from "/src/assets/AboutImages/weeeeee.png";
+import image7 from "/src/assets/AboutImages/weeeeeee.png";
+import image8 from "/src/assets/AboutImages/weeeeeeee.png";
+import image9 from "/src/assets/AboutImages/weeeeeeeee.png";
+import image10 from "/src/assets/AboutImages/weeeeeeeeee.png";
 
 const WebDesignScroll = () => {
   return (
@@ -116,16 +116,16 @@ const WebDesignScroll = () => {
         >
           <div className="list">
             {[
-              image1,
-              image2,
-              image3,
-              image4,
-              image5,
+              image10,
               image6,
               image7,
               image8,
               image9,
-              image10,
+              image5,
+              image4,
+              image3,
+              image2,
+              image1,
             ].map((img, index) => (
               <div
                 key={index}
@@ -151,14 +151,14 @@ const WebDesignScroll = () => {
           <div className="list">
             {[
               image1,
-              image2,
-              image3,
-              image4,
-              image5,
               image6,
+              image2,
               image7,
+              image3,
               image8,
+              image4,
               image9,
+              image5,
               image10,
             ].map((img, index) => (
               <div

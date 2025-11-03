@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import DashBoardimage from "/src/assets/HeroImages/HeroHeader.webp";
+import DashBoardimage from "/src/assets/HeroImages/trr.jpg";
 
 
 const IAMDashboard = () => {

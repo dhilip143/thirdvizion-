@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import threed from "/src/assets/home/Clients/3d.png";
+import threed from "/src/assets/home/Clients/wsx.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
