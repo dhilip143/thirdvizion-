@@ -3,10 +3,10 @@ import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import threed from "/src/assets/HomeImages/fff1.png";
-import gam from "/src/assets/HomeImages/fff2.png";
-import are from "/src/assets/HomeImages/fff3.png";
-import wih from "/src/assets/HomeImages/fff4.png";
+import threed from "/src/assets/HomeImages/g11.svg" ;  
+import gam from "/src/assets/HomeImages/g22.svg" ;  
+import are from "/src/assets/HomeImages/g33.svg" ;  
+import wih from "/src/assets/HomeImages/g44.svg" ;  
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 export default function Indhu() {
-  const [radius, setRadius] = useState(90);
+  const [radius, setRadius] = useState(10);
   const svgRef = useRef(null);
   const pathRef = useRef(null);
   const containerRef = useRef(null);
@@ -27,10 +27,10 @@ export default function Indhu() {
   // Responsive circle radius
   useEffect(() => {
     const updateRadius = () => {
-      if (window.innerWidth < 640) setRadius(70);
-      else if (window.innerWidth < 1024) setRadius(100);
-      else if (window.innerWidth < 1536) setRadius(120);
-      else setRadius(140);
+      if (window.innerWidth < 240) setRadius(30);
+      else if (window.innerWidth < 1000) setRadius(15);
+      else if (window.innerWidth < 1000) setRadius(15);
+      else setRadius(80);
     };
     updateRadius();
     window.addEventListener("resize", updateRadius);
@@ -47,16 +47,16 @@ export default function Indhu() {
       id: 1,
       cx: circleSpacing * 0.92 - leftShift,
       cy: 200,
-      label: "Discover",
+      label: "DISCOVER",
       description:
-        "We start by deeply understanding your business vision, challenges, and aspirations. Our team dives into every detail to uncover insights that guide us in crafting tailored technology solutions.",
+        "We start by deeply understanding your business vision, challenges, and aspirations. Our team dives into every detail to uncover insights that guide us in crafting tailored technology solutions designed to transform your goals into measurable outcomes.",
       img: threed,
     },
     {
       id: 2,
       cx: circleSpacing * 2.1 - leftShift,
       cy: 300,
-      label: "Architect",
+      label: "ARCHITECT",
       description:
         "We design robust, scalable system architectures using cutting-edge technologies and best practices, ensuring your solution remains future-proof, efficient, and capable of delivering optimal performance under any scale or load conditions.",
       img: gam,
@@ -65,16 +65,16 @@ export default function Indhu() {
       id: 3,
       cx: circleSpacing * 3.3 - leftShift,
       cy: 200,
-      label: "Build",
+      label: "BUILD",
       description:
-        "Develop with precision and excellence using agile methodologies and continuous integration maintainable code that exceeds expectations .",
+        "Develop with precision and excellence using agile methodologies and continuous integration maintainable code that exceeds expectations.",
       img: are,
     },
     {
       id: 4,
       cx: circleSpacing * 4.7 - leftShift,
       cy: 300,
-      label: "Elevate",
+      label: "ELEVATE",
       description:
         "Scale your business to new heights with optimized performance, enhanced user experiences, and data-driven insights that propel your growth and competitive advantage in the market.",
       img: wih,
@@ -296,7 +296,7 @@ export default function Indhu() {
         className="absolute top-12 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4"
         style={{ fontFamily: "Outfit, sans-serif" }}
       >
-        <p className="text-xs sm:text-sm text-gray-400 tracking-wide uppercase mb-2">
+        <p className="text-xs sm:text-sm text-black tracking-wide uppercase mb-2">
           Our Process
         </p>
         <h1
@@ -320,7 +320,7 @@ export default function Indhu() {
         >
           <path
             d={pathD}
-            stroke="rgba(255,255,255,0.05)"
+            stroke="rgba(255, 242, 0, 0.05)"
             strokeWidth="3"
             fill="none"
             strokeLinecap="round"
@@ -337,16 +337,16 @@ export default function Indhu() {
 
           <defs>
             <linearGradient id="gradientGlow" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#00ffff" />
-              <stop offset="50%" stopColor="#ff00ff" />
-              <stop offset="100%" stopColor="#ff0080" />
+              <stop offset="0%" stopColor="#ffb200 "/>
+              <stop offset="50%" stopColor="#ffb200  "/>
+              <stop offset="100%" stopColor="#ffb200" />
             </linearGradient>
           </defs>
 
           {circles.map((c, idx) => {
-            const labelY = c.cy + radius + 50;
-            const descStartY = labelY + 30;
-            const lineHeight = 22;
+            const labelY = c.cy + radius + 70;
+            const descStartY = labelY + 50;
+            const lineHeight = 28;
 
             const fontSize =
               window.innerWidth >= 1536
@@ -361,33 +361,10 @@ export default function Indhu() {
 
             return (
               <g key={c.id}>
-                <circle
-                  cx={c.cx}
-                  cy={c.cy}
-                  r={radius + 15}
-                  fill="none"
-                  stroke="rgba(0,255,255,0.5)"
-                  strokeWidth="2"
-                />
-                <circle
-                  cx={c.cx}
-                  cy={c.cy}
-                  r={radius + 30}
-                  fill="none"
-                  stroke="rgba(255,0,255,0.3)"
-                  strokeWidth="1.5"
-                />
+                
+              
 
-                <circle
-                  ref={(el) => (circleRefs.current[idx] = el)}
-                  cx={c.cx}
-                  cy={c.cy}
-                  r={radius}
-                  fill="url(black)"
-                  stroke="#00ffff"
-                  strokeWidth="3"
-                  opacity="0.95"
-                />
+               
 
                 <clipPath id={`clip-${c.id}`}>
                   <circle cx={c.cx} cy={c.cy} r={radius} />
@@ -419,11 +396,11 @@ export default function Indhu() {
                   y={labelY}
                   textAnchor="middle"
                   fill="#FFC016"
-                  fontSize={fontSize * 0.9}
-                  fontWeight={700}
+                  fontSize={fontSize * 1.7}
+                  fontWeight={400}
                   style={{
                     fontFamily: "Outfit, sans-serif",
-                    letterSpacing: "0.5px",
+                    letterSpacing: "1.5px",
                     textShadow: "none",
                   }}
                 >
@@ -442,12 +419,13 @@ export default function Indhu() {
                     y={descStartY + lineIndex * lineHeight}
                     textAnchor="middle"
                     fill="#FFFFFF"
-                    fontSize={fontSize * 0.5}
+                    fontSize={fontSize * 0.65}
                     fontWeight={400}
                     style={{
                       fontFamily: "Work Sans, sans-serif",
-                      letterSpacing: "0.3px",
+                      letterSpacing: "0.0px",
                       textShadow: "none",
+
                     }}
                   >
                     {line}
