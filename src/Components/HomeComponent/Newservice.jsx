@@ -308,7 +308,7 @@ export default function Categories() {
             <div className="flex flex-col">
               <div>
                 <h3 
-                  className="text-4xl md:text-5xl font-bold tracking-wider text-yellow-500 mb-6 uppercase"
+                  className="text-4xl md:text-5xl font-medium tracking-wider text-yellow-500 mb-6 uppercase"
                   style={{ fontFamily: "Outfit, sans-serif" }}
                 >
                   {activeCategory.title}

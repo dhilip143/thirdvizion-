@@ -7,9 +7,9 @@ import Client6 from "/src/assets/partners/client6.png";
 
 const slides = [Client1, Client2, Client3, Client4, Client5, Client6];
 
-const CarousalRow = ({ reverse = false, duration = 14 }) => {
+const CarousalRow = ({ reverse = false, duration = 14, compact = false }) => {
   return (
-    <div className="relative w-full overflow-hidden my-4">
+    <div className="relative w-full overflow-hidden my-2">
       {/* Fade overlays */}
       <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black to-transparent z-20 pointer-events-none"></div>
       <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-20 pointer-events-none"></div>
@@ -25,13 +25,21 @@ const CarousalRow = ({ reverse = false, duration = 14 }) => {
         {slides.concat(slides).map((img, idx) => (
           <div
             key={idx}
-            className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-6 flex justify-center items-center"
+            className={`flex-shrink-0 ${
+              compact 
+                ? "w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 mx-4" 
+                : "w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-6"
+            } flex justify-center items-center group`}
           >
-            <img
-              src={img}
-              alt={`slide-${idx}`}
-              className="w-full h-full object-contain object-center"
-            />
+            <div className="relative w-full h-full">
+              <img
+                src={img}
+                alt={`slide-${idx}`}
+                className="w-full h-full object-contain object-center filter grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
+              />
+              {/* Optional overlay for better hover effect */}
+              <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-0 transition-opacity duration-500 ease-in-out"></div>
+            </div>
           </div>
         ))}
       </div>
@@ -42,16 +50,21 @@ const CarousalRow = ({ reverse = false, duration = 14 }) => {
 export default function Partners() {
   return (
     <div className="bg-black text-white py-12 relative font-['Outfit']">
-      <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-3 "
- style={{ fontFamily: "Outfit, sans-serif" }}>
-        Our Clients
-      </h2>
-      <p className="text-center text-gray-400 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8 "
-      >
+     <h2
+  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-3"
+  style={{ fontFamily: "Outfit, sans-serif" }}
+>
+  Our <span className="text-yellow-500">Clients</span>
+</h2>
+
+      <p className="text-center text-gray-400 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8">
         Creating impact alongside our valued clients.
       </p>
 
-      <CarousalRow duration={14} />
+      {/* Multiple rows with different directions and speeds */}
+      <CarousalRow duration={12} />
+      <CarousalRow reverse={true} duration={14} />
+     
 
       {/* Tailwind animations */}
       <style>{`
