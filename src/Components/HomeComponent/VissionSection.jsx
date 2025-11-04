@@ -22,9 +22,10 @@ const MissionVision = () => {
       const visionTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: visionLineRef.current,
-          start: "top 130%",
-          end: "bottom 150%",
-          toggleActions: "play none none reverse",
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play reverse play reverse",
+          markers: false, // Set to true for debugging
         },
       });
 
@@ -74,9 +75,10 @@ const MissionVision = () => {
       const missionTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: missionLineRef.current,
-          start: "top 85%",
-          end: "bottom 15%",
-          toggleActions: "play none none reverse",
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play reverse play reverse",
+          markers: false, // Set to true for debugging
         },
       });
 
@@ -129,7 +131,7 @@ const MissionVision = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-black pt-100 text-white py-16 px-6 md:px-20"
+      className="bg-black pt-50 text-white py-16 px-6 md:px-20"
       style={{ fontFamily: "'Work Sans', sans-serif" }}
     >
       {/* Vision section */}
@@ -148,8 +150,8 @@ const MissionVision = () => {
         <h2
           ref={visionHeadingRef}
           className="text-6xl ml-76 font-bold tracking-wider mb-6 flex text-[#FFC016] font-outfit"
-          
-         style={{ fontFamily: "Outfit, sans-serif" }} >
+          style={{ fontFamily: "Outfit, sans-serif" }}
+        >
           VISION
         </h2>
 
@@ -178,8 +180,8 @@ const MissionVision = () => {
         <h2
           ref={missionHeadingRef}
           className="text-6xl pt-86 pl-193 font-bold tracking-wider mb-6 flex justify-end md:justify-start text-[#FFC016] font-Outfit "
-       
-         style={{ fontFamily: "Outfit, sans-serif" }} >
+          style={{ fontFamily: "Outfit, sans-serif" }}
+        >
           MISSION
         </h2>
 
@@ -191,24 +193,21 @@ const MissionVision = () => {
             technologies.
           </p>
 
-          <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-4">
-            We strive to:
-          </p>
-
           <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
-            <span className="text-yellow-500 font-semibold">Innovate</span>{" "}
+            <span className="text-yellow-500 font-semibold"
+            style={{ fontFamily: "Outfit, sans-serif" }}>INNOVATE</span>{" "}
             immersive solutions that transform the way people learn, work, and
             connect.
           </p>
 
           <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
-            <span className="text-yellow-500 font-semibold">Integrate</span>{" "}
+            <span className="text-yellow-500 font-semibold"style={{ fontFamily: "Outfit, sans-serif" }}>INTEGRATE</span>{" "}
             seamless 3D experiences across digital platforms for accessibility
             and engagement.
           </p>
 
           <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
-            <span className="text-yellow-500 font-semibold">Inspire</span>{" "}
+            <span className="text-yellow-500 font-semibold"style={{ fontFamily: "Outfit, sans-serif" }}>INSPIRE</span>{" "}
             creativity and future-ready thinking by blending design, technology,
             and storytelling.
           </p>
@@ -218,4 +217,4 @@ const MissionVision = () => {
   );
 };
 
-export default MissionVision;
+export default MissionVision; 

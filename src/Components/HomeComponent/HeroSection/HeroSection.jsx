@@ -89,7 +89,7 @@ const Landing = () => {
         </h2>
 
         {/* Description */}
-        <p className="text-lg md:text-xl lg:text-2xl text-gray-200 text-center mb-10 max-w-4xl leading-relaxed">
+        <p className="text-lg md:text-xl lg:text-2xl text-gray-200 text-center mb-10 max-w-4xl ">
           We combine cutting-edge technology with visionary ideas to deliver
           solutions that shape tomorrow while empowering businesses today.
         </p>
