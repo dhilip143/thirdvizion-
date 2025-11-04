@@ -23,10 +23,12 @@ export default function ContactHero() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
           {/* LEFT SIDE — heading + paragraph */}
           <div className="space-y-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-outfit">
-              Connect for <span className="text-yellow-400">IMPACT</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-outfit"
+               style={{ fontFamily: "Outfit, sans-serif" }}>
+              We’d Love to Hear from <span className="text-yellow-400">You</span>
             </h1>
-            <p className="max-w-lg text-gray-300 text-sm sm:text-base md:text-lg leading-7 font-work-sans tracking-wide">
+            <p className="max-w-lg text-gray-300 text-[18px] sm:text-base md:text-[18px] leading-7 font-work-sans tracking-wide
+            "    style={{ fontFamily: " work-sans, Outfit" }}>
               Ready to take your ideas to the next level? Our team of experts is
               here to collaborate, innovate, and deliver solutions tailored to
               your business needs. Whether you’re looking for AI-powered
@@ -36,7 +38,7 @@ export default function ContactHero() {
           </div>
 
           {/* RIGHT SIDE — form */}
-          <div className="w-full max-w-md md:ml-auto">
+          <div className="w-full max-w-md md:ml-auto  border-[#BFBFBF]">
             <form className="space-y-4">
               <GradientInput placeholder="Name" />
               <GradientInput placeholder="E-mail" type="email" />
@@ -44,7 +46,7 @@ export default function ContactHero() {
 
               <button
                 type="submit"
-                className="flex items-center justify-center gap-2 rounded-full border border-yellow-400/30 px-6 py-3 text-base font-medium tracking-wide text-white transition-all hover:border-yellow-400 hover:bg-yellow-400/10 active:scale-[0.98] font-work-sans"
+                className="flex items-center justify-center gap-2 rounded-full border border-[#BFBFBF] px-6 py-3 text-base font-medium tracking-wide text-white transition-all hover:border-yellow-400 hover:bg-yellow-400/10 active:scale-[0.98] font-work-sans"
               >
                 Get in Touch
                 <span className="text-yellow-400 text-lg">→</span>

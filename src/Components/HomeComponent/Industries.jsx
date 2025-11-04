@@ -80,7 +80,7 @@ const Industries = () => {
     // Move name fully left into number’s place
     gsap.to(nameEl, {
       x: "-140%",
-      color: "#ffffff", // ✅ Changed from black (#000000) to white (#ffffff)
+      color: "#ffffff",
       duration: 0.8,
       ease: "power2.out",
     });
@@ -145,7 +145,7 @@ const Industries = () => {
             Turning <span className="text-yellow-400">vision</span> into impact.
           </h2>
         </div>
-        <div className="flex-1 font-worksans text-gray-300 text-sm md:text-base lg:text-[] leading-relaxed">
+        <div className="flex-1 font-worksans text-gray-300 text-sm md:text-base leading-relaxed">
           We partner with organizations to unlock new opportunities and
           strengthen workforce capabilities. Through technology, training, and
           strategic collaboration, we enable industries to thrive. Our goal is
@@ -182,6 +182,7 @@ const Industries = () => {
                 backgroundImage: `url(${industryImages[index]})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
                 transform: "translateX(100%)",
               }}
             ></div>
@@ -196,7 +197,7 @@ const Industries = () => {
               </h3>
               <p
                 ref={(el) => (nameTextRefs.current[index] = el)}
-                className="text-xl md:text-2xl lg:text-[28px] font-outfit text-gray-100 transition-colors duration-300"
+                className="text-xl md:text-2xl lg:text-[28px] font-outfit text-gray-100 transition-colors duration-300 text-center md:text-left"
               >
                 {industry.name}
               </p>

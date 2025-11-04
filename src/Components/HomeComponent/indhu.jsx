@@ -293,19 +293,19 @@ export default function Indhu() {
 
       {/* ✅ Heading (no glow, black theme) */}
       <div
-        className="absolute top-12 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4"
+        className="absolute top-24 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4"
         style={{ fontFamily: "Outfit, sans-serif" }}
       >
         <p className="text-xs sm:text-sm text-black tracking-wide uppercase mb-2">
           Our Process
         </p>
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-[#FFC016]"
+          className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight text-[#ffffff] "
           style={{
             textShadow: "none",
           }}
         >
-          HOW WE DELIVER EXCELLENCE
+          HOW WE <spam className="text-[#FFC016]">DELIVER</spam>  EXCELLENCE
         </h1>
       </div>
 
