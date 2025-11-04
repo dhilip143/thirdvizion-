@@ -23,12 +23,17 @@ export default function ContactHero() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
           {/* LEFT SIDE — heading + paragraph */}
           <div className="space-y-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-tight font-outfit"
-               style={{ fontFamily: "Outfit, sans-serif" }}>
-              We’d Love to Hear from <span className="text-yellow-400">You</span>
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-tight font-outfit"
+              style={{ fontFamily: "Outfit, sans-serif" }}
+            >
+              We’d Love to Hear from{" "}
+              <span className="text-yellow-400">You</span>
             </h1>
-            <p className="max-w-lg text-gray-300 text-[18px] sm:text-base md:text-[18px] leading-7 font-work-sans tracking-wide
-            "    style={{ fontFamily: " work-sans, Outfit" }}>
+            <p
+              className="max-w-lg text-gray-300 text-[18px] sm:text-base md:text-[18px] leading-7 font-work-sans tracking-wide"
+              style={{ fontFamily: "Work Sans, Outfit" }}
+            >
               Ready to take your ideas to the next level? Our team of experts is
               here to collaborate, innovate, and deliver solutions tailored to
               your business needs. Whether you’re looking for AI-powered
@@ -38,7 +43,7 @@ export default function ContactHero() {
           </div>
 
           {/* RIGHT SIDE — form */}
-          <div className="w-full max-w-md md:ml-auto  border-[#BFBFBF]">
+          <div className="w-full max-w-md md:ml-auto border-[#BFBFBF]">
             <form className="space-y-4">
               <GradientInput placeholder="Name" />
               <GradientInput placeholder="E-mail" type="email" />
@@ -46,10 +51,10 @@ export default function ContactHero() {
 
               <button
                 type="submit"
-                className="flex items-center justify-center gap-2 rounded-full border border-[#BFBFBF] px-6 py-3 text-base font-medium tracking-wide text-white transition-all hover:border-yellow-400 hover:bg-yellow-400/10 active:scale-[0.98] font-work-sans"
+                className="relative flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-medium tracking-wide text-white transition-all active:scale-[0.98] font-work-sans"
               >
-                Get in Touch
-                <span className="text-yellow-400 text-lg">→</span>
+                <span className="absolute inset-0 rounded-full border-t border-t-black border-b-2 border-b-yellow-500 pointer-events-none"></span>
+                <span className="relative z-10">Get in touch</span>
               </button>
             </form>
           </div>
@@ -62,28 +67,32 @@ export default function ContactHero() {
 /* --- Styled Inputs --- */
 function GradientInput({ placeholder, type = "text" }) {
   return (
-    <div className="rounded-full p-[1px] overflow-hidden [background:linear-gradient(90deg,#f59e0b_0%,#fbbf24_50%,#eab308_100%)]">
-      <div className="rounded-full bg-black overflow-hidden">
-        <input
-          type={type}
-          placeholder={placeholder}
-          className="w-full rounded-full border border-amber-400/10 bg-transparent px-4 sm:px-5 py-3 text-sm sm:text-base text-white placeholder-amber-400/60 outline-none focus:border-amber-400/40 font-work-sans"
-        />
-      </div>
+    <div className="relative rounded-full">
+      {/* Top black & bottom yellow border layer */}
+      <span className="absolute inset-0 rounded-full border-t border-t-black border-b-2 border-b-yellow-500 pointer-events-none"></span>
+
+      {/* Actual input field */}
+      <input
+        type={type}
+        placeholder={placeholder}
+        className="relative z-10 w-full rounded-full bg-transparent px-4 sm:px-5 py-3 text-sm sm:text-base text-white placeholder-amber-400/60 outline-none focus:border-none font-work-sans"
+      />
     </div>
   );
 }
 
 function GradientTextarea({ placeholder }) {
   return (
-    <div className="rounded-xl p-[1px] overflow-hidden [background:linear-gradient(90deg,#f59e0b_0%,#fbbf24_50%,#eab308_100%)]">
-      <div className="rounded-xl bg-black overflow-hidden">
-        <textarea
-          rows={4}
-          placeholder={placeholder}
-          className="w-full resize-none rounded-xl border border-amber-400/10 bg-transparent px-4 py-3 text-sm sm:text-base text-white placeholder-amber-400/60 outline-none focus:border-amber-400/40 font-work-sans"
-        />
-      </div>
+    <div className="relative rounded-xl">
+      {/* Top black & bottom yellow border layer */}
+      <span className="absolute inset-0 rounded-xl border-t border-t-black border-b-2 border-b-yellow-500 pointer-events-none"></span>
+
+      {/* Actual textarea field */}
+      <textarea
+        rows={4}
+        placeholder={placeholder}
+        className="relative z-10 w-full resize-none rounded-xl bg-transparent px-4 py-3 text-sm sm:text-base text-white placeholder-amber-400/60 outline-none focus:border-none font-work-sans"
+      />
     </div>
   );
 }
