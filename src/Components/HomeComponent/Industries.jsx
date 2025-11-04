@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { Icon } from "@iconify/react/dist/iconify.js"; // Not used
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
@@ -43,7 +42,6 @@ const Industries = () => {
     });
   }, []);
 
-  // --- ON HOVER ---
   const handleMouseEnter = (index) => {
     if (window.innerWidth < 768) return;
 
@@ -55,7 +53,6 @@ const Industries = () => {
 
     gsap.killTweensOf([overlayEl, imageOverlayEl, numberEl, nameEl]);
 
-    // Left yellow half
     gsap.to(overlayEl, {
       width: "50%",
       x: "0%",
@@ -63,21 +60,18 @@ const Industries = () => {
       ease: "power2.out",
     });
 
-    // Right image half
     gsap.to(imageOverlayEl, {
       x: "0%",
       duration: 0.8,
       ease: "power2.out",
     });
 
-    // Hide number
     gsap.to(numberEl, {
       opacity: 0,
       duration: 0.4,
       ease: "power2.out",
     });
 
-    // Move name fully left into number’s place
     gsap.to(nameEl, {
       x: "-140%",
       color: "#ffffff",
@@ -86,7 +80,6 @@ const Industries = () => {
     });
   };
 
-  // --- ON LEAVE ---
   const handleMouseLeave = (index) => {
     if (window.innerWidth < 768) return;
 
@@ -98,7 +91,6 @@ const Industries = () => {
 
     gsap.killTweensOf([overlayEl, imageOverlayEl, numberEl, nameEl]);
 
-    // Reset yellow overlay
     gsap.to(overlayEl, {
       width: "100%",
       x: "100%",
@@ -106,14 +98,12 @@ const Industries = () => {
       ease: "power2.inOut",
     });
 
-    // Reset image overlay
     gsap.to(imageOverlayEl, {
       x: "100%",
       duration: 0.8,
       ease: "power2.inOut",
     });
 
-    // Bring back number
     gsap.to(numberEl, {
       opacity: 1,
       duration: 0.6,
@@ -121,7 +111,6 @@ const Industries = () => {
       ease: "power2.inOut",
     });
 
-    // Move name back center + restore color
     gsap.to(nameEl, {
       x: 0,
       color: "#E5E7EB",
@@ -153,13 +142,13 @@ const Industries = () => {
         </div>
       </div>
 
-      {/* --- LIST --- */}
+      {/* --- LIST (ALIGNED TO HEADING + DESCRIPTION) --- */}
       <div className="relative flex flex-col font-work-sans bg-black border-t border-gray-700">
         {industries.map((industry, index) => (
           <div
             key={industry.id}
             id="industry-item"
-            className="relative flex items-center py-8 px-2 md:px-6 border-b border-gray-700 cursor-pointer group overflow-hidden"
+            className="relative grid grid-cols-1 md:grid-cols-2 items-center py-8 px-2 md:px-6 border-b border-gray-700 cursor-pointer group overflow-hidden"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
@@ -187,17 +176,21 @@ const Industries = () => {
               }}
             ></div>
 
-            {/* Text content */}
-            <div className="relative flex justify-center items-center w-full z-30">
+            {/* Left column (number) */}
+            <div className="relative z-30 flex justify-start md:justify-start">
               <h3
                 ref={(el) => (numberTextRefs.current[index] = el)}
-                className="absolute left-2 md:left-6 text-2xl md:text-3xl font-outfit text-gray-300"
+                className="text-2xl md:text-3xl font-outfit text-gray-300"
               >
                 {industry.number}
               </h3>
+            </div>
+
+            {/* Right column (name) */}
+            <div className="relative z-30 flex justify-start md:justify-start">
               <p
                 ref={(el) => (nameTextRefs.current[index] = el)}
-                className="text-xl md:text-2xl lg:text-[28px] font-outfit text-gray-100 transition-colors duration-300 text-center md:text-left"
+                className="text-xl md:text-2xl lg:text-[28px] font-outfit text-gray-100 transition-colors duration-300"
               >
                 {industry.name}
               </p>
