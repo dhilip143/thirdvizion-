@@ -305,7 +305,7 @@ export default function Indhu() {
             textShadow: "none",
           }}
         >
-          how wee <spam className="text-[#FFC016]">deliver</spam>  excellence
+          how we <spam className="text-[#FFC016]">deliver</spam>  excellence
         </h1>
       </div>
 

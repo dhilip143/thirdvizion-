@@ -75,6 +75,7 @@ const Industries = () => {
     gsap.to(nameEl, {
       x: "-140%",
       color: "#ffffff",
+      scale: 1.1, // Added scale effect
       duration: 0.8,
       ease: "power2.out",
     });
@@ -114,6 +115,7 @@ const Industries = () => {
     gsap.to(nameEl, {
       x: 0,
       color: "#E5E7EB",
+      scale: 1, // Reset scale effect
       duration: 0.8,
       ease: "power2.inOut",
     });
@@ -190,7 +192,7 @@ const Industries = () => {
             <div className="relative z-30 flex justify-start md:justify-start">
               <p
                 ref={(el) => (nameTextRefs.current[index] = el)}
-                className="text-xl md:text-2xl lg:text-[28px] font-outfit text-gray-100 transition-colors duration-300"
+                className="text-xl md:text-2xl lg:text-[28px] font-outfit text-gray-100 transition-colors duration-300 transform origin-left" // Added transform origin
               >
                 {industry.name}
               </p>
