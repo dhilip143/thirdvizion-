@@ -215,10 +215,10 @@ export default function Categories() {
 
   // Function to determine if a tag should have special styling
   const getTagStyle = (tag) => {
-    const specialTags = ["VIRTUAL REALITY", "SERVER MANAGEMENT", "GAME DEVELOPMENT"];
+    const specialTags = [""];
     
     if (specialTags.includes(tag)) {
-      return "px-4 py-2 border border-yellow-500 bg-yellow-500 rounded-full text-black text-sm font-medium hover:bg-black hover:text-yellow-500 hover:border-yellow-500 transition-all duration-300";
+      return "px-4 py-2 border border-yellow-500 bg-yellow-500 rounded-full text-black text-sm font-medium hover:bg-black hover:text-yellow-500 transition-all duration-300";
     }
     
     return "px-4 py-2 border border-white rounded-full text-white text-sm font-medium hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300";
