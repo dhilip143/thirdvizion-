@@ -300,12 +300,12 @@ export default function Indhu() {
           Our Process
         </p>
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight text-[#ffffff] "
+          className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight text-[#ffffff]  capitalize "
           style={{
             textShadow: "none",
           }}
         >
-          HOW WE <spam className="text-[#FFC016]">DELIVER</spam>  EXCELLENCE
+          how we <spam className="text-[#FFC016]">deliver</spam>  excellence
         </h1>
       </div>
 

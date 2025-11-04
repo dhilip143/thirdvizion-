@@ -23,7 +23,7 @@ export default function ContactHero() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
           {/* LEFT SIDE — heading + paragraph */}
           <div className="space-y-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-outfit"
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-tight font-outfit"
                style={{ fontFamily: "Outfit, sans-serif" }}>
               We’d Love to Hear from <span className="text-yellow-400">You</span>
             </h1>

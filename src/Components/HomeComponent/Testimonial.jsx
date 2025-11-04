@@ -56,9 +56,9 @@ export default function TestimonialsSection() {
 
       <div className="relative z-10 container mx-auto px-6 text-center">
         {/* ✅ Heading & Paragraph Style */}
-        <h2 className=" text-5xl font-bold mb-4 text-[#FFD54F]
+        <h2 className=" text-5xl font-bold mb-4 text-[#ffffff]
         " style={{ fontFamily: "Outfit, sans-serif" }}>
-          What People Say
+          What People Say <spam className="text-[#FFC016] " style={{ fontFamily: "Outfit, sans-serif" }}>us</spam>
         </h2>
         <p className="text-white text-lg mb-16 max-w-2xl mx-auto font-['Work_Sans']">
           Hear from creators and developers using our services to craft

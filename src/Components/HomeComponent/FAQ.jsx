@@ -114,12 +114,14 @@ const measureHeight = (el) => {
    -------------------------------------------------------------------------- */
 const FAQHeader = () => (
   <header className="text-center mb-16 relative z-10">
-    <h2
-      id="faq-heading"
-      className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-600 drop-shadow-lg font-outfit"
-    >
-      Frequently Asked Questions
-    </h2>
+  <h2
+  id="faq-heading"
+  className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#ffffff] drop-shadow-lg font-outfit"
+ style={{ fontFamily: "Outfit, sans-serif" }}
+>
+  Frequently Asked Questions
+</h2>
+
     <p className="mt-4 text-lg text-amber-200/80 max-w-2xl mx-auto font-work-sans font-normal tracking-wide">
       Answers about immersive tech, development, cloud, and enterprise solutions.
     </p>

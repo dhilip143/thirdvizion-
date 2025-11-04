@@ -17,7 +17,7 @@ import GoogleCloud from "/src/assets/home/categories/qpppppppp.png";
 const capabilitiesData = [
   {
     id: "emerging-tech",
-    title: "EMERGING TECH",
+    title: "emerging tech",
     desc: "Secure, scalable, and intelligent solutions to manage data, streamline operations, and enhance customer relationships.",
     children: [
       {
@@ -57,7 +57,7 @@ const capabilitiesData = [
   },
   {
     id: "data-cloud",
-    title: "DATA AND CLOUD",
+    title: "data and  Cloud",
     desc: "Crafting innovative applications, immersive experiences, and engaging digital solutions that bring ideas to life.",
     children: [
       {
@@ -97,7 +97,7 @@ const capabilitiesData = [
   },
   {
     id: "software-dev",
-    title: "SOFTWARE DEVELOPMENT",
+    title: "software development",
     desc: "Crafting innovative applications, immersive experiences, and engaging digital solutions that bring ideas to life.",
     children: [
       {
@@ -307,7 +307,7 @@ export default function Categories() {
           >
             <div className="flex flex-col">
               <div>
-                <h3
+                <h3 
                   className="text-4xl md:text-5xl font-bold tracking-wider text-yellow-500 mb-6 uppercase"
                   style={{ fontFamily: "Outfit, sans-serif" }}
                 >
