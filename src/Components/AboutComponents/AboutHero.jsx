@@ -22,9 +22,7 @@ export default function AboutHero() {
       const vizionText = header.querySelector(".vizion-text");
       const innerImg = imgHolder.querySelector("img");
 
-      // 🔥 Responsive animations
       ScrollTrigger.matchMedia({
-        // Desktop (>=1024px)
         "(min-width: 1024px)": () => {
           if (aboutText) {
             gsap.to(aboutText, {
@@ -109,7 +107,6 @@ export default function AboutHero() {
           }
         },
 
-        // Mobile (<1024px)
         "(max-width: 1023px)": () => {
           if (aboutText) {
             gsap.to(aboutText, {
@@ -170,7 +167,7 @@ export default function AboutHero() {
               scrollTrigger: {
                 trigger: wrapper,
                 start: "top top",
-                end: "bottom center ", // ✅ give more scroll room
+                end: "bottom center",
                 scrub: true,
                 pin: imgHolder,
                 pinSpacing: true,
@@ -190,7 +187,6 @@ export default function AboutHero() {
                 start: "top top",
                 end: "bottom bottom",
                 scrub: true,
-
               },
             });
           }
@@ -209,32 +205,31 @@ export default function AboutHero() {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen bg-black font-contrail overflow-hidden">
-      {/* Header text */}
+    <div className="relative w-full min-h-screen bg-black overflow-hidden">
+
       <div
         ref={headerRef}
-        className="fixed top-50 md:fixed  md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col justify-center md:h-screen items-center w-full z-30 pointer-events-none"
-        aria-hidden
+        className="fixed md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col justify-center items-center w-full z-30 pointer-events-none"
       >
-        <div className="about-text text-md xl:text-2xl md:mr-6 xl:mr-10 -mb-5 md:-mb-8 xl:-mb-10 font-medium text-white text-center uppercase transform font-family: 'Inter Tight', sans-serif;">
+        <div className="about-text font-inter-tight text-md xl:text-2xl md:mr-6 xl:mr-10 -mb-5 md:-mb-8 xl:-mb-10 font-medium text-white text-center uppercase">
           About
         </div>
-        <div className="flex gap-2 xl:gap-6 mt-4 font-family: 'Inter Tight', sans-serif;">
-          <div className="third-text text-4xl md:text-[5rem] xl:text-[12rem] font-medium text-center uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent">
+
+        <div className="flex gap-2 xl:gap-6 mt-4">
+          <div className="third-text font-inter-tight text-4xl md:text-[5rem] xl:text-[12rem] font-medium uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent">
             Third
           </div>
-          <div className="vizion-text text-4xl md:text-[5rem] xl:text-[12rem] font-medium text-center uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent">
+          <div className="vizion-text font-inter-tight text-4xl md:text-[5rem] xl:text-[12rem] font-medium uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent">
             Vizion
           </div>
         </div>
       </div>
 
-      {/* Scroll wrapper */}
       <div ref={wrapperRef} className="w-full relative min-h-[300vh]">
-        <div className="website-content sticky top-0 w-full min-h-screen z-10">
+        <div className="sticky top-0 w-full min-h-screen z-10">
           <div
             ref={imgHolderRef}
-            className="sticky top-0 w-full h-screen bg-black flex items-center justify-center [clip-path:polygon(37.5%_20%,62.5%_20%,62.5%_80%,37.5%_80%)] md:rotate-[30deg]"
+            className="sticky top-0 w-full h-screen bg-black flex items-center justify-center"
           >
             <img
               src={threed}

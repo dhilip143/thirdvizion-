@@ -995,10 +995,10 @@ const Vrsol = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div ref={headerRef} className="text-center mb-12 md:mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 bg-[length:200%_100%] tracking-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 bg-[length:200%_100%] tracking-tight"  style={{ fontFamily: "Outfit, sans-serif" }}>
             Complete VR Solutions
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto"   style={{ fontFamily: "work-sans, sans-serif" }}>
             From enterprise training to immersive entertainment, we build comprehensive 
             virtual reality experiences that push the boundaries of what's possible.
           </p>
@@ -1023,9 +1023,9 @@ const Vrsol = () => {
               >
                 <div className="flex items-center mb-4">
                   <span className="text-4xl mr-4">{service.icon}</span>
-                  <h3 className="text-2xl font-bold">{service.title}</h3>
+                  <h3 className="text-2xl font-bold"   style={{ fontFamily: "Outfit, sans-serif" }}>{service.title}</h3>
                 </div>
-                <p className="text-gray-400">{service.description}</p>
+                <p className="text-gray-400"   style={{ fontFamily: "work-sans, sans-serif" }}>{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -1042,10 +1042,10 @@ const Vrsol = () => {
                 transition={{ duration: 0.5 }}
                 className="bg-zinc-900/60 rounded-3xl p-8 md:p-12 border border-violet-700/50 backdrop-blur-md relative overflow-hidden"
               >
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent"   style={{ fontFamily: "Outfit, sans-serif" }}>
                   {activeServiceData.title}
                 </h2>
-                <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+                <p className="text-lg text-gray-300 mb-8 leading-relaxed"   style={{ fontFamily: "work-sans, sans-serif" }}>
                   {activeServiceData.description}
                 </p>
 

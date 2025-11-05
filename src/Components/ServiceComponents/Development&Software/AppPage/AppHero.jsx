@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react";
 import mobile from "/src/assets/MobileTransparent.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -85,7 +87,7 @@ export default function AppHero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ amount: 0 }} // ✅ better viewport setting
           className="text-3xl md:text-6xl xl:text-8xl font-inter-tight font-extrabold mb-4 text-[#ff8904]"
-        >
+       style={{ fontFamily: "Outfit, sans-serif" }} >
           We Craft Seamless Mobile Experiences
         </motion.h1>
 
@@ -96,12 +98,12 @@ export default function AppHero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }} // ✅ triggers earlier
           className="text-gray-400 text-sm sm:text-base md:text-lg max-w-md sm:max-w-xl lg:max-w-2xl mb-6"
-        >
+       style={{ fontFamily: "work-sans, sans-serif" }} >
           Transforming ideas into intuitive and engaging mobile applications
           that drive success.
         </motion.p>
         {/* </TextReveal> */}
-
+          <Link to="/contact">
         <motion.button
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -111,6 +113,7 @@ export default function AppHero() {
         >
           Get Started
         </motion.button>
+        </Link>
       </section>
 
       {/* Scroll-through section */}

@@ -145,11 +145,11 @@ export default function WebProject() {
                 px-6 py-6 mt-6 lg:mt-0 text-center lg:text-inherit
                 lg:w-96 xl:w-[28rem] 2xl:w-[32rem]`}
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-[#7C86FF] drop-shadow-[0_0_10px_rgba(124,134,255,0.3)] mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-[#7C86FF] drop-shadow-[0_0_10px_rgba(124,134,255,0.3)] mb-4" style={{ fontFamily: "Outfit, sans-serif" }}>
                 {project.title}
               </h2>
 
-              <p className="text-base sm:text-lg md:text-xl lg:text-lg xl:text-xl max-w-lg mx-auto mb-6 text-[#c7cbff] leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl lg:text-lg xl:text-xl max-w-lg mx-auto mb-6 text-[#c7cbff] leading-relaxed" style={{ fontFamily: "work-sans, sans-serif" }}>
                 {project.description}
               </p>
 

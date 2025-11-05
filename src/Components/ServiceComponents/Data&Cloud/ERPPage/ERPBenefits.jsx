@@ -33,7 +33,7 @@ export default function ERPBenefits() {
           transition={{ duration: 0.9 }}
           viewport={{ amount: 0.3 }}
           className="font-inter-tight text-4xl md:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight text-center bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent mb-12"
-        >
+        style={{ fontFamily: "Outfit, sans-serif" }} >
           Benefits of Our ERP
         </motion.h2>
 
@@ -44,7 +44,7 @@ export default function ERPBenefits() {
           transition={{ delay: 0.2, duration: 0.7 }}
           viewport={{ amount: 0.8 }}
           className="mt-5 max-w-2xl mx-auto text-[#c7cbff] text-lg leading-relaxed text-center mb-16"
-        >
+        style={{ fontFamily: "work-sans, sans-serif" }}>
           Discover how our next-generation ERP system transforms your business operations
           and drives sustainable growth.
         </motion.p>
@@ -60,8 +60,8 @@ export default function ERPBenefits() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className="p-6 rounded-2xl bg-[#7C86FF10] border border-[#7C86FF30] shadow-[0_0_20px_rgba(124,134,255,0.15)] backdrop-blur-md hover:shadow-[0_0_40px_rgba(124,134,255,0.35)] hover:border-[#7C86FF40] hover:scale-105 transition-all duration-300"
             >
-              <h3 className="text-xl font-semibold text-white mb-3">{b.title}</h3>
-              <p className="text-[#c7cbff] text-sm leading-relaxed">{b.text}</p>
+              <h3 className="text-xl font-semibold text-white mb-3" style={{ fontFamily: "Outfit, sans-serif" }}>{b.title}</h3>
+              <p className="text-[#c7cbff] text-sm leading-relaxed" style={{ fontFamily: "work-sans, sans-serif" }}>{b.text}</p>
             </motion.div>
           ))}
         </div>

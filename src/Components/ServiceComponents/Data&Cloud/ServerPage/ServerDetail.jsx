@@ -143,7 +143,7 @@ export default function ServerDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             className="text-4xl md:text-5xl xl:text-7xl font-extrabold  text-[#05df72] drop-shadow-lg"
-          >
+         style={{ fontFamily: "Outfit, sans-serif" }}  >
             Server{" "} Management
           </motion.h1>
         </TextReveal>
@@ -153,7 +153,7 @@ export default function ServerDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
             className="mt-4 text-gray-300 max-w-2xl mx-auto"
-          >
+        style={{ fontFamily: "work-sans, sans-serif" }}   >
             Secure • Scalable • Reliable <br /> Empowering your business with
             next-gen server solutions.
           </motion.p>
@@ -164,9 +164,9 @@ export default function ServerDetail() {
           transition={{ delay: 0.4, duration: 0.7 }}
           className="mt-8 flex justify-center gap-6 flex-wrap"
         >
-          <button className=" border border-[#05df72]/30 px-6 py-3 font-semibold shadow-[0_0_20px_rgba(255,137,4,0.15)] backdrop-blur-md transition hover:shadow-[0_0_30px_rgba(5,223,114,0.5)] hover:scale-105 text-[#05df72] font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl bg-transparent sm:px-6 md:px-8  sm:font-semibold tracking-wide text-sm md:text-md lg:text-lg xl:text-xl duration-500">
+          {/* <button className=" border border-[#05df72]/30 px-6 py-3 font-semibold shadow-[0_0_20px_rgba(255,137,4,0.15)] backdrop-blur-md transition hover:shadow-[0_0_30px_rgba(5,223,114,0.5)] hover:scale-105 text-[#05df72] font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl bg-transparent sm:px-6 md:px-8  sm:font-semibold tracking-wide text-sm md:text-md lg:text-lg xl:text-xl duration-500">
             Get Started
-          </button>
+          </button> */}
         </motion.div>
       </section>
 
@@ -180,11 +180,11 @@ export default function ServerDetail() {
             transition={{ duration: 0.5, delay: idx * 0.1 }}
             className="p-6 rounded-2xl bg-[#05df72]/5 border border-[#05df72]/30 shadow-[0_0_20px_rgba(5,223,114,0.05)] backdrop-blur-md hover:bg-[#05df72]/10 hover:shadow-[0_0_30px_rgba(5,223,114,0.15)] transition"
           >
-            <h3 className="flex items-center gap-3 text-lg font-semibold text-[#05df72]">
+            <h3 className="flex items-center gap-3 text-lg font-semibold text-[#05df72]" style={{ fontFamily: "Outfit, sans-serif" }}>
               {section.icon}
               {section.title}
             </h3>
-            <p className="mt-2 text-sm text-white/70">{section.desc}</p>
+            <p className="mt-2 text-sm text-white/70" style={{ fontFamily: "work-sans, sans-serif" }}>{section.desc}</p>
           </motion.div>
         ))}
       </div>

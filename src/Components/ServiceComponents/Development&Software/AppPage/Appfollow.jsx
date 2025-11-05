@@ -123,12 +123,12 @@ const ProcessCard = ({ step }) => {
         </div>
         
         {/* Title */}
-        <h3 className="text-2xl font-inter-tight font-bold text-[#ff8904] mb-4 tracking-tight group-hover:drop-shadow-[0_0_8px_rgba(255,137,4,0.3)] transition-all duration-500">
+        <h3 className="text-2xl font-inter-tight font-bold text-[#ff8904] mb-4 tracking-tight group-hover:drop-shadow-[0_0_8px_rgba(255,137,4,0.3)] transition-all duration-500"  style={{ fontFamily: "Outfit, sans-serif" }} >
           {step.title}
         </h3>
         
         {/* Description */}
-        <p className="text-gray-300 leading-relaxed text-lg flex-1 group-hover:text-gray-200 transition-colors duration-500">
+        <p className="text-gray-300 leading-relaxed text-lg flex-1 group-hover:text-gray-200 transition-colors duration-500" style={{ fontFamily: "work-sans, sans-serif" }} >
           {step.description}
         </p>
       </div>
@@ -160,7 +160,7 @@ const App = () => {
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#ff8904]/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#ff7300]/5 rounded-full blur-3xl animate-pulse delay-1000" />
         
-        <div className="relative max-w-7xl mt-50 mb-20 mx-auto text-center z-10">
+        {/* <div className="relative max-w-7xl mt-50 mb-20 mx-auto text-center z-10">
           <motion.h1 
             variants={itemVariants}
             className="text-5xl md:text-7xl lg:text-8xl font-inter-tight font-extrabold tracking-tighter text-[#ff8904] leading-tight mb-6"
@@ -191,7 +191,7 @@ const App = () => {
           >
             Work With Us
           </motion.button>
-        </div>
+        </div> */}
       </motion.header>
 
       {/* Process Section */}
@@ -204,7 +204,7 @@ const App = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Our <span className="text-white">6-Step Digital Mastery</span> Process
+            Our <span className="text-white"  style={{ fontFamily: "Outfit, sans-serif" }} >6-Step Digital Mastery</span> Process
           </motion.h2>
 
           {/* Process Grid */}

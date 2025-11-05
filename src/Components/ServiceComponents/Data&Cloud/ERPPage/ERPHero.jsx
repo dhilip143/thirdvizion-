@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
+
 
 export default function HeroSection() {
   return (
@@ -19,7 +21,7 @@ export default function HeroSection() {
           transition={{ duration: 0.9 }}
           viewport={{ amount: 0.3 }}
           className="mt-6 font-inter-tight text-4xl md:text-6xl xl:text-6xl font-extrabold leading-[1.05] tracking-tight bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
-        >
+        style={{ fontFamily: "Outfit, sans-serif" }} >
           The operating system of the future, <br className="hidden xl:flex" />
           built for now.
         </motion.h1>
@@ -31,7 +33,7 @@ export default function HeroSection() {
           transition={{ delay: 0.2, duration: 0.7 }}
           viewport={{ amount: 0.8 }}
           className="mt-5 max-w-2xl mx-auto text-[#c7cbff] text-lg leading-relaxed"
-        >
+         style={{ fontFamily: "work-sans, sans-serif" }}>
           Streamline operations, enhance decision-making, and improve
           productivity with our next-gen ERP systems.
         </motion.p>
@@ -44,9 +46,11 @@ export default function HeroSection() {
           viewport={{ amount: 1 }}
           className="mt-8"
         >
+          <Link to="/contact">
           <button className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[#7C86FF40] bg-gradient-to-br from-[#7C86FF40] to-[#7C86FF20] px-8 py-4 font-semibold tracking-wide shadow-[0_0_20px_rgba(124,134,255,0.15)] backdrop-blur-md transition-transform hover:shadow-[0_0_40px_rgba(124,134,255,0.35)] hover:scale-105 text-white">
             Get Started
           </button>
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -58,7 +58,7 @@ export default function TestimonialsSection() {
         {/* ✅ Heading & Paragraph Style */}
         <h2 className=" text-5xl font-bold mb-4 text-[#ffffff]
         " style={{ fontFamily: "Outfit, sans-serif" }}>
-          What People Say <spam className="text-[#FFC016] " style={{ fontFamily: "Outfit, sans-serif" }}>us</spam>
+          What People Say <spam className="text-[#FFC016] " style={{ fontFamily: "Outfit, sans-serif" }}> About Us</spam>
         </h2>
         <p className="text-white text-lg mb-16 max-w-2xl mx-auto font-['Work_Sans']">
           Hear from creators and developers using our services to craft

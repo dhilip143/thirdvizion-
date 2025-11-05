@@ -82,7 +82,7 @@ export default function VrLanding() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         className="text-5xl md:text-6xl font-extrabold text-center"
-      >
+       style={{ fontFamily: "Outfit, sans-serif" }} >
         Transform Your World with{" "}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
           Immersive
@@ -99,7 +99,7 @@ export default function VrLanding() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 1 }}
         className="mt-6 text-lg md:text-xl text-gray-300 max-w-2xl text-center px-6"
-      >
+       style={{ fontFamily: "work-sans, sans-serif" }} >
        Experience the future of learning, training, and engagement through immersive VR environments. At Thirdvizion Labs, we design and develop tailor-made virtual experiences that enhance understanding, boost productivity, and inspire innovation across industries.
       </motion.p>
 
@@ -110,9 +110,9 @@ export default function VrLanding() {
         transition={{ delay: 0.5, duration: 1 }}
         className="mt-10 flex gap-6"
       >
-        <button onClick={ContactPage} className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
+        {/* <button onClick={ContactPage} className="px-6 py-3 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
          Explore us 
-        </button>
+        </button> */}
 
         
 

@@ -45,7 +45,7 @@ export default function ServerChoose() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl xl:text-6xl font-bold mb-12 text-[#05df72] text-center drop-shadow-lg"
-        >
+        style={{ fontFamily: "Outfit, sans-serif" }} >
           Why Choose Us?
         </motion.h2>
       </TextReveal>
@@ -63,10 +63,10 @@ export default function ServerChoose() {
             >
               <div className="flex-shrink-0">{f.icon}</div>
               <div>
-                <h3 className="text-lg font-semibold text-[#05df72]">
+                <h3 className="text-lg font-semibold text-[#05df72]" style={{ fontFamily: "Outfit, sans-serif" }}>
                   {f.title}
                 </h3>
-                <p className="text-sm text-white/70 mt-2">{f.desc}</p>
+                <p className="text-sm text-white/70 mt-2" style={{ fontFamily: "work-sans, sans-serif" }}>{f.desc}</p>
               </div>
             </motion.div>
           ))}

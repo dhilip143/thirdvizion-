@@ -33,14 +33,14 @@ function CrmVideo() {
             <div className="max-w-7xl mx-auto text-center mb-16">
                 <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF646710] to-[#FF8E9E10] border border-[#FF646730] mb-8">
                     <div className="w-2 h-2 bg-[#FF6467] rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-[#FF8E9E] font-sans">CRM PLATFORM OVERVIEW</span>
+                    <span className="text-sm font-medium text-[#FF8E9E] font-sans"  style={{ fontFamily: "Outfit, sans-serif" }} >CRM PLATFORM OVERVIEW</span>
                 </div>
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-sans">
-                    <span className="bg-gradient-to-r from-[#FF6467] via-[#FF8E9E] to-[#FF6467] bg-clip-text text-transparent bg-size-200 animate-gradient">
+                    <span className="bg-gradient-to-r from-[#FF6467] via-[#FF8E9E] to-[#FF6467] bg-clip-text text-transparent bg-size-200 animate-gradient" style={{ fontFamily: "Outfit, sans-serif" }} >
                         Understanding CRM Software
                     </span>
                 </h1>
-                <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-sans">
+                <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-sans" style={{ fontFamily: "work-sans, sans-serif" }} >
                     Complete guide to Customer Relationship Management and how it transforms business operations
                 </p>
             </div>
@@ -92,8 +92,8 @@ function CrmVideo() {
                             {/* Video Overlay Info */}
                             <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
                                 <div className="bg-black/60 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
-                                    <h3 className="text-xl font-bold text-white mb-2 font-sans">Understanding CRM Software</h3>
-                                    <p className="text-gray-300 text-sm font-sans">Complete guide to Customer Relationship Management</p>
+                                    <h3 className="text-xl font-bold text-white mb-2 font-sans" style={{ fontFamily: "Outfit, sans-serif" }} >Understanding CRM Software</h3>
+                                    <p className="text-gray-300 text-sm font-sans" style={{ fontFamily: "work-sans, sans-serif" }} >Complete guide to Customer Relationship Management</p>
                                 </div>
                                 <div className="flex gap-3">
                                     <button className="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/10 hover:bg-white/20 transition-all duration-300">
@@ -114,69 +114,72 @@ function CrmVideo() {
             </div>
 
             {/* Who Needs CRM Section */}
-            <div className="max-w-7xl mx-auto">
-                <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-xl rounded-3xl p-8 border border-[#FF646730] hover:border-[#FF646760] transition-all duration-500">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="w-12 h-12 bg-gradient-to-br from-[#FF6467] to-[#FF8E9E] rounded-2xl flex items-center justify-center">
-                            <span className="text-white text-xl">🎯</span>
-                        </div>
-                        <div>
-                            <h3 className="text-2xl font-bold text-white font-sans">Who Needs CRM?</h3>
-                            <p className="text-gray-400 font-sans">Perfect solution for teams that value customer relationships</p>
-                        </div>
+         <div className="max-w-7xl mx-auto">
+    <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-xl rounded-3xl p-8 border border-[#FF646730] hover:border-[#FF646760] transition-all duration-500">
+        <div className="flex items-center gap-4 mb-8">
+            <div className="w-12 h-12 bg-gradient-to-br from-[#FF6467] to-[#FF8E9E] rounded-2xl flex items-center justify-center">
+                <span className="text-white text-xl">🎯</span>
+            </div>
+            <div>
+                <h3 className="text-2xl font-bold text-white font-sans" style={{ fontFamily: "Outfit, sans-serif" }}>Who Needs CRM?</h3>
+                <p className="text-gray-400 font-sans"style={{ fontFamily: "work-sans, sans-serif" }}>Perfect solution for teams that value customer relationships</p>
+            </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+                {
+                    icon: "🏢",
+                    title: "Sales Teams",
+                    description: "Track leads, manage pipelines, and close deals faster with automated workflows",
+                    color: "from-blue-500 to-cyan-400"
+                },
+                {
+                    icon: "📢",
+                    title: "Marketing Departments",
+                    description: "Segment audiences, track campaigns, and measure ROI effectively",
+                    color: "from-green-500 to-emerald-400"
+                },
+                {
+                    icon: "🤝",
+                    title: "Customer Support",
+                    description: "Provide personalized service with complete customer history and context",
+                    color: "from-purple-500 to-indigo-400"
+                },
+                {
+                    icon: "🌐",
+                    title: "Small Businesses",
+                    description: "Organize customer data and automate follow-ups to scale efficiently",
+                    color: "from-orange-500 to-red-400"
+                },
+                {
+                    icon: "🏛️",
+                    title: "Enterprises",
+                    description: "Coordinate large teams and manage complex customer journeys",
+                    color: "from-teal-500 to-cyan-400",
+                    fullWidth: true
+                }
+            ].map((item, index) => (
+                <div 
+                    key={index}
+                    className={`group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-gray-800/50 to-gray-700/30 border border-gray-700/50 hover:border-[#FF646760] hover:bg-gradient-to-r hover:from-gray-800/80 hover:to-gray-700/60 transition-all duration-300 ${
+                        item.fullWidth ? 'md:col-span-2' : ''
+                    }`}
+                >
+                    <div className={`w-10 h-10 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center text-white text-lg group-hover:scale-110 transition-transform duration-300`}>
+                        {item.icon}
                     </div>
-                    
-                    <div className="space-y-4">
-                        {[
-                            {
-                                icon: "🏢",
-                                title: "Sales Teams",
-                                description: "Track leads, manage pipelines, and close deals faster with automated workflows",
-                                color: "from-blue-500 to-cyan-400"
-                            },
-                            {
-                                icon: "📢",
-                                title: "Marketing Departments",
-                                description: "Segment audiences, track campaigns, and measure ROI effectively",
-                                color: "from-green-500 to-emerald-400"
-                            },
-                            {
-                                icon: "🤝",
-                                title: "Customer Support",
-                                description: "Provide personalized service with complete customer history and context",
-                                color: "from-purple-500 to-indigo-400"
-                            },
-                            {
-                                icon: "🌐",
-                                title: "Small Businesses",
-                                description: "Organize customer data and automate follow-ups to scale efficiently",
-                                color: "from-orange-500 to-red-400"
-                            },
-                            {
-                                icon: "🏛️",
-                                title: "Enterprises",
-                                description: "Coordinate large teams and manage complex customer journeys",
-                                color: "from-teal-500 to-cyan-400"
-                            }
-                        ].map((item, index) => (
-                            <div 
-                                key={index}
-                                className="group flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-r from-gray-800/50 to-gray-700/30 border border-gray-700/50 hover:border-[#FF646760] hover:bg-gradient-to-r hover:from-gray-800/80 hover:to-gray-700/60 transition-all duration-300"
-                            >
-                                <div className={`w-10 h-10 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center text-white text-lg group-hover:scale-110 transition-transform duration-300`}>
-                                    {item.icon}
-                                </div>
-                                <div className="flex-1">
-                                    <h4 className="font-semibold text-white mb-1 group-hover:text-[#FF6467] transition-colors duration-300 font-sans">
-                                        {item.title}
-                                    </h4>
-                                    <p className="text-gray-400 text-sm font-sans">{item.description}</p>
-                                </div>
-                            </div>
-                        ))}
+                    <div className="flex-1">
+                        <h4 className="font-semibold text-white mb-1 group-hover:text-[#FF6467] transition-colors duration-300 font-sans" style={{ fontFamily: "Outfit, sans-serif" }}>
+                            {item.title}
+                        </h4>
+                        <p className="text-gray-400 text-sm font-sans">{item.description}</p>
                     </div>
                 </div>
-            </div>
+            ))}
+        </div>
+    </div>
+</div>
 
             {/* Custom CSS */}
             <style jsx>{`
