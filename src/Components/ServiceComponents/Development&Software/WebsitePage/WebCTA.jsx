@@ -12,7 +12,7 @@ const WebCTA = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-        >
+         style={{ fontFamily: "Outfit, sans-serif" }}>
           Ready to Elevate Your Business?
         </motion.h2>
       </TextReveal>
@@ -22,7 +22,7 @@ const WebCTA = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-        >
+      style={{ fontFamily: "work-sans, sans-serif" }}  >
           Join hundreds of professionals who are transforming their workflow
           with our innovative solutions. Take the next step toward efficiency
           and growth.

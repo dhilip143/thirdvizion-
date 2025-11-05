@@ -37,7 +37,7 @@ export default function WhyChooseIAM() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center text-[#FDC700] mb-12 sm:mb-16 leading-tight"
-      >
+      style={{ fontFamily: "Outfit, sans-serif" }}>
         Why Choose IAM?
       </motion.h2>
 
@@ -60,10 +60,10 @@ export default function WhyChooseIAM() {
 
             {/* Content Section */}
             <div className="text-center md:text-left max-w-md">
-              <h3 className="text-xl md:text-2xl xl:text-3xl font-semibold text-[#FDC700] mb-2 sm:mb-3">
+              <h3 className="text-xl md:text-2xl xl:text-3xl font-semibold text-[#FDC700] mb-2 sm:mb-3" style={{ fontFamily: "Outfit, sans-serif" }}>
                 {step.title}
               </h3>
-              <p className="text-gray-300 text-base md:text-sm xl:text-lg leading-relaxed">
+              <p className="text-gray-300 text-base md:text-sm xl:text-lg leading-relaxed" style={{ fontFamily: "work-sans, sans-serif" }}>
                 {step.description}
               </p>
             </div>

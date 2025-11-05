@@ -28,10 +28,10 @@ const AnimatedPlatformCard = ({ title, description, buttonText, icon }) => {
       }}
     >
       <div>
-        <h3 className="text-4xl md:text-5xl font-inter-tight font-extrabold mb-6 tracking-tight text-[#ff8904]">
+        <h3 className="text-4xl md:text-5xl font-inter-tight font-extrabold mb-6 tracking-tight text-[#ff8904]"  style={{ fontFamily: "Outfit, sans-serif" }} >
           {title}
         </h3>
-        <p className="mb-8 text-lg text-gray-300 max-w-md leading-relaxed">
+        <p className="mb-8 text-lg text-gray-300 max-w-md leading-relaxed" style={{ fontFamily: "work-sans, sans-serif" }} >
           {description}
         </p>
       </div>
@@ -41,7 +41,7 @@ const AnimatedPlatformCard = ({ title, description, buttonText, icon }) => {
         className="font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl border border-[#ff8904]/40 px-6 py-3 font-medium tracking-wide text-base shadow-lg backdrop-blur-md transition-all duration-500 hover:scale-105 bg-black text-[#ff8904] shadow-[0_0_15px_rgba(255,137,4,0.3)] hover:shadow-[0_0_25px_rgba(255,137,4,0.5)]"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-      >
+       style={{ fontFamily: "Outfit, sans-serif" }}  >
         {buttonText}
       </motion.button>
       
@@ -108,13 +108,13 @@ const AppDevelopmentNewLayout = () => {
             <motion.h1 
               className="text-5xl md:text-7xl lg:text-8xl font-inter-tight font-extrabold tracking-tighter text-[#ff8904] leading-tight"
               variants={itemVariants}
-            >
+             style={{ fontFamily: "Outfit, sans-serif" }} >
               App Development
             </motion.h1>
             <motion.h2 
               className="text-3xl md:text-5xl lg:text-6xl font-inter-tight font-bold tracking-tight text-white leading-tight flex items-center mt-4"
               variants={itemVariants}
-            >
+           style={{ fontFamily: "Outfit, sans-serif" }}   >
               For All Platforms 
               <span className="text-[#ff8904] ml-4">◆</span>
             </motion.h2>
@@ -123,7 +123,7 @@ const AppDevelopmentNewLayout = () => {
           <motion.p 
             className="flex-1 max-w-lg text-lg text-gray-400 leading-relaxed"
             variants={textVariants}
-          >
+          style={{ fontFamily: "work-sans, sans-serif" }}  >
             We specialize in making versatile and high-performance apps for <strong className="text-[#ff8904]">iOS and Android</strong> platforms, ensuring a <strong className="text-[#ff8904]">seamless and uniform</strong> experience across all devices.
           </motion.p>
         </motion.div>

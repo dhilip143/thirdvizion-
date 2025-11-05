@@ -148,19 +148,19 @@ function InnerBlog() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center px-4 py-10">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center px-4 py-10"   style={{ fontFamily: "Outfit, sans-serif" }}>
       {/* Blog Title */}
-      <h1 className="text-3xl md:text-4xl font-bold text-orange-400 text-center mt-20">
+      <h1 className="text-3xl md:text-4xl font-bold text-orange-400 text-center mt-20"   style={{ fontFamily: "Outfit, sans-serif" }}>
         {blog.title}
       </h1>
 
       {/* Carousel */}
       {allImages.length > 0 && (
-        <div className="relative w-full max-w-4xl mt-8">
+        <div className="relative w-full max-w-4xl mt-8" >
           <img
             src={allImages[currentIndex]}
             alt={`${blog.title} image ${currentIndex + 1}`}
-            className="rounded-lg shadow-lg w-full md:h-[400px] object-cover"
+            className="rounded-lg shadow-lg w-full md:h-[400px] object-cover"  style={{ fontFamily: "work-sans, sans-serif" }}
           />
 
           {/* Carousel Controls */}

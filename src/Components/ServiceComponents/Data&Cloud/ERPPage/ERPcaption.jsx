@@ -119,10 +119,10 @@ const ERPFailureReasons = () => {
               : 'opacity-0 translate-y-10'
           }`}
         >
-          <h3 className="font-inter-tight text-4xl md:text-6xl xl:text-6xl font-extrabold leading-[1.05] tracking-tight bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent mb-6">
+          <h3 className="font-inter-tight text-4xl md:text-6xl xl:text-6xl font-extrabold leading-[1.05] tracking-tight bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent mb-6" style={{ fontFamily: "Outfit, sans-serif" }}>
             Why Traditional ERP Projects Often Fail?
           </h3>
-          <p className="text-[#c7cbff] text-lg leading-relaxed max-w-3xl mx-auto">
+          <p className="text-[#c7cbff] text-lg leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: "work-sans, sans-serif" }}>
             Understanding the common pitfalls in ERP implementation
           </p>
         </div>
@@ -180,14 +180,14 @@ const ERPFailureReasons = () => {
                       isVisible 
                         ? 'opacity-100 translate-x-0' 
                         : 'opacity-0 -translate-x-4'
-                    }`}>
+                    }`} >
                       {reason.title}
                     </h4>
                     <p className={`text-[#c7cbff] text-sm leading-relaxed transition-all duration-700 ${
                       isVisible 
                         ? 'opacity-100 translate-x-0' 
                         : 'opacity-0 translate-x-4'
-                    }`}>
+                    }`} style={{ fontFamily: "work-sans, sans-serif" }}>
                       {reason.description}
                     </p>
                   </div>

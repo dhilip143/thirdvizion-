@@ -231,8 +231,8 @@ export default function Threelanding() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
           {/* Left column — text */}
           <div className="w-full lg:w-1/2">
-            <div className="mb-6 text-sm uppercase tracking-widest text-pink-400">ThirdVizion 3D Service</div>
-            <h1 ref={heroTextRef} className="text-5xl md:text-7xl leading-tight font-extrabold tracking-tight">
+            <div className="mb-6 text-sm uppercase tracking-widest text-pink-400"   style={{ fontFamily: "Outfit, sans-serif" }}>ThirdVizion 3D Service</div>
+            <h1 ref={heroTextRef} className="text-5xl md:text-7xl leading-tight font-extrabold tracking-tight"   style={{ fontFamily: "Outfit, sans-serif" }}>
               <span className="block overflow-hidden">
                 <span className="word block transform translate-y-0">ThirdVizion</span>
               </span>
@@ -244,7 +244,7 @@ export default function Threelanding() {
               </span>
             </h1>
 
-            <p className="mt-6 text-lg text-slate-300 max-w-2xl">ThirdVizion delivers cinematic 3D assets, product visualizations and immersive scenes — modelled and textured for realtime and offline rendering. We craft optimized models, bake realistic materials, and export production-ready assets for web, games, and film.</p>
+            <p className="mt-6 text-lg text-slate-300 max-w-2xl"   style={{ fontFamily: "worksans, sans-serif" }}>ThirdVizion delivers cinematic 3D assets, product visualizations and immersive scenes — modelled and textured for realtime and offline rendering. We craft optimized models, bake realistic materials, and export production-ready assets for web, games, and film.</p>
 
             <div className="mt-8 flex items-center gap-4">
               <button className="cta-btn px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-black font-semibold shadow-lg">Discover our work</button>

@@ -117,7 +117,7 @@ export default function WebProject() {
         viewport={{ amount: 0 }}
       >
         <TextReveal>
-          <motion.h1 className="text-4xl md:text-6xl mt-80 font-extrabold font-inter-tight tracking-wide bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 t bg-clip-text drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]">
+          <motion.h1 className="text-4xl md:text-6xl mt-80 font-extrabold font-inter-tight tracking-wide bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 t bg-clip-text drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]" style={{ fontFamily: "Outfit, sans-serif" }}>
             Our Portfolio
           </motion.h1>
         </TextReveal>
@@ -141,7 +141,7 @@ export default function WebProject() {
           <section
             key={project.id}
             className="h-screen flex flex-col xl:flex-row items-center justify-center overflow-hidden relative"
-          >
+           >
             {/* Image */}
             <img
               src={project.image}
@@ -155,11 +155,11 @@ export default function WebProject() {
           ${index % 2 === 0 ? "lg:right-10 xl:right-24 2xl:right-28 lg:text-center" : "lg:left-10 xl:left-22 2xl:left-26 lg:text-center"} 
           w-full md:w-2xl lg:w-auto px-6 py-6 mt-6 lg:mt-0 text-center lg:text-inherit`}
             >
-              <h2 className="text-2xl md:text-5xl lg:text-3xl font-bold text-cyan-300 drop-shadow-[0_0_10px_rgba(0,255,255,0.3)]">
+              <h2 className="text-2xl md:text-5xl lg:text-3xl font-bold text-cyan-300 drop-shadow-[0_0_10px_rgba(0,255,255,0.3)]" style={{ fontFamily: "Outfit, sans-serif" }}>
                 {project.title}
               </h2>
 
-              <p className="text-base md:text-md lg:text-lg max-w-lg mx-auto mb-3 text-cyan-100/90">
+              <p className="text-base md:text-md lg:text-lg max-w-lg mx-auto mb-3 text-cyan-100/90" style={{ fontFamily: "work-sans, sans-serif" }}>
                 {project.description}
               </p>
 

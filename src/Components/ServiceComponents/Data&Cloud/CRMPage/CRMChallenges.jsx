@@ -121,10 +121,11 @@ export default function CRMShowcase() {
     >
       {/* Header */}
       <div className="absolute top-16 text-center">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-[#FF6467] mb-3">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-[#FF6467] mb-2"
+         style={{ fontFamily: "Outfit, sans-serif" }} >
           Your CRM Universe
         </h2>
-        <p className="text-white/60 text-xs md:text-sm max-w-xl mx-auto mt-1">
+        <p className="text-white/60 text-xs md:text-sm max-w-xl mx-auto mt-1"  style={{ fontFamily: "work-sans, sans-serif" }} >
           Scroll down to see how every platform connects into one powerful CRM hub.
         </p>
       </div>
@@ -166,7 +167,7 @@ export default function CRMShowcase() {
         </svg>
 
         {/* CRM Core */}
-        <div className="absolute w-48 h-48 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-4xl shadow-[0_0_60px_rgba(255,100,103,0.8)] z-20">
+        <div className="absolute w-48 h-48 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-4xl shadow-[0_0_60px_rgba(255,100,103,0.8)] z-20"  style={{ fontFamily: "Outfit, sans-serif" }} >
           CRM
           <div className="absolute inset-0 rounded-full border-2 border-[#FF6467] animate-ping opacity-20"></div>
         </div>
@@ -209,10 +210,10 @@ export default function CRMShowcase() {
 
         {/* Feature Card */}
         <div className="absolute left-[-90px] top-1/2 -translate-y-1/2 w-[340px] text-left bg-[#FF646710] backdrop-blur-md border border-[#FF646740] rounded-2xl p-6 shadow-[0_0_30px_rgba(255,100,103,0.15)] hover:shadow-[0_0_50px_rgba(255,100,103,0.3)] transition-all duration-500">
-          <h3 className="text-lg font-bold text-[#FF6467] mb-2">
+          <h3 className="text-lg font-bold text-[#FF6467] mb-2"  style={{ fontFamily: "Outfit, sans-serif" }}>
             {cardData[activeIndex].title}
           </h3>
-          <p className="text-xs text-white/70 leading-relaxed">
+          <p className="text-xs text-white/70 leading-relaxed"  style={{ fontFamily: "work-sans, sans-serif" }} >
             {cardData[activeIndex].desc}
           </p>
         </div>

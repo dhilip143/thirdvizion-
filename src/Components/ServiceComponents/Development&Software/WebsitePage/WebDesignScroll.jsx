@@ -32,7 +32,7 @@ const WebDesignScroll = () => {
             transition={{ duration: 0.5 }}
             viewport={{ amount: 0 }}
             className="w-full text-white text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 "
-          >
+          style={{ fontFamily: "Outfit, sans-serif" }} >
             Stunning Designs for <span className="text-[#00d3f3]">Modern Web</span>
           </motion.h1>
         </TextReveal>
@@ -43,7 +43,7 @@ const WebDesignScroll = () => {
           transition={{ duration: 0.5 }}
           viewport={{ amount: 0.8 }}
           className="text-gray-300 text-sm md:text-lg leading-relaxed mb-8 md:max-w-lg "
-        >
+       style={{ fontFamily: "work-sans, sans-serif" }} >
           This section is all about the design work we craft with passion. The
           right side showcases real designs created by our designers,
           reflecting creativity, detail, and a modern approach to UI/UX.

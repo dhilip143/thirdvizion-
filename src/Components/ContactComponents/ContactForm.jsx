@@ -222,11 +222,11 @@ const ContactForm = () => {
         >
           <motion.div variants={itemVariants} className="space-y-6">
             <motion.h1
-              className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight bg-gradient-to-r from-yellow-400 via-blue-500 via-green-500 to-red-500 bg-clip-text text-transparent whitespace-pre-line"
+              className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-[#FFC016] bg-clip-text whitespace-pre-line"
               variants={typingContainer}
               initial="hidden"
               animate="visible"
-            >
+               style={{ fontFamily: "Outfit, sans-serif" }} >
               {text.split("").map((char, index) => (
                 <motion.span key={index} variants={typingText}>
                   {char}
@@ -290,7 +290,7 @@ const ContactForm = () => {
                   boxShadow: `0 10px 30px -10px ${color}40`
                 }}
               >
-                <div className="flex items-center gap-3 mb-2">
+                <div className="flex items-center gap-3 mb-2"   style={{ fontFamily: ", work-sans" }}>
                   <div 
                     className="p-2 rounded-lg"
                     style={{ backgroundColor: `${color}20` }}
@@ -314,11 +314,11 @@ const ContactForm = () => {
         >
           <div className="bg-gray-900/30 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-gray-700 shadow-2xl">
             <motion.h2 
-              className="text-2xl lg:text-3xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+              className="text-2xl lg:text-3xl font-bold mb-6 bg-gradient-to-r text-amber-50 bg-clip-text"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-            >
+            style={{ fontFamily: "Outfit, sans-serif" }} >
               Send us a Message
             </motion.h2>
 

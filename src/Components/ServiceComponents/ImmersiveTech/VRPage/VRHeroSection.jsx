@@ -405,7 +405,8 @@ function VRHeroSection() {
         {/* Overlay Content */}
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
           <div className="text-center text-white">
-            <h2 className="text-4xl md:text-6xl font-bold mb-4">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4"
+              style={{ fontFamily: "Outfit, sans-serif" }}>
               Experience The Future
             </h2>
             {/* <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">

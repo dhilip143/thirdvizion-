@@ -373,7 +373,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-transparent flex flex-col items-center p-8 font-inter-tight overflow-hidden">
+    <div className="min-h-screen bg-transparent flex flex-col items-center p-8 font-inter-tight overflow-hidden" style={{ fontFamily: "Outfit, sans-serif" }}>
       {/* Main Title Block */}
       <div className="w-full max-w-5xl mt-16 mb-16 text-center">
         <h1 

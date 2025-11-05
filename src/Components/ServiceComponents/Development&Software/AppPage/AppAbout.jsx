@@ -44,10 +44,10 @@ const AppAbout = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-6"   style={{ fontFamily: "outfit, sans-serif" }} >
             Building the Future of Mobile Experiences
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed"    style={{ fontFamily: "work-sans, sans-serif" }}>
             Crafting premium mobile applications that combine elegant design, seamless interactions, 
             and scalable technology for your digital advantage.
           </p>
@@ -65,8 +65,8 @@ const AppAbout = () => {
             <motion.p
               variants={itemVariants}
               className="text-lg text-gray-300 mb-8 leading-relaxed"
-            >
-              At <span className="text-[#ff8904] font-semibold">ThirdVizion</span>, we specialize in creating 
+                style={{ fontFamily: "work-sans, sans-serif" }}>
+              At <span className="text-[#ff8904] font-semibold"   style={{ fontFamily: "outfit, sans-serif" }}>ThirdVizion</span>, we specialize in creating 
               cutting-edge mobile applications that feel premium, perform flawlessly, and keep your users 
               engaged. Our approach combines innovative design with robust technology to deliver exceptional 
               digital experiences.
@@ -83,8 +83,8 @@ const AppAbout = () => {
                     <span className="text-2xl text-[#ff8904] font-bold">◆</span>
                   </div>
                   <div>
-                    <h3 className="text-[#ff8904] font-semibold text-xl mb-2">Human-Centered Design</h3>
-                    <p className="text-gray-300">We create intuitive, engaging apps that users love to interact with.</p>
+                    <h3 className="text-[#ff8904] font-semibold text-xl mb-2"  style={{ fontFamily: "Outfit, sans-serif" }} >Human-Centered Design</h3>
+                    <p className="text-gray-300"  style={{ fontFamily: "work-sans, sans-serif" }} >We create intuitive, engaging apps that users love to interact with.</p>
                   </div>
                 </div>
               </motion.div>
@@ -98,8 +98,8 @@ const AppAbout = () => {
                     <span className="text-2xl text-[#ff8904] font-bold">⚡</span>
                   </div>
                   <div>
-                    <h3 className="text-[#ff8904] font-semibold text-xl mb-2">Future-Ready Technology</h3>
-                    <p className="text-gray-300">Leveraging the latest frameworks to build scalable, high-performance apps.</p>
+                    <h3 className="text-[#ff8904] font-semibold text-xl mb-2"  style={{ fontFamily: "Outfit, sans-serif" }} >Future-Ready Technology</h3>
+                    <p className="text-gray-300"  style={{ fontFamily: "work-sans, sans-serif" }} >Leveraging the latest frameworks to build scalable, high-performance apps.</p>
                   </div>
                 </div>
               </motion.div>
@@ -113,8 +113,8 @@ const AppAbout = () => {
                     <span className="text-2xl text-[#ff8904] font-bold">🤝</span>
                   </div>
                   <div>
-                    <h3 className="text-[#ff8904] font-semibold text-xl mb-2">Collaborative Approach</h3>
-                    <p className="text-gray-300">Working closely with your team to bring your vision to life effectively.</p>
+                    <h3 className="text-[#ff8904] font-semibold text-xl mb-2" style={{ fontFamily: "Outfit, sans-serif" }} >Collaborative Approach</h3>
+                    <p className="text-gray-300"  style={{ fontFamily: "work-sans, sans-serif" }} >Working closely with your team to bring your vision to life effectively.</p>
                   </div>
                 </div>
               </motion.div>

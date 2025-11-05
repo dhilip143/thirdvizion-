@@ -250,7 +250,7 @@ export default function ArPage() {
         
         {/* Engaging Hook Section */}
         <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-         <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight">
+         <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight"   style={{ fontFamily: "Outfit, sans-serif" }}>
   Unlock the <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text text-transparent">
     Power
   </span> of <br className="hidden sm:block" />
@@ -260,7 +260,7 @@ export default function ArPage() {
 </h1>
 
 
-          <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed">
+          <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed"   style={{ fontFamily: "work-sans, sans-serif" }}>
             Experience products in your space with augmented reality. See how they look and fit before you decide.
           </p>
         </div>

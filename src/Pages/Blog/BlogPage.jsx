@@ -164,7 +164,8 @@ const BlogPage = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, type: "spring" }}
         >
-          <span className="bg-gradient-to-r from-[#FF700A] via-orange-400 to-yellow-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#FF700A] via-orange-400 to-yellow-400 bg-clip-text text-transparent"
+            style={{ fontFamily: "Outfit, sans-serif" }}>
             Welcome to Our Blog
           </span>
         </motion.h1>
@@ -275,7 +276,7 @@ const BlogPage = () => {
                     </motion.div>
 
                     {/* Content */}
-                    <div className="relative z-10 flex-1 flex flex-col">
+                    <div className="relative z-10 flex-1 flex flex-col "   style={{ fontFamily: "Outfit, sans-serif" }}>
                       {/* Title with animated underline */}
                       <div className="mb-4">
                         <motion.h2
@@ -289,7 +290,7 @@ const BlogPage = () => {
                           variants={titleVariants}
                           initial="hidden"
                           animate={visibleCards[i] ? "visible" : "hidden"}
-                        />
+                          style={{ fontFamily: "Outfit, sans-serif" }}/>
                       </div>
 
                       {/* Description */}
@@ -298,7 +299,7 @@ const BlogPage = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 + i * 0.1 }}
-                      >
+                        style={{ fontFamily: "" }}>
                         {blog.description}
                       </motion.p>
 
