@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <section className=" flex flex-col bg-black text-white z-[999] backdrop-blur-2xl">
       {/* Top Section */}
-      <div className="max-w-7xl mx-auto mt-15 bg-black px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto mb-30 mt-15 bg-black px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {/* --- Links --- */}
         <div>
           <h3 className="font-semibold text-lg mb-4">Links</h3>
@@ -127,14 +127,15 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Brand Text */}
-      <div className="text-center mt-5   bg-black text-[48px] md:text-[110px] lg:text-[150px] xl:text-[200px] 2xl:text-[230px] leading-none overflow-hidden ">
-        <p
-          className="bg-gradient-to-r from-yellow-400  via-green-500 to-red-500 
-    bg-clip-text text-transparent tracking-wider"
-        >
+      {/* Partially Hidden Brand Text */}
+      <div className="absolute bottom-0 left-0 w-full text-center overflow-hidden">
+        <p className="bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent font-normal tracking-wider text-[48px] md:text-[110px] lg:text-[150px] xl:text-[180px] 2xl:text-[225px] leading-none  -mb-8 md:-mb-12 lg:-mb-16 xl:-mb-15">
           THIRDVIZION
         </p>
+      </div>
+
+      {/* Copyright */}
+      <div className="max-w-7xl mx-auto px-6 mt-16 pt-6  text-center text-gray-400 text-sm relative z-10">
       </div>
     </section>
   );

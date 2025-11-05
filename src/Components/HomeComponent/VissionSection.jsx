@@ -194,20 +194,20 @@ const MissionVision = () => {
           </p>
 
           <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
-            <span className="text-yellow-500 font-semibold"
+            <span className="text-yellow-500 font-light"
             style={{ fontFamily: "Outfit, sans-serif" }}>INNOVATE</span>{" "}
             immersive solutions that transform the way people learn, work, and
             connect.
           </p>
 
           <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
-            <span className="text-yellow-500 font-semibold"style={{ fontFamily: "Outfit, sans-serif" }}>INTEGRATE</span>{" "}
+            <span className="text-yellow-500 font-light"style={{ fontFamily: "Outfit, sans-serif" }}>INTEGRATE</span>{" "}
             seamless 3D experiences across digital platforms for accessibility
             and engagement.
           </p>
 
           <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
-            <span className="text-yellow-500 font-semibold"style={{ fontFamily: "Outfit, sans-serif" }}>INSPIRE</span>{" "}
+            <span className="text-yellow-500 font-light"style={{ fontFamily: "Outfit, sans-serif" }}>INSPIRE</span>{" "}
             creativity and future-ready thinking by blending design, technology,
             and storytelling.
           </p>

@@ -30,6 +30,9 @@ const Industries = () => {
   const nameTextRefs = useRef([]);
   const imageOverlayRefs = useRef([]);
 
+  // Different x-values for each industry item
+  const hoverXValues = ["-262%", "-205%", "-205%", "-145%"];
+
   useGSAP(() => {
     gsap.from("#industry-item", {
       y: 80,
@@ -72,10 +75,14 @@ const Industries = () => {
       ease: "power2.out",
     });
 
+    const currentFontSize = window.getComputedStyle(nameEl).fontSize;
+    const fontSizeValue = parseFloat(currentFontSize);
+    const scaleValue = (fontSizeValue + 4) / fontSizeValue;
+
     gsap.to(nameEl, {
-      x: "-140%",
+      x: hoverXValues[index],
       color: "#ffffff",
-      scale: 1.1, // Added scale effect
+      scale: scaleValue,
       duration: 0.8,
       ease: "power2.out",
     });
@@ -115,7 +122,7 @@ const Industries = () => {
     gsap.to(nameEl, {
       x: 0,
       color: "#E5E7EB",
-      scale: 1, // Reset scale effect
+      scale: 1,
       duration: 0.8,
       ease: "power2.inOut",
     });
@@ -157,15 +164,17 @@ const Industries = () => {
             {/* Yellow overlay */}
             <div
               ref={(el) => (overlayRefs.current[index] = el)}
-              className="absolute inset-0 z-10 bg-yellow-400 hidden md:block"
+              className="absolute inset-0 z-10 hidden md:block"
               style={{
                 width: "0%",
                 transform: "translateX(0%)",
                 left: 0,
+                backgroundImage:
+                  "linear-gradient(to right, #facc15 80%, transparent 100%)", // yellow-400 fade right
               }}
             ></div>
 
-            {/* Right image overlay */}
+            {/* Right image overlay with left fade effect */}
             <div
               ref={(el) => (imageOverlayRefs.current[index] = el)}
               className="absolute top-0 right-0 h-full w-1/2 z-20 hidden md:block"
@@ -175,6 +184,11 @@ const Industries = () => {
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 transform: "translateX(100%)",
+                // fade effect on the left side of the image
+                WebkitMaskImage:
+                  "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
+                maskImage:
+                  "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
               }}
             ></div>
 
@@ -192,7 +206,7 @@ const Industries = () => {
             <div className="relative z-30 flex justify-start md:justify-start">
               <p
                 ref={(el) => (nameTextRefs.current[index] = el)}
-                className="text-xl md:text-2xl lg:text-[28px] font-outfit text-gray-100 transition-colors duration-300 transform origin-left" // Added transform origin
+                className="text-xl md:text-2xl lg:text-[28px] font-outfit text-gray-100 transition-colors duration-300 transform origin-left"
               >
                 {industry.name}
               </p>
