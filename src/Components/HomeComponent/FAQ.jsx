@@ -122,7 +122,7 @@ const FAQHeader = () => (
   Frequently Asked Questions
 </h2>
 
-    <p className="mt-4 text-lg text-amber-200/80 max-w-2xl mx-auto font-work-sans font-normal tracking-wide">
+    <p className="mt-4 text-lg text-yellow-500 max-w-2xl mx-auto font-work-sans font-normal tracking-wide">
       Answers about immersive tech, development, cloud, and enterprise solutions.
     </p>
   </header>
@@ -162,7 +162,7 @@ const FAQSidebar = ({ categories, activeCategory, setActiveCategory, setQuery, s
             "rounded-xl px-5 py-3 text-left font-semibold border transition-all duration-300 flex items-center justify-between group font-work-sans",
             active
               ? "bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border-amber-400/50 text-amber-50 shadow-lg"
-              : "bg-white/5 border-amber-400/20 text-amber-200/80 hover:bg-white/10 hover:text-amber-50 hover:border-amber-400/30"
+              : "bg-white/5 border-amber-400/20 text-yellow-500 hover:bg-white/10 hover:text-amber-50 hover:border-amber-400/30"
           )}
         >
           <span>{cat}</span>
@@ -183,7 +183,7 @@ const FAQControls = ({ activeCategory, setActiveCategory, query, setQuery, setOp
   <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
     <div className="md:hidden w-full">
       <select
-        className="w-full p-3 rounded-xl border border-amber-400/20 bg-black text-sm text-amber-50 focus:ring-2 focus:ring-amber-400 font-work-sans"
+        className="w-full p-3 rounded-xl border border-amber-400/20 bg-black text-sm text-yellow-50 focus:ring-2 focus:ring-amber-400 font-work-sans"
         value={activeCategory}
         onChange={(e) => {
           setActiveCategory(e.target.value);
@@ -200,7 +200,7 @@ const FAQControls = ({ activeCategory, setActiveCategory, query, setQuery, setOp
     </div>
 
     <div className="relative w-full md:w-auto flex-grow">
-      <div className="absolute left-3 top-1/2 -translate-y-1/2 text-amber-400">
+      <div className="absolute left-3 top-1/2 -translate-y-1/2 text-yellow-400">
         <Search size={18} />
       </div>
       <input

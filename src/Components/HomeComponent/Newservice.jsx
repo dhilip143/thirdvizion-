@@ -137,6 +137,52 @@ const capabilitiesData = [
   },
 ];
 
+// Floating Particles Component
+const FloatingParticles = ({ isScrolling }) => {
+  const particles = Array.from({ length: 8 }, (_, i) => ({
+    id: i,
+    size: Math.random() * 4 + 2, // Random size between 2-6px
+    left: Math.random() * 80 + 10, // Random position between 10-90%
+    delay: Math.random() * 0.5  , // Random delay
+    duration: Math.random() * 1 + 2, // Random duration between 2-5s
+    opacity: Math.random() * 0.7 + 0.3, // Random opacity between 0.3-1
+  }));
+
+  return (
+    <div className="absolute -bottom-4 left-0 right-0 h-20 pointer-events-none z-0">
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute rounded-full bg-yellow-400"
+          style={{
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            left: `${particle.left}%`,
+            bottom: '0%',
+            opacity: 0,
+            filter: 'blur(0.5px)',
+            boxShadow: '0 0 8px 2px rgba(255, 255, 0, 0.6)',
+          }}
+          animate={isScrolling ? {
+            y: [0, -40, 0],
+            opacity: [0, particle.opacity, 0],
+            scale: [0.8, 1.2, 0.8],
+          } : {
+            opacity: 0,
+            scale: 0
+          }}
+          transition={{
+            duration: particle.duration,
+            delay: particle.delay,
+            repeat: isScrolling ? Infinity : 0,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 export default function Categories() {
   const [activeCategoryId, setActiveCategoryId] = useState(capabilitiesData[0].id);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -238,8 +284,6 @@ export default function Categories() {
         position: "-4.49%",
         color: "bg-black",
         width: "w-9",
-
-
         responsive: "hidden md:block"
       },
       // Line 2 - Center line (50% position)
@@ -248,7 +292,6 @@ export default function Categories() {
         position: "30.20%",
         color: "bg-black",
         width: "w-9",
-
         responsive: "hidden md:block"
       },
       // Line 3 - Between second and third column (75% position)
@@ -257,7 +300,6 @@ export default function Categories() {
         position: "64.60%",
         color: "bg-black",
         width: "w-9",
-
         responsive: "hidden md:block lg:block"
       },
       // Line 4 - Right edge line (100% position)
@@ -266,8 +308,6 @@ export default function Categories() {
         position: "99.29%",
         color: "bg-black",
         width: "w-8",
-
-
         responsive: "hidden lg:block"
       }
     ];
@@ -396,6 +436,9 @@ export default function Categories() {
                             ease: "easeInOut"
                           }}
                         />
+
+                        {/* FLOATING YELLOW PARTICLES - Only show when scrolling */}
+                        <FloatingParticles isScrolling={isScrolling} />
 
                         {/* IMAGE BOX */}
                         <div className="p-1 relative z-10">
