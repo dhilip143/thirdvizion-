@@ -51,16 +51,15 @@ export default function TestimonialsSection() {
     setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="relative bg-black text-white py-24 font-['Work_Sans'] overflow-hidden">
+    <section className="relative bg-black text-white py-24 overflow-hidden">
       {/* ✅ Removed glow background — solid black theme only */}
 
       <div className="relative z-10 container mx-auto px-6 text-center">
         {/* ✅ Heading & Paragraph Style */}
-        <h2 className=" text-5xl font-bold mb-4 text-[#ffffff]
-        " style={{ fontFamily: "Outfit, sans-serif" }}>
-          What People Say <spam className="text-[#FFC016] " style={{ fontFamily: "Outfit, sans-serif" }}> About Us</spam>
+        <h2 className="text-5xl font-bold mb-4 text-[#ffffff]" style={{ fontFamily: "Outfit, sans-serif" }}>
+          What People Say <span className="text-[#FFC016]" style={{ fontFamily: "Outfit, sans-serif" }}> About Us</span>
         </h2>
-        <p className="text-white text-lg mb-16 max-w-2xl mx-auto font-['Work_Sans']">
+        <p className="text-white text-lg mb-16 max-w-2xl mx-auto" style={{ fontFamily: "Work Sans, sans-serif" }}>
           Hear from creators and developers using our services to craft
           immersive digital experiences.
         </p>
@@ -89,13 +88,13 @@ export default function TestimonialsSection() {
                       alt={testimonials[activeIndex].name}
                       className="w-24 h-24 rounded-full border-2 border-gray-600 object-cover shadow-md mb-6"
                     />
-                    <h4 className="font-['Outfit'] text-2xl font-semibold text-white mb-2">
+                    <h4 className="text-2xl font-semibold text-white mb-2" style={{ fontFamily: "Work Sans, sans-serif" }}>
                       {testimonials[activeIndex].name}
                     </h4>
-                    <p className="text-gray-400 text-base mb-6 font-['Work_Sans']">
+                    <p className="text-gray-400 text-base mb-6" style={{ fontFamily: "Work Sans, sans-serif" }}>
                       {testimonials[activeIndex].role}
                     </p>
-                    <p className="text-gray-300 italic leading-relaxed text-lg max-w-md font-['Work_Sans']">
+                    <p className="text-gray-300  leading-relaxed text-lg max-w-md" style={{ fontFamily: "Work Sans, sans-serif" }}>
                       “{testimonials[activeIndex].review}”
                     </p>
                   </div>
@@ -124,13 +123,13 @@ export default function TestimonialsSection() {
                         className="w-12 h-12 rounded-full border border-gray-600 object-cover flex-shrink-0"
                       />
                       <div className="text-left">
-                        <h5 className="font-['Outfit'] font-semibold text-white text-sm">
+                        <h5 className="font-semibold text-white text-sm" style={{ fontFamily: "Work Sans, sans-serif" }}>
                           {testimonial.name}
                         </h5>
-                        <p className="text-gray-400 text-xs mb-2 font-['Work_Sans']">
+                        <p className="text-gray-400 text-xs mb-2" style={{ fontFamily: "Work Sans, sans-serif" }}>
                           {testimonial.role}
                         </p>
-                        <p className="text-gray-300 text-sm italic font-['Work_Sans'] line-clamp-3">
+                        <p className="text-gray-300 text-sm  line-clamp-3" style={{ fontFamily: "Work Sans, sans-serif" }}>
                           “{testimonial.review}”
                         </p>
                       </div>
@@ -144,7 +143,8 @@ export default function TestimonialsSection() {
           <div className="flex justify-center items-center mt-12 space-x-8">
             <button
               onClick={prev}
-              className="w-12 h-12 rounded-full bg-gray-900 hover:bg-gray-700 border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110 font-['Work_Sans']"
+              className="w-12 h-12 rounded-full bg-gray-900 hover:bg-gray-700 border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110"
+              style={{ fontFamily: "Work Sans, sans-serif" }}
             >
               ‹
             </button>
@@ -166,7 +166,8 @@ export default function TestimonialsSection() {
 
             <button
               onClick={next}
-              className="w-12 h-12 rounded-full bg-gray-900 hover:bg-gray-700 border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110 font-['Work_Sans']"
+              className="w-12 h-12 rounded-full bg-gray-900 hover:bg-gray-700 border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110"
+              style={{ fontFamily: "Work Sans, sans-serif" }}
             >
               ›
             </button>

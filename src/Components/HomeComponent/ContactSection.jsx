@@ -1,5 +1,6 @@
 import React from "react";
 import reach from "/src/assets/HomeImages/contactBg.png";
+import { ArrowRight } from "lucide-react";
 
 export default function ContactHero() {
   return (
@@ -49,13 +50,17 @@ export default function ContactHero() {
               <GradientInput placeholder="E-mail" type="email" />
               <GradientTextarea placeholder="Tell about your Project" />
 
-              <button
-                type="submit"
-                className="relative flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-medium tracking-wide text-white transition-all active:scale-[0.98] font-work-sans"
-              >
-                <span className="absolute inset-0 rounded-full border-t border-t-black border-b-2 border-[#9f9f9f] pointer-events-none"></span>
-                <span className="relative z-10">Get in touch</span>
-              </button>
+             <button
+  type="submit"
+  className="relative group flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-medium tracking-wide text-white transition-all active:scale-[0.98] font-work-sans"
+>
+  <span className="absolute inset-0  pointer-events-none"></span>
+  
+  <span className="relative z-10  text-yellow-400 flex items-center gap-2">
+    Get in touch
+    <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+  </span>
+</button>
             </form>
           </div>
         </div>

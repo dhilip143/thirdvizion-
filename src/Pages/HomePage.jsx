@@ -20,19 +20,11 @@ export default function Home() {
     <>
 
       <Hero />
-      {/* <About /> */}
-      
-    
-      {/* <Service/> */}
-      
-      {/* <Categories /> */}
-      
-      {/* <Hovercard /> */}
+     
       
      
       <Industries />
       <VisionMission />
-      {/* <Newservice/> */}
       <Newservice/>
        
      <Indhu/>
@@ -42,14 +34,9 @@ export default function Home() {
      
       <FAQ />
 
-      {/* FAQ sticky container */}
       <div className="relative">
-        {/* FAQ stays fixed at top while scrolling */}
-        {/* <div className="sticky top-0 z-10">
-          <FAQ />
-        </div> */}
+       
 
-        {/* Contact section comes after FAQ, appears above it */}
         <div className="relative z-20 -mt-10">
           <ContactSection />
         </div>
