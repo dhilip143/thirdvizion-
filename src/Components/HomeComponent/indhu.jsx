@@ -3,15 +3,12 @@ import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import threed from "/src/assets/HomeImages/g11.svg" ;  
-import gam from "/src/assets/HomeImages/g22.svg" ;  
-import are from "/src/assets/HomeImages/g33.svg" ;  
-import wih from "/src/assets/HomeImages/g44.svg" ;  
+import threed from "/src/assets/HomeImages/g11.svg";  
+import gam from "/src/assets/HomeImages/g22.svg";  
+import are from "/src/assets/HomeImages/g33.svg";  
+import wih from "/src/assets/HomeImages/g44.svg";  
 
 gsap.registerPlugin(ScrollTrigger);
-
-// ✅ Google Fonts import
-
 
 export default function Indhu() {
   const [radius, setRadius] = useState(10);
@@ -28,7 +25,6 @@ export default function Indhu() {
   useEffect(() => {
     const updateRadius = () => {
       if (window.innerWidth < 240) setRadius(30);
-      else if (window.innerWidth < 1000) setRadius(15);
       else if (window.innerWidth < 1000) setRadius(15);
       else setRadius(80);
     };
@@ -288,10 +284,10 @@ export default function Indhu() {
       ref={containerRef}
       className="relative w-full min-h-screen overflow-hidden bg-black text-white flex items-center justify-start py-16 isolate"
     >
-      {/* ❌ Removed all glow backgrounds */}
+      {/* Background */}
       <div className="absolute inset-0 bg-black" />
 
-      {/* ✅ Heading (no glow, black theme) */}
+      {/* Heading */}
       <div
         className="absolute top-24 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4"
         style={{ fontFamily: "Outfit, sans-serif" }}
@@ -300,12 +296,12 @@ export default function Indhu() {
           Our Process
         </p>
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight text-[#ffffff]  capitalize "
+          className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight text-[#ffffff] capitalize"
           style={{
             textShadow: "none",
           }}
         >
-          how we <spam className="text-[#FFC016]">deliver</spam>  excellence
+          how we <span className="text-[#FFC016]">deliver</span> excellence
         </h1>
       </div>
 
@@ -337,8 +333,8 @@ export default function Indhu() {
 
           <defs>
             <linearGradient id="gradientGlow" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#ffb200 "/>
-              <stop offset="50%" stopColor="#ffb200  "/>
+              <stop offset="0%" stopColor="#ffb200" />
+              <stop offset="50%" stopColor="#ffb200" />
               <stop offset="100%" stopColor="#ffb200" />
             </linearGradient>
           </defs>
@@ -361,10 +357,16 @@ export default function Indhu() {
 
             return (
               <g key={c.id}>
-                
-              
-
-               
+                {/* Circle outline */}
+                <circle
+                  ref={(el) => (circleRefs.current[idx] = el)}
+                  cx={c.cx}
+                  cy={c.cy}
+                  r={radius}
+                  fill="transparent"
+                  stroke="#FFC016"
+                  strokeWidth="2"
+                />
 
                 <clipPath id={`clip-${c.id}`}>
                   <circle cx={c.cx} cy={c.cy} r={radius} />
@@ -380,6 +382,7 @@ export default function Indhu() {
                   clipPath={`url(#clip-${c.id})`}
                 />
 
+                {/* Background rectangle for text */}
                 <rect
                   x={c.cx - 220}
                   y={labelY - 25}
@@ -389,7 +392,7 @@ export default function Indhu() {
                   rx="15"
                 />
 
-                {/* ✅ Label text clean (no glow) */}
+                {/* Label text */}
                 <text
                   ref={(el) => (textRefs.current[idx] = el)}
                   x={c.cx}
@@ -407,7 +410,7 @@ export default function Indhu() {
                   {c.label}
                 </text>
 
-                {/* ✅ Description pure white, no glow */}
+                {/* Description text */}
                 {descriptionLines.map((line, lineIndex) => (
                   <text
                     key={lineIndex}
@@ -425,7 +428,6 @@ export default function Indhu() {
                       fontFamily: "Work Sans, sans-serif",
                       letterSpacing: "0.0px",
                       textShadow: "none",
-
                     }}
                   >
                     {line}
