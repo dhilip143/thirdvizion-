@@ -30,7 +30,6 @@ const Industries = () => {
   const nameTextRefs = useRef([]);
   const imageOverlayRefs = useRef([]);
 
-  // Different x-values for each industry item
   const hoverXValues = ["-262%", "-205%", "-205%", "-145%"];
 
   useGSAP(() => {
@@ -131,33 +130,33 @@ const Industries = () => {
   return (
     <section
       id="industries"
-      className="bg-black text-white font-outfit py-24 px-6 md:px-20 lg:px-32 overflow-hidden"
+      className="bg-black text-white font-outfit py-16 sm:py-20 md:py-24 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 overflow-hidden"
     >
-      {/* --- TOP SECTION --- */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8">
+      {/* TOP SECTION */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 sm:mb-14 md:mb-16 gap-6 md:gap-8">
         <div className="flex-1">
           <h2
-            className="text-[52px] md:text-6xl lg:text-[54px] font-medium leading-tight font-Outfit"
-            style={{ fontFamily: "Outfit, sans-serif" }}
+            className="text-[36px] sm:text-[44px] md:text-6xl lg:text-[54px] font-medium leading-tight font-Outfit"
           >
             Turning <span className="text-yellow-400">vision</span> into impact.
           </h2>
         </div>
-        <div className="flex-1 font-worksans text-gray-300 text-sm md:text-base leading-relaxed">
+
+        <div className="flex-1 font-worksans text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl">
           We partner with organizations to unlock new opportunities and
           strengthen workforce capabilities. Through technology, training, and
-          strategic collaboration, we enable industries to thrive. Our goal is
-          to bridge skill gaps and foster sustainable business ecosystems.
+          strategic collaboration, we enable industries to thrive. Our goal is to
+          bridge skill gaps and foster sustainable business ecosystems.
         </div>
       </div>
 
-      {/* --- LIST (ALIGNED TO HEADING + DESCRIPTION) --- */}
+      {/* LIST */}
       <div className="relative flex flex-col font-work-sans bg-black border-t border-gray-700">
         {industries.map((industry, index) => (
           <div
             key={industry.id}
             id="industry-item"
-            className="relative grid grid-cols-1 md:grid-cols-2 items-center py-8 px-2 md:px-6 border-b border-gray-700 cursor-pointer group overflow-hidden"
+            className="relative grid grid-cols-1 md:grid-cols-2 items-center py-6 sm:py-7 md:py-8 px-2 sm:px-4 md:px-6 border-b border-gray-700 cursor-pointer group overflow-hidden"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
@@ -168,13 +167,12 @@ const Industries = () => {
               style={{
                 width: "0%",
                 transform: "translateX(0%)",
-                left: 0,
                 backgroundImage:
-                  "linear-gradient(to right, #facc15 80%, transparent 100%)", // yellow-400 fade right
+                  "linear-gradient(to right, #facc15 80%, transparent 100%)",
               }}
             ></div>
 
-            {/* Right image overlay with left fade effect */}
+            {/* Right image overlay */}
             <div
               ref={(el) => (imageOverlayRefs.current[index] = el)}
               className="absolute top-0 right-0 h-full w-1/2 z-20 hidden md:block"
@@ -182,9 +180,7 @@ const Industries = () => {
                 backgroundImage: `url(${industryImages[index]})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
                 transform: "translateX(100%)",
-                // fade effect on the left side of the image
                 WebkitMaskImage:
                   "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
                 maskImage:
@@ -192,21 +188,21 @@ const Industries = () => {
               }}
             ></div>
 
-            {/* Left column (number) */}
-            <div className="relative z-30 flex justify-start md:justify-start">
+            {/* Number */}
+            <div className="relative z-30 flex justify-start">
               <h3
                 ref={(el) => (numberTextRefs.current[index] = el)}
-                className="text-2xl md:text-3xl font-outfit text-gray-300"
+                className="text-xl sm:text-2xl md:text-3xl font-outfit text-gray-300"
               >
                 {industry.number}
               </h3>
             </div>
 
-            {/* Right column (name) */}
-            <div className="relative z-30 flex justify-start md:justify-start">
+            {/* Name */}
+            <div className="relative z-30 flex justify-start">
               <p
                 ref={(el) => (nameTextRefs.current[index] = el)}
-                className="text-xl md:text-2xl lg:text-[28px] font-outfit text-gray-100 transition-colors duration-300 transform origin-left"
+                className="text-lg sm:text-xl md:text-2xl lg:text-[28px] font-outfit text-gray-100"
               >
                 {industry.name}
               </p>
