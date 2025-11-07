@@ -32,11 +32,7 @@ const Footer = () => {
                 About Us
               </Link>
             </li>
-            <li>
-              <Link to="/immersive" className="hover:text-white cursor-pointer">
-                Services
-              </Link>
-            </li>
+           
             <li>
               <Link to="/blog" className="hover:text-white cursor-pointer">
                 Blogs
@@ -55,18 +51,33 @@ const Footer = () => {
           <h3 className="font-semibold text-lg mb-4">Services</h3>
           <ul className="space-y-2 text-sm text-gray-300">
             <li>
-              <Link to="/software" className="hover:text-white cursor-pointer">
-                Software
+              <Link to="/web_development" className="hover:text-white cursor-pointer">
+                Web Development
               </Link>
             </li>
             <li>
               <Link to="/immersive" className="hover:text-white cursor-pointer">
-                AR/VR
+                
               </Link>
             </li>
             <li>
-              <Link to="/data" className="hover:text-white cursor-pointer">
-                Data & Cloud
+              <Link to="/client_relationship_management" className="hover:text-white cursor-pointer">
+               CRM Solutions
+              </Link>
+            </li>
+              <li>
+              <Link to="/virtual_reality" className="hover:text-white cursor-pointer">
+               Virtual Reality 
+              </Link>
+            </li>
+              <li>
+              <Link to="/augmented_reality" className="hover:text-white cursor-pointer">
+                Augumented Reality
+              </Link>
+            </li>
+               <li>
+              <Link to="/3d_services" className="hover:text-white cursor-pointer">
+                3D Visualization
               </Link>
             </li>
           </ul>

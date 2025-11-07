@@ -25,7 +25,7 @@ const processSteps = [
 ];
 
 // Helper component for rendering an individual step node in the timeline
-const TimelineStep = ({ step, index }) => {
+const TimelineStep = ({ step, index, isMobile }) => {
   const stepRef = useRef(null);
   const contentRef = useRef(null);
   const circleRef = useRef(null);
@@ -33,6 +33,9 @@ const TimelineStep = ({ step, index }) => {
   const isLeft = step.side === 'left';
 
   useEffect(() => {
+    // Don't run GSAP animations on mobile
+    if (isMobile) return;
+
     const ctx = gsap.context(() => {
       // Animation for the step entry
       gsap.fromTo(stepRef.current, 
@@ -117,7 +120,7 @@ const TimelineStep = ({ step, index }) => {
         }
       );
 
-      // Hover animations
+      // Hover animations (desktop only)
       const content = contentRef.current;
       const circle = circleRef.current;
       const icon = iconRef.current;
@@ -172,15 +175,58 @@ const TimelineStep = ({ step, index }) => {
     }, stepRef);
 
     return () => ctx.revert();
-  }, [isLeft]);
+  }, [isLeft, isMobile]);
 
   const Icon = step.icon;
 
+  // Mobile Layout
+  if (isMobile) {
+    return (
+      <div 
+        ref={stepRef}
+        className="relative mb-6 px-2 opacity-100"
+      >
+        {/* Mobile Step Indicator */}
+        <div className="flex items-center mb-3">
+          {/* Number Badge */}
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00d3f3] to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 z-10">
+            <span className="text-white font-bold text-sm font-inter-tight">
+              {step.id}
+            </span>
+          </div>
+          
+          {/* Connecting Line - Removed for mobile */}
+        </div>
+
+        {/* Mobile Content Card */}
+        <div 
+          ref={contentRef}
+          className="p-5 rounded-2xl bg-gradient-to-br from-black/60 to-gray-900/60 border-l-4 border-[#00d3f3] shadow-xl backdrop-blur-md"
+        >
+          <div className="flex items-center space-x-3 mb-3">
+            <div className="p-2 bg-cyan-500/20 rounded-lg">
+              <Icon className="w-6 h-6 text-[#00d3f3]" />
+            </div>
+            <h3 className="text-xl font-bold text-white font-inter-tight flex-1">
+              {step.title}
+            </h3>
+          </div>
+          
+          <p className="text-white/80 text-sm font-inter-tight leading-relaxed">
+            {isLeft 
+              ? 'Focus on client interviews, functional specifications, and initial project scope definition.' 
+              : 'Analyze architectural needs, select primary programming languages, frameworks, and deployment services.'}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop Layout - Unchanged from original
   return (
     <div 
       ref={stepRef}
-      className="relative mb-8 w-full md:w-1/2 p-4 opacity-0"
-      style={!isLeft ? { left: '50%' } : {}}
+      className={`relative mb-8 w-full md:w-1/2 p-4 ${!isLeft ? 'md:left-1/2' : ''} opacity-0`}
     >
       {/* Connector Circle (Center of the Timeline) */}
       <div 
@@ -197,8 +243,7 @@ const TimelineStep = ({ step, index }) => {
       {/* Content Card */}
       <div 
         ref={contentRef}
-        className="p-7 rounded-xl border-t-4 bg-black/40 border-[#00d3f3] shadow-2xl transform-gpu backdrop-blur-md"
-        style={{ transformStyle: 'preserve-3d' }}
+        className="p-7 rounded-xl border-t-4 bg-black/40 border-[#00d3f3] shadow-2xl transform-gpu backdrop-blur-md transform-style-3d"
       >
         <div className="flex items-center space-x-4">
           <div ref={iconRef}>
@@ -209,7 +254,7 @@ const TimelineStep = ({ step, index }) => {
           </h3>
         </div>
         
-        {/* Pointer Arrow (Desktop Only) */}
+        {/* Pointer Arrow */}
         <div 
           className={`hidden md:block absolute top-4 w-0 h-0 border-y-[12px] border-y-transparent ${
             isLeft 
@@ -235,8 +280,28 @@ const App = () => {
   const rocketRef = useRef(null);
   const centerLineRef = useRef(null);
   const timelineContainerRef = useRef(null);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  // Check if mobile on component mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add event listener for resize
+    window.addEventListener('resize', checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
+    // Don't run GSAP animations on mobile
+    if (isMobile) return;
+
     // Title animation
     gsap.fromTo(titleRef.current,
       {
@@ -370,15 +435,15 @@ const App = () => {
       }
     });
 
-  }, []);
+  }, [isMobile]);
 
   return (
-    <div className="min-h-screen bg-transparent flex flex-col items-center p-8 font-inter-tight overflow-hidden" style={{ fontFamily: "Outfit, sans-serif" }}>
+    <div className="min-h-screen bg-transparent flex flex-col items-center p-4 md:p-8 font-inter-tight overflow-hidden" style={{ fontFamily: "Outfit, sans-serif" }}>
       {/* Main Title Block */}
-      <div className="w-full max-w-5xl mt-16 mb-16 text-center">
+      <div className="w-full max-w-5xl mt-8 md:mt-16 mb-8 md:mb-16 text-center">
         <h1 
           ref={titleRef}
-          className="text-7xl md:text-8xl font-extrabold pb-2 tracking-tight opacity-0 font-inter-tight"
+          className={`text-5xl md:text-8xl font-extrabold pb-2 tracking-tight ${isMobile ? 'opacity-100' : 'opacity-0'} font-inter-tight`}
           style={{
             background: 'linear-gradient(90deg, #00d3f3, #00a3cc)',
             WebkitBackgroundClip: 'text',
@@ -388,26 +453,46 @@ const App = () => {
         >
           Website
         </h1>
-        <h2 ref={subtitleRef} className="text-4xl md:text-6xl font-extrabold text-white flex items-center justify-center mt-3 opacity-0 font-inter-tight">
+        <h2 ref={subtitleRef} className={`text-2xl md:text-6xl font-extrabold text-white flex items-center justify-center mt-2 md:mt-3 ${isMobile ? 'opacity-100' : 'opacity-0'} font-inter-tight`}>
           Development Process
-          <span className="text-[#00d3f3] ml-4">
-            <Diamond className="w-8 h-8 md:w-10 md:h-10 fill-[#00d3f3] rotate-45" />
-          </span>
+          {!isMobile && (
+            <span className="text-[#00d3f3] ml-4">
+              <Diamond className="w-8 h-8 md:w-10 md:h-10 fill-[#00d3f3] rotate-45" />
+            </span>
+          )}
         </h2>
+        
+        {/* Mobile Diamond Icon - positioned below title */}
+        {isMobile && (
+          <div className="flex justify-center mt-4">
+            <Diamond className="w-8 h-8 fill-[#00d3f3] rotate-45" />
+          </div>
+        )}
       </div>
 
       {/* Timeline Container */}
       <div ref={timelineContainerRef} className="relative w-full max-w-4xl">
-        <div ref={timelineRef} className="relative pt-10">
+        <div ref={timelineRef} className="relative pt-6 md:pt-10">
           
-          {/* Central Vertical Line with gradient effect */}
-          <div 
-            ref={centerLineRef}
-            className="absolute left-1/2 w-1 h-full bg-gradient-to-b from-[#00d3f3] via-cyan-400 to-cyan-500 transform -translate-x-1/2 z-0 shadow-lg shadow-[#00d3f3]/50 scale-y-0"
-          >
-            {/* Animated glow pulse */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#00d3f3] to-cyan-400 opacity-70 animate-pulse"></div>
-          </div>
+          {/* Central Vertical Line with gradient effect - Hidden on mobile */}
+          {!isMobile && (
+            <div 
+              ref={centerLineRef}
+              className="absolute left-1/2 w-1 h-full bg-gradient-to-b from-[#00d3f3] via-cyan-400 to-cyan-500 transform -translate-x-1/2 z-0 shadow-lg shadow-[#00d3f3]/50 scale-y-0"
+            >
+              {/* Animated glow pulse */}
+              <div className="absolute inset-0 bg-gradient-to-b from-[#00d3f3] to-cyan-400 opacity-70 animate-pulse"></div>
+            </div>
+          )}
+
+          {/* Mobile: Add decorative top and bottom elements */}
+          {isMobile && (
+            <>
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#00d3f3] to-transparent rounded-full"></div>
+              </div>
+            </>
+          )}
 
           {/* Render all 12 step nodes */}
           {processSteps.map((step, index) => (
@@ -415,15 +500,36 @@ const App = () => {
               <TimelineStep 
                 step={step}
                 index={index}
+                isMobile={isMobile}
               />
             </div>
           ))}
           
+          {/* Mobile: Add decorative bottom element */}
+          {isMobile && (
+            <div className="flex justify-center mt-6">
+              <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#00d3f3] to-transparent rounded-full"></div>
+            </div>
+          )}
         </div>
       </div>
       
-      {/* Final Launch Rocket Icon */}
+      {/* Final Launch Rocket Icon - Hidden on mobile */}
+      {!isMobile && (
+        <div ref={rocketRef} className="mt-16 text-center">
+          <Rocket className="w-16 h-16 text-[#00d3f3] mx-auto" />
+        </div>
+      )}
       
+      {/* Mobile: Final completion indicator */}
+      {isMobile && (
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center justify-center p-4 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 rounded-2xl border border-cyan-500/30">
+            <Gift className="w-8 h-8 text-[#00d3f3] mr-3" />
+            <span className="text-white font-bold text-lg">Project Completed!</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
