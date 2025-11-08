@@ -28,18 +28,16 @@ export default function ContactHero() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-medium leading-tight font-outfit"
               style={{ fontFamily: "Outfit, sans-serif" }}
             >
-              We’d Love to Hear from{" "}
-              <span className="text-yellow-400">You</span>
+             
+Let’s Build Something Great 
+{" "}
+              <span className="text-yellow-400">Together</span>
             </h1>
             <p
               className="max-w-lg text-gray-300 text-[18px] sm:text-base md:text-[18px] leading-7 font-work-sans tracking-wide"
               style={{ fontFamily: "Work Sans, Outfit" }}
             >
-              Ready to take your ideas to the next level? Our team of experts is
-              here to collaborate, innovate, and deliver solutions tailored to
-              your business needs. Whether you’re looking for AI-powered
-              platforms, immersive AR/VR experiences, or scalable cloud
-              solutions—we’d love to hear from you.
+             Ready to take your ideas to the next level? Our team is here to collaborate, innovate, and build custom digital solutions for your business. Whether you need AI-powered platforms, immersive AR/VR experiences, or scalable cloud services, we’re ready to help you grow. Let’s create something amazing together!
             </p>
           </div>
 

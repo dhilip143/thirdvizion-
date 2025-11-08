@@ -933,7 +933,7 @@ const VrData = [
     id: "vrDevelopment",
     title: "Next-Gen VR Development",
     description:
-      "We craft tailored VR experiences from the ground up — blending art, technology, and strategy to deliver next-generation virtual solutions that redefine user engagement.",
+      "We create custom VR solutions that blend creativity and technology to deliver immersive experiences and boost user engagement.",
     icon: "🛠️",
     image: VrImage1,
   },
@@ -942,7 +942,7 @@ const VrData = [
     title: "VR Training & Simulation",
     icon: "🎯",
     description:
-      "Revolutionize employee training with realistic, risk-free virtual environments for skill development.",
+      "Transform workforce learning with realistic, risk-free VR simulations that enhance skill development and improve training efficiency.",
     image: VrImage2,
   },
   {
@@ -950,7 +950,7 @@ const VrData = [
     title: "Architectural Visualization",
     icon: "🏗️",
     description:
-      "Walk through unbuilt spaces and experience architectural designs before construction begins.",
+      "Bring designs to life with realistic 3D architectural visualization. Explore unbuilt spaces and experience your projects before construction begins",
     image: VrImage3,
   },
   {
@@ -958,7 +958,7 @@ const VrData = [
     title: "Entertainment & Gaming",
     icon: "🎮",
     description:
-      "Create captivating VR experiences that transport users to new worlds and unforgettable adventures.",
+      "We design immersive VR games and experiences that combine creativity and technology to deliver interactive, unforgettable adventures.",
     image: VrImage4,
   },
 ];

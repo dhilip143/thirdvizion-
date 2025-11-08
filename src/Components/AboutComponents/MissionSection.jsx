@@ -221,28 +221,24 @@ const ServicesVisionMission = () => {
   return (
     <section className="min-h-screen bg-black-900 text-center py-20 px-8 xl:px-0 flex flex-col justify-center">
       <span className="text-gray-400 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center justify-center">
-        what we're offering 
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="text-indigo-600 ml-3 w-6 h-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-        </svg>
+         
       </span>
       
       <h1 className="text-white text-4xl md:text-5xl xl:text-6xl font-semibold max-w-3xl mx-auto mb-16 leading-snug">
-        Services Built Specifically for your Business
+Innovative Services Crafted to Power Your Business.
       </h1>
       
       <div className="grid-offer text-left grid sm:grid-cols-2 md:grid-cols-2 gap-5 max-w-5xl mx-auto">
         
         {/* OUR VISION */}
-        <div className="card bg-black-800 p-10 relative">
+        <div className="card bg-black-800 p-10 relative"  style={{ fontFamily: "Outfit, sans-serif" }}>
           <div className="circle ux-design-image"></div>
           <div className="relative lg:pr-52">
-            <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl">
+            <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl"  style={{ fontFamily: "Outfit, sans-serif" }}>
               OUR <br />VISION 
             </h2>
             <p className="text-gray-400">
-              To become a global leader in creative innovation and digital transformation.
-              We envision a future where technology and imagination work hand in hand to shape possibilities.
+      To become a global leader in digital transformation and creative innovation. We aim to build a future where technology and imagination come together to create new possibilities, empower businesses, and shape the next generation of digital experiences.
             </p>
           </div>
         </div>
@@ -251,12 +247,11 @@ const ServicesVisionMission = () => {
         <div className="card bg-black-800 p-10 relative">
           <div className="circle graphic-design-image"></div>
           <div className="relative lg:pl-48">
-            <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl">
+            <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl"  style={{ fontFamily: "Outfit, sans-serif" }}>
               OUR <br /> MISSION
             </h2>
             <p className="text-gray-400">
-              To empower brands with innovative digital solutions that blend creativity and technology.
-              We aim to transform ideas into immersive experiences that inspire and engage.
+            Our mission is to empower businesses and brands through innovative digital solutions that combine creativity, technology, and strategy. We transform ideas into immersive digital experiences that inspire audiences, boost engagement, and drive business growth in a fast-changing digital world.
             </p>
           </div>
         </div>
@@ -265,12 +260,11 @@ const ServicesVisionMission = () => {
         <div className="card bg-black-800 p-10 relative">
           <div className="circle vision-image"></div>
           <div className="relative lg:pr-44">
-            <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl">
+            <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl"  style={{ fontFamily: "Outfit, sans-serif" }}>
               OUR <br /> VALUES
             </h2>
             <p className="text-gray-400">
-              Integrity, innovation, and excellence guide every decision we make.
-              We focus on sustainable growth, collaboration, and creating meaningful impact for our clients and communities.
+              We stand for integrity, innovation, and excellence. Through collaboration and sustainable growth, we create lasting digital impact for our clients and communities.
             </p>
           </div>
         </div>
@@ -279,12 +273,11 @@ const ServicesVisionMission = () => {
         <div className="card bg-black-800 p-10 relative">
           <div className="circle mission-image"></div>
           <div className="relative lg:pl-48">
-            <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl">
+            <h2 className="capitalize text-white mb-4 text-2xl xl:text-3xl"  style={{ fontFamily: "Outfit, sans-serif" }}>
               OUR <br /> GOALS
             </h2>
             <p className="text-gray-400">
-              To continuously push the boundaries of technology and creativity, delivering measurable results.
-              We aim to help businesses grow, innovate, and succeed in a rapidly evolving digital world.
+             We strive to push the boundaries of technology and creativity to deliver real, measurable results. Our goal is to help businesses grow, innovate, and succeed in today’s fast-changing digital world.
             </p>
           </div>
         </div>

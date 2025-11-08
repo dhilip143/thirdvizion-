@@ -157,9 +157,7 @@ const MissionVision = () => {
 
         <div ref={visionTextRef}>
           <p className="text-gray-300 text-[18px] ml-30 leading-relaxed max-w-4xl pr-[]">
-            To redefine the boundaries of digital interaction by creating
-            immersive, intelligent, and human<br />-centered 3D experiences that
-            bridge the real and virtual worlds.
+To become a global leader in immersive 3D and digital innovation, creating experiences that inspire, connect, and transform the way people and businesses interact with technology.
           </p>
         </div>
       </div>
@@ -187,29 +185,24 @@ const MissionVision = () => {
 
         <div ref={missionTextRef} className="pl-[200px]">
           <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px]">
-            At ThirdVizion Labs, our mission is to empower businesses and
-            creators through cutting-edge <br />
-            Augmented Reality (AR), Virtual Reality (VR), and 3D web
-            technologies.
+             At ThirdVizion Labs, our mission is to empower brands and creators with AR, VR, and 3D web technologies that make digital experiences more interactive and impactful.
           </p>
 
           <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
             <span className="text-yellow-500 font-light"
             style={{ fontFamily: "Outfit, sans-serif" }}>INNOVATE</span>{" "}
-            immersive solutions that transform the way people learn, work, and
-            connect.
+           immersive solutions that change how people learn, work, and connect.
+
           </p>
 
           <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
             <span className="text-yellow-500 font-light"style={{ fontFamily: "Outfit, sans-serif" }}>INTEGRATE</span>{" "}
-            seamless 3D experiences across digital platforms for accessibility
-            and engagement.
+             smooth 3D experiences across platforms for better access and engagement.
           </p>
 
           <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
             <span className="text-yellow-500 font-light"style={{ fontFamily: "Outfit, sans-serif" }}>INSPIRE</span>{" "}
-            creativity and future-ready thinking by blending design, technology,
-            and storytelling.
+            creativity by combining design, technology, and storytelling to build a future driven by imagination.
           </p>
         </div>
       </div>

@@ -137,7 +137,7 @@ const Industries = () => {
         <div className="flex-1">
           <h2
             className="text-[36px] sm:text-[44px] md:text-6xl lg:text-[54px] font-medium leading-tight font-Outfit"
-          >
+          style={{ fontFamily: "Outfit, sans-serif" }} >
             Turning <span className="text-yellow-400">vision</span> into impact.
           </h2>
         </div>

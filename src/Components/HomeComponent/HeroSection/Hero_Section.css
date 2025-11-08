@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #131313;
+  background: #000000;
   zoom: 1.5;
   position: relative;
 }
@@ -66,7 +66,7 @@
 .pattern ul li::after {
   content: "";
   position: absolute;
-  background: #1a1a1a;
+  background: #080808;
 }
 
 .pattern ul li::before {
@@ -92,7 +92,7 @@
 /* Span styles for the central icon area */
 .pattern ul li #hexa {
   margin: 75px 0px 0px 50px;
-  background-color: #1a1a1a;
+  background-color: #080808;
   width: 60px;
   height: 8px;
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
@@ -110,7 +110,7 @@
   justify-content: center;
   color: rgba(255, 255, 255, 0.2);
   transition: all 0.6s ease;
-  background: #1a1a1a;
+  background: #0e0e0e;
   font-size: 30px !important;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
@@ -138,7 +138,7 @@
   bottom: -20px;
   left: -10px;
   height: 20px;
-  background: #1a1a1a;
+  background: #000000;
   transition: 0.5s;
   transform: rotate(0deg) skewX(-45deg);
 }
@@ -158,23 +158,23 @@
 .pattern ul li:hover span:nth-child(4) {
   transform: translate(25px, -25px);
   z-index: 1002;
-  background: #111111;
+  background: #000000;
 }
 
 .pattern ul li:hover span:nth-child(3) {
   transform: translate(15px, -15px);
-  background: #1a1a1a;
+  background: #000000;
 }
 
 .pattern ul li:hover span:nth-child(2) {
   transform: translate(5px, -5px);
-  background: #222222;
+  background: #000000;
   z-index: 1001;
 }
 
 .pattern ul li:hover span:nth-child(1) {
   transform: translate(0, 0);
-  background: #2a2a2a;
+  background: #000000;
 }
 
 /* ✅ Enhanced Gradient Hover Colors - Black/Dark Theme */

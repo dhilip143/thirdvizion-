@@ -181,7 +181,8 @@ const BlogPage = () => {
 
         {/* Search Bar */}
         <motion.div
-          className="flex justify-center"
+          className="flex justify-center "
+           style={{ fontFamily: "Outfit, sans-serif" }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.7 }}
@@ -282,7 +283,8 @@ const BlogPage = () => {
                         <motion.h2
                           className="text-2xl md:text-3xl font-bold mb-3 inline-block"
                           layoutId={`title-${blog.id}`}
-                        >
+                          style={{ fontFamily: "Outfit, sans-serif" }}
+                         >
                           {blog.title}
                         </motion.h2>
                         <motion.div
@@ -350,9 +352,7 @@ const BlogPage = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
       >
-        <p className="text-gray-500">
-          Discover more amazing content
-        </p>
+        
       </motion.div>
     </div>
   );

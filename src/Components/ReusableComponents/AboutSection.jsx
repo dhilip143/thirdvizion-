@@ -712,8 +712,7 @@ export default function About() {
             viewport={{ amount: 0.3 }}
             className="text-4xl md:text-5xl xl:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-pink-400 to-orange-400 md:text-center lg:text-left font-inter-tight"
           >
-            Transforming Business Through Cutting-Edge Technology
-          </motion.h2>
+Transforming Businesses with Innovative Digital Technology.          </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 40 }}
@@ -722,10 +721,7 @@ export default function About() {
             viewport={{ amount: 0.3 }}
             className="text-gray-300 md:text-center lg:text-left text-md xl:text-lg leading-snug"
           >
-            We deliver comprehensive technology solutions across multiple domains. 
-            From immersive VR/AR experiences and high-quality 3D services to robust 
-            cloud infrastructure, secure IAM systems, and custom software development — 
-            we bridge innovation with practical business applications to drive your success.
+          We create innovative digital solutions that blend AR/VR, 3D design, cloud infrastructure, and custom software development. Our goal is to help businesses grow smarter, work faster, and lead through technology.
           </motion.p>
 
           <div className="flex lg:flex-col justify-center gap-4 mt-4">

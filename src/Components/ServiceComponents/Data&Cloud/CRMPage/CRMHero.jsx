@@ -71,7 +71,7 @@ export default function CrmHero() {
                 viewport={{ amount: 0 }}
                 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight sm:leading-tight lg:leading-tight tracking-tight mb-4 lg:mb-6 text-[#FF6467]"
                 style={{ fontFamily: "Outfit, sans-serif" }} >
-                Enterprise Grade CRM For Revenue & Relationships
+                Enterprise-Grade CRM
               </motion.h1>
             </TextReveal>
 
@@ -82,10 +82,7 @@ export default function CrmHero() {
               viewport={{ amount: 0 }}
               className="text-sm sm:text-base lg:text-lg text-white/70 mb-6 lg:mb-8 leading-relaxed"
              style={{ fontFamily: "work-sans, sans-serif" }}  >
-              A modern CRM that combines pipeline management, automation, and
-              AI-driven insights. Connect your sales, support and marketing
-              teams with a single truth-of-customer — flexible, scalable, and
-              designed for real teams to move faster.
+            Boost growth with an AI-powered CRM that unites sales, marketing, and support. Manage pipelines, automate workflows, and build stronger customer relationships. 
             </motion.p>
 
             {/* CTA Buttons */}

@@ -45,7 +45,7 @@ export default function Indhu() {
       cy: 200,
       label: "DISCOVER",
       description:
-        "We start by deeply understanding your business vision, challenges, and aspirations. Our team dives into every detail to uncover insights that guide us in crafting tailored technology solutions designed to transform your goals into measurable outcomes.",
+        "We begin by understanding your business goals, vision, and challenges. Our team studies every detail to find the right digital strategy for your brand. Through research and smart planning, we create custom technology solutions that help your business grow and achieve real results.",
       img: threed,
     },
     {
@@ -54,7 +54,7 @@ export default function Indhu() {
       cy: 300,
       label: "ARCHITECT",
       description:
-        "We design robust, scalable system architectures using cutting-edge technologies and best practices, ensuring your solution remains future-proof, efficient, and capable of delivering optimal performance under any scale or load conditions.",
+        "We design robust and scalable system architectures using the latest technologies and best industry practices. Our goal is to build future-ready, high-performance solutions that stay secure, efficient, and reliable at any scale.",
       img: gam,
     },
     {
@@ -63,7 +63,7 @@ export default function Indhu() {
       cy: 200,
       label: "BUILD",
       description:
-        "Develop with precision and excellence using agile methodologies and continuous integration maintainable code that exceeds expectations.",
+        "We develop with precision and excellence using agile development methods and continuous integration. Our expert team writes clean, maintainable code to build scalable, high-performance applications that go beyond expectations and deliver lasting results.",
       img: are,
     },
     {
@@ -72,7 +72,7 @@ export default function Indhu() {
       cy: 300,
       label: "ELEVATE",
       description:
-        "Scale your business to new heights with optimized performance, enhanced user experiences, and data-driven insights that propel your growth and competitive advantage in the market.",
+        "We help you scale your business with optimized performance, seamless user experiences, and data-driven insights. Our solutions empower brands to grow faster, make smarter decisions, and stay ahead in a competitive digital world.",
       img: wih,
     },
   ];

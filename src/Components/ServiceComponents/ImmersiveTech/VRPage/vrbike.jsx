@@ -81,9 +81,7 @@ export default function Vrbike() {
           transition={{ delay: 0.3, duration: 1 }}
           className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl"
          style={{ fontFamily: "work-sans, " }} >
-          From industrial safety simulations to advanced skill development, 
-          our VR training solutions provide realistic, risk-free environments 
-          for mastering complex tasks.
+         We design realistic VR training solutions that help teams learn safely and effectively. From industrial safety simulations to advanced skill development, our virtual training environments boost performance and reduce risk.
         </motion.p>
 
         {/* Foreground Video Box with Neon Glow Border */}

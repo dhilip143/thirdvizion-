@@ -163,16 +163,16 @@ export default function ContactHero() {
         className="fixed md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col justify-center items-center w-full z-30 pointer-events-none"
         aria-hidden
       >
-        <div className="contact-text text-md xl:text-2xl mb-4 font-semibold text-center uppercase font-[Inter_Tight]">
+        <div className="contact-text text-md xl:text-2xl mb-4 font-semibold text-center uppercase font-[Inter_Tight]"  style={{ fontFamily: "Outfit, sans-serif" }}>
           Contact
         </div>
-        <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight]">
+        <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight] "  style={{ fontFamily: "Outfit, sans-serif" }}>
           <div 
             className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-bold uppercase bg-clip-text text-transparent"
             style={{
-              backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)"
+              backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%,  #4facfe 100%)"
             }}
-          >
+              >
             Get in
           </div>
           <div 

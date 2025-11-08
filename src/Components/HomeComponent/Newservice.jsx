@@ -18,7 +18,7 @@ const capabilitiesData = [
   {
     id: "emerging-tech",
     title: "emerging tech",
-    desc: "Secure, scalable, and intelligent solutions to manage data, streamline operations, and enhance customer relationships.",
+    desc: " We deliver secure, scalable, and intelligent technology solutions that help businesses manage data efficiently, streamline operations, and enhance customer engagement.",
     children: [
       {
         name: "AR",
@@ -58,7 +58,7 @@ const capabilitiesData = [
   {
     id: "data-cloud",
     title: "data and  Cloud",
-    desc: "Crafting innovative applications, immersive experiences, and engaging digital solutions that bring ideas to life.",
+    desc: "Empower your business with secure, scalable, and data-driven cloud solutions designed to boost performance and reliability. At ThirdVizion Labs, we create innovative digital applications that help brands manage data smarter, automate workflows, and drive growth.",
     children: [
       {
         name: "CRM",
@@ -98,7 +98,7 @@ const capabilitiesData = [
   {
     id: "software-dev",
     title: "software development",
-    desc: "Crafting innovative applications, immersive experiences, and engaging digital solutions that bring ideas to life.",
+    desc: "We create innovative software solutions that help businesses grow in the digital era. From custom websites to mobile apps and interactive games, our team combines creativity, technology, and strategy to turn ideas into reality",
     children: [
       {
         name: "WEBSITE",

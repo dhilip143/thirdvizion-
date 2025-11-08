@@ -6,25 +6,25 @@ export default function WhyChooseIAM() {
     {
       title: "Stronger Security",
       description:
-        "Ensure only authorized users access resources with intelligent authentication, multi-factor login, and zero-trust principles.",
+        "Protect your business with intelligent identity management, multi-factor authentication, and zero-trust security to ensure only authorized access.",
       icon: <FaShieldAlt className="text-4xl sm:text-5xl text-[#FDC700]" />,
     },
     {
       title: "Seamless Access",
       description:
-        "Provide employees and customers with single sign-on, adaptive authentication, and a frictionless login experience.",
+        "Deliver secure, one-click access with single sign-on, adaptive authentication, and a smooth login experience for users and teams.",
       icon: <FaUserCheck className="text-4xl sm:text-5xl text-[#FDC700]" />,
     },
     {
       title: "Scalable & Flexible",
       description:
-        "IAM scales with your business — whether you have 10 users or 10,000 — without sacrificing performance or security.",
+        "Our IAM solutions grow with your business  from 10 to 10,000 users delivering high performance and strong security at every scale.",
       icon: <FaUsersCog className="text-4xl sm:text-5xl text-[#FDC700]" />,
     },
     {
       title: "Compliance Ready",
       description:
-        "Meet GDPR, HIPAA, and ISO requirements with built-in auditing, reporting, and automated access policies.",
+        "Stay compliant with GDPR, HIPAA, and ISO standards through built-in audits, detailed reporting, and automated access controls for secure identity management.",
       icon: <FaClipboardCheck className="text-4xl sm:text-5xl text-[#FDC700]" />,
     },
   ];

@@ -32,7 +32,7 @@ export default function OurTeam() {
     <section className="bg-black text-white relative min-h-screen py-20 flex flex-col items-center justify-center">
       {/* Text Section */}
       <div className="text-center mb-16 px-6 max-w-3xl">
-        <h2 className="text-yellow-400 text-3xl md:text-5xl font-bold mb-6">
+        <h2 className="text-yellow-400 text-3xl md:text-5xl font-bold mb-6"  style={{ fontFamily: "Outfit, sans-serif" }}>
           OUR TEAM
         </h2>
         <p className="text-white text-base md:text-lg leading-relaxed">

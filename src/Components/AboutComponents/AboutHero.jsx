@@ -210,7 +210,7 @@ export default function AboutHero() {
       <div
         ref={headerRef}
         className="fixed md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col justify-center items-center w-full z-30 pointer-events-none"
-      >
+      style={{ fontFamily: "Outfit, sans-serif" }}   >
         <div className="about-text font-inter-tight text-md xl:text-2xl md:mr-6 xl:mr-10 -mb-5 md:-mb-8 xl:-mb-10 font-medium text-white text-center uppercase">
           About
         </div>

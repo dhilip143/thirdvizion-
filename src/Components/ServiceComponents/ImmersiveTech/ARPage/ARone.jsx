@@ -261,7 +261,7 @@ export default function ArPage() {
 
 
           <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed"   style={{ fontFamily: "work-sans, sans-serif" }}>
-            Experience products in your space with augmented reality. See how they look and fit before you decide.
+            Enhance real-world experiences with interactive AR solutions. Visualize products, designs, and spaces in real time before making decisions.
           </p>
         </div>
 

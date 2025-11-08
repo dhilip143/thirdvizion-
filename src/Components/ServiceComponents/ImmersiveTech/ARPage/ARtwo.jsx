@@ -10,36 +10,35 @@ const ARServices = () => {
   const arServicesData = [
     {
       title: 'AR with Smartphone',
-      content: 'We develop cutting-edge AR experiences for smartphones, leveraging device cameras and sensors to create immersive mobile interactions. Perfect for apps, games, and marketing campaigns.',
+      content: 'We create mobile AR experiences using camera and motion sensors to deliver immersive apps and campaigns for iOS and Android.',
       details: [
-        'iOS & Android AR Integration',
-        'Camera-Based AR Experiences',
-        'Motion Sensor Activation',
-        'User-Friendly Mobile Interface'
+        'Seamless iOS & Android AR integration',
+        'Camera-based and motion-activated experiences',
+        'User-friendly mobile interface'
       ],
       isGlowing: false,
       icon: '📱'
     },
     {
       title: 'AR with Smart Glasses',
-      content: 'We create advanced AR solutions for smart glasses and wearable devices, delivering hands-free augmented reality experiences for enterprise, education, and entertainment applications.',
+      content: 'We build AR solutions for smart glasses and wearables, enabling hands-free augmented reality experiences for enterprise, education, and entertainment.',
       details: [
         'Hands-Free AR Operations',
-        'Wearable Device Optimization',
-        'Real-Time Data Overlay',
-        'Enterprise-Grade Solutions'
+        'Optimized for wearable devices',
+        'Real-time data overlays',
+        'Enterprise-ready solutions'
       ],
       isGlowing: true,
       icon: '👓'
     },
     {
       title: 'Web-Based AR',
-      content: 'We build browser-based AR experiences that work directly on websites, eliminating the need for app downloads. Accessible AR through WebXR technology for instant engagement.',
+      content: 'We create browser-based AR experiences using WebXR technology, allowing users to enjoy augmented reality instantly—no app required. Perfect for websites, marketing, and product showcases.',
       details: [
-        'No App Download Required',
-        'WebXR Technology Implementation',
-        'Cross-Browser Compatibility',
-        'Instant AR Access via URLs'
+        'No app download needed',
+        'WebXR technology integration',
+        'Cross-browser compatibility  ',
+        'Instant AR access via URL'
       ],
       isGlowing: false,
       icon: '🌐'

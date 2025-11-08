@@ -128,8 +128,8 @@ export default function WebProject() {
             key={project.id}
             className="h-screen flex flex-col lg:flex-row items-center justify-center overflow-hidden relative px-4 sm:px-6 md:px-8"
           >
-            {/* Image Container */}
-            <div className="w-full lg:w-1/2 h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[150vh]flex items-center justify-center">
+            {/* Image Container - Mobile Responsive */}
+            <div className="w-full lg:w-1/2 h-[30vh] sm:h-[35vh] md:h-[40vh] lg:h-[150vh] flex items-center justify-center mb-4 lg:mb-0">
               <img
                 src={project.image}
                 className="w-full h-full object-cover rounded-2xl shadow-[0_0_25px_rgba(124,134,255,0.2)]"
@@ -137,25 +137,45 @@ export default function WebProject() {
               />
             </div>
 
-            {/* Content Overlay - Responsive for Mobile & Tablet */}
+            {/* Content Overlay - Mobile Responsive */}
             <div
               className={`overlay-content backdrop-blur-md bg-[#7C86FF10] shadow-[0_8px_32px_rgba(124,134,255,0.3)] border border-[#7C86FF30] rounded-2xl 
-                w-full max-w-2xl lg:max-w-none lg:absolute lg:top-1/2 lg:-translate-y-1/2 
+                w-full max-w-2xl lg:max-w-none 
+                px-4 sm:px-6 py-4 sm:py-6 
+                lg:absolute lg:top-1/2 lg:-translate-y-1/2 
                 ${index % 2 === 0 ? "lg:right-10 xl:right-24 2xl:right-28" : "lg:left-10 xl:left-22 2xl:left-26"} 
-                px-6 py-6 mt-6 lg:mt-0 text-center lg:text-inherit
+                text-center lg:text-inherit
                 lg:w-96 xl:w-[28rem] 2xl:w-[32rem]`}
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-[#7C86FF] drop-shadow-[0_0_10px_rgba(124,134,255,0.3)] mb-4" style={{ fontFamily: "Outfit, sans-serif" }}>
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-[#7C86FF] drop-shadow-[0_0_10px_rgba(124,134,255,0.3)] mb-3 sm:mb-4" style={{ fontFamily: "Outfit, sans-serif" }}>
                 {project.title}
               </h2>
 
-              <p className="text-base sm:text-lg md:text-xl lg:text-lg xl:text-xl max-w-lg mx-auto mb-6 text-[#c7cbff] leading-relaxed" style={{ fontFamily: "work-sans, sans-serif" }}>
+              <p className="text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl max-w-lg mx-auto mb-4 sm:mb-6 text-[#c7cbff] leading-relaxed" style={{ fontFamily: "work-sans, sans-serif" }}>
                 {project.description}
               </p>
 
-             
+              {/* Tools Section - Mobile Responsive */}
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                {project.tools.map((tool, toolIndex) => (
+                  <span
+                    key={toolIndex}
+                    className="px-3 py-1 sm:px-4 sm:py-2 bg-[#7C86FF20] border border-[#7C86FF40] rounded-full text-xs sm:text-sm text-[#7C86FF] backdrop-blur-sm"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
 
-             
+              {/* Live Demo Button - Mobile Responsive */}
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#7C86FF] to-[#5A67D8] text-white rounded-lg font-semibold text-sm sm:text-base hover:shadow-[0_0_20px_rgba(124,134,255,0.5)] transition-all duration-300 transform hover:scale-105"
+              >
+                Live Demo
+              </a>
             </div>
           </section>
         ))}
