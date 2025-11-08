@@ -260,7 +260,7 @@ export default function Categories() {
       return "px-4 py-2 border border-yellow-500 bg-yellow-500 rounded-full text-black text-sm font-medium hover:bg-black hover:text-yellow-500 transition-all duration-300";
     }
 
-    return "px-5 py-3 border border-white rounded-full text-white text-sm font-medium hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300";
+    return "px-4 py-3 border border-white rounded-full text-white text-sm font-medium hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300";
   };
 
   const getTagLink = (tag, category) => {
@@ -275,10 +275,9 @@ export default function Categories() {
     return childItem?.link || "#";
   };
 
-  // Function to render 4 vertical blue lines for each category
+  // Function to render vertical lines - hidden on mobile
   const renderVerticalLines = (category, categoryIndex) => {
     const lineConfigs = [
-      // Line 1 - Between first and second column (25% position)
       {
         id: 1,
         position: "-4.49%",
@@ -286,7 +285,6 @@ export default function Categories() {
         width: "w-9",
         responsive: "hidden md:block"
       },
-      // Line 2 - Center line (50% position)
       {
         id: 2,
         position: "30.20%",
@@ -294,7 +292,6 @@ export default function Categories() {
         width: "w-9",
         responsive: "hidden md:block"
       },
-      // Line 3 - Between second and third column (75% position)
       {
         id: 3,
         position: "64.60%",
@@ -302,7 +299,6 @@ export default function Categories() {
         width: "w-9",
         responsive: "hidden md:block lg:block"
       },
-      // Line 4 - Right edge line (100% position)
       {
         id: 4,
         position: "99.29%",
@@ -317,15 +313,14 @@ export default function Categories() {
         {lineConfigs.map((line) => (
           <div
             key={`${category.id}-line-${line.id}`}
-            className={`absolute top-0 bottom-0 ${line.width} ${line.color} ${line.responsive} z-20 transition-all `}
+            className={`absolute top-0 bottom-0 ${line.width} ${line.color} ${line.responsive} z-20 transition-all`}
             style={{
               left: line.position,
               height: '100%',
               top: '1.5rem',
             }}
           >
-            {/* Optional: Add subtle gradient to lines */}
-            <div className={`absolute inset-0 bg-black `}></div>
+            <div className={`absolute inset-0 bg-black`}></div>
           </div>
         ))}
       </>
@@ -333,11 +328,11 @@ export default function Categories() {
   };
 
   return (
-    <section className="bg-black text-white min-h-screen px-6 md:px-12 py-16" ref={scrollContainerRef}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <section className="bg-black text-white min-h-screen px-4 sm:px-6 md:px-12 py-12 md:py-16" ref={scrollContainerRef}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
 
-        {/* LEFT STICKY SECTION */}
-        <div className="md:sticky md:top-60 h-fit mt-10 md:mt-16">
+        {/* LEFT STICKY SECTION - Hidden on mobile, show only on desktop */}
+        <div className="hidden md:block md:sticky md:top-60 h-fit mt-8 md:mt-16">
           <motion.div
             key={activeCategory.id}
             initial={{ opacity: 0, y: 50 }}
@@ -348,27 +343,27 @@ export default function Categories() {
             <div className="flex flex-col">
               <div>
                 <h3 
-                  className="text-4xl md:text-5xl font-medium tracking-wider text-yellow-500 mb-6 uppercase"
+                  className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-wider text-yellow-500 mb-4 md:mb-6 uppercase text-center md:text-left"
                   style={{ fontFamily: "Outfit, sans-serif" }}
                 >
                   {activeCategory.title}
                 </h3>
-                <div className="mt-6 h-px w-full bg-gradient-to-r from-yellow-600 via-yellow-500/80 to-transparent"></div>
+                <div className="mt-4 md:mt-6 h-px w-full bg-gradient-to-r from-yellow-600 via-yellow-500/80 to-transparent"></div>
                 <div className="relative">
                   <p
-                    className="text-white/90 mt-6 max-w-md leading-relaxed text-lg md:text-xl font-light tracking-wide"
+                    className="text-white/90 mt-4 md:mt-6 max-w-md leading-relaxed text-base sm:text-lg md:text-xl font-light tracking-wide text-center md:text-left"
                     style={{ fontFamily: "Work Sans, sans-serif" }}
                   >
                     {activeCategory.desc.split('. ')[0]}.
                   </p>
-                  <div className="mt-8 flex flex-wrap gap-3">
+                  <div className="mt-6 md:mt-8 flex flex-wrap gap-2 md:gap-3 justify-center md:justify-start">
                     {getCategoryTags(activeCategory).map((tag, index) => (
                       <Link
                         to={getTagLink(tag, activeCategory)}
                         key={index}
                       >
                         <span
-                          className={`${getTagStyle(tag)} cursor-pointer`}
+                          className={`${getTagStyle(tag)} cursor-pointer inline-block text-xs sm:text-sm`}
                           style={{ fontFamily: "outfit, sans-serif" }}
                         >
                           {tag}
@@ -382,20 +377,101 @@ export default function Categories() {
           </motion.div>
         </div>
 
-        {/* RIGHT SCROLLING SECTION */}
+        {/* RIGHT SCROLLING SECTION - Mobile optimized */}
         <div className="flex flex-col">
           {capabilitiesData.map((cap, index) => (
             <div
               key={cap.id}
               ref={sectionRefs.current[index]}
               data-category-id={cap.id}
-              className={`relative ${index < capabilitiesData.length - 1 ? 'mb-92' : ''}`}
+              className={`relative ${index < capabilitiesData.length - 1 ? 'mb-20 md:mb-92' : ''}`}
             >
-              {/* Vertical Lines Container */}
-              <div className="relative">
+              {/* MOBILE VIEW - Show category title and services without images */}
+              <div className="block md:hidden mb-8">
+                {/* Category Title for Mobile */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-center mb-6"
+                >
+                  <h3 
+                    className="text-2xl font-medium tracking-wider text-yellow-500 mb-3 uppercase"
+                    style={{ fontFamily: "Outfit, sans-serif" }}
+                  >
+                    {cap.title}
+                  </h3>
+                  <div className="h-px w-20 mx-auto bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 mb-4"></div>
+                  <p
+                    className="text-white/80 text-sm leading-relaxed font-light tracking-wide max-w-md mx-auto"
+                    style={{ fontFamily: "Work Sans, sans-serif" }}
+                  >
+                    {cap.desc.split('. ')[0]}.
+                  </p>
+                </motion.div>
+
+                {/* Services List for Mobile */}
+                <div className="space-y-4">
+                  {cap.children.map((child, i) => (
+                    <Link
+                      to={child.link}
+                      key={i}
+                      className="block"
+                    >
+                      <motion.div
+                        className="group cursor-pointer relative bg-gray-900/70 border border-gray-600 rounded-xl p-5 hover:bg-gray-800/70 hover:border-yellow-500/30 transition-all duration-300"
+                        whileHover={{
+                          scale: 1.02,
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                      >
+                        {/* Mobile service content without image */}
+                        <div className="flex items-center justify-between">
+                          <div className="flex-1">
+                            <h4 
+                              className="text-white text-base font-medium tracking-wide mb-1"
+                              style={{ fontFamily: "Outfit, sans-serif" }}
+                            >
+                              {child.name}
+                            </h4>
+                            <div className="h-px w-12 bg-gradient-to-r from-yellow-500 to-transparent mb-2"></div>
+                            <p className="text-white/60 text-xs font-light">
+                              Click to explore {child.name.toLowerCase()} services
+                            </p>
+                          </div>
+                          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-yellow-500/20 group-hover:bg-yellow-500/30 transition-all duration-300">
+                            <ArrowUpRight className="text-yellow-500 w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                          </div>
+                        </div>
+                      </motion.div>
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Tags for Mobile */}
+                <div className="mt-6 flex flex-wrap gap-2 justify-center">
+                  {getCategoryTags(cap).map((tag, tagIndex) => (
+                    <Link
+                      to={getTagLink(tag, cap)}
+                      key={tagIndex}
+                    >
+                      <span
+                        className="px-3 py-2 border border-white/50 rounded-full text-white text-xs font-medium hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300"
+                        style={{ fontFamily: "outfit, sans-serif" }}
+                      >
+                        {tag}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* DESKTOP VIEW - Grid with images (unchanged) */}
+              <div className="hidden md:block relative">
                 {renderVerticalLines(cap, index)}
 
-                <div className={`grid gap-6 ${cap.children.length === 3
+                <div className={`hidden md:grid gap-6 ${cap.children.length === 3
                     ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
                     : cap.children.length === 4
                       ? "grid-cols-1 md:grid-cols-2"
@@ -440,7 +516,7 @@ export default function Categories() {
                         {/* FLOATING YELLOW PARTICLES - Only show when scrolling */}
                         <FloatingParticles isScrolling={isScrolling} />
 
-                        {/* IMAGE BOX */}
+                        {/* IMAGE BOX - Hidden on mobile */}
                         <div className="p-1 relative z-10">
                           <div
                             className={`${child.size} overflow-hidden border border-gray-600/30 shadow-2xl relative group`}
@@ -479,7 +555,7 @@ export default function Categories() {
         </div>
       </div>
 
-      <div className="text-center mt-40">
+      <div className="text-center mt-20 md:mt-40">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
