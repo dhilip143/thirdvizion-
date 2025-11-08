@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 
 // --- Icon Components (Cyan Theme) ---
 const StethoscopeIcon = () => (
@@ -30,16 +30,16 @@ const PackageIcon = () => (
 );
 
 const iconMap = {
-  'Health Care': StethoscopeIcon,
-  'Education': BookOpenIcon,
-  'E-Commerce': ShoppingCartIcon,
-  'Fintech': DollarSignIcon,
-  'Travel': PlaneIcon,
-  'Entertainment': SmileIcon,
-  'Food Delivery': PackageIcon,
+  "Health Care": StethoscopeIcon,
+  Education: BookOpenIcon,
+  "E-Commerce": ShoppingCartIcon,
+  Fintech: DollarSignIcon,
+  Travel: PlaneIcon,
+  Entertainment: SmileIcon,
+  "Food Delivery": PackageIcon,
 };
 
-// --- Radial Selector Components ---
+// --- Radial Segment ---
 const RadialSegment = ({ service, angle, isSelected, onClick, rotationOffset }) => {
   const IconComponent = iconMap[service.title];
   const totalServices = 7;
@@ -54,43 +54,42 @@ const RadialSegment = ({ service, angle, isSelected, onClick, rotationOffset }) 
       }}
       onClick={() => onClick(service)}
     >
-      {/* Segment Background - Cyan border theme */}
-      <div 
+      <div
         className={`w-full h-full absolute transition-all duration-500 rounded-full ${
-          isSelected 
-            ? 'border-2 border-[#00d3f3] opacity-70 shadow-[0_0_15px_rgba(0,211,243,0.5)]' 
-            : 'border border-white/20  hover:opacity-40 hover:border-[#00d3f3]/50'
+          isSelected
+            ? "border-2 border-[#00d3f3] opacity-70 shadow-[0_0_15px_rgba(0,211,243,0.5)]"
+            : "border border-white/20  hover:opacity-40 hover:border-[#00d3f3]/50"
         }`}
         style={{
           clipPath: `polygon(50% 50%, 100% 50%, 100% 100%, 0% 100%, 0% 50%)`,
-          transform: `rotate(${-(90 - (360 / totalServices) / 2)}deg)`,
-          pointerEvents: 'none'
+          transform: `rotate(${-(90 - 360 / totalServices / 2)}deg)`,
+          pointerEvents: "none",
         }}
       />
-      
-      {/* Interactive Element - Cyan theme */}
       <div
         className={`absolute left-0 top-0 p-4 transition-all duration-500 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center space-y-2 group ${
-          isSelected 
-            ? 'scale-125 z-10' 
-            : 'scale-100 hover:scale-110'
+          isSelected ? "scale-125 z-10" : "scale-100 hover:scale-110"
         }`}
         style={{
           transform: `translate(240px, 0px) rotate(${counterRotationDegrees}deg)`,
         }}
       >
-        <div className={`w-20 h-20 flex items-center justify-center rounded-full transition-all duration-500 backdrop-blur-md ${
-          isSelected 
-            ? 'bg-[#00d3f3] text-gray-900 scale-110 shadow-[0_0_20px_rgba(0,211,243,0.7)]' 
-            : 'bg-white/5 text-white border border-white/30 group-hover:bg-[#00d3f3]/20 group-hover:border-[#00d3f3]/50 group-hover:shadow-[0_0_15px_rgba(0,211,243,0.3)]'
-        }`}>
+        <div
+          className={`w-20 h-20 flex items-center justify-center rounded-full transition-all duration-500 backdrop-blur-md ${
+            isSelected
+              ? "bg-[#00d3f3] text-gray-900 scale-110 shadow-[0_0_20px_rgba(0,211,243,0.7)]"
+              : "bg-white/5 text-white border border-white/30 group-hover:bg-[#00d3f3]/20 group-hover:border-[#00d3f3]/50 group-hover:shadow-[0_0_15px_rgba(0,211,243,0.3)]"
+          }`}
+        >
           {React.createElement(IconComponent, {})}
         </div>
-        <span className={`text-sm font-bold transition-all duration-500 px-3 py-1 rounded-full backdrop-blur-md ${
-          isSelected 
-            ? 'text-[#00d3f3] bg-[#00d3f3]/20 scale-110 border border-[#00d3f3]/30' 
-            : 'text-white bg-white/5 border border-white/10 group-hover:bg-[#00d3f3]/10 group-hover:text-[#00d3f3] group-hover:border-[#00d3f3]/30'
-        }`}>
+        <span
+          className={`text-sm font-bold transition-all duration-500 px-3 py-1 rounded-full backdrop-blur-md ${
+            isSelected
+              ? "text-[#00d3f3] bg-[#00d3f3]/20 scale-110 border border-[#00d3f3]/30"
+              : "text-white bg-white/5 border border-white/10 group-hover:bg-[#00d3f3]/10 group-hover:text-[#00d3f3] group-hover:border-[#00d3f3]/30"
+          }`}
+        >
           {service.title}
         </span>
       </div>
@@ -98,33 +97,33 @@ const RadialSegment = ({ service, angle, isSelected, onClick, rotationOffset }) 
   );
 };
 
-// --- Radial Selector Container ---
+// --- Radial Selector (Laptop Only) ---
 const RadialSelector = ({ services, selectedService, setSelectedService, rotationOffset }) => {
   const totalServices = services.length;
   const angleStep = 360 / totalServices;
 
   return (
     <div className="relative w-full flex justify-center py-32">
-      {/* Main Container */}
       <div className="relative w-[940px] h-[856px] flex items-center justify-center">
-        
-        {/* Central Core Circle - Cyan theme */}
         <div className="absolute w-88 h-88 bg-black/40 rounded-full border-2 border-[#00d3f3]/30 flex flex-col items-center justify-center backdrop-blur-md shadow-[0_0_30px_rgba(0,211,243,0.2)]">
           <div className="text-center px-6">
             <h3 className="text-4xl font-extrabold text-white leading-tight mb-4 font-inter-tight">
-              <span className="block">Web Development <span className="block text-[#00d3f3]"> service</span></span>
+              <span className="block">
+                Web Development <span className="block text-[#00d3f3]">service</span>
+              </span>
             </h3>
-            
             {selectedService && (
               <div className="mt-6 pt-6 border-t border-[#00d3f3]/30 animate-fadeIn">
-                <p className="text-sm text-[#00d3f3] font-semibold uppercase tracking-widest font-inter-tight">WE DO</p>
-                <p className="text-2xl font-bold text-white mt-2 animate-pulse-text font-inter-tight">{selectedService.title}</p>
+                <p className="text-sm text-[#00d3f3] font-semibold uppercase tracking-widest font-inter-tight">
+                  WE DO
+                </p>
+                <p className="text-2xl font-bold text-white mt-2 animate-pulse-text font-inter-tight">
+                  {selectedService.title}
+                </p>
               </div>
             )}
           </div>
         </div>
-
-        {/* Outer Segments */}
         {services.map((service, index) => (
           <RadialSegment
             key={service.title}
@@ -140,96 +139,111 @@ const RadialSelector = ({ services, selectedService, setSelectedService, rotatio
   );
 };
 
-// --- Detail Panel Component ---
-const ServiceDetail = ({ service }) => {
-  if (!service) return null;
-
+// --- Mobile Design (Simplified) ---
+const MobileServices = ({ services, selectedService, setSelectedService }) => {
   return (
-    <div className="">
-      {/* Empty as requested */}
+    <div className="flex flex-col items-center w-full py-12 space-y-6">
+      <h2 className="text-3xl font-bold text-white text-center mb-4">
+        Web Development <span className="text-[#00d3f3]">Service</span>
+      </h2>
+      <div className="flex flex-col w-full max-w-md space-y-4">
+        {services.map((service) => {
+          const Icon = iconMap[service.title];
+          const isSelected = selectedService?.title === service.title;
+          return (
+            <div
+              key={service.title}
+              className={`flex items-center space-x-4 px-6 py-4 rounded-xl border transition-all duration-300 cursor-pointer ${
+                isSelected
+                  ? "bg-[#00d3f3]/20 border-[#00d3f3] shadow-[0_0_20px_rgba(0,211,243,0.3)]"
+                  : "bg-white/5 border-white/10 hover:border-[#00d3f3]/50 hover:bg-[#00d3f3]/10"
+              }`}
+              onClick={() => setSelectedService(service)}
+            >
+              <div
+                className={`w-14 h-14 flex items-center justify-center rounded-full ${
+                  isSelected ? "bg-[#00d3f3] text-black" : "bg-white/10 text-white"
+                }`}
+              >
+                <Icon />
+              </div>
+              <span
+                className={`text-lg font-semibold ${
+                  isSelected ? "text-[#00d3f3]" : "text-white"
+                }`}
+              >
+                {service.title}
+              </span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
 
-// --- Main App Component ---
+// --- Main App ---
 const App = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [rotationOffset, setRotationOffset] = useState(0);
   const [autoRotate, setAutoRotate] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const rotationRef = useRef(null);
 
   const services = [
-    { title: "Health Care", iconName: 'Health Care' },
-    { title: "Education", iconName: 'Education' },
-    { title: "E-Commerce", iconName: 'E-Commerce' },
-    { title: "Fintech", iconName: 'Fintech' },
-    { title: "Travel", iconName: 'Travel' },
-    { title: "Entertainment", iconName: 'Entertainment' },
-    { title: "Food Delivery", iconName: 'Food Delivery' },
+    { title: "Health Care" },
+    { title: "Education" },
+    { title: "E-Commerce" },
+    { title: "Fintech" },
+    { title: "Travel" },
+    { title: "Entertainment" },
+    { title: "Food Delivery" },
   ];
 
-  // Auto-rotation effect
+  // Detect Mobile
   useEffect(() => {
-    if (autoRotate) {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Auto-rotation effect (Laptop only)
+  useEffect(() => {
+    if (!isMobile && autoRotate) {
       rotationRef.current = setInterval(() => {
-        setRotationOffset(prev => (prev + 0.2) % 360);
+        setRotationOffset((prev) => (prev + 0.2) % 360);
       }, 50);
     } else {
-      if (rotationRef.current) {
-        clearInterval(rotationRef.current);
-      }
+      if (rotationRef.current) clearInterval(rotationRef.current);
     }
 
     return () => {
-      if (rotationRef.current) {
-        clearInterval(rotationRef.current);
-      }
+      if (rotationRef.current) clearInterval(rotationRef.current);
     };
-  }, [autoRotate]);
+  }, [autoRotate, isMobile]);
 
   const handleServiceSelect = (service) => {
     setSelectedService(service);
     setAutoRotate(false);
-    
-    // Resume auto-rotation after 8 seconds of inactivity
-    setTimeout(() => {
-      setAutoRotate(true);
-    }, 8000);
+    setTimeout(() => setAutoRotate(true), 8000);
   };
 
   return (
-    <div className="min-h-screen font-inter-tight flex flex-col items-center py-16 px-4 sm:px-8 bg-transparent relative overflow-hidden">
-      
-      {/* Custom CSS Animations */}
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-          0%, 100% { opacity: 0.2; transform: scale(1); }
-          50% { opacity: 0.4; transform: scale(1.02); }
-        }
-        @keyframes pulseText {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.8; }
-        }
-        .animate-fadeIn { animation: fadeIn 0.5s ease-out; }
-        .animate-pulse-slow { animation: pulse 3s ease-in-out infinite; }
-        .animate-pulse-text { animation: pulseText 2s ease-in-out infinite; }
-      `}</style>
-
-      {/* Radial Service Selector */}
-      <RadialSelector
-        services={services}
-        selectedService={selectedService}
-        setSelectedService={handleServiceSelect}
-        rotationOffset={rotationOffset}
-      />
-      
-      {/* Service Details Panel */}
-      <ServiceDetail service={selectedService} />
-      
+    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white font-inter-tight overflow-hidden">
+      {!isMobile ? (
+        <RadialSelector
+          services={services}
+          selectedService={selectedService}
+          setSelectedService={handleServiceSelect}
+          rotationOffset={rotationOffset}
+        />
+      ) : (
+        <MobileServices
+          services={services}
+          selectedService={selectedService}
+          setSelectedService={handleServiceSelect}
+        />
+      )}
     </div>
   );
 };

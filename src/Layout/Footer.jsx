@@ -145,7 +145,6 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="max-w-7xl mx-auto px-6 mt-16 pt-6 text-center text-gray-400 text-sm relative z-10">
-        <p>© 2025 Thirdvizion Labs. All rights reserved.</p>
       </div>
     </section>
   );
