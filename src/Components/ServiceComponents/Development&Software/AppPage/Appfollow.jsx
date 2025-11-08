@@ -146,53 +146,7 @@ const App = () => {
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
       
       {/* Header Section */}
-      <motion.header 
-        className="relative py-32 px-4 sm:px-6 md:px-10 lg:px-16 border-b border-[#ff8904]/20"
-        variants={headerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        style={{
-          background: 'linear-gradient(135deg, #000000 0%, #1a0f00 50%, #000000 100%)',
-        }}
-      >
-        {/* Background elements */}
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#ff8904]/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#ff7300]/5 rounded-full blur-3xl animate-pulse delay-1000" />
-        
-        {/* <div className="relative max-w-7xl mt-50 mb-20 mx-auto text-center z-10">
-          <motion.h1 
-            variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-8xl font-inter-tight font-extrabold tracking-tighter text-[#ff8904] leading-tight mb-6"
-          >
-            How We Build
-          </motion.h1>
-          
-          <motion.h2 
-            variants={itemVariants}
-            className="text-4xl md:text-6xl font-inter-tight font-bold tracking-tight text-white leading-tight mb-8"
-          >
-            Your Mobile 
-            <span className="text-[#ff8904] ml-4">App</span>
-          </motion.h2>
-          
-          <motion.p 
-            variants={itemVariants}
-            className="text-xl text-gray-300 leading-relaxed font-medium mb-12 max-w-3xl mx-auto"
-          >
-            Mobile App Development with us is like sculpting dreams into code. We blend your concepts, infuse technological magic, and voila – an app that's your digital masterpiece, poised to dazzle the mobile world!
-          </motion.p>
-          
-          <motion.button 
-            variants={itemVariants}
-            className="font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl border border-[#ff8904]/40 px-8 py-4 font-medium tracking-wide text-lg shadow-lg backdrop-blur-md transition-all duration-500 hover:scale-105 bg-black text-[#ff8904] shadow-[0_0_15px_rgba(255,137,4,0.3)] hover:shadow-[0_0_25px_rgba(255,137,4,0.5)]"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Work With Us
-          </motion.button>
-        </div> */}
-      </motion.header>
+    
 
       {/* Process Section */}
       <main className="relative bg-black py-20 px-4 sm:px-6 md:px-10 lg:px-16">
