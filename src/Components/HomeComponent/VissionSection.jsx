@@ -188,14 +188,14 @@ const MissionVision = () => {
 
         <h2
           ref={visionHeadingRef}
-          className="text-6xl ml-76 font-bold tracking-wider mb-6 flex text-[#FFC016]"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl ml-76 font-bold tracking-wider mb-6 flex text-[#FFC016]"
           style={{ fontFamily: "Outfit, sans-serif" }}
         >
           VISION
         </h2>
 
         <div ref={visionTextRef}>
-          <p className="text-gray-300 text-[18px] ml-30 leading-relaxed max-w-4xl">
+          <p className="text-gray-300 text-xs md:text-lg ml-30 leading-relaxed max-w-4xl">
             To become a global leader in immersive 3D and digital innovation,
             creating experiences that inspire, connect, and transform the way
             people and businesses interact with technology.
@@ -218,14 +218,14 @@ const MissionVision = () => {
 
         <h2
           ref={missionHeadingRef}
-          className="text-6xl pt-86 pl-193 font-bold tracking-wider mb-6 flex justify-end md:justify-start text-[#FFC016]"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl pt-86 pl-182 font-bold tracking-wider mb-6 flex justify-end md:justify-start text-[#FFC016]"
           style={{ fontFamily: "Outfit, sans-serif" }}
         >
           MISSION
         </h2>
 
         <div ref={missionTextRef} className="pl-[200px]">
-          <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px]">
+          <p className="text-gray-300 text-xs md:text-lg md:text-lg leading-relaxed pl-[155px]">
             At ThirdVizion Labs, our mission is to empower brands and creators
             with AR, VR, and 3D web technologies that make digital experiences
             more interactive and impactful.

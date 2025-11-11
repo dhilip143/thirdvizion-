@@ -136,13 +136,13 @@ const Industries = () => {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 sm:mb-14 md:mb-16 gap-6 md:gap-8">
         <div className="flex-1">
           <h2
-            className="text-[36px] sm:text-[44px] md:text-6xl lg:text-[54px] font-medium leading-tight font-Outfit"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-Outfit"
           style={{ fontFamily: "Outfit, sans-serif" }} >
             Turning <span className="text-yellow-400">vision</span> into impact.
           </h2>
         </div>
 
-        <div className="flex-1 font-worksans text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl">
+        <div className="flex-1 font-worksans text-gray-300 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8 leading-relaxed max-w-xl">
           We partner with organizations to unlock new opportunities and
           strengthen workforce capabilities. Through technology, training, and
           strategic collaboration, we enable industries to thrive. Our goal is to
@@ -202,7 +202,7 @@ const Industries = () => {
             <div className="relative z-30 flex justify-start">
               <p
                 ref={(el) => (nameTextRefs.current[index] = el)}
-                className="text-lg sm:text-xl md:text-2xl lg:text-[28px] font-outfit text-gray-100"
+                className="text-2xl md:text-3xl lg:text-4xl font-outfit text-gray-100"
               >
                 {industry.name}
               </p>
