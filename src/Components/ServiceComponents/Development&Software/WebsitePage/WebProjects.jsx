@@ -117,7 +117,7 @@ export default function WebProject() {
         viewport={{ amount: 0 }}
       >
         <TextReveal>
-          <motion.h1 className="text-4xl md:text-6xl mt-80 font-extrabold font-inter-tight tracking-wide bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 t bg-clip-text drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]" style={{ fontFamily: "Outfit, sans-serif" }}>
+          <motion.h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-80 font-extrabold font-inter-tight tracking-wide bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 t bg-clip-text drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]" style={{ fontFamily: "Outfit, sans-serif" }}>
             Our Portfolio
           </motion.h1>
         </TextReveal>

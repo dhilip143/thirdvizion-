@@ -251,11 +251,16 @@ const App = () => {
 
   const titleContent = {
     title: (
-      <>
-        Why- <span className="text-[#00d3f3]">Choose Us</span>
-        <br />
-        to Develop Your Web
-      </>
+     <h1
+  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center font-bold text-white"
+  style={{ fontFamily: "Outfit, sans-serif" }}
+>
+  Why - {" "}
+  <span className="text-[#00d3f3]">Choose Us</span>
+  <br />
+  to Develop Your Web
+</h1>
+
     ),
   };
 
@@ -265,7 +270,7 @@ const App = () => {
       <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 md:px-10 lg:px-16 relative z-10">
         <div ref={headerRef} className="text-center max-w-4xl mx-auto mb-20">
           <motion.div ref={titleRef} className="mb-8" initial={false} style={{ fontFamily: "Outfit, sans-serif" }}>
-            <h1 className="text-7xl md:text-8xl font-inter-tight font-extrabold tracking-tight text-white leading-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-inter-tight font-extrabold tracking-tight text-white leading-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
               {React.Children.map(titleContent.title.props.children, (child, index) => (
                 <motion.span key={index} className="inline-block" initial={false}>
                   {child}

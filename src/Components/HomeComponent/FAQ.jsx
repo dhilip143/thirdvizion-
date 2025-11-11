@@ -116,7 +116,7 @@ const FAQHeader = () => (
   <header className="text-center mb-16 relative z-10">
   <h2
   id="faq-heading"
-  className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#ffffff] drop-shadow-lg font-outfit"
+  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-[#ffffff] drop-shadow-lg font-outfit"
  style={{ fontFamily: "Outfit, sans-serif" }}
 >
   Frequently Asked Questions

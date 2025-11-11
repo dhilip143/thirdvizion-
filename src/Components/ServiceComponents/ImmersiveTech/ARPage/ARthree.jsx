@@ -63,7 +63,7 @@ const App = () => {
       <div className="relative z-10 flex flex-col  pt-25 mb-0  pt-4 xs:pt-20 sm:pt-24 md:pt-28 lg:pt-32 xl:pt-36 2xl:pt-40 items-center text-center w-full min-h-screen">
         {/* First Line with Typing Animation */}
         <div className="overflow-hidden mb-0 xs:mb-3 sm:mb-4 md:mb-5 lg:mb-6 px-2 xs:px-3 sm:px-4">
-          <h1 className="text-3xl  md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-sans font-bold leading-tight xs:leading-tight sm:leading-tight md:leading-tight lg:leading-tight animate-gradient-typing"   style={{ fontFamily: "Outfit, sans-serif" }}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-sans font-bold leading-tight xs:leading-tight sm:leading-tight md:leading-tight lg:leading-tight animate-gradient-typing"   style={{ fontFamily: "Outfit, sans-serif" }}>
             Transform your project
           </h1>
         </div>

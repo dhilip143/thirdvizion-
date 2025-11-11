@@ -396,8 +396,8 @@ export default function CRMShowcase() {
         {/* Header */}
         <div className="absolute top-16 text-center">
           
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#FF6467] mb-2"
-            style={{ fontFamily: "Outfit, sans-serif" }}>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-[#FF6467] mb-2"
+                style={{ fontFamily: "Outfit, sans-serif" }} >
             Your CRM Universe
           </h2>
           <p className="text-white/60 text-xs md:text-sm max-w-xl mx-auto mt-1"

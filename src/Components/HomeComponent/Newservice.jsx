@@ -329,7 +329,13 @@ export default function Categories() {
 
   return (
    <>
-   <h1 className=" text-6xl bg-[#000000]  text-yellow-500 text-center upeercase"  style={{ fontFamily: "outfit, sans-serif" }}> SERVICE</h1>
+<h1
+  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl bg-[#000000] text-center uppercase"
+  style={{ fontFamily: "Outfit, sans-serif" }}
+>
+  <span className="text-white">OUR</span>{" "}
+  <span className="text-yellow-500">SERVICE</span>
+</h1>
     <section className="bg-black text-white min-h-screen px-4 sm:px-6 md:px-12 py-12 md:py-16" ref={scrollContainerRef}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
 
@@ -345,7 +351,7 @@ export default function Categories() {
             <div className="flex flex-col">
               <div>
                 <h3 
-                  className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-wider text-yellow-500 mb-4 md:mb-6 uppercase text-center md:text-left"
+                  className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-wider text-yellow-500 mb-4 md:mb-6 uppercase text-center md:text-left"
                   style={{ fontFamily: "Outfit, sans-serif" }}
                 >
                   {activeCategory.title}
@@ -353,7 +359,7 @@ export default function Categories() {
                 <div className="mt-4 md:mt-6 h-px w-full bg-gradient-to-r from-yellow-600 via-yellow-500/80 to-transparent"></div>
                 <div className="relative">
                   <p
-                    className="text-white/90 mt-4 md:mt-6 max-w-md leading-relaxed text-base sm:text-lg md:text-xl font-light tracking-wide text-center md:text-left"
+                    className="text-white/90 mt-4 md:mt-6 max-w-md leading-relaxed text-xs md:text-lg font-light tracking-wide text-center md:text-left"
                     style={{ fontFamily: "Work Sans, sans-serif" }}
                   >
                     {activeCategory.desc.split('. ')[0]}.
@@ -398,14 +404,14 @@ export default function Categories() {
                   className="text-center mb-6"
                 >
                   <h3 
-                    className="text-2xl font-medium tracking-wider text-yellow-500 mb-3 uppercase"
+                    className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-wider text-yellow-500 mb-3 uppercase"
                     style={{ fontFamily: "Outfit, sans-serif" }}
                   >
                     {cap.title}
                   </h3>
                   <div className="h-px w-20 mx-auto bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 mb-4"></div>
                   <p
-                    className="text-white/80 text-sm leading-relaxed font-light tracking-wide max-w-md mx-auto"
+                    className="text-white/80 text-xs md:text-lg leading-relaxed font-light tracking-wide max-w-md mx-auto"
                     style={{ fontFamily: "Work Sans, sans-serif" }}
                   >
                     {cap.desc.split('. ')[0]}.

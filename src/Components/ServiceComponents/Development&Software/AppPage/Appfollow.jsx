@@ -152,7 +152,7 @@ const App = () => {
       <main className="relative bg-black py-20 px-4 sm:px-6 md:px-10 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
-            className="text-4xl md:text-6xl font-inter-tight font-extrabold text-center text-[#ff8904] mb-20 tracking-tight"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl md:text-6xl font-inter-tight font-extrabold text-center text-[#ff8904] mb-20 tracking-tight"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}

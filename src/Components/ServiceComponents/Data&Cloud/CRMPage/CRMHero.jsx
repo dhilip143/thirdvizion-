@@ -69,7 +69,7 @@ export default function CrmHero() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
                 viewport={{ amount: 0 }}
-                className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight sm:leading-tight lg:leading-tight tracking-tight mb-4 lg:mb-6 text-[#FF6467]"
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight sm:leading-tight lg:leading-tight tracking-tight mb-4 lg:mb-6 text-[#FF6467]"
                 style={{ fontFamily: "Outfit, sans-serif" }} >
                 Enterprise-Grade CRM
               </motion.h1>

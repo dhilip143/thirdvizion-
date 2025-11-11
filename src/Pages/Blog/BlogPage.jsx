@@ -159,7 +159,7 @@ const BlogPage = () => {
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <motion.h1
-          className="text-5xl md:text-6xl xl:text-8xl font-bold mb-6"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, type: "spring" }}
@@ -193,7 +193,7 @@ const BlogPage = () => {
               placeholder="Search blogs..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-6 py-4 rounded-2xl bg-gray-900/80 backdrop-blur-sm border-2 border-gray-700 focus:outline-none focus:border-[#FF700A] text-white placeholder-gray-400 transition-all text-lg"
+              className="w-full px-6 py-4 rounded-2xl bg-gray-900/80 backdrop-blur-sm border-2 border-gray-700 focus:outline-none focus:border-[#FF700A] text-white placeholder-gray-400 transition-all text-xs md:text-lg"
               whileFocus={{
                 scale: 1.02,
                 boxShadow: "0 0 30px rgba(255, 112, 10, 0.3)"
@@ -232,7 +232,7 @@ const BlogPage = () => {
               >
                 🔍
               </motion.div>
-              <p className="text-gray-400 text-xl">No blogs found. Try a different search term.</p>
+              <p className="text-gray-400 text-xs md:text-lg">No blogs found. Try a different search term.</p>
             </motion.div>
           ) : (
             filteredBlogs.map((blog, i) => (

@@ -332,7 +332,7 @@ const App = () => {
       <div className="w-full max-w-5xl mt-8 md:mt-16 mb-8 md:mb-16 text-center">
         <h1
           ref={titleRef}
-          className={`text-5xl md:text-8xl font-extrabold pb-2 tracking-tight ${
+          className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold pb-2 tracking-tight ${
             isMobile ? 'opacity-100' : 'opacity-0'
           } font-inter-tight`}
           style={{
@@ -346,7 +346,7 @@ const App = () => {
         </h1>
         <h2
           ref={subtitleRef}
-          className={`text-2xl md:text-6xl font-extrabold text-white flex items-center justify-center mt-2 md:mt-3 ${
+          className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white flex items-center justify-center mt-2 md:mt-3 ${
             isMobile ? 'opacity-100' : 'opacity-0'
           } font-inter-tight`}
         >

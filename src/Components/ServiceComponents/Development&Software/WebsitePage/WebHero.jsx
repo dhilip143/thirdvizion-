@@ -14,8 +14,7 @@ const WebHero = () => {
           viewport={{ amount: 0 }}
           className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] sm:text-xs md:text-sm text-[#00d3f3] backdrop-blur-md"
         >
-          <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-[#00d3f3]" />
-          Cutting-Edge Web Development
+         
         </motion.div>
 
         {/* Main Heading */}
@@ -25,7 +24,7 @@ const WebHero = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
             viewport={{ amount: 1 }}
-            className="mt-6 font-inter-tight text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-[1.15] sm:leading-[1.1] tracking-wide text-white"
+            className="mt-6 font-inter-tight text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] sm:leading-[1.1] tracking-wide text-white"
           style={{ fontFamily: "Outfit, sans-serif" }} >
             The easiest path to build your <span className="text-[#00d3f3]">dream website.</span>
           </motion.h1>

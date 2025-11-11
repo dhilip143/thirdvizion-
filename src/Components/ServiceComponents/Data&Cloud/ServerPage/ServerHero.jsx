@@ -12,7 +12,7 @@ const ServerHero = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl xl:text-6xl font-extrabold mb-6 text-[#05df72] tracking-wide"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xltext-4xl md:text-5xl xl:text-6xl font-extrabold mb-6 text-[#05df72] tracking-wide"
          style={{ fontFamily: "Outfit, sans-serif" }}  >
             Your Servers Managed with Precision
           </motion.h1>

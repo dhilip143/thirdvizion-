@@ -49,7 +49,7 @@ const IAMBenefits = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className="text-7xl md:text-8xl font-inter-tight font-extrabold tracking-tight text-yellow-500 mb-6 leading-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl       font-extrabold tracking-tight text-yellow-500 mb-6 leading-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
             IAM Benefits
           </h2>
           <p className="text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: "work-sans, sans-serif" }}>
@@ -82,7 +82,7 @@ const IAMBenefits = () => {
                 </div>
 
                 {/* Metric */}
-                <div className="text-5xl font-inter-tight font-black text-yellow-500 mb-4 group-hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.3)] transition-all duration-500">
+                <div className="text-2xl md:text-3xl lg:text-4xl font-inter-tight font-black text-yellow-500 mb-4 group-hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.3)] transition-all duration-500">
                   {benefit.metric}
                 </div>
 
@@ -123,25 +123,7 @@ const IAMBenefits = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.button
-            className="font-inter-tight inline-flex items-center justify-center gap-3 rounded-xl border border-yellow-500/40 px-10 py-5 font-medium tracking-wide text-lg shadow-2xl backdrop-blur-xl transition-all duration-500 hover:scale-105 bg-black text-yellow-500 shadow-[0_0_15px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] hover:border-yellow-500/60"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            style={{
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)'
-            }}
-          >
-            <span>Learn More About IAM</span>
-            <svg 
-              className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-500" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </motion.button>
+         
         </motion.div>
       </div>
     </section>

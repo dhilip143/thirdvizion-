@@ -66,7 +66,7 @@ export default function Vrbike() {
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-4xl md:text-6xl font-extrabold mb-10 
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-10 
                      bg-gradient-to-r from-purple-400 via-violet-500 to-indigo-500 
                      bg-clip-text text-transparent 
                      drop-shadow-[0_0_35px_rgba(139,92,246,1)] tracking-wide transform translate-y-10"
@@ -79,7 +79,7 @@ export default function Vrbike() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 1 }}
-          className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl"
+          className="text-xs md:text-lg text-gray-300 mb-12 max-w-3xl"
          style={{ fontFamily: "work-sans, " }} >
          We design realistic VR training solutions that help teams learn safely and effectively. From industrial safety simulations to advanced skill development, our virtual training environments boost performance and reduce risk.
         </motion.p>

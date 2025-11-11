@@ -57,7 +57,7 @@ export default function Partners() {
   Our <span className="text-yellow-500">Clients</span>
 </h2>
 
-      <p className="text-center text-gray-400 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8">
+      <p className="text-center text-white-400 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8">
         Creating impact alongside our valued clients.
       </p>
 

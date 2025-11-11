@@ -91,7 +91,7 @@ export default function Indhu() {
           <p className="text-sm uppercase tracking-wide text-[#FFC016]">
             Our Process
           </p>
-          <h1 className="text-3xl font-semibold text-white">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white">
             how we <span className="text-[#FFC016]">deliver</span> excellence
           </h1>
         </div>
@@ -112,13 +112,13 @@ export default function Indhu() {
                 />
               </div>
               <h2
-                className="text-xl font-semibold text-[#FFC016] mb-2"
+                className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#FFC016] mb-2"
                 style={{ fontFamily: "Outfit, sans-serif" }}
               >
                 {c.label}
               </h2>
               <p
-                className="text-sm text-gray-300 leading-relaxed"
+                className="text-xs md:text-lg text-gray-300 leading-relaxed"
                 style={{ fontFamily: "Work Sans, sans-serif" }}
               >
                 {c.description}
@@ -234,7 +234,7 @@ export default function Indhu() {
           Our Process
         </p>
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight text-[#ffffff] capitalize"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight text-[#ffffff] capitalize"
           style={{ textShadow: "none" }}
         >
           how we <span className="text-[#FFC016]">deliver</span> excellence

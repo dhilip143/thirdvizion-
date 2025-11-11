@@ -78,7 +78,7 @@ const AppService = () => {
           <TextReveal>
             <motion.h2
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-6 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-6 leading-tight"
             >
               Our Services
             </motion.h2>

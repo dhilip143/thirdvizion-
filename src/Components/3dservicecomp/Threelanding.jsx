@@ -231,8 +231,8 @@ export default function Threelanding() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
           {/* Left column — text */}
           <div className="w-full lg:w-1/2">
-            <div className="mb-6 text-sm uppercase tracking-widest text-pink-400"   style={{ fontFamily: "Outfit, sans-serif" }}>ThirdVizion 3D Service</div>
-            <h1 ref={heroTextRef} className="text-5xl md:text-7xl leading-tight font-extrabold tracking-tight"   style={{ fontFamily: "Outfit, sans-serif" }}>
+            <div className="mb-6 text-sm uppercase tracking-widest text-pink-400 "   style={{ fontFamily: "Outfit, sans-serif" }}>ThirdVizion 3D Service</div>
+            <h1 ref={heroTextRef} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight font-extrabold tracking-tight"   style={{ fontFamily: "Outfit, sans-serif" }}>
               <span className="block overflow-hidden">
                 <span className="word block transform translate-y-0">ThirdVizion</span>
               </span>
@@ -378,7 +378,7 @@ useEffect(() => {
       <section className="relative z-20 py-20">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-4xl font-extrabold">Work with ThirdVizion</h2>
+            <h2 className="text-4xl font-extrabold"style={{ fontFamily: "Outfit, sans-serif" }}>Work with ThirdVizion</h2>
             <p className="mt-4 text-slate-300">Send us references, target platform and budgets — we'll reply with a scoped plan and asset pipeline.</p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <button className="cta-btn px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-black font-semibold shadow-2xl">Start a project</button>

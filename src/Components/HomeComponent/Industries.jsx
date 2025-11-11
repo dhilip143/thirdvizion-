@@ -30,7 +30,7 @@ const Industries = () => {
   const nameTextRefs = useRef([]);
   const imageOverlayRefs = useRef([]);
 
-  const hoverXValues = ["-262%", "-205%", "-205%", "-145%"];
+  const hoverXValues = ["-172%", "-125%", "-125%", "-85%"];
 
   useGSAP(() => {
     gsap.from("#industry-item", {

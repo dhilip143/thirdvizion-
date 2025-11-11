@@ -32,10 +32,10 @@ export default function OurTeam() {
     <section className="bg-black text-white relative min-h-screen py-20 flex flex-col items-center justify-center">
       {/* Text Section */}
       <div className="text-center mb-16 px-6 max-w-3xl">
-        <h2 className="text-yellow-400 text-3xl md:text-5xl font-bold mb-6"  style={{ fontFamily: "Outfit, sans-serif" }}>
+        <h2 className="text-yellow-400 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6"  style={{ fontFamily: "Outfit, sans-serif" }}>
           OUR TEAM
         </h2>
-        <p className="text-white text-base md:text-lg leading-relaxed">
+        <p className="text-white text-base text-xs md:text-lg leading-relaxed">
           Meet the passionate innovators who power ThirdVizion with creativity
           and expertise. Our team blends technology and vision to deliver
           solutions that inspire and transform.

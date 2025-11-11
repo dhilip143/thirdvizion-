@@ -31,7 +31,7 @@ const WebDesignScroll = () => {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ amount: 0 }}
-            className="w-full text-white text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 "
+            className="w-full text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xlfont-bold leading-tight mb-6 "
           style={{ fontFamily: "Outfit, sans-serif" }} >
             Stunning Designs for <span className="text-[#00d3f3]">Modern Web</span>
           </motion.h1>
