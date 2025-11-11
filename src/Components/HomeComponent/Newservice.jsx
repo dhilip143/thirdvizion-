@@ -328,6 +328,8 @@ export default function Categories() {
   };
 
   return (
+   <>
+   <h1 className=" text-6xl bg-[#000000]  text-yellow-500 text-center upeercase"  style={{ fontFamily: "outfit, sans-serif" }}> SERVICE</h1>
     <section className="bg-black text-white min-h-screen px-4 sm:px-6 md:px-12 py-12 md:py-16" ref={scrollContainerRef}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
 
@@ -566,5 +568,6 @@ export default function Categories() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }
