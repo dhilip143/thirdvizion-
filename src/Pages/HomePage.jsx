@@ -10,7 +10,7 @@ import Partners from "/src/Components/AboutComponents/Partners.jsx";
 import Testimonial from "/src/Components/HomeComponent/Testimonial.jsx";
 import FAQ from "/src/Components/HomeComponent/FAQ.jsx";
 import ContactSection from "/src/Components/HomeComponent/ContactSection.jsx";
-import Empover from "/src/Components/HomeComponent/Empover.jsx";
+
 
 export default function Home() {
   // useEffect(() => {
