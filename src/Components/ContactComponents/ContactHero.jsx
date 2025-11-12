@@ -9,12 +9,15 @@ export default function ContactHero() {
   const headerRef = useRef(null);
   const wrapperRef = useRef(null);
   const imgHolderRef = useRef(null);
+  const mobileHeaderRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const header = headerRef.current;
       const wrapper = wrapperRef.current;
       const imgHolder = imgHolderRef.current;
+      const mobileHeader = mobileHeaderRef.current;
+      
       if (!header || !wrapper || !imgHolder) return;
 
       const contactText = header.querySelector(".contact-text");
@@ -23,7 +26,7 @@ export default function ContactHero() {
       const innerImg = imgHolder.querySelector("img");
 
       ScrollTrigger.matchMedia({
-        // Desktop
+        // Desktop - Keep original animations
         "(min-width: 1024px)": () => {
           if (contactText) {
             gsap.to(contactText, {
@@ -84,62 +87,20 @@ export default function ContactHero() {
           }
         },
 
-        // Mobile
+        // Mobile - Simple scroll away animation
         "(max-width: 1023px)": () => {
-          if (contactText) {
-            gsap.to(contactText, {
-              y: -150,
+          // Mobile header scrolls away normally
+          if (mobileHeader) {
+            gsap.to(mobileHeader, {
               opacity: 0,
-              ease: "power2.inOut",
-              scrollTrigger: { trigger: wrapper, start: "top top", end: "+=100%", scrub: true },
-            });
-          }
-          if (getText) {
-            gsap.to(getText, {
-              x: -window.innerWidth,
-              scale: 2,
-              opacity: 0,
-              ease: "power2.inOut",
-              scrollTrigger: { trigger: wrapper, start: "top top", end: "+=100%", scrub: true },
-            });
-          }
-          if (touchText) {
-            gsap.to(touchText, {
-              x: window.innerWidth,
-              scale: 2,
-              opacity: 0,
-              ease: "power2.inOut",
-              scrollTrigger: { trigger: wrapper, start: "top top", end: "+=100%", scrub: true },
-            });
-          }
-
-          gsap.fromTo(
-            imgHolder,
-            { scale: 0, rotate: 0, clipPath: "polygon(40% 30%, 60% 30%, 60% 70%, 40% 70%)" },
-            {
-              scale: 1,
-              rotate: 0,
-              clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-              ease: "power2.inOut",
+              y: -50,
+              ease: "power2.out",
               scrollTrigger: {
                 trigger: wrapper,
                 start: "top top",
-                end: "bottom center",
+                end: "top+=100 top",
                 scrub: true,
-                pin: imgHolder,
-                pinSpacing: true,
-                anticipatePin: 1,
               },
-            }
-          );
-
-          if (innerImg) {
-            gsap.to(innerImg, {
-              scale: 0.9,
-              y: 30,
-              borderRadius: "2rem",
-              ease: "power2.inOut",
-              scrollTrigger: { trigger: wrapper, start: "top top", end: "bottom bottom", scrub: true },
             });
           }
         },
@@ -157,10 +118,10 @@ export default function ContactHero() {
 
   return (
     <div className="relative w-full min-h-screen bg-black font-contrail overflow-hidden text-white">
-      {/* Header text */}
+      {/* Desktop Header - Fixed position for laptops */}
       <div
         ref={headerRef}
-        className="fixed md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col justify-center items-center w-full z-30 pointer-events-none"
+        className="hidden lg:flex fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col justify-center items-center w-full z-30 pointer-events-none"
         aria-hidden
       >
         <div className="contact-text text-md xl:text-2xl mb-4 font-semibold text-center uppercase font-[Inter_Tight]"  style={{ fontFamily: "Outfit, sans-serif" }}>
@@ -172,7 +133,7 @@ export default function ContactHero() {
             style={{
               backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%,  #4facfe 100%)"
             }}
-              >
+          >
             Get in
           </div>
           <div 
@@ -186,17 +147,59 @@ export default function ContactHero() {
         </div>
       </div>
 
-      {/* Scroll wrapper */}
-      <div ref={wrapperRef} className="w-full relative min-h-[300vh]">
-        <div className="sticky top-0 w-full min-h-screen z-10">
-          <div
-            ref={imgHolderRef}
-            className="sticky top-0 w-full h-screen bg-black flex items-center justify-center [clip-path:polygon(37.5%_20%,62.5%_20%,62.5%_80%,37.5%_80%)]"
+      {/* Mobile Header - Normal scroll position (not fixed) */}
+      <div 
+        ref={mobileHeaderRef}
+        className="lg:hidden relative z-30 w-full pt-20 pb-10 flex flex-col justify-center items-center px-4"
+        style={{ fontFamily: "Outfit, sans-serif" }}
+      >
+        <div className="text-lg mb-4 font-semibold text-center uppercase">
+          Contact
+        </div>
+        <div className="flex flex-col items-center gap-1">
+          <div 
+            className="text-5xl font-bold uppercase bg-clip-text text-transparent text-center"
+            style={{
+              backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%,  #4facfe 100%)"
+            }}
           >
+            Get in
+          </div>
+          <div 
+            className="text-5xl font-bold uppercase bg-clip-text text-transparent text-center"
+            style={{
+              backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)"
+            }}
+          >
+            Touch
+          </div>
+        </div>
+      </div>
+
+      <div ref={wrapperRef} className="w-full relative">
+        {/* Desktop scroll section */}
+        <div className="hidden lg:block min-h-[300vh]">
+          <div className="sticky top-0 w-full min-h-screen z-10">
+            <div
+              ref={imgHolderRef}
+              className="sticky top-0 w-full h-screen bg-black flex items-center justify-center [clip-path:polygon(37.5%_20%,62.5%_20%,62.5%_80%,37.5%_80%)]"
+            >
+              <img
+                src={ContactHeroimg}
+                alt="Contact Visual"
+                className="w-full h-[50vh] md:h-[60vh] lg:h-[80vh] xl:h-full object-cover scale-[2]"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile simple section */}
+        <div className="lg:hidden w-full bg-black flex items-center justify-center px-4 pb-20">
+          <div className="w-full max-w-md">
             <img
               src={ContactHeroimg}
               alt="Contact Visual"
-              className="w-full h-[50vh] md:h-[60vh] lg:h-[80vh] xl:h-full object-cover scale-[2]"
+              className="w-full h-auto object-cover rounded-2xl shadow-lg"
             />
           </div>
         </div>

@@ -1,3 +1,4 @@
+// src/components/Industries.jsx
 import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -193,7 +194,7 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.2}`,
+        end: () => `+=${svg.scrollWidth * 3.8}`,
         scrub: true,
         pin: true,
         anticipatePin: 1,
@@ -207,7 +208,7 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.2}`,
+        end: () => `+=${svg.scrollWidth * 3.8}`,
         scrub: true,
         invalidateOnRefresh: true,
       },
