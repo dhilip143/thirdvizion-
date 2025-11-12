@@ -17,6 +17,7 @@
     "@react-three/fiber": "^9.3.0",
     "@react-three/postprocessing": "^3.0.4",
     "@react-three/xr": "^6.6.26",
+    "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.1.11",
     "aframe": "^1.7.1",
     "aos": "^2.3.4",

@@ -1,42 +1,53 @@
+import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
 
 import Hero from "/src/Components/HomeComponent/HeroSection/HeroSection.jsx";
-
-// import Service from "/src/Components/HomeComponent/ServiceSection.jsx";
-// import Categories from "/src/Components/HomeComponent/Categories";
-import VisionMission from "/src/Components/HomeComponent/VissionSection";
-// import Hovercard from "/src/Components/HomeComponent/HoverCard.jsx";
-import FAQ from "/src/Components/HomeComponent/FAQ.jsx";
-import Testimonial from "/src/Components/HomeComponent/Testimonial.jsx";
+import VisionMission from "/src/Components/HomeComponent/VissionSection.jsx";
 import Industries from "/src/Components/HomeComponent/Industries.jsx";
-import ContactSection from "/src/Components/HomeComponent/ContactSection.jsx";
-import Empover from "../Components/HomeComponent/Empover";
-import Indhu from "../Components/HomeComponent/indhu";
+import Newservice from "/src/Components/HomeComponent/Newservice.jsx";
+import Indhu from "/src/Components/HomeComponent/Indhu.jsx";
 import Partners from "/src/Components/AboutComponents/Partners.jsx";
-import Newservice from "../Components/HomeComponent/Newservice";
-
+import Testimonial from "/src/Components/HomeComponent/Testimonial.jsx";
+import FAQ from "/src/Components/HomeComponent/FAQ.jsx";
+import ContactSection from "/src/Components/HomeComponent/ContactSection.jsx";
+import Empover from "/src/Components/HomeComponent/Empover.jsx";
 
 export default function Home() {
+  useEffect(() => {
+    // Initialize Lenis for smooth scrolling
+    const lenis = new Lenis({
+      duration: 1.2, // adjust scroll speed
+      smooth: true,
+      direction: "vertical",
+      gestureDirection: "vertical",
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
+
+    // Request animation frame loop
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Cleanup on unmount
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
     <>
-
       <Hero />
-     
-       <VisionMission />
-     
+      <VisionMission />
       <Industries />
-     
-      <Newservice/>
-       
-     <Indhu/>
-    
-     <Partners className="bg-black" />
-     <Testimonial />
-     
+      <Newservice />
+      <Indhu />
+      <Partners className="bg-black" />
+      <Testimonial />
       <FAQ />
-
       <div className="relative">
-       
-
         <div className="relative z-20 -mt-10">
           <ContactSection />
         </div>

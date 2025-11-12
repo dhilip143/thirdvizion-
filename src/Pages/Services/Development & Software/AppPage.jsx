@@ -1,28 +1,50 @@
-import AppHero from "/src/Components/ServiceComponents/Development&Software/AppPage/AppHero";
-import AppAbout from "/src/Components/ServiceComponents/Development&Software/AppPage/AppAbout";
-import Appc from "/src/Components/ServiceComponents/Development&Software/AppPage/Appc";
-import AppService from "/src/Components/ServiceComponents/Development&Software/AppPage/AppService";
+import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
 
-import AppCTA from "/src/Components/ServiceComponents/Development&Software/AppPage/AppCTA";
-import Appfollow from "/src/Components/ServiceComponents/Development&Software/AppPage/Appfollow";
-
-
-import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx"
+import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
+import AppHero from "/src/Components/ServiceComponents/Development&Software/AppPage/AppHero.jsx";
+import AppAbout from "/src/Components/ServiceComponents/Development&Software/AppPage/AppAbout.jsx";
+import Appc from "/src/Components/ServiceComponents/Development&Software/AppPage/Appc.jsx";
+import AppService from "/src/Components/ServiceComponents/Development&Software/AppPage/AppService.jsx";
+import AppCTA from "/src/Components/ServiceComponents/Development&Software/AppPage/AppCTA.jsx";
+import Appfollow from "/src/Components/ServiceComponents/Development&Software/AppPage/Appfollow.jsx";
 
 function AppPage() {
+  useEffect(() => {
+    // Initialize Lenis smooth scrolling for this page
+    const lenis = new Lenis({
+      duration: 1.2,
+      smooth: true,
+      direction: "vertical",
+      gestureDirection: "vertical",
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
+
+    // Animation frame loop
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Cleanup on component unmount
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
-    <>
-      <div className="bg-black">
-        <SparkleBg count={20} color="255, 137, 4" speed={0.8} />
-        <AppHero />
-        <AppAbout />
-        <Appc/>
-        <Appfollow/>
-        <AppService />
-     
-        <AppCTA />
-      </div>
-    </>
+    <div className="bg-black relative overflow-hidden">
+      <SparkleBg count={20} color="255, 137, 4" speed={0.8} />
+      <AppHero />
+      <AppAbout />
+      <Appc />
+      <Appfollow />
+      <AppService />
+      <AppCTA />
+    </div>
   );
 }
+
 export default AppPage;
