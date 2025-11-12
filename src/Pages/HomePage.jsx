@@ -56,7 +56,7 @@ export default function Home() {
       <VisionMission />
       <Industries />
       <Newservice />
-      {/* <Indhu /> */}
+      <Indhu />
       <Partners className="bg-black" />
       <Testimonial />
       <FAQ />
