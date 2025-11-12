@@ -218,7 +218,8 @@ const MissionVision = () => {
 
         <h2
           ref={missionHeadingRef}
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl pt-86 pl-182 font-bold tracking-wider mb-6 flex justify-end md:justify-start text-[#FFC016]"
+className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl pt-86 font-bold tracking-wider mb-6 flex justify-end md:justify-start text-[#FFC016]
+pl-10 md:pl-24 lg:pl-70 xl:pl-182"
           style={{ fontFamily: "Outfit, sans-serif" }}
         >
           MISSION

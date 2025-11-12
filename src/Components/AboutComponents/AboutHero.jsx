@@ -9,12 +9,15 @@ export default function AboutHero() {
   const headerRef = useRef(null);
   const wrapperRef = useRef(null);
   const imgHolderRef = useRef(null);
+  const mobileHeaderRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const header = headerRef.current;
       const wrapper = wrapperRef.current;
       const imgHolder = imgHolderRef.current;
+      const mobileHeader = mobileHeaderRef.current;
+      
       if (!header || !wrapper || !imgHolder) return;
 
       const aboutText = header.querySelector(".about-text");
@@ -108,84 +111,16 @@ export default function AboutHero() {
         },
 
         "(max-width: 1023px)": () => {
-          if (aboutText) {
-            gsap.to(aboutText, {
-              y: -200,
+          // Mobile header scrolls away normally
+          if (mobileHeader) {
+            gsap.to(mobileHeader, {
               opacity: 0,
-              ease: "power2.inOut",
+              y: -50,
+              ease: "power2.out",
               scrollTrigger: {
                 trigger: wrapper,
                 start: "top top",
-                end: "+=100%",
-                scrub: true,
-              },
-            });
-          }
-
-          if (thirdText) {
-            gsap.to(thirdText, {
-              x: -window.innerWidth,
-              scale: 2,
-              opacity: 0,
-              ease: "power2.inOut",
-              scrollTrigger: {
-                trigger: wrapper,
-                start: "top top",
-                end: "+=100%",
-                scrub: true,
-              },
-            });
-          }
-
-          if (vizionText) {
-            gsap.to(vizionText, {
-              x: window.innerWidth,
-              scale: 2,
-              opacity: 0,
-              ease: "power2.inOut",
-              scrollTrigger: {
-                trigger: wrapper,
-                start: "top top",
-                end: "+=100%",
-                scrub: true,
-              },
-            });
-          }
-
-          gsap.fromTo(
-            imgHolder,
-            {
-              scale: 0,
-              rotate: 0,
-              clipPath: "polygon(40% 30%, 60% 30%, 60% 70%, 40% 70%)",
-            },
-            {
-              scale: 1,
-              rotate: 0,
-              clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-              ease: "power2.inOut",
-              scrollTrigger: {
-                trigger: wrapper,
-                start: "top top",
-                end: "bottom center",
-                scrub: true,
-                pin: imgHolder,
-                pinSpacing: true,
-                anticipatePin: 1,
-              },
-            }
-          );
-
-          if (innerImg) {
-            gsap.to(innerImg, {
-              scale: 0.9,
-              y: 30,
-              borderRadius: "2rem",
-              ease: "power2.inOut",
-              scrollTrigger: {
-                trigger: wrapper,
-                start: "top top",
-                end: "bottom bottom",
+                end: "top+=100 top",
                 scrub: true,
               },
             });
@@ -207,10 +142,12 @@ export default function AboutHero() {
   return (
     <div className="relative w-full min-h-screen bg-black overflow-hidden">
 
+      {/* Desktop Header - Fixed position for laptops */}
       <div
         ref={headerRef}
-        className="fixed md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex flex-col justify-center items-center w-full z-30 pointer-events-none"
-      style={{ fontFamily: "Outfit, sans-serif" }}   >
+        className="hidden lg:flex fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col justify-center items-center w-full z-30 pointer-events-none"
+        style={{ fontFamily: "Outfit, sans-serif" }}
+      >
         <div className="about-text font-inter-tight text-md xl:text-2xl md:mr-6 xl:mr-10 -mb-5 md:-mb-8 xl:-mb-10 font-medium text-white text-center uppercase">
           About
         </div>
@@ -225,16 +162,50 @@ export default function AboutHero() {
         </div>
       </div>
 
-      <div ref={wrapperRef} className="w-full relative min-h-[300vh]">
-        <div className="sticky top-0 w-full min-h-screen z-10">
-          <div
-            ref={imgHolderRef}
-            className="sticky top-0 w-full h-screen bg-black flex items-center justify-center"
-          >
+      {/* Mobile Header - Normal scroll position (not fixed) */}
+      <div 
+        ref={mobileHeaderRef}
+        className="lg:hidden relative z-30 w-full pt-20 pb-10 flex flex-col justify-center items-center px-4"
+        style={{ fontFamily: "Outfit, sans-serif" }}
+      >
+        <div className="font-inter-tight text-lg mb-3 font-medium text-white text-center uppercase">
+          About
+        </div>
+
+        <div className="flex flex-col items-center gap-0">
+          <div className="font-inter-tight text-6xl font-bold uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent text-center">
+            Third
+          </div>
+          <div className="font-inter-tight text-6xl font-bold uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent text-center">
+            Vizion
+          </div>
+        </div>
+      </div>
+
+      <div ref={wrapperRef} className="w-full relative">
+        {/* Desktop scroll section */}
+        <div className="hidden lg:block min-h-[300vh]">
+          <div className="sticky top-0 w-full min-h-screen z-10">
+            <div
+              ref={imgHolderRef}
+              className="sticky top-0 w-full h-screen bg-black flex items-center justify-center"
+            >
+              <img
+                src={threed}
+                alt="3d visual"
+                className="w-full h-[50vh] md:h-[60vh] lg:h-[80vh] xl:h-full object-cover scale-[2]"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile simple section */}
+        <div className="lg:hidden w-full bg-black flex items-center justify-center px-4 pb-20">
+          <div className="w-full max-w-md">
             <img
               src={threed}
               alt="3d visual"
-              className="w-full h-[50vh] md:h-[60vh] lg:h-[80vh] xl:h-full object-cover scale-[2]"
+              className="w-full h-auto object-cover rounded-2xl shadow-lg"
             />
           </div>
         </div>

@@ -7,18 +7,10 @@ const WebHero = () => {
     <section className="relative isolate pt-40 md:pt-0 md:min-h-screen flex items-center justify-center overflow-hidden text-white px-4 sm:px-6 md:px-8">
       <div className="relative z-10 mx-auto max-w-6xl text-center">
         {/* Badge / Tag */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          viewport={{ amount: 0 }}
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] sm:text-xs md:text-sm text-[#00d3f3] backdrop-blur-md"
-        >
-         
-        </motion.div>
+     
 
         {/* Main Heading */}
-        <TextReveal>
+        
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -28,7 +20,7 @@ const WebHero = () => {
           style={{ fontFamily: "Outfit, sans-serif" }} >
             The easiest path to build your <span className="text-[#00d3f3]">dream website.</span>
           </motion.h1>
-        </TextReveal>
+      
 
         {/* Subtitle */}
         <motion.p
