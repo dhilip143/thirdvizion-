@@ -12,7 +12,7 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight font-inter-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-inter-tight">
           <span className="bg-gradient-to-r from-[#FDC700] to-[#ffd84c] bg-clip-text text-transparent block" style={{ fontFamily: "Outfit, sans-serif" }}>
             Empower Your Business
           </span>

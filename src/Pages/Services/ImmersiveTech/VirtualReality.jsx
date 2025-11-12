@@ -16,7 +16,7 @@ function VirtualReality() {
       <VrLanding />
      
       {/* <Vrtwo /> */}
-      <Vrbike />
+      < Vrbike />
       <Vrsol />
     </div>
   );

@@ -160,7 +160,7 @@ const ARServices = () => {
         
         {/* Enhanced Header Section */}
         <header className="text-center mt-0 mb-15">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semimedium text-white mb-6 leading-tight">
             We Do <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent" style={{ fontFamily: "Outfit, sans-serif" }} >AR Solutions</span> For All Platforms 
           </h1>
           

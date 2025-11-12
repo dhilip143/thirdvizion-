@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import vid from "/src/assets/Crm/v1.mp4";
+import vid from "/src/assets/Crm/1.9.1_CRM.mp4";
 
 function CrmVideo() {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -35,7 +35,7 @@ function CrmVideo() {
                     <div className="w-2 h-2 bg-[#FF6467] rounded-full animate-pulse"></div>
                     <span className="text-sm font-medium text-[#FF8E9E] font-sans"  style={{ fontFamily: "Outfit, sans-serif" }} >CRM PLATFORM OVERVIEW</span>
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 font-sans">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semiboldmb-6 font-sans">
                     <span className="bg-gradient-to-r from-[#FF6467] via-[#FF8E9E] to-[#FF6467] bg-clip-text text-transparent bg-size-200 animate-gradient" style={{ fontFamily: "Outfit, sans-serif" }} >
                         Understanding CRM Software
                     </span>

@@ -119,7 +119,7 @@ const ERPFailureReasons = () => {
               : 'opacity-0 translate-y-10'
           }`}
         >
-          <h3 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.05] tracking-tight bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent mb-6" style={{ fontFamily: "Outfit, sans-serif" }}>
+          <h3 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-font-semibold leading-[1.05] tracking-tight bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent mb-6" style={{ fontFamily: "Outfit, sans-serif" }}>
             Why Traditional ERP Projects Often Fail?
           </h3>
           <p className="text-[#c7cbff] text-lg leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: "work-sans, sans-serif" }}>

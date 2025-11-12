@@ -150,7 +150,7 @@ export default function CrmHero() {
               </div>
             </div>
 
-            <div className="mt-4 sm:mt-5 text-xs text-white/70">
+            <div className="mt-4 sm:mt-5 text-xs text-white/70 font-semibold">
               Enterprise-ready CRM: secure, scalable, extensible.
             </div>
           </div>
