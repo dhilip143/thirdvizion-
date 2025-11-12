@@ -2,16 +2,12 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Layout Components
-import Header from "/src/Layout/Header.jsx";
-import Footer from "/src/Layout/Footer.jsx";
-import ScrollToTop from "/src/Layout/ScrollToTop.jsx";
+import ScrollToTop from "/src/Layout/ScrollToTop";
+import Header from "/src/Layout/Header";
+import Footer from "/src/Layout/Footer";
 
-// Pages
+// pages (same as before)
 import HomePage from "/src/Pages/HomePage.jsx";
 import AboutPage from "/src/Pages/AboutPage.jsx";
 import ContactPage from "/src/Pages/ContactPage.jsx";
@@ -28,26 +24,27 @@ import WebsitePage from "/src/Pages/Services/Development & Software/WebsitePage.
 import AppPage from "/src/Pages/Services/Development & Software/AppPage.jsx";
 import GamePage from "/src/Pages/Services/Development & Software/GamePage.jsx";
 
-// Register GSAP plugin once
-gsap.registerPlugin(ScrollTrigger);
-
 function AnimatedRoutes() {
   const location = useLocation();
+  const refreshCount = useRefreshOnNavigate();
 
   useEffect(() => {
-    // Refresh ScrollTrigger whenever route changes
+    // Optional GSAP refresh on every route
     if (window.ScrollTrigger) {
-      ScrollTrigger.refresh(true);
+      window.ScrollTrigger.refresh(true);
     }
-  }, [location.pathname]);
+  }, [refreshCount]);
+
+  // Create stable key that doesn't change during exit animations
+  const routeKey = location.pathname;
 
   return (
     <AnimatePresence
       mode="wait"
       onExitComplete={() => {
-        // After exit animation completes, ensure triggers are refreshed
+        // This will also trigger ScrollToTop’s Lenis reset
         if (window.ScrollTrigger) {
-          ScrollTrigger.refresh(true);
+          window.ScrollTrigger.refresh(true);
         }
       }}
     >
@@ -75,6 +72,24 @@ function AnimatedRoutes() {
         <Route path="/game_development" element={<GamePage />} />
       </Routes>
     </AnimatePresence>
+  );
+}
+
+// Wrapper component to handle internal refresh without breaking AnimatePresence
+function PageWrapper({ children, refreshCount }) {
+  const [internalKey, setInternalKey] = useState(0);
+
+  useEffect(() => {
+    if (refreshCount > 0) {
+      // Update internal key to force re-render of page content
+      setInternalKey(prev => prev + 1);
+    }
+  }, [refreshCount]);
+
+  return (
+    <div key={internalKey} className="page-wrapper">
+      {children}
+    </div>
   );
 }
 
@@ -106,7 +121,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <ScrollToTop /> {/* ensures no flicker between pages */}
+      <ScrollToTop />
       <AnimatedRoutes />
       <Footer />
     </BrowserRouter>
