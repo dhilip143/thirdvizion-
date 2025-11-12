@@ -10,29 +10,7 @@ import AppCTA from "/src/Components/ServiceComponents/Development&Software/AppPa
 import Appfollow from "/src/Components/ServiceComponents/Development&Software/AppPage/Appfollow.jsx";
 
 function AppPage() {
-  useEffect(() => {
-    // Initialize Lenis smooth scrolling for this page
-    const lenis = new Lenis({
-      duration: 1.2,
-      smooth: true,
-      direction: "vertical",
-      gestureDirection: "vertical",
-      smoothTouch: false,
-      touchMultiplier: 2,
-    });
 
-    // Animation frame loop
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // Cleanup on component unmount
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
 
   return (
     <div className="bg-black relative overflow-hidden">

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Sparkles,
   BadgeCheck,
@@ -9,54 +9,16 @@ import {
   Workflow,
   Gamepad2,
 } from "lucide-react";
-import TextReveal from "/src/Hooks/TextReveal.jsx";
 import { Link } from "react-router-dom";
-
-// const tools = [
-//   { name: "Three.js", tag: "WebGL", hint: "3D in browser" },
-//   { name: "React", tag: "JSX", hint: "Component-driven UI" },
-//   { name: "Phaser", tag: "JS", hint: "2D game engine" },
-//   { name: "Babylon.js", tag: "WebGL", hint: "Realtime rendering" },
-//   { name: "Webpack/Vite", tag: "Tooling", hint: "Fast dev builds" },
-//   { name: "TypeScript", tag: "Typed JS", hint: "Safer code" },
-//   { name: "Blender", tag: "3D", hint: "Modeling & animation" },
-//   { name: "Tiled", tag: "Level", hint: "Tilemap editor" },
-//   { name: "A-Frame", tag: "VR", hint: "WebXR scenes" },
-//   { name: "Playwright", tag: "Testing", hint: "E2E automation" },
-//   { name: "GitHub Actions", tag: "CI", hint: "Auto builds & deploys" },
-//   { name: "Sentry", tag: "Monitoring", hint: "Crash reporting" },
-// ];
-
-// const features = [
-//   {
-//     icon: <Rocket className="w-5 h-5" />,
-//     title: "Web First Prototypes",
-//     text: "Rapid React/Three prototypes you can share in minutes.",
-//   },
-//   {
-//     icon: <Cpu className="w-5 h-5" />,
-//     title: "Performance Budgets",
-//     text: "Frame-budgeting, draw-call tuning and memory profiling.",
-//   },
-//   {
-//     icon: <Workflow className="w-5 h-5" />,
-//     title: "Iterative Pipeline",
-//     text: "Design -> Code -> Playtest -> Ship — iterate quickly.",
-//   },
-//   {
-//     icon: <Gamepad2 className="w-5 h-5" />,
-//     title: "Cross-Play Ready",
-//     text: "Browser, mobile, desktop — same game logic, multiple targets.",
-//   },
-// ];
 
 function MarqueeRow({ items, reverse = false }) {
   return (
     <div className="relative w-full overflow-hidden">
       <div className="flex whitespace-nowrap [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div
-          className={`animate-marquee inline-flex gap-3 py-2 ${reverse ? "animate-direction-reverse" : ""
-            }`}
+          className={`animate-marquee inline-flex gap-3 py-2 ${
+            reverse ? "animate-direction-reverse" : ""
+          }`}
         >
           {items.concat(items).map((t, i) => (
             <span
@@ -82,32 +44,30 @@ function DragGame() {
   const cardBPosition = useRef({ x: 0, y: 0 });
   const gameCompleted = placed.A && placed.B;
 
-  // inside DragGame component, before return:
   const blockScroll = () => (document.body.style.overflow = "hidden");
   const allowScroll = () => (document.body.style.overflow = "");
 
-  // pointer handlers (these run early, before drag starts)
   const handlePointerDown = (e) => {
     blockScroll();
-    // capture pointer so we continue to get move/up events
-    if (e.pointerId && e.currentTarget && e.currentTarget.setPointerCapture) {
-      try { e.currentTarget.setPointerCapture(e.pointerId); } catch { }
+    if (e.pointerId && e.currentTarget?.setPointerCapture) {
+      try {
+        e.currentTarget.setPointerCapture(e.pointerId);
+      } catch {}
     }
   };
   const handlePointerUp = (e) => {
-    // release capture
-    if (e.pointerId && e.currentTarget && e.currentTarget.releasePointerCapture) {
-      try { e.currentTarget.releasePointerCapture(e.pointerId); } catch { }
+    if (e.pointerId && e.currentTarget?.releasePointerCapture) {
+      try {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      } catch {}
     }
     allowScroll();
   };
   const handleTouchStart = (e) => {
-    e.preventDefault?.(); // stop browser scroll default
+    e.preventDefault?.();
     blockScroll();
   };
-
   const handleTouchEnd = () => allowScroll();
-
 
   return (
     <div key={gameKey} className="relative flex flex-col items-center overscroll-none">
@@ -128,7 +88,6 @@ function DragGame() {
           dragElastic={0.3}
           dragMomentum={false}
           whileDrag={{ scale: 1.1, zIndex: 10 }}
-          // run early to block browser scroll
           onPointerDown={handlePointerDown}
           onPointerUp={handlePointerUp}
           onTouchStart={handleTouchStart}
@@ -136,7 +95,7 @@ function DragGame() {
           onDrag={(e, info) => {
             cardAPosition.current = info.point;
           }}
-          onDragStart={() => blockScroll()} // extra safety
+          onDragStart={() => blockScroll()}
           onDragEnd={(event) => {
             allowScroll();
             const card = event.target.getBoundingClientRect();
@@ -183,7 +142,7 @@ function DragGame() {
           onDrag={(e, info) => {
             cardBPosition.current = info.point;
           }}
-          onDragStart={() => blockScroll()} // extra safety
+          onDragStart={() => blockScroll()}
           onDragEnd={(event) => {
             allowScroll();
             const card = event.target.getBoundingClientRect();
@@ -248,56 +207,23 @@ function DragGame() {
 export default function GameLanding() {
   return (
     <section className="relative isolate min-h-[100dvh] w-full overflow-hidden text-white font-inter-tight">
-
-      {/* Main Grid */}
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-4 py-8 sm:px-6 md:grid-cols-2 md:gap-10 md:py-16">
         <div>
-          <TextReveal delay={0}>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              viewport={{ amount: 0.8 }}
-              className="w-full md:w-auto mt-12 mb-4 sm:mt-12 md:mt-5 inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70"
-            >
-              <Sparkles className="h-4 w-4 mr-2 inline" />
-              <span >Premium Web-Game Services</span>
-            </motion.div>
-          </TextReveal>
+          <div className="w-full md:w-auto mt-12 mb-4 sm:mt-12 md:mt-5 inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+            <Sparkles className="h-4 w-4 mr-2 inline" />
+            <span>Premium Web-Game Services</span>
+          </div>
 
-          <TextReveal delay={0.5}>
-            <motion.h1
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              viewport={{ amount: 0.8 }}
-              className="font-inter-tight text-4xl lg:text-6xl text-center md:text-start font-black leading-[1.05] tracking-tight"
-            >
-              Build Interactive WebSite Games Players Love
-            </motion.h1>
-          </TextReveal>
+          <h1 className="font-inter-tight text-4xl lg:text-6xl text-center md:text-start font-black leading-[1.05] tracking-tight">
+            Build Interactive WebSite Games Players Love
+          </h1>
 
-          <TextReveal delay={1}>
-            <motion.p
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              viewport={{ amount: 0.8 }}
-              className="mt-5 max-w-xl text-center md:text-start text-sm text-white/70"
-            >
-              From React + Three.js prototypes to full-engine WebGL titles — we
-              deliver playable demos, polished visuals, and optimized builds.
-            </motion.p>
-          </TextReveal>
+          <p className="mt-5 max-w-xl text-center md:text-start text-sm text-white/70">
+            From React + Three.js prototypes to full-engine WebGL titles — we
+            deliver playable demos, polished visuals, and optimized builds.
+          </p>
 
-          {/* <TextReveal delay={1}> */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            viewport={{ amount: 0.8 }}
-            className="group w-full h-full mt-8 flex  items-center justify-center md:justify-start gap-4 md:gap-2"
-          >
+          <div className="group w-full h-full mt-8 flex items-center justify-center md:justify-start gap-4 md:gap-2">
             <Link to={"/contact"}>
               <button className="font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl border border-white/40 bg-transparent px-5 sm:px-6 md:px-8 py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-sm backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-105">
                 Cast a Spell{" "}
@@ -310,61 +236,11 @@ export default function GameLanding() {
             >
               See Builds
             </a>
-          </motion.div>
-          {/* </TextReveal> */}
-
-          {/* Marquee Rows */}
-          {/* <div className="mt-10 space-y-2">
-            <MarqueeRow items={tools.slice(0, Math.ceil(tools.length / 2))} />
-            <MarqueeRow
-              items={tools.slice(Math.ceil(tools.length / 2))}
-              reverse
-            />
-          </div> */}
+          </div>
         </div>
 
         <DragGame />
       </div>
-
-      {/* Features */}
-      {/* <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 pb-20">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{
-            hidden: {},
-            visible: {
-              transition: { staggerChildren: 0.1 },
-            },
-          }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-        >
-          {features.map((f, i) => (
-            <motion.div
-              key={i}
-              variants={{
-                hidden: { opacity: 0, y: 30, scale: 0.95 },
-                visible: { opacity: 1, y: 0, scale: 1 },
-              }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="group rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm hover:scale-[1.03] hover:bg-white/10 transition-transform"
-            >
-              <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/10">
-                {f.icon}
-              </div>
-              <div className="font-inter-tight text-lg font-semibold">
-                {f.title}
-              </div>
-              <p className="mt-1 text-sm text-white/70">{f.text}</p>
-              <div className="mt-3 h-px w-full bg-gradient-to-r from-white/20 via-white/0 to-white/0 opacity-60" />
-              <div className="mt-3 text-xs text-white/50">
-                Included in all builds
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div> */}
 
       <style>{`
         .animate-marquee { animation: marquee 20s linear infinite; }

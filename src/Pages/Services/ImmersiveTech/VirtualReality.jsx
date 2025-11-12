@@ -8,26 +8,7 @@ import Vrsol from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/vrsol"
 import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
 
 function VirtualReality() {
-  useEffect(() => {
-    // Initialize Lenis for smooth scrolling
-    const lenis = new Lenis({
-      duration: 1.2,
-      smooth: true,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    });
-
-    // Animation loop
-    const raf = (time) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-    requestAnimationFrame(raf);
-
-    // Cleanup on unmount
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
+  
 
   return (
     <div className="bg-black">

@@ -1,27 +1,16 @@
-// /src/Hooks/SmoothScroll.jsx
+
+// src/Components/ReusableComponents/ScrollToTop.jsx
 import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+import { useLocation } from "react-router-dom";
 
-export default function SmoothScroll({ children }) {
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2, // smoothness (higher = slower)
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // ease-out curve
-      smoothWheel: true,
-      smoothTouch: false, // set true for touch devices if needed
-    });
+    window.scrollTo(0, 0); // instantly scroll to top on route change
+  }, [pathname]);
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+  return null;
+};
 
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
-
-  return <>{children}</>;
-}
+export default ScrollToTop;

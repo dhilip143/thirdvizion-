@@ -11,26 +11,7 @@ import WebSer from "/src/Components/ServiceComponents/Development&Software/Websi
 import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
 
 const WebsitePage = () => {
-  // useEffect(() => {
-  //   // Initialize Lenis for smooth scrolling
-  //   const lenis = new Lenis({
-  //     duration: 1.2,
-  //     smooth: true,
-  //     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  //   });
-
-  //   // Request animation frame loop
-  //   const raf = (time) => {
-  //     lenis.raf(time);
-  //     requestAnimationFrame(raf);
-  //   };
-  //   requestAnimationFrame(raf);
-
-  //   // Cleanup when component unmounts
-  //   return () => {
-  //     lenis.destroy();
-  //   };
-  // }, []);
+  
 
   return (
     <div className="bg-black">
