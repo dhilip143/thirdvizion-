@@ -1,17 +1,12 @@
-// src/App.jsx
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Layout Components
-import Header from "/src/Layout/Header.jsx";
-import Footer from "/src/Layout/Footer.jsx";
-import ScrollToTop from "/src/Layout/ScrollToTop.jsx";
+import ScrollToTop from "/src/Layout/ScrollToTop";
+import Header from "/src/Layout/Header";
+import Footer from "/src/Layout/Footer";
 
-// Pages
+// pages (same as before)
 import HomePage from "/src/Pages/HomePage.jsx";
 import AboutPage from "/src/Pages/AboutPage.jsx";
 import ContactPage from "/src/Pages/ContactPage.jsx";
@@ -28,29 +23,15 @@ import WebsitePage from "/src/Pages/Services/Development & Software/WebsitePage.
 import AppPage from "/src/Pages/Services/Development & Software/AppPage.jsx";
 import GamePage from "/src/Pages/Services/Development & Software/GamePage.jsx";
 
-// Register GSAP plugin once
-gsap.registerPlugin(ScrollTrigger);
+
 
 function AnimatedRoutes() {
-  const location = useLocation();
+  
 
-  useEffect(() => {
-    // Refresh ScrollTrigger whenever route changes
-    if (window.ScrollTrigger) {
-      ScrollTrigger.refresh(true);
-    }
-  }, [location.pathname]);
+
 
   return (
-    <AnimatePresence
-      mode="wait"
-      onExitComplete={() => {
-        // After exit animation completes, ensure triggers are refreshed
-        if (window.ScrollTrigger) {
-          ScrollTrigger.refresh(true);
-        }
-      }}
-    >
+   
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
@@ -74,39 +55,15 @@ function AnimatedRoutes() {
         <Route path="/app_development" element={<AppPage />} />
         <Route path="/game_development" element={<GamePage />} />
       </Routes>
-    </AnimatePresence>
+   
   );
 }
 
 function App() {
-  useEffect(() => {
-    // Initialize Lenis for smooth scrolling once
-    const lenis = new Lenis({
-      duration: 1.2,
-      smoothWheel: true,
-      smoothTouch: false,
-      direction: "vertical",
-    });
-
-    // Store globally for access in ScrollToTop
-    window.lenis = lenis;
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-      window.lenis = null;
-    };
-  }, []);
-
   return (
     <BrowserRouter>
       <Header />
-      <ScrollToTop /> {/* ensures no flicker between pages */}
+      <ScrollToTop />
       <AnimatedRoutes />
       <Footer />
     </BrowserRouter>
