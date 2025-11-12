@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLocation } from "react-router-dom";
 
 import threed from "/src/assets/HomeImages/g11.svg";
 import gam from "/src/assets/HomeImages/g22.svg";
@@ -14,14 +15,16 @@ export default function Indhu() {
   const [radius, setRadius] = useState(10);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
+  const location = useLocation();
+
   const svgRef = useRef(null);
   const pathRef = useRef(null);
   const containerRef = useRef(null);
-  const circleRefs = useRef([]);
-  const textRefs = useRef([]);
-  const descRefs = useRef([]);
-  const imageRefs = useRef([]);
-  const animationRefs = useRef([]);
+  // const circleRefs = useRef([]);
+  // const textRefs = useRef([]);
+  // const descRefs = useRef([]);
+  // const imageRefs = useRef([]);
+  // const animationRefs = useRef([]);
 
   // Responsive detection
   useEffect(() => {
@@ -38,7 +41,7 @@ export default function Indhu() {
 
   const svgWidth = 5000;
   const leftShift = 150;
-  const circleSpacing = svgWidth / (5 + 1); // Changed from 4 to 5
+  const circleSpacing = svgWidth / (4 + 1);
 
   const circles = [
     {
@@ -52,39 +55,30 @@ export default function Indhu() {
     },
     {
       id: 2,
-      label: "PLAN",
+      label: "ARCHITECT",
       description:
-        "We create comprehensive project plans, define milestones, and establish clear objectives to ensure successful project execution from start to finish.",
+        "We design robust and scalable system architectures using the latest technologies and best industry practices.",
       img: gam,
-      cx: circleSpacing * 1.8 - leftShift,
+      cx: circleSpacing * 2.1 - leftShift,
       cy: 300,
     },
     {
       id: 3,
-      label: "ARCHITECT",
+      label: "BUILD",
       description:
-        "We design robust and scalable system architectures using the latest technologies and best industry practices.",
+        "We develop with precision and excellence using agile development methods and continuous integration.",
       img: are,
-      cx: circleSpacing * 2.7 - leftShift,
+      cx: circleSpacing * 3.3 - leftShift,
       cy: 200,
     },
     {
       id: 4,
-      label: "BUILD",
-      description:
-        "We develop with precision and excellence using agile development methods and continuous integration.",
-      img: wih,
-      cx: circleSpacing * 3.6 - leftShift,
-      cy: 300,
-    },
-    {
-      id: 5,
       label: "ELEVATE",
       description:
         "We help you scale your business with optimized performance, seamless user experiences, and data-driven insights.",
-      img: threed, // You can replace this with a new image if needed
-      cx: circleSpacing * 4.5 - leftShift,
-      cy: 200,
+      img: wih,
+      cx: circleSpacing * 4.7 - leftShift,
+      cy: 300,
     },
   ];
 
@@ -139,7 +133,7 @@ export default function Indhu() {
     );
   }
 
-  // --- DESKTOP ORIGINAL DESIGN ---
+  // --- DESKTOP ORIGINAL DESIGN (unchanged) ---
   const splitDescription = (description) => {
     const words = description.split(" ");
     const totalWords = words.length;
@@ -183,13 +177,66 @@ export default function Indhu() {
       .join(" ")}
   `;
 
+  // useEffect(() => {
+  //   if (isMobile) return;
+  //   const section = containerRef.current;
+  //   const svg = svgRef.current;
+  //   const path = pathRef.current;
+  //   if (!section || !svg || !path) return;
+
+  //   ScrollTrigger.getAll().forEach((st) => {
+  //     if (st.trigger === section || st.trigger === svg) st.kill();
+  //   });
+    
+
+  //   const totalLength = path.getTotalLength();
+  //   gsap.set(path, { strokeDasharray: totalLength, strokeDashoffset: totalLength });
+
+  //   const scrollTween = gsap.to(svg, {
+  //     x: () => -(svg.scrollWidth - window.innerWidth),
+  //     ease: "none",
+  //     scrollTrigger: {
+  //       trigger: section,
+  //       start: "top top",
+  //       end: () => `+=${svg.scrollWidth * 1.2}`,
+  //       scrub: true,
+  //       pin: true,
+  //       anticipatePin: 1,
+  //       invalidateOnRefresh: true,
+  //     },
+  //   });
+
+  //   const pathAnimation = gsap.to(path, {
+  //     strokeDashoffset: 0,
+  //     ease: "none",
+  //     scrollTrigger: {
+  //       trigger: section,
+  //       start: "top top",
+  //       end: () => `+=${svg.scrollWidth * 1.2}`,
+  //       scrub: true,
+  //       invalidateOnRefresh: true,
+  //     },
+  //   });
+
+  //   return () => {
+  //     scrollTween.kill();
+  //     pathAnimation.kill();
+  //     ScrollTrigger.getAll().forEach((st) => st.kill());
+  //     ScrollTrigger.refresh();
+  //   };
+  // }, [isMobile]);
+
+
   useEffect(() => {
     if (isMobile) return;
+
     const section = containerRef.current;
     const svg = svgRef.current;
     const path = pathRef.current;
+
     if (!section || !svg || !path) return;
 
+    // Kill existing triggers related to this section to prevent duplicates
     ScrollTrigger.getAll().forEach((st) => {
       if (st.trigger === section || st.trigger === svg) st.kill();
     });
@@ -197,37 +244,76 @@ export default function Indhu() {
     const totalLength = path.getTotalLength();
     gsap.set(path, { strokeDasharray: totalLength, strokeDashoffset: totalLength });
 
-    const scrollTween = gsap.to(svg, {
-      x: () => -(svg.scrollWidth - window.innerWidth),
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.2}`,
-        scrub: true,
-        pin: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
+    let scrollTween = null;
+    let pathAnimation = null;
+
+    // Create master ScrollTrigger for activation control
+    const activationTrigger = ScrollTrigger.create({
+      trigger: section,
+      start: "top bottom", // when section enters viewport
+      end: "bottom top",   // when section leaves viewport
+
+      onEnter: () => {
+        // Start animations when section enters
+        scrollTween = gsap.to(svg, {
+          x: () => -(svg.scrollWidth - window.innerWidth),
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${svg.scrollWidth * 1.2}`,
+            scrub: true,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        pathAnimation = gsap.to(path, {
+          strokeDashoffset: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${svg.scrollWidth * 1.2}`,
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        });
+      },
+
+      onLeave: () => {
+        // Kill animations when leaving viewport
+        if (scrollTween) scrollTween.kill();
+        if (pathAnimation) pathAnimation.kill();
+        ScrollTrigger.getAll().forEach((st) => {
+          if (st.trigger === section || st.trigger === svg) st.kill();
+        });
+      },
+      onLeaveBack: () => {
+        // Kill when scrolling up out of section
+        if (scrollTween) scrollTween.kill();
+        if (pathAnimation) pathAnimation.kill();
+        ScrollTrigger.getAll().forEach((st) => {
+          if (st.trigger === section || st.trigger === svg) st.kill();
+        });
       },
     });
 
-    const pathAnimation = gsap.to(path, {
-      strokeDashoffset: 0,
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.2}`,
-        scrub: true,
-        invalidateOnRefresh: true,
-      },
-    });
-
+    // Cleanup on route change or component unmount
     return () => {
-      scrollTween.kill();
-      pathAnimation.kill();
+      if (scrollTween) scrollTween.kill();
+      if (pathAnimation) pathAnimation.kill();
+      activationTrigger.kill();
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.trigger === section || st.trigger === svg) st.kill();
+      });
+      ScrollTrigger.refresh();
     };
-  }, [isMobile]);
+  }, [isMobile, location.pathname]); // re-run on route change
+
+
+
 
   return (
     <section

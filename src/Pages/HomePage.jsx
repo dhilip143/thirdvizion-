@@ -13,29 +13,42 @@ import ContactSection from "/src/Components/HomeComponent/ContactSection.jsx";
 import Empover from "/src/Components/HomeComponent/Empover.jsx";
 
 export default function Home() {
-  useEffect(() => {
-    // Initialize Lenis for smooth scrolling
-    const lenis = new Lenis({
-      duration: 1.2, // adjust scroll speed
-      smooth: true,
-      direction: "vertical",
-      gestureDirection: "vertical",
-      smoothTouch: false,
-      touchMultiplier: 2,
-    });
+  // useEffect(() => {
+  //   // Initialize Lenis for smooth scrolling
+  //   const lenis = new Lenis({
+  //     duration: 1.2, // adjust scroll speed
+  //     smooth: true,
+  //     direction: "vertical",
+  //     gestureDirection: "vertical",
+  //     smoothTouch: false,
+  //     touchMultiplier: 2,
+  //   });
 
-    // Request animation frame loop
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+  //   // Request animation frame loop
+  //   function raf(time) {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   }
+  //   requestAnimationFrame(raf);
 
-    // Cleanup on unmount
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
+  //   // Cleanup on unmount
+  //   return () => {
+  //     lenis.destroy();
+  //   };
+  // }, []);
+
+  //   useEffect(() => {
+  //   // ✅ Cleanup GSAP ScrollTriggers when Home unmounts
+  //   return () => {
+  //     try {
+  //       ScrollTrigger.getAll().forEach((st) => st.kill());
+  //       ScrollTrigger.refresh();
+  //       console.log("✅ Cleaned all ScrollTriggers on Home unmount");
+  //     } catch (e) {
+  //       console.warn("⚠️ ScrollTrigger cleanup failed:", e);
+  //     }
+  //   };
+  // }, []);
 
   return (
     <>
@@ -43,7 +56,7 @@ export default function Home() {
       <VisionMission />
       <Industries />
       <Newservice />
-      <Indhu />
+      {/* <Indhu /> */}
       <Partners className="bg-black" />
       <Testimonial />
       <FAQ />
