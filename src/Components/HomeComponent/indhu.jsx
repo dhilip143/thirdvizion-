@@ -38,7 +38,7 @@ export default function Indhu() {
 
   const svgWidth = 5000;
   const leftShift = 150;
-  const circleSpacing = svgWidth / (4 + 1);
+  const circleSpacing = svgWidth / (5 + 1); // Changed from 4 to 5
 
   const circles = [
     {
@@ -52,30 +52,39 @@ export default function Indhu() {
     },
     {
       id: 2,
-      label: "ARCHITECT",
+      label: "PLAN",
       description:
-        "We design robust and scalable system architectures using the latest technologies and best industry practices.",
+        "We create comprehensive project plans, define milestones, and establish clear objectives to ensure successful project execution from start to finish.",
       img: gam,
-      cx: circleSpacing * 2.1 - leftShift,
+      cx: circleSpacing * 1.8 - leftShift,
       cy: 300,
     },
     {
       id: 3,
-      label: "BUILD",
+      label: "ARCHITECT",
       description:
-        "We develop with precision and excellence using agile development methods and continuous integration.",
+        "We design robust and scalable system architectures using the latest technologies and best industry practices.",
       img: are,
-      cx: circleSpacing * 3.3 - leftShift,
+      cx: circleSpacing * 2.7 - leftShift,
       cy: 200,
     },
     {
       id: 4,
+      label: "BUILD",
+      description:
+        "We develop with precision and excellence using agile development methods and continuous integration.",
+      img: wih,
+      cx: circleSpacing * 3.6 - leftShift,
+      cy: 300,
+    },
+    {
+      id: 5,
       label: "ELEVATE",
       description:
         "We help you scale your business with optimized performance, seamless user experiences, and data-driven insights.",
-      img: wih,
-      cx: circleSpacing * 4.7 - leftShift,
-      cy: 300,
+      img: threed, // You can replace this with a new image if needed
+      cx: circleSpacing * 4.5 - leftShift,
+      cy: 200,
     },
   ];
 
@@ -130,7 +139,7 @@ export default function Indhu() {
     );
   }
 
-  // --- DESKTOP ORIGINAL DESIGN (unchanged) ---
+  // --- DESKTOP ORIGINAL DESIGN ---
   const splitDescription = (description) => {
     const words = description.split(" ");
     const totalWords = words.length;

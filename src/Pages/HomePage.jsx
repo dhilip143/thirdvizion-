@@ -21,10 +21,10 @@ export default function Home() {
 
       <Hero />
      
-      
+       <VisionMission />
      
       <Industries />
-      <VisionMission />
+     
       <Newservice/>
        
      <Indhu/>
