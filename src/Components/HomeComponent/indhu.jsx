@@ -36,9 +36,9 @@ export default function Indhu() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const svgWidth = 5000;
+  const svgWidth = 6500; // Increased from 5000 to 6000 for 5 circles
   const leftShift = 150;
-  const circleSpacing = svgWidth / (4 + 1);
+  const circleSpacing = svgWidth / (5 + 1); // Changed from 4 to 5
 
   const circles = [
     {
@@ -47,7 +47,7 @@ export default function Indhu() {
       description:
         "We begin by understanding your business goals, vision, and challenges. Our team studies every detail to find the right digital strategy for your brand.",
       img: threed,
-      cx: circleSpacing * 0.92 - leftShift,
+      cx: circleSpacing * 0.9 - leftShift, // Adjusted spacing
       cy: 200,
     },
     {
@@ -56,26 +56,35 @@ export default function Indhu() {
       description:
         "We design robust and scalable system architectures using the latest technologies and best industry practices.",
       img: gam,
-      cx: circleSpacing * 2.1 - leftShift,
+      cx: circleSpacing * 2 - leftShift, // Adjusted spacing
       cy: 300,
     },
     {
       id: 3,
-      label: "BUILD",
+      label: "DEVELOP",
       description:
-        "We develop with precision and excellence using agile development methods and continuous integration.",
+        "We build your solution with cutting-edge technologies and agile methodologies, ensuring code quality and maintainability.",
       img: are,
-      cx: circleSpacing * 3.3 - leftShift,
+      cx: circleSpacing * 3.1 - leftShift, // Adjusted spacing
       cy: 200,
     },
     {
       id: 4,
-      label: "ELEVATE",
+      label: "TEST",
       description:
-        "We help you scale your business with optimized performance, seamless user experiences, and data-driven insights.",
+        "We conduct comprehensive testing to ensure your solution is bug-free, performs optimally, and delivers exceptional user experience.",
       img: wih,
-      cx: circleSpacing * 4.7 - leftShift,
+      cx: circleSpacing * 4.2 - leftShift, // Adjusted spacing
       cy: 300,
+    },
+    {
+      id: 5,
+      label: "DEPLOY",
+      description:
+        "We deploy your solution to production with zero downtime, provide ongoing support, and help you scale for future growth.",
+      img: threed, // You can replace this with a new image
+      cx: circleSpacing * 5.35 - leftShift, // New fifth circle
+      cy: 200,
     },
   ];
 
@@ -130,7 +139,7 @@ export default function Indhu() {
     );
   }
 
-  // --- DESKTOP ORIGINAL DESIGN (unchanged) ---
+  // --- DESKTOP ORIGINAL DESIGN (updated for 5 circles) ---
   const splitDescription = (description) => {
     const words = description.split(" ");
     const totalWords = words.length;
@@ -194,7 +203,7 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 3.8}`,
+        end: () => `+=${svg.scrollWidth * 1.65}`, // Increased from 1.2 to 1.5 for more scroll space
         scrub: true,
         pin: true,
         anticipatePin: 1,
@@ -208,7 +217,7 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 3.8}`,
+        end: () => `+=${svg.scrollWidth * 1.5}`, // Increased from 1.2 to 1.5 for more scroll space
         scrub: true,
         invalidateOnRefresh: true,
       },
@@ -241,11 +250,11 @@ export default function Indhu() {
         </h1>
       </div>
 
-      <div className="relative flex-shrink-0 w-[9000px] h-[600px] lg:h-[700px] 2xl:h-[800px] mx-auto z-10">
+      <div className="relative flex-shrink-0 w-[11000px] h-[600px] lg:h-[700px] 2xl:h-[800px] mx-auto z-10"> {/* Increased width from 9000px to 11000px */}
         <svg
           ref={svgRef}
           viewBox={`0 0 ${svgWidth} 600`}
-          className="w-[5000px] h-full"
+          className="w-[6000px] h-full" // Increased from 5000px to 6000px
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid meet"

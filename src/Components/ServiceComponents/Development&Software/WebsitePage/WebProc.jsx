@@ -75,8 +75,8 @@ const TimelineStep = ({ step, index, isMobile }) => {
           ease: 'back.out(1.7)',
           scrollTrigger: {
             trigger: stepRef.current,
-            start: 'top 70%',
-            end: 'bottom 30%',
+            start: 'top 10%',
+            end: 'bottom 50%',
             toggleActions: 'play none none reverse',
           },
         }
@@ -296,7 +296,7 @@ const App = () => {
         scrollTrigger: {
           trigger: timelineContainerRef.current,
           start: 'top 190%',
-          end: 'bottom -20%',
+          end: 'bottom -80%',
           scrub: 1,
         },
       }
