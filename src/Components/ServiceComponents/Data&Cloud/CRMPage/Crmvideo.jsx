@@ -39,10 +39,7 @@ function CrmVideo() {
         <section className="w-full min-h-screen text-white py-8 md:py-16 px-4 sm:px-6 font-sans">
             {/* Header Section */}
             <div className="max-w-7xl mx-auto text-center mb-16">
-                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF646710] to-[#FF8E9E10] border border-[#FF646730] mb-8">
-                    <div className="w-2 h-2 bg-[#FF6467] rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-[#FF8E9E] font-sans"  style={{ fontFamily: "Outfit, sans-serif" }} >CRM PLATFORM OVERVIEW</span>
-                </div>
+             
                 <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semiboldmb-6 font-sans">
                     <span className="bg-gradient-to-r from-[#FF6467] via-[#FF8E9E] to-[#FF6467] bg-clip-text text-transparent bg-size-200 animate-gradient" style={{ fontFamily: "Outfit, sans-serif" }} >
                         Understanding CRM Software

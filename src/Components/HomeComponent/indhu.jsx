@@ -61,7 +61,7 @@ export default function Indhu() {
     },
     {
       id: 3,
-      label: "DEVELOP",
+      label: "BUILD",
       description:
         "We build your solution with cutting-edge technologies and agile methodologies, ensuring code quality and maintainability.",
       img: are,
@@ -70,7 +70,7 @@ export default function Indhu() {
     },
     {
       id: 4,
-      label: "TEST",
+      label: "ELEVATE",
       description:
         "We conduct comprehensive testing to ensure your solution is bug-free, performs optimally, and delivers exceptional user experience.",
       img: wih,
@@ -79,9 +79,9 @@ export default function Indhu() {
     },
     {
       id: 5,
-      label: "DEPLOY",
+      label: "SUCCEES",
       description:
-        "We deploy your solution to production with zero downtime, provide ongoing support, and help you scale for future growth.",
+        "Success isn’t a destination—it’s a journey of constant growth. We empower your business to achieve measurable results through strategic execution, data-driven insights, and relentless improvement—ensuring your goals aren’t just met, but exceeded.",
       img: threed, // You can replace this with a new image
       cx: circleSpacing * 5.35 - leftShift, // New fifth circle
       cy: 200,

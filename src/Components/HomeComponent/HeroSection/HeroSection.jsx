@@ -99,18 +99,7 @@ const Landing = () => {
         </p>
 
         {/* Animated Contact Button */}
-        <Link
-          to={"/contact"}
-          className="contact-btn relative bg-gradient-to-r from-purple-600 to-indigo-700 text-white px-10  text-xl font-semibold rounded-full overflow-hidden group hover:scale-105 transition-all duration-500 shadow-2xl"
-        >
-          {/* <span className="relative z-10">CONTACT US</span> */}
-          
-          {/* Pulsating border animation element */}
-          <div className="absolute inset-0 rounded-full bg-white opacity-20 group-hover:animate-button-pulse"></div>
-          
-          {/* Shine Effect animation element */}
-          <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-40 group-hover:animate-shine"></div>
-        </Link>
+      
       </div>
     </div>
   );

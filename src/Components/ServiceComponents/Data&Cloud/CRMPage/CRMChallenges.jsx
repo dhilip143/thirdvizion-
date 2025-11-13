@@ -273,7 +273,7 @@ export default function CRMShowcase() {
     return (
       <section
         ref={sectionRef}
-        className="relative w-full min-h-screen bg-gradient-to-b    from-[#020202] via-[#0A0A0A] to-[#050505] text-white overflow-hidden"
+        className="relative w-full min-h-screen bg-transparent text-white overflow-hidden"
       >
         {/* Header - Not Pinned */}
         <div className="relative z-40 pt-20 px-4">
@@ -369,7 +369,7 @@ export default function CRMShowcase() {
     return (
       <section
         ref={sectionRef}
-        className="relative w-full min-h-screen bg-gradient-to-b from-[#020202] via-[#0A0A0A] to-[#050505] text-white overflow-hidden"
+        className="relative w-full min-h-screen bg-transparent text-white overflow-hidden"
       >
         {/* Header - Not Pinned */}
         <div className="relative z-40 pt-16">
@@ -518,7 +518,7 @@ export default function CRMShowcase() {
     return (
       <section
         ref={sectionRef}
-        className="relative w-full min-h-screen bg-gradient-to-b from-[#020202] via-[#0A0A0A] to-[#050505] text-white overflow-hidden"
+        className="relative w-full min-h-screen bg-transparent text-white overflow-hidden"
       >
         {/* Header - Not Pinned */}
         <div className="relative z-40 pt-16 text-center">
@@ -653,7 +653,7 @@ export default function CRMShowcase() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen bg-gradient-to-b from-[#020202] via-[#0A0A0A] to-[#050505] text-white overflow-hidden"
+      className="relative w-full min-h-screen bg-transparent text-white overflow-hidden"
     >
       {/* Header - Not Pinned */}
       <div className="relative z-40 pt-16 text-center">
