@@ -70,7 +70,10 @@ export default function Partners() {
 
       {/* Multiple rows with different directions and speeds */}
       <CarousalRow duration={12} />
-      <CarousalRow reverse={true} duration={14} />
+<div className="mt-15"> {/* adjust spacing here */}
+  <CarousalRow reverse={true} duration={14} />
+</div>
+
      
 
       {/* Tailwind animations */}
