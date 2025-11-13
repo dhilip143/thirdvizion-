@@ -6,17 +6,13 @@ const WebHero = () => {
     <section className="relative isolate pt-40 md:pt-0 md:min-h-screen flex items-center justify-center overflow-hidden text-white px-4 sm:px-6 md:px-8">
       <div className="relative z-10 mx-auto max-w-6xl text-center">
         {/* Main Heading */}
-        
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-            viewport={{ amount: 1 }}
-            className="mt-6 font-semibold text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] sm:leading-[1.1] tracking-wide text-white"
-          style={{ fontFamily: "Outfit, sans-serif" }} >
-            The easiest path to build your <span className="text-[#00d3f3]">dream website.</span>
-          </motion.h1>
-      
+        <h1
+          className="mt-6 font-semibold text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] sm:leading-[1.1] tracking-wide text-white"
+          style={{ fontFamily: "Outfit, sans-serif" }}
+        >
+          The easiest path to build your{" "}
+          <span className="text-[#00d3f3]">dream website.</span>
+        </h1>
 
         {/* Subtitle */}
         <p

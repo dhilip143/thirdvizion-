@@ -87,12 +87,12 @@ export default function CRMShowcase() {
       cardY = y - 30;
       break;
     case 2: // Bottom-right
-      cardX = x + -100;
-      cardY = y + 50;
+      cardX = x + -320;
+      cardY = y + -10;
       break;
     case 3: // Bottom
       cardX = x - 340;
-      cardY = y + -25;
+      cardY = y + -40;
       break;
     case 4: // Bottom-left
       cardX = x - 340;
