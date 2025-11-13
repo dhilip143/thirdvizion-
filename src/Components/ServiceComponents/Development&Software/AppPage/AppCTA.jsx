@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const AppCTA = () => {
   return (
-    <section className="w-full bg-black flex items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16 py-24 font-inter-tight relative overflow-hidden">
+    <section className="w-full  flex items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16 py-24 font-inter-tight relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#ff8904]/5 via-transparent to-[#ff7300]/5 pointer-events-none" />
       <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-[#ff8904]/10 rounded-full blur-3xl animate-pulse" />
