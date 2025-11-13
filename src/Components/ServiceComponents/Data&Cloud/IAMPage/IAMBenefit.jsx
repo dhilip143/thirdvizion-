@@ -49,7 +49,7 @@ const IAMBenefits = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl       font-extrabold tracking-tight text-yellow-500 mb-6 leading-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl       font-font-semibold tracking-tight text-yellow-500 mb-6 leading-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
             IAM Benefits
           </h2>
           <p className="text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: "work-sans, sans-serif" }}>

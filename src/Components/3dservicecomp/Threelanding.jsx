@@ -232,7 +232,7 @@ export default function Threelanding() {
           {/* Left column — text */}
           <div className="w-full lg:w-1/2">
             <div className="mb-6 text-sm uppercase tracking-widest text-pink-400 "   style={{ fontFamily: "Outfit, sans-serif" }}>ThirdVizion 3D Service</div>
-            <h1 ref={heroTextRef} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight font-extrabold tracking-tight"   style={{ fontFamily: "Outfit, sans-serif" }}>
+            <h1 ref={heroTextRef} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight font-semibold extrabold tracking-tight"   style={{ fontFamily: "Outfit, sans-serif" }}>
               <span className="block overflow-hidden">
                 <span className="word block transform translate-y-0">ThirdVizion</span>
               </span>

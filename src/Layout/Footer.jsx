@@ -10,12 +10,16 @@ import {
 
 const Footer = () => {
   return (
-    <section className="flex flex-col bg-black text-white z-[999] backdrop-blur-2xl relative">
+    <footer
+      id="footer"
+      className="flex flex-col bg-black text-white relative overflow-hidden"
+    >
       {/* Top Section */}
-      <div className="max-w-7xl mx-auto mb-30 mt-15 bg-black px-6 py-12 
+      <div
+        className="max-w-7xl mx-auto mb-30 mt-15 bg-black px-6 py-12 
         grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8
-        md:text-left text-center">
-
+        md:text-left text-center relative z-10"
+      >
         {/* --- Links --- */}
         <div>
           <h3 className="font-semibold text-lg mb-4">Links</h3>
@@ -52,27 +56,42 @@ const Footer = () => {
           <h3 className="font-semibold text-lg mb-4">Services</h3>
           <ul className="space-y-2 text-sm text-gray-300">
             <li>
-              <Link to="/web_development" className="hover:text-white cursor-pointer">
+              <Link
+                to="/web_development"
+                className="hover:text-white cursor-pointer"
+              >
                 Web Development
               </Link>
             </li>
             <li>
-              <Link to="/client_relationship_management" className="hover:text-white cursor-pointer">
+              <Link
+                to="/client_relationship_management"
+                className="hover:text-white cursor-pointer"
+              >
                 CRM Solutions
               </Link>
             </li>
             <li>
-              <Link to="/virtual_reality" className="hover:text-white cursor-pointer">
+              <Link
+                to="/virtual_reality"
+                className="hover:text-white cursor-pointer"
+              >
                 Virtual Reality
               </Link>
             </li>
             <li>
-              <Link to="/augmented_reality" className="hover:text-white cursor-pointer">
+              <Link
+                to="/augmented_reality"
+                className="hover:text-white cursor-pointer"
+              >
                 Augmented Reality
               </Link>
             </li>
             <li>
-              <Link to="/3d_services" className="hover:text-white cursor-pointer">
+              <Link
+                to="/3d_services"
+                className="hover:text-white cursor-pointer"
+              >
                 3D Visualization
               </Link>
             </li>
@@ -136,17 +155,21 @@ const Footer = () => {
 
       {/* Brand Text */}
       <div className="absolute bottom-0 left-0 w-full text-center overflow-hidden">
-        <p className="bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent font-normal tracking-wider 
-          text-[40px] sm:text-[60px] md:text-[110px] lg:text-[150px] xl:text-[180px] 2xl:text-[225px]
-          leading-none -mb-8 md:-mb-12 lg:-mb-16">
+        <p
+          className="bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 
+            bg-clip-text text-transparent font-normal tracking-wider 
+            text-[40px] sm:text-[60px] md:text-[110px] lg:text-[150px] xl:text-[180px] 2xl:text-[225px]
+            leading-none -mb-8 md:-mb-12 lg:-mb-16 pointer-events-none select-none"
+        >
           THIRDVIZION
         </p>
       </div>
 
       {/* Copyright */}
       <div className="max-w-7xl mx-auto px-6 mt-16 pt-6 text-center text-gray-400 text-sm relative z-10">
+        © {new Date().getFullYear()} ThirdVizion Labs. All rights reserved.
       </div>
-    </section>
+    </footer>
   );
 };
 

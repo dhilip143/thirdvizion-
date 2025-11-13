@@ -78,7 +78,7 @@ const Vrsol = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div ref={headerRef} className="text-center mb-12 md:mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 bg-[length:200%_100%] tracking-tight"  style={{ fontFamily: "Outfit, sans-serif" }}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-4 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 bg-[length:200%_100%] tracking-tight"  style={{ fontFamily: "Outfit, sans-serif" }}>
             Complete VR Solutions
           </h1>
           <p className="text-xs md:text-lg text-gray-300 max-w-2xl mx-auto"   style={{ fontFamily: "work-sans, sans-serif" }}>
