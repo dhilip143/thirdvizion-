@@ -142,7 +142,7 @@ export default function ServerDetail() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-SEMIBOLD  text-[#05df72] drop-shadow-lg"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium  text-[#05df72] drop-shadow-lg"
          style={{ fontFamily: "Outfit, sans-serif" }}  >
             Server{" "} Management
           </motion.h1>

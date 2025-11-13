@@ -123,7 +123,7 @@ const ProcessCard = ({ step }) => {
         </div>
         
         {/* Title */}
-        <h3 className="text-2xl font-inter-tight font-bold text-[#ff8904] mb-4 tracking-tight group-hover:drop-shadow-[0_0_8px_rgba(255,137,4,0.3)] transition-all duration-500"  style={{ fontFamily: "Outfit, sans-serif" }} >
+        <h3 className="text-2xl font-inter-tight font-medium text-[#ff8904] mb-4 tracking-tight group-hover:drop-shadow-[0_0_8px_rgba(255,137,4,0.3)] transition-all duration-500"  style={{ fontFamily: "Outfit, sans-serif" }} >
           {step.title}
         </h3>
         

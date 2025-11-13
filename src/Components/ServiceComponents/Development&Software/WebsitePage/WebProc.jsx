@@ -182,7 +182,7 @@ const TimelineStep = ({ step, index, isMobile }) => {
       <div ref={stepRef} className="relative mb-6 px-2 opacity-100">
         <div className="flex items-center mb-3">
           <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00d3f3] to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 z-10">
-            <span className="text-white font-bold text-sm font-inter-tight">{step.id}</span>
+            <span className="text-white font-medium text-sm ">{step.id}</span>
           </div>
         </div>
 
@@ -194,7 +194,7 @@ const TimelineStep = ({ step, index, isMobile }) => {
             <div className="p-2 bg-cyan-500/20 rounded-lg">
               <Icon className="w-6 h-6 text-[#00d3f3]" />
             </div>
-            <h3 className="text-xl font-bold text-white font-inter-tight flex-1">{step.title}</h3>
+            <h3 className="text-xl font-medium text-white font-inter-tight flex-1">{step.title}</h3>
           </div>
 
           <p className="text-white/80 text-sm font-inter-tight leading-relaxed">
@@ -332,7 +332,7 @@ const App = () => {
       <div className="w-full max-w-5xl mt-8 md:mt-16 mb-8 md:mb-16 text-center">
         <h1
           ref={titleRef}
-          className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold pb-2 tracking-tight ${
+          className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium pb-2 tracking-tight ${
             isMobile ? 'opacity-100' : 'opacity-0'
           } font-inter-tight`}
           style={{
@@ -346,7 +346,7 @@ const App = () => {
         </h1>
         <h2
           ref={subtitleRef}
-          className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white flex items-center justify-center mt-2 md:mt-3 ${
+          className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-white flex items-center justify-center mt-2 md:mt-3 ${
             isMobile ? 'opacity-100' : 'opacity-0'
           } font-inter-tight`}
         >

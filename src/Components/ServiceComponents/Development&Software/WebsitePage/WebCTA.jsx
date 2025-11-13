@@ -8,7 +8,7 @@ const WebCTA = () => {
     <section className="w-full py-24 px-6 flex flex-col items-center text-center">
       <TextReveal>
         <motion.h2
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 text-[#00d3f3]"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-4 text-[#00d3f3]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
