@@ -30,7 +30,7 @@ const WebHero = () => {
           viewport={{ amount: 0.8 }}
           className="mt-4 sm:mt-5 max-w-lg md:max-w-1xl lg:max-w-xl  mx-auto text-sm sm:text-base md:text-lg text-white/70 px-2 font-inter-tight"
         >
-          At <span className="font-semibold text-[#00d3f3]" style={{ fontFamily: "work-sans, sans-serif" }}>ThirdVizion</span>, we
+          At <span className="font-semibold text-[#00d3f3] capitilize" style={{ fontFamily: "work-sans, sans-serif" }}>ThirdVizion</span>, we
           craft scalable, performant, and visually stunning web experiences
           tailored to the users.
         </motion.p>

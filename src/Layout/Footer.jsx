@@ -155,19 +155,22 @@ const Footer = () => {
 
       {/* Brand Text */}
       <div className="absolute bottom-0 left-0 w-full text-center overflow-hidden">
-        <p
-          className="bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 
-            bg-clip-text text-transparent font-normal tracking-wider 
-            text-[40px] sm:text-[60px] md:text-[110px] lg:text-[150px] xl:text-[180px] 2xl:text-[225px]
-            leading-none -mb-8 md:-mb-12 lg:-mb-16 pointer-events-none select-none"
-        >
-          THIRDVIZION
-        </p>
+       <p
+  className="bg-clip-text text-transparent font-normal tracking-wider 
+             text-[40px] sm:text-[60px] md:text-[110px] lg:text-[150px] xl:text-[180px] 2xl:text-[225px]
+             leading-none -mb-8 md:-mb-12 lg:-mb-16 pointer-events-none select-none"
+  style={{
+    backgroundImage: "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)"
+  }}
+>
+  THIRDVIZION
+</p>
+
       </div>
 
       {/* Copyright */}
       <div className="max-w-7xl mx-auto px-6 mt-16 pt-6 text-center text-gray-400 text-sm relative z-10">
-        © {new Date().getFullYear()} ThirdVizion Labs. All rights reserved.
+        © {new Date().getFullYear()} 
       </div>
     </footer>
   );

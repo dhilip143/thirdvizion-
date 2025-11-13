@@ -4,8 +4,15 @@ import Client3 from "/src/assets/partners/client3.png";
 import Client4 from "/src/assets/partners/client4.png";
 import Client5 from "/src/assets/partners/client5.png";
 import Client6 from "/src/assets/partners/client6.png";
+import Client7 from "/src/assets/partners/c1.svg";
+import Client8 from "/src/assets/partners/c2.png";
+import Client9 from "/src/assets/partners/c3.png";
+import Client10 from "/src/assets/partners/c4.png";
+import Client11 from "/src/assets/partners/c5.png";
+import Client12 from "/src/assets/partners/c6.png";
+import Client13 from "/src/assets/partners/c7.png";
 
-const slides = [Client1, Client2, Client3, Client4, Client5, Client6];
+const slides = [Client1, Client2, Client3, Client4, Client5, Client6, Client7, Client8, Client9, Client10, Client11, Client12, Client13];
 
 const CarousalRow = ({ reverse = false, duration = 14, compact = false }) => {
   return (
@@ -18,7 +25,7 @@ const CarousalRow = ({ reverse = false, duration = 14, compact = false }) => {
       <div
         className="flex items-center"
         style={{
-          width: `${slides.length * 2 * 12}rem`,
+          width: `${slides.length * 2 * 10}rem`,
           animation: `${reverse ? "reverseScroll" : "scroll"} ${duration}s linear infinite`,
         }}
       >
@@ -27,8 +34,8 @@ const CarousalRow = ({ reverse = false, duration = 14, compact = false }) => {
             key={idx}
             className={`flex-shrink-0 ${
               compact 
-                ? "w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 mx-4" 
-                : "w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-6"
+                ? "w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-3" 
+                : "w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-30 mx-4"
             } flex justify-center items-center group`}
           >
             <div className="relative w-full h-full">

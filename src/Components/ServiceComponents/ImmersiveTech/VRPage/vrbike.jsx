@@ -9,7 +9,7 @@ export default function Vrbike() {
      
 
       {/* Content Layer */}
-      <div className="relative z-10 flex flex-col items-center text-center">
+      <div className="relative z-10 flex flex-col items-center text-center capitalize ">
         {/* Heading with Neon Glow */}
         <motion.h1
           initial={{ opacity: 0, y: -40 }}
@@ -20,7 +20,7 @@ export default function Vrbike() {
                      bg-clip-text text-transparent 
                      tracking-wide transform translate-y-10"
           style={{ fontFamily: "Outfit, sans-serif" }} >
-          IMMERSIVE VR <br /> TRAINING
+          Immersive VR <br /> Training
         </motion.h1>
 
         {/* Subtitle */}
