@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+
 
 import ARone from "/src/Components/ServiceComponents/ImmersiveTech/ARPage/ARone";
 import ARtwo from "/src/Components/ServiceComponents/ImmersiveTech/ARPage/ARtwo";

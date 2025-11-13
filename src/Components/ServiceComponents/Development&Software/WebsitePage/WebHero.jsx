@@ -16,7 +16,7 @@ const WebHero = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
             viewport={{ amount: 1 }}
-            className="mt-6 font-inter-tight text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] sm:leading-[1.1] tracking-wide text-white"
+            className="mt-6 font-semibold text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] sm:leading-[1.1] tracking-wide text-white"
           style={{ fontFamily: "Outfit, sans-serif" }} >
             The easiest path to build your <span className="text-[#00d3f3]">dream website.</span>
           </motion.h1>

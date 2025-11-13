@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+
 
 import VrLanding from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/VrLanding.jsx";
 import VRHeroSection from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/VRHeroSection.jsx";

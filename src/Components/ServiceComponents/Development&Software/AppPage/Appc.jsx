@@ -106,13 +106,13 @@ const AppDevelopmentNewLayout = () => {
         >
           <div className="flex-1">
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-inter-tight font-extrabold tracking-tighter text-[#ff8904] leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-inter-tight font-semiboldtracking-tighter text-[#ff8904] leading-tight"
               variants={itemVariants}
              style={{ fontFamily: "Outfit, sans-serif" }} >
               App Development
             </motion.h1>
             <motion.h2 
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-inter-tight font-bold tracking-tight text-white leading-tight flex items-center mt-4"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-inter-tight font-semibold tracking-tight text-white leading-tight flex items-center mt-4"
               variants={itemVariants}
            style={{ fontFamily: "Outfit, sans-serif" }}   >
               For All Platforms 

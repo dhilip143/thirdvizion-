@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+
 
 import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
 import CrmHero from "/src/Components/ServiceComponents/Data&Cloud/CRMPage/CRMHero.jsx";

@@ -264,6 +264,7 @@ export default function ArPage() {
             Enhance real-world experiences with interactive AR solutions. Visualize products, designs, and spaces in real time before making decisions.
           </p>
         </div>
+         
 
         {/* AR Button Section */}
         <div className="flex flex-col items-center space-y-6 sm:space-y-8 animate-fade-in-up" style={{animationDelay: '0.3s'}}>
@@ -272,7 +273,9 @@ export default function ArPage() {
           <div className="animate-bounce">
             <div className="w-6 h-6 sm:w-8 sm:h-8 border-r-2 border-b-2 border-pink-400 transform rotate-45"></div>
           </div>
-       
+         <div>
+          
+         </div>
           <button
             onClick={startAR}
             onMouseEnter={() => setIsHovered(true)}
