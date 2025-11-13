@@ -28,7 +28,7 @@ const AnimatedPlatformCard = ({ title, description, buttonText, icon }) => {
       }}
     >
       <div>
-        <h3 className="text-2xl md:text-3xl lg:text-4xl font-inter-tight font-extrabold mb-6 tracking-tight text-[#ff8904]"  style={{ fontFamily: "Outfit, sans-serif" }} >
+        <h3 className="text-2xl md:text-3xl lg:text-4xl font-inter-tight font-medium mb-6 tracking-tight text-[#ff8904]"  style={{ fontFamily: "Outfit, sans-serif" }} >
           {title}
         </h3>
         <p className="mb-8 text-lg text-gray-300 max-w-md leading-relaxed" style={{ fontFamily: "work-sans, sans-serif" }} >
@@ -106,13 +106,13 @@ const AppDevelopmentNewLayout = () => {
         >
           <div className="flex-1">
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-inter-tight font-semiboldtracking-tighter text-[#ff8904] leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-inter-tight font-medium tracking-tighter text-[#ff8904] leading-tight"
               variants={itemVariants}
              style={{ fontFamily: "Outfit, sans-serif" }} >
               App Development
             </motion.h1>
             <motion.h2 
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-inter-tight font-semibold tracking-tight text-white leading-tight flex items-center mt-4"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight text-white leading-tight flex items-center mt-4"
               variants={itemVariants}
            style={{ fontFamily: "Outfit, sans-serif" }}   >
               For All Platforms 

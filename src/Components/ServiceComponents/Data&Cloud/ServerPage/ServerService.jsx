@@ -14,7 +14,7 @@ const ServerService = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-bold mb-2 text-[#05df72]" style={{ fontFamily: "Outfit, sans-serif" }}>
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-medium mb-2 text-[#05df72]" style={{ fontFamily: "Outfit, sans-serif" }}>
             Our Services
           </motion.h2>
         </TextReveal>

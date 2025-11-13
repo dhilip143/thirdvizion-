@@ -86,7 +86,7 @@ export default function AppHero() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ amount: 0 }} // ✅ better viewport setting
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-semibold mb-4 text-[#ff8904]"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-medium mb-4 text-[#ff8904]"
        style={{ fontFamily: "Outfit, sans-serif" }} >
           We Craft Seamless Mobile Experiences
         </motion.h1>

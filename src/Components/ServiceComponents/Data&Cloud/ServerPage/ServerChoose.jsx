@@ -44,7 +44,7 @@ export default function ServerChoose() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-12 text-[#05df72] text-center drop-shadow-lg"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-12 text-[#05df72] text-center drop-shadow-lg"
         style={{ fontFamily: "Outfit, sans-serif" }} >
           Why Choose Us?
         </motion.h2>
