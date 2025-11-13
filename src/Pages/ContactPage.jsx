@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+
 
 import ContactHero from "/src/Components/ContactComponents/ContactHero.jsx";
 import ContactForm from "/src/Components/ContactComponents/ContactForm.jsx";

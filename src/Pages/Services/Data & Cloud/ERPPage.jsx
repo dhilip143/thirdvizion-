@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+
 
 import ERPHero from "/src/Components/ServiceComponents/Data&Cloud/ERPPage/ERPHero.jsx";
 import ERPcaption from "/src/Components/ServiceComponents/Data&Cloud/ERPPage/ERPcaption/";

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+
 
 import Hero from "/src/Components/AboutComponents/AboutHero.jsx";
 import Mission from "/src/Components/AboutComponents/MissionSection.jsx";
