@@ -1,10 +1,10 @@
 
 import image1 from "/src/assets/Blog1/BlogImage1.jpeg";
-import BlogImage1 from "/src/assets/Blog1/BlogImage1.jpeg";
-import BlogImage2 from "/src/assets/Blog1/BlogImage2.jpeg";
-import BlogImage3 from "/src/assets/Blog1/BlogImage3.jpeg";
-import BlogImage4 from "/src/assets/Blog1/BlogImage4.jpeg";
-import BlogImage5 from "/src/assets/Blog1/BlogImage5.jpeg";
+import BlogImage1 from "/src/assets/Blog1/3d.jpg";
+import BlogImage2 from "/src/assets/Blog1/vrr.jpg";
+import BlogImage3 from "/src/assets/Blog1/weee.jpg";
+import BlogImage4 from "/src/assets/Blog1/ar.jpg";
+import BlogImage5 from "/src/assets/Blog1/web.jpg";
 import BlogImage6 from "/src/assets/Blog1/BlogImage6.jpeg";
 
 const BlogsData = [
@@ -12,7 +12,7 @@ const BlogsData = [
     id: "1",
     title: "Immersive Tech",
     description: "How immersive technologies are shaping the future.",
-    HeroImage: image1,
+    HeroImage: BlogImage1,
     innerContent: [
       `Spreadsheets. emails. tracking forms by hand.
 Teams were being slowed down, and each week it cost hours.
@@ -42,7 +42,7 @@ The outcome?
     id: "2",
     title: "Virtual Reality",
     description: "Explore VR applications and business use cases.",
-    HeroImage: image1,
+    HeroImage: BlogImage2,
     innerContent: [
     `“Can I see how this looks in real life?”
  That’s the #1 question real estate buyers ask. And it’s exactly what Virtual Reality (VR) now answers—without needing to set foot on site.
@@ -67,7 +67,7 @@ Explore our VR tours → Contact us today.`
     id: "3",
     title: "Augmented Reality",
     description: "AR is revolutionizing shopping and interactive media.",
-    HeroImage: image1,
+    HeroImage: BlogImage4,
     innerContent: [
      ` “𝘞𝘢𝘪𝘵… 𝘈𝘙 𝘪𝘴𝘯’𝘵 𝘫𝘶𝘴𝘵 𝘧𝘰𝘳 𝘧𝘪𝘭𝘵𝘦𝘳𝘴?”
 We hear this a lot — and honestly, it’s outdated.
@@ -95,7 +95,7 @@ Want to explore ideas?
     id: "4",
     title: "Server Management",
     description: "Best practices for server monitoring and maintenance.",
-    HeroImage: image1,
+    HeroImage:BlogImage3,
     innerContent: [
       "Server management ensures that systems are secure, efficient, and reliable. It includes monitoring server performance and applying security patches.",
       "Modern server management integrates AI tools and cloud automation to prevent downtime and balance workloads effectively."
@@ -106,7 +106,7 @@ Want to explore ideas?
     id: "5",
     title: "Web Development",
     description: "Building responsive and scalable websites.",
-    HeroImage: image1,
+    HeroImage: BlogImage5,
     innerContent: [
       `🚀 Running your website on WordPress?
  You’re only as powerful as the tools you choose.

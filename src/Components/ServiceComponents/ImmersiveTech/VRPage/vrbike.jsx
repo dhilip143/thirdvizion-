@@ -15,7 +15,7 @@ export default function Vrbike() {
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-15 mt-30
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-15 mt-1
                      bg-gradient-to-r from-violet-400 to-indigo-500 
                      bg-clip-text text-transparent 
                      tracking-wide transform translate-y-10"

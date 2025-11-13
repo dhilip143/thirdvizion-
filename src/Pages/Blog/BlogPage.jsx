@@ -164,7 +164,7 @@ const BlogPage = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, type: "spring" }}
         >
-          <span className="bg-gradient-to-r from-[#FF700A] via-orange-400 to-yellow-400 bg-clip-text text-transparent"
+          <span className="bg-gradient-to-r from-[#FF700A] font-medium via-orange-400 to-yellow-400 bg-clip-text text-transparent"
             style={{ fontFamily: "Outfit, sans-serif" }}>
             Welcome to Our Blog
           </span>
