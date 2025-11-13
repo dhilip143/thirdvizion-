@@ -124,12 +124,12 @@ export default function ContactHero() {
         className="hidden lg:flex fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col justify-center items-center w-full z-30 pointer-events-none"
         aria-hidden
       >
-        <div className="contact-text text-md xl:text-2xl mb-4 font-semibold text-center uppercase font-[Inter_Tight]"  style={{ fontFamily: "Outfit, sans-serif" }}>
+        <div className="contact-text text-md xl:text-2xl mb-4 font-bold text-center uppercase font-[Inter_Tight]"  style={{ fontFamily: "Outfit, sans-serif" }}>
           Contact
         </div>
         <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight] "  style={{ fontFamily: "Outfit, sans-serif" }}>
          <div 
-  className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-bold uppercase bg-clip-text text-transparent"
+  className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
   style={{
     backgroundImage:
       "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)"
@@ -139,7 +139,7 @@ export default function ContactHero() {
 </div>
 
 <div 
-  className="touch-text text-5xl md:text-[6rem] xl:text-[12rem] font-bold uppercase bg-clip-text text-transparent"
+  className="touch-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
   style={{
     backgroundImage:
       "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)"
