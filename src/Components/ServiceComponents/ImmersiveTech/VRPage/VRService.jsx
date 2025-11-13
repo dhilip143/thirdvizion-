@@ -323,7 +323,7 @@ const VRService = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header */}
           <div ref={headerRef} className="text-center mb-12 md:mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 bg-[length:200%_100%] tracking-tight">
+            <h1 className="text-4xl md:text-6xl font-medium mb-4 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 bg-[length:200%_100%] tracking-tight">
               Virtual Reality Services
             </h1>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
