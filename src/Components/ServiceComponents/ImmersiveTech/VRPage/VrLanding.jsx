@@ -14,12 +14,12 @@ export default function VrLanding() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-center"
+        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-center"
         style={{ fontFamily: "Outfit, sans-serif" }}
       >
         Transform Your World with{" "}
         <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-500 font-semibold">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-500 font-medium mt-2 ">
           Virtual Reality
         </span>
       </motion.h1>

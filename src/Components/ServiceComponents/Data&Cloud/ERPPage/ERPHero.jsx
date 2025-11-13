@@ -10,14 +10,19 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl h-screen text-center px-6 flex flex-col justify-center items-center">
+        
         {/* Heading */}
-        <h1
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          viewport={{ amount: 0.3 }}
           className="mt-6 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.05] tracking-tight bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
           style={{ fontFamily: "Outfit, sans-serif" }}
         >
           The Operating system of the future, <br className="hidden xl:flex" />
           built for now.
-        </h1>
+        </motion.h1> {/* ✅ fixed closing tag */}
 
         {/* Subtitle */}
         <p
@@ -28,7 +33,7 @@ export default function HeroSection() {
           productivity with our next-gen ERP systems.
         </p>
 
-        {/* CTA Button (kept animated) */}
+        {/* CTA Button */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -278,7 +278,7 @@ export default function CRMShowcase() {
         {/* Header - Not Pinned */}
         <div className="relative z-40 pt-20 px-4">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-[#FF6467] mb-3"
+            <h2 className="text-2xl font-medium text-[#FF6467] mb-3"
               style={{ fontFamily: "Outfit, sans-serif" }}>
               Your CRM Universe
             </h2>
