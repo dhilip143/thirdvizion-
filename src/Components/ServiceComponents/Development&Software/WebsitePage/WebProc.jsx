@@ -340,6 +340,7 @@ const App = () => {
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             color: 'transparent',
+            
           }}
         >
           Website

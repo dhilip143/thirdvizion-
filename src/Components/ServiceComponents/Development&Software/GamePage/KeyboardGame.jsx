@@ -138,11 +138,11 @@ const KeyboardGame = () => {
       >
         <TextReveal>
           <motion.h1
-            className="text-4xl md:text-6xl font-extrabold mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-4"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-          >
+         style={{ fontFamily: "outfit, sans-serif" }} >
             Interactive Keyboard Game
           </motion.h1>
         </TextReveal>
@@ -152,7 +152,7 @@ const KeyboardGame = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-          >
+         style={{ fontFamily: "worksans, sans-serif" }} >
             Type or click and hit ENTER to reveal the description.
           </motion.p>
         </TextReveal>
@@ -174,20 +174,20 @@ const KeyboardGame = () => {
               ? "bg-white scale-95"
               : "bg-white text-black hover:text-white hover- hover:bg-transparent"
             }`}
-        >
+      style={{ fontFamily: "worksans, sans-serif" }}  >
           ENTER
         </button>
 
         <button
           onClick={handleClear}
           className="border-1 px-4 py-2 rounded-xl font-bold"
-        >
+      style={{ fontFamily: "worksans, sans-serif" }}  >
           CLEAR
         </button>
       </div>
 
       {!activeTool && (
-        <div className="text-gray-400 text-lg animate-pulse text-center pb-1">
+        <div className="text-gray-400 text-lg animate-pulse text-center pb-1" style={{ fontFamily: "worksans, sans-serif" }}>
           Available keywords: {Object.keys(toolDescriptions).join(", ")}
         </div>
       )}
@@ -199,7 +199,7 @@ const KeyboardGame = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4 }}
           className="max-w-2xl mb-10 bg-white/50 backdrop-blur-2xl p-6 rounded-2xl shadow-xl"
-        >
+       style={{ fontFamily: "worksans, sans-serif" }} >
           <h2 className="text-3xl font-extrabold mb-4">{activeTool}</h2>
           <p className="text-lg leading-relaxed">
             {toolDescriptions[activeTool]}

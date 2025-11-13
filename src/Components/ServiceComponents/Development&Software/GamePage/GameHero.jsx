@@ -214,18 +214,18 @@ export default function GameLanding() {
             <span>Premium Web-Game Services</span>
           </div>
 
-          <h1 className="font-inter-tight text-4xl lg:text-6xl text-center md:text-start font-black leading-[1.05] tracking-tight">
-            Build Interactive WebSite Games Players Love
+          <h1 className=" text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center md:text-start font-medium leading-[1.05] tracking-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
+            Build Interactive WebSite Games Players  
           </h1>
 
-          <p className="mt-5 max-w-xl text-center md:text-start text-sm text-white/70">
+          <p className="mt-5 max-w-xl text-center md:text-start text-sm text-white/70" style={{ fontFamily: "worksans, sans-serif" }}>
             From React + Three.js prototypes to full-engine WebGL titles — we
             deliver playable demos, polished visuals, and optimized builds.
           </p>
 
           <div className="group w-full h-full mt-8 flex items-center justify-center md:justify-start gap-4 md:gap-2">
             <Link to={"/contact"}>
-              <button className="font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl border border-white/40 bg-transparent px-5 sm:px-6 md:px-8 py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-sm backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-105">
+              <button className="font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl border border-white/40 bg-transparent px-5 sm:px-6 md:px-8 py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-sm backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:scale-105"style={{ fontFamily: "worksans, sans-serif" }}>
                 Cast a Spell{" "}
                 <ArrowRight className="h-5 w-5 transition-all duration-300 group-hover:translate-x-0.5" />
               </button>
@@ -233,7 +233,7 @@ export default function GameLanding() {
             <a
               href="#work"
               className="text-white/70 underline-offset-4 hover:text-white hover:underline px-2 sm:px-6"
-            >
+          style={{ fontFamily: "worksans, sans-serif" }}  >
               See Builds
             </a>
           </div>
