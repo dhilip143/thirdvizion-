@@ -69,40 +69,50 @@ export default function CRMShowcase() {
   ];
 
   // Calculate positions for feature cards based on platform positions
-  const getFeatureCardPosition = (index, totalItems, radius, center) => {
-    const angle = (index / totalItems) * Math.PI * 2;
-    const x = center.x + radius * Math.cos(angle);
-    const y = center.y + radius * Math.sin(angle);
-    
-    // Determine quadrant and position card accordingly
-    const quadrant = Math.floor((angle * 4) / (Math.PI * 2)) % 4;
-    
-    let cardX, cardY;
-    
-    switch(quadrant) {
-      case 0: // Right side
-        cardX = x + 50;
-        cardY = y - 20;
-        break;
-      case 1: // Bottom side
-        cardX = x - 220;
-        cardY = y + 40;
-        break;
-      case 2: // Left side
-        cardX = x - 350;
-        cardY = y - 50;
-        break;
-      case 3: // Top side
-        cardX = x - -50;
-        cardY = y - 70;
-        break;
-      default:
-        cardX = x + 60;
-        cardY = y - 50;
-    }
-    
-    return { x: cardX, y: cardY };
-  };
+ const getFeatureCardPosition = (index, totalItems, radius, center) => {
+  const angle = (index / totalItems) * Math.PI * 2;
+  const x = center.x + radius * Math.cos(angle);
+  const y = center.y + radius * Math.sin(angle);
+
+  let cardX, cardY;
+
+  // Custom manual offset for each card (to fine-tune layout)
+  switch (index) {
+    case 0: // Top-right
+      cardX = x + 60;
+      cardY = y - 40;
+      break;
+    case 1: // Right
+      cardX = x + 50;
+      cardY = y - 30;
+      break;
+    case 2: // Bottom-right
+      cardX = x + -100;
+      cardY = y + 50;
+      break;
+    case 3: // Bottom
+      cardX = x - 340;
+      cardY = y + -25;
+      break;
+    case 4: // Bottom-left
+      cardX = x - 340;
+      cardY = y + -30;
+      break;
+    case 5: // Left
+      cardX = x - 350;
+      cardY = y - 55;
+      break;
+    case 6: // Top-left
+      cardX = x - -50;
+      cardY = y - 50;
+      break;
+    default:
+      cardX = x;
+      cardY = y;
+  }
+
+  return { x: cardX, y: cardY };
+};
 
   // Check screen size on mount and resize
   useEffect(() => {
@@ -179,14 +189,19 @@ export default function CRMShowcase() {
 
     linesRef.current.forEach((line, index) => {
       if (!line) return;
-      if (index === activeIndex) {
+      
+      // Show current and previous lines with different opacities
+      if (index <= activeIndex) {
+        const opacity = index === activeIndex ? 1 : 0.6 - (activeIndex - index) * 0.2;
+        const strokeWidth = index === activeIndex ? 4 : 2;
+        
         gsap.to(line, {
           strokeDashoffset: 0,
-          strokeWidth: 4,
-          opacity: 1,
+          strokeWidth: strokeWidth,
+          opacity: Math.max(0.3, opacity),
           duration: 1,
           ease: "power2.out",
-          attr: { filter: "url(#glow)" },
+          attr: { filter: index === activeIndex ? "url(#glow)" : "none" },
         });
       } else {
         gsap.to(line, {
@@ -199,12 +214,66 @@ export default function CRMShowcase() {
     });
   }, [activeIndex, isMobile, isTablet]);
 
+  // Helper function to determine visibility for mobile/tablet
+  const getMobileVisibility = (index) => {
+    if (index <= activeIndex) {
+      const distanceFromActive = activeIndex - index;
+      if (distanceFromActive === 0) {
+        return "opacity-100 scale-100 z-30"; // Current item
+      } else if (distanceFromActive === 1) {
+        return "opacity-80 scale-95 -translate-y-5 z-20"; // Previous item
+      } else if (distanceFromActive === 2) {
+        return "opacity-60 scale-90 -translate-y-10 z-10"; // Two items back
+      } else {
+        return "opacity-40 scale-85 -translate-y-15 z-0"; // Older items
+      }
+    } else {
+      return "opacity-0 translate-y-10 scale-95"; // Future items
+    }
+  };
+
+  // Helper function to determine visibility for desktop icons
+  const getDesktopIconVisibility = (index) => {
+    if (index <= activeIndex) {
+      const distanceFromActive = activeIndex - index;
+      if (distanceFromActive === 0) {
+        return "scale-110 z-30"; // Current item
+      } else if (distanceFromActive === 1) {
+        return "scale-105 opacity-90 z-25"; // Previous item
+      } else if (distanceFromActive === 2) {
+        return "scale-100 opacity-80 z-20"; // Two items back
+      } else {
+        return "scale-95 opacity-70 z-15"; // Older items
+      }
+    } else {
+      return "opacity-50 scale-90"; // Future items
+    }
+  };
+
+  // Helper function to determine visibility for desktop cards
+  const getDesktopCardVisibility = (index) => {
+    if (index <= activeIndex) {
+      const distanceFromActive = activeIndex - index;
+      if (distanceFromActive === 0) {
+        return "opacity-100 z-10"; // Current item
+      } else if (distanceFromActive === 1) {
+        return "opacity-100 z-9"; // Previous item
+      } else if (distanceFromActive === 2) {
+        return "opacity-100 z-8"; // Two items back
+      } else {
+        return "opacity-100 z-7"; // Older items
+      }
+    } else {
+      return "opacity-0"; // Future items
+    }
+  };
+
   // Render Mobile View
   if (isMobile) {
     return (
       <section
         ref={sectionRef}
-        className="relative w-full min-h-screen bg-gradient-to-b from-[#020202] via-[#0A0A0A] to-[#050505] text-white overflow-hidden"
+        className="relative w-full min-h-screen bg-gradient-to-b    from-[#020202] via-[#0A0A0A] to-[#050505] text-white overflow-hidden"
       >
         {/* Header - Not Pinned */}
         <div className="relative z-40 pt-20 px-4">
@@ -235,13 +304,7 @@ export default function CRMShowcase() {
               {platforms.map((platform, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 transition-all duration-500 ${
-                    index === activeIndex
-                      ? "opacity-100 scale-100 z-30"
-                      : index < activeIndex
-                      ? "opacity-0 -translate-y-10 scale-95"
-                      : "opacity-0 translate-y-10 scale-95"
-                  }`}
+                  className={`absolute inset-0 transition-all duration-500 ${getMobileVisibility(index)}`}
                 >
                   <div className="bg-[#FF646710] backdrop-blur-md border border-[#FF646740] rounded-2xl p-4 shadow-[0_0_20px_rgba(255,100,103,0.2)]">
                     {/* Platform Icon */}
@@ -277,6 +340,8 @@ export default function CRMShowcase() {
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     index === activeIndex
                       ? "bg-[#FF6467] w-6"
+                      : index < activeIndex
+                      ? "bg-[#FF6467] opacity-60"
                       : "bg-white/30"
                   }`}
                 />
@@ -342,9 +407,9 @@ export default function CRMShowcase() {
                     key={i}
                     d={`M${x},${y} Q${(x + center.x) / 2},${(y + center.y) / 2 - 30} ${center.x},${center.y}`}
                     stroke="#FF6467"
-                    strokeWidth={activeIndex === i ? "3" : "1.5"}
+                    strokeWidth={i <= activeIndex ? (i === activeIndex ? "3" : "2") : "1.5"}
                     fill="none"
-                    opacity={activeIndex === i ? "1" : "0.15"}
+                    opacity={i <= activeIndex ? (i === activeIndex ? "1" : 0.6 - (activeIndex - i) * 0.2) : "0.15"}
                     strokeLinecap="round"
                   />
                 );
@@ -375,9 +440,7 @@ export default function CRMShowcase() {
               return (
                 <div
                   key={i}
-                  className={`absolute flex flex-col items-center justify-center transition-all duration-500 ${
-                    activeIndex === i ? "scale-110 z-30" : "opacity-70"
-                  }`}
+                  className={`absolute flex flex-col items-center justify-center transition-all duration-500 ${getDesktopIconVisibility(i)}`}
                   style={{
                     top: `${y - 20}px`,
                     left: `${x - 20}px`,
@@ -385,8 +448,10 @@ export default function CRMShowcase() {
                 >
                   <div
                     className={`w-10 h-10 flex items-center justify-center rounded-full border transition-all duration-300 ${
-                      activeIndex === i
-                        ? "bg-[#FF6467] border-[#FF6467] text-white shadow-[0_0_20px_rgba(255,100,103,0.8)]"
+                      i <= activeIndex
+                        ? i === activeIndex
+                          ? "bg-[#FF6467] border-[#FF6467] text-white shadow-[0_0_20px_rgba(255,100,103,0.8)]"
+                          : `bg-[#FF6467${Math.max(30, 80 - (activeIndex - i) * 15)}] border-[#FF6467${Math.max(50, 100 - (activeIndex - i) * 20)}] text-white`
                         : "bg-[#FF646710] border-[#FF646730] text-white/70"
                     }`}
                   >
@@ -394,7 +459,7 @@ export default function CRMShowcase() {
                   </div>
                   <span
                     className={`text-xs mt-1 font-medium ${
-                      activeIndex === i ? "text-[#FF6467]" : "text-white/50"
+                      i <= activeIndex ? "text-[#FF6467]" : "text-white/50"
                     }`}
                   >
                     {p.label}
@@ -403,7 +468,7 @@ export default function CRMShowcase() {
               );
             })}
 
-            {/* Feature Card - Positioned near active platform */}
+            {/* Feature Cards - Positioned near platform icons */}
             {platforms.map((_, i) => {
               const angle = (i / platforms.length) * Math.PI * 2;
               const x = center.x + radius * Math.cos(angle);
@@ -414,9 +479,7 @@ export default function CRMShowcase() {
                 <div
                   key={i}
                   ref={i === activeIndex ? featureCardRef : null}
-                  className={`absolute w-64 text-left bg-[#FF646710] backdrop-blur-md border border-[#FF646740] rounded-2xl p-4 shadow-[0_0_25px_rgba(255,100,103,0.2)] transition-all duration-500 ${
-                    i === activeIndex ? "opacity-100 z-10" : "opacity-0"
-                  }`}
+                  className={`absolute w-64 text-left bg-[#FF646710] backdrop-blur-md border border-[#FF646740] rounded-2xl p-4 shadow-[0_0_25px_rgba(255,100,103,0.2)] transition-all duration-500 ${getDesktopCardVisibility(i)}`}
                   style={{
                     top: `${cardPos.y}px`,
                     left: `${cardPos.x}px`,
@@ -521,9 +584,7 @@ export default function CRMShowcase() {
               return (
                 <div
                   key={i}
-                  className={`absolute flex flex-col items-center justify-center transition-all duration-700 ${
-                    activeIndex === i ? "scale-110 z-30" : "opacity-70"
-                  }`}
+                  className={`absolute flex flex-col items-center justify-center transition-all duration-700 ${getDesktopIconVisibility(i)}`}
                   style={{
                     top: `${y - 25}px`,
                     left: `${x - 25}px`,
@@ -531,8 +592,10 @@ export default function CRMShowcase() {
                 >
                   <div
                     className={`w-12 h-12 flex items-center justify-center rounded-full border transition-all duration-500 ${
-                      activeIndex === i
-                        ? "bg-[#FF6467] border-[#FF6467] text-white shadow-[0_0_25px_rgba(255,100,103,0.8)]"
+                      i <= activeIndex
+                        ? i === activeIndex
+                          ? "bg-[#FF6467] border-[#FF6467] text-white shadow-[0_0_25px_rgba(255,100,103,0.8)]"
+                          : `bg-[#FF6467${Math.max(20, 70 - (activeIndex - i) * 15)}] border-[#FF6467${Math.max(40, 90 - (activeIndex - i) * 20)}] text-white`
                         : "bg-[#FF646710] border-[#FF646730] text-white/70"
                     }`}
                   >
@@ -540,7 +603,7 @@ export default function CRMShowcase() {
                   </div>
                   <span
                     className={`text-xs mt-2 font-medium ${
-                      activeIndex === i ? "text-[#FF6467]" : "text-white/50"
+                      i <= activeIndex ? "text-[#FF6467]" : "text-white/50"
                     }`}
                   >
                     {p.label}
@@ -560,9 +623,7 @@ export default function CRMShowcase() {
                 <div
                   key={i}
                   ref={i === activeIndex ? featureCardRef : null}
-                  className={`absolute w-72 text-left  p-5  transition-all duration-700 ${
-                    i === activeIndex ? "opacity-100 z-10" : "opacity-0"
-                  }`}
+                  className={`absolute w-72 text-left p-5 transition-all duration-700 ${getDesktopCardVisibility(i)}`}
                   style={{
                     top: `${cardPos.y}px`,
                     left: `${cardPos.x}px`,
@@ -662,9 +723,7 @@ export default function CRMShowcase() {
             return (
               <div
                 key={i}
-                className={`absolute flex flex-col items-center justify-center transition-all duration-700 ${
-                  activeIndex === i ? "scale-110 z-30" : "opacity-70"
-                }`}
+                className={`absolute flex flex-col items-center justify-center transition-all duration-700 ${getDesktopIconVisibility(i)}`}
                 style={{
                   top: `${y - 25}px`,
                   left: `${x - 25}px`,
@@ -672,8 +731,10 @@ export default function CRMShowcase() {
               >
                 <div
                   className={`w-12 h-12 flex items-center justify-center rounded-full border transition-all duration-500 ${
-                    activeIndex === i
-                      ? "bg-[#FF6467] border-[#FF6467] text-white shadow-[0_0_25px_rgba(255,100,103,0.8)]"
+                    i <= activeIndex
+                      ? i === activeIndex
+                        ? "bg-[#FF6467] border-[#FF6467] text-white shadow-[0_0_25px_rgba(255,100,103,0.8)]"
+                        : `bg-[#FF6467${Math.max(20, 70 - (activeIndex - i) * 15)}] border-[#FF6467${Math.max(40, 90 - (activeIndex - i) * 20)}] text-white`
                       : "bg-[#FF646710] border-[#FF646730] text-white/70"
                   }`}
                 >
@@ -681,7 +742,7 @@ export default function CRMShowcase() {
                 </div>
                 <span
                   className={`text-xs mt-2 font-medium ${
-                    activeIndex === i ? "text-[#FF6467]" : "text-white/50"
+                    i <= activeIndex ? "text-[#FF6467]" : "text-white/50"
                   }`}
                 >
                   {p.label}
@@ -701,9 +762,7 @@ export default function CRMShowcase() {
               <div
                 key={i}
                 ref={i === activeIndex ? featureCardRef : null}
-                className={`absolute w-80 text-left bg-[#FF646710] backdrop-blur-md border border-[#FF646740] rounded-2xl p-5 shadow-[0_0_30px_rgba(255,100,103,0.15)] hover:shadow-[0_0_50px_rgba(255,100,103,0.3)] transition-all duration-700 ${
-                  i === activeIndex ? "opacity-100 z-10" : "opacity-0"
-                }`}
+                className={`absolute w-80 text-left bg-[#FF646710] backdrop-blur-md border border-[#FF646740] rounded-2xl p-5 shadow-[0_0_30px_rgba(255,100,103,0.15)] hover:shadow-[0_0_50px_rgba(255,100,103,0.3)] transition-all duration-700 ${getDesktopCardVisibility(i)}`}
                 style={{
                   top: `${cardPos.y}px`,
                   left: `${cardPos.x}px`,

@@ -5,7 +5,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 
-
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AppHero() {
@@ -38,7 +37,6 @@ export default function AppHero() {
           scrub: true,
           pin: true,
           anticipatePin: 1,
-          // markers: true, // remove later
         },
       }
     );
@@ -49,8 +47,8 @@ export default function AppHero() {
       ease: "power2.out",
       scrollTrigger: {
         trigger: wrapper,
-        start: "bottom-=40% bottom", // fade starts near the end
-        end: "bottom bottom", // fully invisible at end
+        start: "bottom-=40% bottom",
+        end: "bottom bottom",
         scrub: true,
       },
     });
@@ -81,38 +79,34 @@ export default function AppHero() {
     <div className="bg-black text-white font-sans overflow-x-hidden mb-[-100vh]">
       {/* Hero text section */}
       <section className="mt-40 lg:mt-0 lg:h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 relative z-10">
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ amount: 0 }} // ✅ better viewport setting
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-semibold mb-4 text-[#ff8904]"
-       style={{ fontFamily: "Outfit, sans-serif" }} >
+        {/* Static Heading */}
+        <h1
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-4 text-[#ff8904]"
+          style={{ fontFamily: "Outfit, sans-serif" }}
+        >
           We Craft Seamless Mobile Experiences
-        </motion.h1>
+        </h1>
 
-        {/* <TextReveal delay={0.2}> */}
-        <motion.p
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }} // ✅ triggers earlier
+        {/* Static Paragraph */}
+        <p
           className="text-gray-400 text-sm sm:text-base md:text-lg max-w-md sm:max-w-xl lg:max-w-2xl mb-6"
-       style={{ fontFamily: "work-sans, sans-serif" }} >
+          style={{ fontFamily: "Work Sans, sans-serif" }}
+        >
           Transforming ideas into intuitive and engaging mobile applications
           that drive success.
-        </motion.p>
-        {/* </TextReveal> */}
-          <Link to="/contact">
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl border border-[#ff8904]/40 bg-black px-5 sm:px-6 md:px-8 py-3 sm:py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-lg shadow-[0_0_10px_rgba(0,211,243,0.3)] backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(255, 137, 4,0.5)] hover:scale-105 text-[#ff8904]"
-        >
-          Get Started
-        </motion.button>
+        </p>
+
+        {/* Animated CTA Button */}
+        <Link to="/contact">
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl border border-[#ff8904]/40 bg-black px-5 sm:px-6 md:px-8 py-3 sm:py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-lg shadow-[0_0_10px_rgba(0,211,243,0.3)] backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(255,137,4,0.5)] hover:scale-105 text-[#ff8904]"
+          >
+            Get Started
+          </motion.button>
         </Link>
       </section>
 

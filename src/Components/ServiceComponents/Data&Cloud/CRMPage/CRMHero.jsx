@@ -54,7 +54,7 @@ export default function CrmHero() {
       className="relative overflow-hidden px-4 sm:px-6 py-16 sm:py-20 lg:py-28 text-white"
       aria-label="CRM Hero - Coral Theme"
     >
-      <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10 lg:gap-20 xl:gap-10">
+      <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row  items-center gap-10 lg:gap-20 xl:gap-10">
         {/* Left: Text */}
         <div className="w-full lg:w-6/12 text-center lg:text-left">
           <div className="max-w-2xl mx-auto lg:ml-0">

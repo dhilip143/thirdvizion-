@@ -1,32 +1,59 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 // --- Icon Components (Cyan Theme) ---
 const StethoscopeIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10a6 6 0 0 0-12 0v1h12z"/><path d="M12 2v2a10 10 0 0 0 10 10v1h-3a2 2 0 0 1-2-2v-2a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v2a2 2 0 0 1-2 2H2v-1A10 10 0 0 0 12 4V2z"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 10a6 6 0 0 0-12 0v1h12z" />
+    <path d="M12 2v2a10 10 0 0 0 10 10v1h-3a2 2 0 0 1-2-2v-2a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v2a2 2 0 0 1-2 2H2v-1A10 10 0 0 0 12 4V2z" />
+  </svg>
 );
 
 const BookOpenIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+  </svg>
 );
 
 const ShoppingCartIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 12.09a2 2 0 0 0 1.76 1.54L21 16"/><path d="M6 5h17l-1 7H8"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="9" cy="21" r="1" />
+    <circle cx="20" cy="21" r="1" />
+    <path d="M1 1h4l2.68 12.09a2 2 0 0 0 1.76 1.54L21 16" />
+    <path d="M6 5h17l-1 7H8" />
+  </svg>
 );
 
 const DollarSignIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="12" y1="1" x2="12" y2="23" />
+    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+  </svg>
 );
 
 const PlaneIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 14l2.2-2L17.8 10l-1.4 1.4L14 10l-2 2l2 2l-1.4 1.4L12 16l2 2l1.4-1.4L18 18l2.2-2L17.8 14z"/><path d="M2 22l20-20"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17.8 14l2.2-2L17.8 10l-1.4 1.4L14 10l-2 2l2 2l-1.4 1.4L12 16l2 2l1.4-1.4L18 18l2.2-2L17.8 14z" />
+    <path d="M2 22l20-20" />
+  </svg>
 );
 
 const SmileIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+    <line x1="9" y1="9" x2="9.01" y2="9" />
+    <line x1="15" y1="9" x2="15.01" y2="9" />
+  </svg>
 );
 
 const PackageIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12.89 2h3.42"/><path d="M10.77 20h2.46"/><path d="M20.24 12l-8.49 8.49L3.51 12l8.23-8.23a2.46 2.46 0 0 1 3.48 0L20.24 12z"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12.89 2h3.42" />
+    <path d="M10.77 20h2.46" />
+    <path d="M20.24 12l-8.49 8.49L3.51 12l8.23-8.23a2.46 2.46 0 0 1 3.48 0L20.24 12z" />
+    <line x1="12" y1="4" x2="12" y2="20" />
+  </svg>
 );
 
 const iconMap = {
@@ -46,19 +73,25 @@ const RadialSegment = ({ service, angle, isSelected, onClick, rotationOffset }) 
   const rotationDegrees = angle + rotationOffset;
   const counterRotationDegrees = -rotationDegrees;
 
+  const handleClick = (e) => {
+    e.stopPropagation();
+    onClick(service);
+  };
+
   return (
     <div
       className="absolute top-1/2 left-1/2 w-80 h-80 origin-top-left flex justify-start items-center cursor-pointer transition-all duration-700 ease-out"
       style={{
         transform: `rotate(${rotationDegrees}deg) translate(0px, -50%)`,
       }}
-      onClick={() => onClick(service)}
+      onClick={handleClick}
     >
+      {/* Segment Arc */}
       <div
         className={`w-full h-full absolute transition-all duration-500 rounded-full ${
           isSelected
             ? "border-2 border-[#00d3f3] opacity-70 shadow-[0_0_15px_rgba(0,211,243,0.5)]"
-            : "border border-white/20  hover:opacity-40 hover:border-[#00d3f3]/50"
+            : "border border-white/20 hover:opacity-40 hover:border-[#00d3f3]/50"
         }`}
         style={{
           clipPath: `polygon(50% 50%, 100% 50%, 100% 100%, 0% 100%, 0% 50%)`,
@@ -66,9 +99,11 @@ const RadialSegment = ({ service, angle, isSelected, onClick, rotationOffset }) 
           pointerEvents: "none",
         }}
       />
+
+      {/* Icon + Label */}
       <div
-        className={`absolute left-0 top-0 p-4 transition-all duration-500 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center space-y-2 group ${
-          isSelected ? "scale-125 z-10" : "scale-100 hover:scale-110"
+        className={`absolute left-0 top-0 p-4 transition-all duration-500 flex flex-col items-center space-y-2 group ${
+          isSelected ? "scale-125 z-20" : "scale-100 hover:scale-110 z-10"
         }`}
         style={{
           transform: `translate(240px, 0px) rotate(${counterRotationDegrees}deg)`,
@@ -81,7 +116,7 @@ const RadialSegment = ({ service, angle, isSelected, onClick, rotationOffset }) 
               : "bg-white/5 text-white border border-white/30 group-hover:bg-[#00d3f3]/20 group-hover:border-[#00d3f3]/50 group-hover:shadow-[0_0_15px_rgba(0,211,243,0.3)]"
           }`}
         >
-          {React.createElement(IconComponent, {})}
+          {IconComponent && React.createElement(IconComponent, {})}
         </div>
         <span
           className={`text-sm font-bold transition-all duration-500 px-3 py-1 rounded-full backdrop-blur-md ${
@@ -113,11 +148,11 @@ const RadialSelector = ({ services, selectedService, setSelectedService, rotatio
               </span>
             </h3>
             {selectedService && (
-              <div className="mt-6 pt-6 border-t border-[#00d3f3]/30 animate-fadeIn">
+              <div className="mt-6 pt-6 border-t border-[#00d3f3]/30">
                 <p className="text-sm text-[#00d3f3] font-semibold uppercase tracking-widest font-inter-tight">
                   WE DO
                 </p>
-                <p className="text-2xl font-bold text-white mt-2 animate-pulse-text font-inter-tight">
+                <p className="text-2xl font-bold text-white mt-2 font-inter-tight">
                   {selectedService.title}
                 </p>
               </div>
@@ -139,10 +174,21 @@ const RadialSelector = ({ services, selectedService, setSelectedService, rotatio
   );
 };
 
-// --- Mobile Design (Simplified) ---
+// --- Mobile Design ---
 const MobileServices = ({ services, selectedService, setSelectedService }) => {
+  // Reset selection after 4 seconds
+  useEffect(() => {
+    if (selectedService) {
+      const timer = setTimeout(() => {
+        setSelectedService(null);
+      }, 4000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [selectedService, setSelectedService]);
+
   return (
-    <div className="flex flex-col items-center w-full py-12 space-y-6">
+    <div className="flex flex-col items-center w-full py-12 space-y-6 px-4">
       <h2 className="text-3xl font-bold text-white text-center mb-4">
         Web Development <span className="text-[#00d3f3]">Service</span>
       </h2>
@@ -161,23 +207,31 @@ const MobileServices = ({ services, selectedService, setSelectedService }) => {
               onClick={() => setSelectedService(service)}
             >
               <div
-                className={`w-14 h-14 flex items-center justify-center rounded-full ${
-                  isSelected ? "bg-[#00d3f3] text-black" : "bg-white/10 text-white"
+                className={`w-14 h-14 flex items-center justify-center rounded-full transition-all duration-300 ${
+                  isSelected ? "bg-[#00d3f3] text-black scale-110" : "bg-white/10 text-white"
                 }`}
               >
-                <Icon />
+                {Icon && <Icon />}
               </div>
-              <span
-                className={`text-lg font-semibold ${
-                  isSelected ? "text-[#00d3f3]" : "text-white"
-                }`}
-              >
+              <span className={`text-lg font-semibold transition-all duration-300 ${isSelected ? "text-[#00d3f3]" : "text-white"}`}>
                 {service.title}
               </span>
             </div>
           );
         })}
       </div>
+      
+      {/* Selected service display for mobile */}
+      {selectedService && (
+        <div className="mt-8 p-6 bg-black/40 border border-[#00d3f3]/30 rounded-xl backdrop-blur-md text-center animate-fadeIn">
+          <p className="text-sm text-[#00d3f3] font-semibold uppercase tracking-widest">
+            WE DO
+          </p>
+          <p className="text-2xl font-bold text-white mt-2">
+            {selectedService.title}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
@@ -187,8 +241,9 @@ const App = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [rotationOffset, setRotationOffset] = useState(0);
   const [autoRotate, setAutoRotate] = useState(true);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(false);
   const rotationRef = useRef(null);
+  const timeoutRef = useRef(null);
 
   const services = [
     { title: "Health Care" },
@@ -200,33 +255,93 @@ const App = () => {
     { title: "Food Delivery" },
   ];
 
-  // Detect Mobile
+  // Detect Mobile with proper initialization
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const checkMobile = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      
+      // Reset auto-rotation state when switching between mobile and desktop
+      if (mobile) {
+        setAutoRotate(false);
+        if (rotationRef.current) {
+          clearInterval(rotationRef.current);
+          rotationRef.current = null;
+        }
+      } else {
+        setAutoRotate(true);
+      }
+    };
+
+    // Initial check
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Auto-rotation effect (Laptop only)
+  // Auto-rotation effect with proper cleanup
   useEffect(() => {
     if (!isMobile && autoRotate) {
       rotationRef.current = setInterval(() => {
         setRotationOffset((prev) => (prev + 0.2) % 360);
       }, 50);
-    } else {
-      if (rotationRef.current) clearInterval(rotationRef.current);
+    } else if (rotationRef.current) {
+      clearInterval(rotationRef.current);
+      rotationRef.current = null;
     }
 
     return () => {
-      if (rotationRef.current) clearInterval(rotationRef.current);
+      if (rotationRef.current) {
+        clearInterval(rotationRef.current);
+        rotationRef.current = null;
+      }
     };
   }, [autoRotate, isMobile]);
 
-  const handleServiceSelect = (service) => {
+  // Cleanup timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      if (rotationRef.current) {
+        clearInterval(rotationRef.current);
+      }
+    };
+  }, []);
+
+  const handleServiceSelect = useCallback((service) => {
     setSelectedService(service);
     setAutoRotate(false);
-    setTimeout(() => setAutoRotate(true), 8000);
-  };
+
+    // Clear existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Reset after 4 seconds only on desktop
+    if (!isMobile) {
+      timeoutRef.current = setTimeout(() => {
+        setSelectedService(null);
+        setAutoRotate(true);
+      }, 4000);
+    }
+  }, [isMobile]);
+
+  // Handle service selection for both mobile and desktop
+  const handleServiceSelection = useCallback((service) => {
+    if (selectedService?.title === service.title) {
+      // If clicking the same service, toggle it off
+      setSelectedService(null);
+      if (!isMobile) {
+        setAutoRotate(true);
+      }
+    } else {
+      // Select new service
+      handleServiceSelect(service);
+    }
+  }, [selectedService, isMobile, handleServiceSelect]);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white font-inter-tight overflow-hidden">
@@ -234,14 +349,14 @@ const App = () => {
         <RadialSelector
           services={services}
           selectedService={selectedService}
-          setSelectedService={handleServiceSelect}
+          setSelectedService={handleServiceSelection}
           rotationOffset={rotationOffset}
         />
       ) : (
         <MobileServices
           services={services}
           selectedService={selectedService}
-          setSelectedService={handleServiceSelect}
+          setSelectedService={handleServiceSelection}
         />
       )}
     </div>
