@@ -128,22 +128,26 @@ export default function ContactHero() {
           Contact
         </div>
         <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight] "  style={{ fontFamily: "Outfit, sans-serif" }}>
-          <div 
-            className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-bold uppercase bg-clip-text text-transparent"
-            style={{
-              backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%,  #4facfe 100%)"
-            }}
-          >
-            Get in
-          </div>
-          <div 
-            className="touch-text text-5xl md:text-[6rem] xl:text-[12rem] font-bold uppercase bg-clip-text text-transparent"
-            style={{
-              backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)"
-            }}
-          >
-            Touch
-          </div>
+         <div 
+  className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-bold uppercase bg-clip-text text-transparent"
+  style={{
+    backgroundImage:
+      "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)"
+  }}
+>
+  Get in
+</div>
+
+<div 
+  className="touch-text text-5xl md:text-[6rem] xl:text-[12rem] font-bold uppercase bg-clip-text text-transparent"
+  style={{
+    backgroundImage:
+      "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)"
+  }}
+>
+  Touch
+</div>
+
         </div>
       </div>
 
