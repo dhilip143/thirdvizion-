@@ -252,7 +252,7 @@ const App = () => {
   const titleContent = {
     title: (
      <h1
-  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center font-bold text-white"
+  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center font-semibold text-white"
   style={{ fontFamily: "Outfit, sans-serif" }}
 >
   Why - {" "}

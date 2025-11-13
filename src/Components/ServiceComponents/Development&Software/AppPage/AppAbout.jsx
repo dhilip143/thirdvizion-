@@ -44,7 +44,7 @@ const AppAbout = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-6"   style={{ fontFamily: "outfit, sans-serif" }} >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-semibold tracking-tight text-[#ff8904] mb-6"   style={{ fontFamily: "outfit, sans-serif" }} >
             Building the Future of Mobile Experiences
           </h2>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed"    style={{ fontFamily: "work-sans, sans-serif" }}>
