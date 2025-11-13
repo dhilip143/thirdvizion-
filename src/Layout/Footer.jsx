@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   FaFacebookF,
@@ -9,10 +9,32 @@ import {
 } from "react-icons/fa";
 
 const Footer = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const footer = document.getElementById("footer");
+      if (footer) {
+        const rect = footer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // When footer is 50% in viewport, start animation
+        if (rect.top < windowHeight * 0.5) {
+          setIsVisible(true);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <footer
       id="footer"
-      className="flex flex-col bg-black text-white relative overflow-hidden"
+      className="flex flex-col bg-black text-white relative overflow-hidden min-h-[600px]"
     >
       {/* Top Section */}
       <div
@@ -155,22 +177,26 @@ const Footer = () => {
 
       {/* Brand Text */}
       <div className="absolute bottom-0 left-0 w-full text-center overflow-hidden">
-       <p
-  className="bg-clip-text text-transparent font-normal tracking-wider 
-             text-[40px] sm:text-[60px] md:text-[110px] lg:text-[150px] xl:text-[180px] 2xl:text-[225px]
-             leading-none -mb-8 md:-mb-12 lg:-mb-16 pointer-events-none select-none"
-  style={{
-    backgroundImage: "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)"
-  }}
->
-  THIRDVIZION
-</p>
-
+        <p
+          className={`bg-clip-text text-transparent font-normal tracking-wider 
+                     text-[40px] sm:text-[60px] md:text-[110px] lg:text-[150px] xl:text-[180px] 2xl:text-[225px]
+                     leading-none -mb-8 md:-mb-12 lg:-mb-16 pointer-events-none select-none
+                     transition-all duration-1000 ease-out ${
+                       isVisible 
+                         ? "opacity-100 translate-y-0 scale-100" 
+                         : "opacity-30 translate-y-1/2 scale-90"
+                     }`}
+          style={{
+            backgroundImage: "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)"
+          }}
+        >
+          THIRDVIZION
+        </p>
       </div>
 
       {/* Copyright */}
       <div className="max-w-7xl mx-auto px-6 mt-16 pt-6 text-center text-gray-400 text-sm relative z-10">
-      
+        © {new Date().getFullYear()} 
       </div>
     </footer>
   );
