@@ -14,7 +14,7 @@ const IAMPage = () => {
     <div className="bg-black relative overflow-hidden">
       <SparkleBg count={20} speed={0.8} color="253, 199, 0" />
       <IAMHero />
-      <IAMDashboard />
+  
       <WhyChoose />
       <IAMBenefits />
     </div>

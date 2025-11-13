@@ -1,22 +1,14 @@
-
 import React from "react";
 import { motion } from "framer-motion";
-import ContactPage from "../../../../Pages/ContactPage";
-import { Link } from "react-router-dom";
 
 export default function VrLanding() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black text-white">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-transparent text-white">
       {/* Background Grid Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(140,0,255,0.1),transparent_70%)]">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/squared-metal.png')] opacity-20"></div>
-      </div>
+     
 
       {/* Neon Glow Blobs */}
-      <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-purple-600 rounded-full blur-[160px] opacity-40"></div>
-      <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-blue-600 rounded-full blur-[160px] opacity-40"></div>
-
-      {/* Animated Title */}
+     
       <motion.h1
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -26,7 +18,7 @@ export default function VrLanding() {
         Transform Your World with{" "}
         
         <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-400 font-semibold  ">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-500 font-semibold  ">
           Virtual Reality
         </span>
       </motion.h1>
@@ -38,7 +30,7 @@ export default function VrLanding() {
         transition={{ delay: 0.3, duration: 1 }}
         className="mt-6 text-xs md:text-lg text-gray-300 max-w-2xl text-center px-6 "
        style={{ fontFamily: "work-sans, sans-serif" }} >
-At ThirdVizion Labs, we create immersive VR experiences that enhance learning, training, and engagement. Our custom virtual solutions help businesses boost productivity and drive innovation.      </motion.p>
+At ThirdVizion Labs, we create immersive VR experiences that enhance learning, training, and engagement.   </motion.p>
 
       {/* CTA Buttons */}
       <motion.div
