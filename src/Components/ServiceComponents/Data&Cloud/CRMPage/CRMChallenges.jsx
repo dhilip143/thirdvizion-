@@ -160,7 +160,7 @@ export default function CRMShowcase() {
     return () => ctx.revert();
   }, [isMobile, isTablet]);
 
-  // Mobile & Tablet Animation
+  // Mobile & Tablet Animation - FIXED
   useEffect(() => {
     if (!isMobile && !isTablet) return;
 
@@ -171,6 +171,7 @@ export default function CRMShowcase() {
         end: "+=3000",
         scrub: 1,
         pin: true,
+        pinSpacing: true, // Added to fix spacing issues
         onUpdate: (self) => {
           const index = Math.min(
             platforms.length - 1,
@@ -214,21 +215,21 @@ export default function CRMShowcase() {
     });
   }, [activeIndex, isMobile, isTablet]);
 
-  // Helper function to determine visibility for mobile/tablet
+  // Helper function to determine visibility for mobile/tablet - IMPROVED
   const getMobileVisibility = (index) => {
     if (index <= activeIndex) {
       const distanceFromActive = activeIndex - index;
       if (distanceFromActive === 0) {
-        return "opacity-100 scale-100 z-30"; // Current item
+        return "opacity-100 scale-100 z-30 translate-y-0"; // Current item
       } else if (distanceFromActive === 1) {
-        return "opacity-80 scale-95 -translate-y-5 z-20"; // Previous item
+        return "opacity-80 scale-95 -translate-y-8 z-20"; // Previous item
       } else if (distanceFromActive === 2) {
-        return "opacity-60 scale-90 -translate-y-10 z-10"; // Two items back
+        return "opacity-60 scale-90 -translate-y-16 z-10"; // Two items back
       } else {
-        return "opacity-40 scale-85 -translate-y-15 z-0"; // Older items
+        return "opacity-40 scale-85 -translate-y-20 z-0"; // Older items
       }
     } else {
-      return "opacity-0 translate-y-10 scale-95"; // Future items
+      return "opacity-0 translate-y-10 scale-95 pointer-events-none"; // Future items
     }
   };
 
@@ -268,7 +269,7 @@ export default function CRMShowcase() {
     }
   };
 
-  // Render Mobile View
+  // Render Mobile View - FIXED OVERLAPPING AND STICKY ISSUES
   if (isMobile) {
     return (
       <section
@@ -289,24 +290,31 @@ export default function CRMShowcase() {
           </div>
         </div>
 
-        {/* Mobile Carousel - Pinned Section */}
-        <div ref={visualizationRef} className="relative w-full flex flex-col items-center justify-start px-4">
-          <div className="relative w-full max-w-sm">
+        {/* Mobile Carousel - Pinned Section with Fixed Height */}
+        <div 
+          ref={visualizationRef} 
+          className="relative w-full flex flex-col items-center justify-start px-4"
+          style={{ minHeight: "70vh" }} // Fixed height to prevent overlap
+        >
+          <div className="relative w-full max-w-sm h-[500px]"> {/* Fixed container height */}
             {/* CRM Core */}
-            <div className="relative mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-2xl shadow-[0_0_40px_rgba(255,100,103,0.6)] mb-12 z-20"
+            <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-2xl shadow-[0_0_40px_rgba(255,100,103,0.6)] z-20"
               style={{ fontFamily: "Outfit, sans-serif" }}>
               CRM
               <div className="absolute inset-0 rounded-full border-2 border-[#FF6467] animate-ping opacity-20"></div>
             </div>
 
-            {/* Feature Cards Stack */}
-            <div className="relative h-96">
+            {/* Feature Cards Stack - Improved positioning */}
+            <div className="absolute top-40 left-0 right-0 h-80"> {/* Fixed positioning */}
               {platforms.map((platform, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 transition-all duration-500 ${getMobileVisibility(index)}`}
+                  className={`absolute inset-x-0 transition-all duration-500 ease-out ${getMobileVisibility(index)}`}
+                  style={{
+                    top: `${index * 4}px`, // Small offset to create stack effect
+                  }}
                 >
-                  <div className="bg-[#FF646710] backdrop-blur-md border border-[#FF646740] rounded-2xl p-4 shadow-[0_0_20px_rgba(255,100,103,0.2)]">
+                  <div className="bg-[#FF646710] backdrop-blur-md border border-[#FF646740] rounded-2xl p-4 shadow-[0_0_20px_rgba(255,100,103,0.2)] mx-2">
                     {/* Platform Icon */}
                     <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-full bg-[#FF6467] border border-[#FF6467] text-white shadow-[0_0_15px_rgba(255,100,103,0.6)]">
                       {platform.icon}
@@ -332,7 +340,7 @@ export default function CRMShowcase() {
             </div>
 
             {/* Dots Indicator */}
-            <div className="flex justify-center space-x-2 mt-8">
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
               {platforms.map((_, index) => (
                 <button
                   key={index}
@@ -349,7 +357,7 @@ export default function CRMShowcase() {
             </div>
 
             {/* Scroll Hint */}
-            <div className="text-center mt-6">
+            <div className="absolute bottom-16 left-0 right-0 text-center">
               <div className="flex items-center justify-center text-white/50 text-xs">
                 <ChevronDown className="w-4 h-4 mr-1 animate-bounce" />
                 Scroll to explore

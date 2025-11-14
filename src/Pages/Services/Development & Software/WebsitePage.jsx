@@ -6,7 +6,7 @@ import WebHero from "/src/Components/ServiceComponents/Development&Software/Webs
 import WebDesignScroll from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebDesignScroll.jsx";
 import WebCTA from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebCTA";
 import WebAbt from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebAbt.jsx";
-import WebProc from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebProc.jsx";
+// import WebProc from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebProc.jsx";
 import WebSer from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebSer.jsx";
 import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
 
@@ -20,7 +20,7 @@ const WebsitePage = () => {
       <WebDesignScroll />
       <WebAbt />
       <WebSer />
-      <WebProc />
+      {/* <WebProc /> */}
       <WebProjects />
       <WebCTA />
     </div>

@@ -81,7 +81,7 @@ export default function AppHero() {
       <section className="mt-40 lg:mt-0 lg:h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 relative z-10">
         {/* Static Heading */}
         <h1
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-4 text-[#ff8904]"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-4 text-[#ff8904]"
           style={{ fontFamily: "Outfit, sans-serif" }}
         >
           We Craft Seamless Mobile Experiences

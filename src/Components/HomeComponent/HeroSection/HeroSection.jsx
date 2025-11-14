@@ -40,11 +40,9 @@ const Landing = () => {
           <li className={currentIcon.class} key={liIndex}>
             <a>
               <div>
-                {/* Spans for the 3D-effect layers */}
                 {[...Array(4)].map((_, idx) => (
                   <span key={idx}></span>
                 ))}
-                {/* Span for the image */}
                 <span>
                   <img
                     src={currentIcon.src}
@@ -78,28 +76,31 @@ const Landing = () => {
       id="pattern"
       className="pattern 2xl:h-[112vh] overflow-hidden relative z-0"
     >
-      {/* Background Pattern Elements */}
       {createDynamicLists(10, 10)}
 
-      {/* ✅ Centered Content - Uses flexbox and absolute positioning for perfect centering */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-50 text-white px-4  pt-[300px]">
-        {/* Main Heading */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-michroma font-bold text-center mb-6 max-w-6xl leading-tight"style={{ fontFamily: "Outfit, sans-serif" }}>
-          
-          Engineering the Future,<br />Innovating the Present
-        </h2>
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-50 text-white px-4 pt-[200px] md:pt-[300px]">
+       <h2
+  className="
+    text-xl        /* Mobile size */
+    sm:text-2xl    /* Small screens */
+    md:text-6xl
+    lg:text-5xl
+    xl:text-6xl
+    font-michroma font-bold
+    text-center mb-6 max-w-6xl leading-tight
+  "
+  style={{ fontFamily: "Outfit, sans-serif" }}
+>
+  Engineering the Future,<br />Innovating the Present
+</h2>
 
-        {/* Description */}
-        <p className="text-lg md:text-xl lg:text-2xl text-gray-200 text-center mb-10 max-w-4xl "  style={{
-                      fontFamily: "Work Sans, sans-serif"
-                      
-                    }}>
+        <p
+          className="text-base md:text-xl lg:text-2xl text-gray-200 text-center mb-10 max-w-4xl"
+          style={{ fontFamily: "Work Sans, sans-serif" }}
+        >
           We combine cutting-edge technology with visionary ideas to deliver
           solutions that shape tomorrow while empowering businesses today.
         </p>
-
-        {/* Animated Contact Button */}
-      
       </div>
     </div>
   );
