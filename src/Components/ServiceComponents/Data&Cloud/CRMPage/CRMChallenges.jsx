@@ -296,16 +296,16 @@ export default function CRMShowcase() {
           className="relative w-full flex flex-col items-center justify-start px-4"
           style={{ minHeight: "70vh" }} // Fixed height to prevent overlap
         >
-          <div className="relative w-full max-w-sm h-[500px]"> {/* Fixed container height */}
+          <div className="relative w-full max-w-sm   h-[500px]"> {/* Fixed container height */}
             {/* CRM Core */}
-            <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-2xl shadow-[0_0_40px_rgba(255,100,103,0.6)] z-20"
+            <div className="absolute top-8 left-1/2  mt-[50px] transform -translate-x-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-2xl shadow-[0_0_40px_rgba(255,100,103,0.6)] z-20"
               style={{ fontFamily: "Outfit, sans-serif" }}>
-              CRM
+              CRMhhh
               <div className="absolute inset-0 rounded-full border-2 border-[#FF6467] animate-ping opacity-20"></div>
             </div>
 
             {/* Feature Cards Stack - Improved positioning */}
-            <div className="absolute top-40 left-0 right-0 h-80"> {/* Fixed positioning */}
+            <div className="absolute top-70 left-0 right-0 h-80"> {/* Fixed positioning */}
               {platforms.map((platform, index) => (
                 <div
                   key={index}
@@ -340,7 +340,7 @@ export default function CRMShowcase() {
             </div>
 
             {/* Dots Indicator */}
-            <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+            <div className="absolute bottom-4  mt-[40px] left-0 right-0 flex justify-center space-x-2">
               {platforms.map((_, index) => (
                 <button
                   key={index}
