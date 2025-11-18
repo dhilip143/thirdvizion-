@@ -176,7 +176,7 @@ const MissionVision = () => {
       {/* Vision section */}
       <div className="relative">
         {/* Decorative left gold line */}
-        <div className="absolute -left-14 top-7 hidden md:block">
+        <div className="absolute -left-14 top- hidden md:block">
           <div
             ref={visionLineRef}
             className="h-[2.5px] w-70 bg-yellow-500 ml-[58px] relative"

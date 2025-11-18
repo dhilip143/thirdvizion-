@@ -1,15 +1,15 @@
 /* General styling for the pattern */
 .pattern {
-  /* Adjusted margin-top to better position the visible pattern section */
   margin-top: -320px;
   padding-right: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #000000;
+  background: #131313;
   zoom: 1.5;
   position: relative;
+  height: 900px;
 }
 
 .pattern ul {
@@ -26,47 +26,54 @@
   width: 120px;
   height: 120px;
   margin: 10px 10px;
-  transition: all 0.9s ease;
+  transition: background 0.9s ease;
 }
 
-/* Margin adjustments for staggered pattern arrangement */
 .pattern ul:nth-child(1) {
   margin: 0px 200px 0px 0px;
 }
+
 .pattern ul:nth-child(2) {
   margin: -20px 200px 0px 60px;
 }
+
 .pattern ul:nth-child(3) {
   margin: -20px 200px 0px 100px;
 }
+
 .pattern ul:nth-child(4) {
   margin: -20px 200px 0px 145px;
 }
+
 .pattern ul:nth-child(5) {
   margin: -20px 200px 0px 190px;
 }
+
 .pattern ul:nth-child(6) {
   margin: -20px 200px 0px 235px;
 }
+
 .pattern ul:nth-child(7) {
   margin: -20px 200px 0px 285px;
 }
+
 .pattern ul:nth-child(8) {
   margin: -20px 200px 0px 330px;
 }
+
 .pattern ul:nth-child(9) {
   margin: -20px 200px 0px 380px;
 }
+
 .pattern ul:nth-child(10) {
   margin: -20px 200px 0px 425px;
 }
 
-/* 3D Hexagon structure pseudo-elements */
 .pattern ul li::before,
 .pattern ul li::after {
   content: "";
   position: absolute;
-  background: #080808;
+  background: #2a2a2a;
 }
 
 .pattern ul li::before {
@@ -89,10 +96,10 @@
   transform: skewY(-49deg);
 }
 
-/* Span styles for the central icon area */
+/* Span styles */
 .pattern ul li #hexa {
   margin: 75px 0px 0px 50px;
-  background-color: #080808;
+  background-color: #222222;
   width: 60px;
   height: 8px;
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
@@ -110,12 +117,11 @@
   justify-content: center;
   color: rgba(255, 255, 255, 0.2);
   transition: all 0.6s ease;
-  background: #0e0e0e;
+  background: #222222;
   font-size: 30px !important;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
-/* Inner 3D layers */
 .pattern ul li span::before,
 .pattern ul li span::after {
   content: "";
@@ -129,7 +135,7 @@
   left: -17px;
   width: 18px;
   height: 70px;
-  background: #1a1a1a;
+  background: #2a2a2a;
   transition: 0.5s;
   transform: rotate(0deg) skewY(-45deg);
 }
@@ -138,12 +144,11 @@
   bottom: -20px;
   left: -10px;
   height: 20px;
-  background: #000000;
+  background: #2a2a2a;
   transition: 0.5s;
   transform: rotate(0deg) skewX(-45deg);
 }
 
-/* Hover effect: icon color and 3D movement */
 .pattern ul li:hover span {
   z-index: 0;
   color: #fff;
@@ -151,250 +156,121 @@
 
 .pattern ul li:hover span:nth-child(5) {
   transform: translate(35px, -35px);
-  background: #000000;
+  background: #1c1b1b;
   z-index: 1003;
 }
 
 .pattern ul li:hover span:nth-child(4) {
   transform: translate(25px, -25px);
   z-index: 1002;
-  background: #000000;
+  background: #2a2a2a;
 }
 
 .pattern ul li:hover span:nth-child(3) {
   transform: translate(15px, -15px);
-  background: #000000;
+  background: #2a2a2a;
 }
 
 .pattern ul li:hover span:nth-child(2) {
   transform: translate(5px, -5px);
-  background: #000000;
+  background: #2a2a2a;
   z-index: 1001;
 }
 
 .pattern ul li:hover span:nth-child(1) {
   transform: translate(0, 0);
-  background: #000000;
+  background: #2a2a2a;
 }
 
-/* ✅ Enhanced Gradient Hover Colors - Black/Dark Theme */
-.pattern ul li.custom1:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-  box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+.pattern ul li.facebook:hover span:nth-child(5) {
+  background: #3b5999;
 }
 
-.pattern ul li.custom2:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #4834d4, #686de0);
-  box-shadow: 0 0 20px rgba(72, 52, 212, 0.4);
+.pattern ul li.instagram:hover span:nth-child(5) {
+  background: #e4405f;
 }
 
-.pattern ul li.custom3:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #00d2d3, #54a0ff);
-  box-shadow: 0 0 20px rgba(0, 210, 211, 0.4);
+.pattern ul li.twitter:hover span:nth-child(5) {
+  background: #55acee;
 }
 
-.pattern ul li.custom4:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #1dd1a1, #10ac84);
-  box-shadow: 0 0 20px rgba(29, 209, 161, 0.4);
+.pattern ul li.reddit:hover span:nth-child(5) {
+  background: #ff5700;
 }
 
-.pattern ul li.custom5:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #f368e0, #ff9ff3);
-  box-shadow: 0 0 20px rgba(243, 104, 224, 0.4);
+.pattern ul li.whatsapp:hover span:nth-child(5) {
+  background: #25d366;
 }
 
-.pattern ul li.custom6:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #ff9f43, #feca57);
-  box-shadow: 0 0 20px rgba(255, 159, 67, 0.4);
-}
-
-.pattern ul li.custom7:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #0abde3, #48dbfb);
-  box-shadow: 0 0 20px rgba(10, 189, 227, 0.4);
-}
-
-.pattern ul li.custom8:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #a55eea, #8854d0);
-  box-shadow: 0 0 20px rgba(165, 94, 234, 0.4);
-}
-
-.pattern ul li.custom9:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #ff7f50, #ff6348);
-  box-shadow: 0 0 20px rgba(255, 127, 80, 0.4);
-}
-
-.pattern ul li.custom10:hover span:nth-child(5) {
-  background: linear-gradient(135deg, #2ed573, #1e90ff);
-  box-shadow: 0 0 20px rgba(46, 213, 115, 0.4);
-}
-
-/* Enhanced hover effects for all layers with gradient glow */
-.pattern ul li.custom1:hover span:nth-child(4) {
-  background: linear-gradient(135deg, #ff8e8e, #ff7f50);
-}
-
-.pattern ul li.custom2:hover span:nth-child(4) {
-  background: linear-gradient(135deg, #5a67d8, #4c51bf);
-}
-
-.pattern ul li.custom3:hover span:nth-child(4) {
-  background: linear-gradient(135deg, #34e3e3, #00b894);
-}
-
-.pattern ul li.custom4:hover span:nth-child(4) {
-  background: linear-gradient(135deg, #48cfad, #38a169);
-}
-
-.pattern ul li.custom5:hover span:nth-child(4) {
-  background: linear-gradient(135deg, #f78fb3, #e84393);
-}
-
-.pattern ul li.custom6:hover span:nth-child(4) {
-  background: linear-gradient(135deg, #ffb142, #ff793f);
-}
-
-.pattern ul li.custom7:hover span:nth-child(4) {
-  background: linear-gradient(135deg, #17c0eb, #0984e3);
-}
-
-.pattern ul li.custom8:hover span:nth-child(4) {
-  background: linear-gradient(135deg, #b381ea, #8e44ad);
-}
-
-.pattern ul li.custom9:hover span:nth-child(4) {
-  background: linear-gradient(135deg, #ff9a76, #ff6b6b);
-}
-
-.pattern ul li.custom10:hover span:nth-child(4) {
-  background: linear-gradient(135deg, #3ae374, #00cec9);
-}
-
-/* Add glowing animation to the gradient layers */
-.pattern ul li:hover span:nth-child(5) {
-  animation: gradientGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes gradientGlow {
-  0% {
-    filter: brightness(1);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  }
-  100% {
-    filter: brightness(1.2);
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-  }
-}
-
-/* --- Contact Button Animations --- */
-.contact-btn {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-}
-
-/* Glowing Border Effect (Outer layer) */
-.contact-btn::before {
-  content: '';
-  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+/* Content overlay styles */
+.content-overlay {
   position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(8px); /* Increased blur for a softer glow */
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing 20s linear infinite;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 50px;
-}
-
-.contact-btn:hover::before {
-  opacity: 1;
-}
-
-/* Inner Background */
-.contact-btn::after {
-  content: '';
-  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #6d28d9, #4c1d95); /* Original background */
-  left: 0;
-  top: 0;
-  border-radius: 50px;
-  z-index: -1;
-}
-
-.contact-btn:hover::after {
-  background: linear-gradient(135deg, #7c3aed, #5b21b6); /* Slightly lighter on hover */
-}
-
-/* Glowing Border Keyframes */
-@keyframes glowing {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
-}
-
-/* Shine Effect Keyframes */
-@keyframes shine {
-  0% { left: -100%; }
-  100% { left: 200%; }
-}
-
-/* Pulse (Wave) Animation Keyframes */
-@keyframes button-pulse {
-  0% { transform: scale(1); opacity: 0.2; }
-  50% { transform: scale(1.15); opacity: 0; }
-  100% { transform: scale(1); opacity: 0.2; }
-}
-
-.group:hover .animate-shine {
-  animation: shine 1.5s ease-in-out forwards;
-}
-
-.group:hover .animate-button-pulse {
-  animation: button-pulse 1.5s ease-out infinite;
-}
-
-/* --- Content Center Alignment (Fallback/Confirmation) --- */
-/* This CSS ensures centering and uses transform: translate(-50%, -50%) as requested for centering logic. */
-.pattern > div:last-child {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /* ✅ Use of translate Y (and X) for centering as requested */
-  transform: translate(-50%, -50%); 
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  pointer-events: none;
   text-align: center;
 }
 
-/* Responsive Overrides (Kept for maintaining layout on different screens) */
+.content-overlay h2 {
+  font-family: 'Michroma', sans-serif;
+  font-weight: 800;
+  line-height: 1.2;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.content-overlay p {
+  color: #d1d5db;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.content-overlay .contact-btn {
+  pointer-events: auto;
+  background: #8b5cf6;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.content-overlay .contact-btn:hover {
+  transform: scale(1.1);
+}
 
 /* Extra small screens (phones) */
 @media (max-width: 480px) {
   .pattern {
     zoom: 0.5;
-    height: 180vh; 
+    height: 900px;
     padding-top: 480px;
   }
-  .pattern > div:last-child h2 {
+  
+  .content-overlay h2 {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    width: 90%;
+    padding: 0 1rem;
   }
-  .pattern > div:last-child p {
+  
+  .content-overlay p {
     font-size: 0.9rem;
-    margin-bottom: 1.5rem;
+    width: 90%;
+    padding: 0 1rem;
   }
-  .contact-btn {
-    padding: 0.75rem 1.5rem;
+  
+  .content-overlay .contact-btn {
     font-size: 1rem;
+    padding: 0.6rem 1.5rem;
   }
 }
 
@@ -402,14 +278,25 @@
 @media (min-width: 481px) and (max-width: 768px) {
   .pattern {
     zoom: 1;
-    height: 142vh;
+    height: 900px;
     padding-top: 480px;
   }
-  .pattern > div:last-child h2 {
-    font-size: 2rem;
+  
+  .content-overlay h2 {
+    font-size: 1.8rem;
+    width: 90%;
+    padding: 0 1.5rem;
   }
-  .pattern > div:last-child p {
+  
+  .content-overlay p {
     font-size: 1rem;
+    width: 90%;
+    padding: 0 1.5rem;
+  }
+  
+  .content-overlay .contact-btn {
+    font-size: 1.1rem;
+    padding: 0.7rem 1.75rem;
   }
 }
 
@@ -417,14 +304,25 @@
 @media (min-width: 769px) and (max-width: 1024px) {
   .pattern {
     zoom: 1.3;
-    height: 120vh;
+    height: 900px;
     padding-top: 480px;
   }
-  .pattern > div:last-child h2 {
-    font-size: 2.5rem;
+  
+  .content-overlay h2 {
+    font-size: 2rem;
+    width: 80%;
+    padding: 0 2rem;
   }
-  .pattern > div:last-child p {
+  
+  .content-overlay p {
     font-size: 1.1rem;
+    width: 80%;
+    padding: 0 2rem;
+  }
+  
+  .content-overlay .contact-btn {
+    font-size: 1.2rem;
+    padding: 0.8rem 2rem;
   }
 }
 
@@ -432,28 +330,126 @@
 @media (min-width: 1025px) and (max-width: 1440px) {
   .pattern {
     zoom: 1.5;
-    height: 112vh;
+    height: 900px;
     padding-top: 480px;
   }
-  .pattern > div:last-child h2 {
-    font-size: 3rem;
+  
+  .content-overlay h2 {
+    font-size: 2.2rem;
+    width: 70%;
+    padding: 0 2rem;
   }
-  .pattern > div:last-child p {
+  
+  .content-overlay p {
     font-size: 1.2rem;
+    width: 70%;
+    padding: 0 2rem;
+  }
+  
+  .content-overlay .contact-btn {
+    font-size: 1.3rem;
+    padding: 0.9rem 2.25rem;
   }
 }
 
-/* Extra large screens */
-@media (min-width: 1441px) {
+/* Extra large screens (1441px to 1920px) */
+@media (min-width: 1441px) and (max-width: 1920px) {
   .pattern {
     zoom: 1.5;
-    height: 112vh;
-    padding-top: 480px;
+    height: 900px;
+    padding-top: 400px;
   }
-  .pattern > div:last-child h2 {
-    font-size: 3.5rem;
+  
+  .content-overlay h2 {
+    font-size: 2.5rem;
+    width: 60%;
+    padding: 0 2rem;
   }
-  .pattern > div:last-child p {
+  
+  .content-overlay p {
     font-size: 1.3rem;
+    width: 60%;
+    padding: 0 2rem;
+  }
+  
+  .content-overlay .contact-btn {
+    font-size: 1.4rem;
+    padding: 1rem 2.5rem;
+  }
+}
+
+/* Ultra large screens (1921px to 2450px) */
+@media (min-width: 1921px) and (max-width: 2450px) {
+  .pattern {
+    zoom: 1.6;
+    height: 900px;
+    padding-top: 350px;
+  }
+  
+  .content-overlay h2 {
+    font-size: 3rem;
+    width: 55%;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .content-overlay p {
+    font-size: 1.5rem;
+    width: 55%;
+    padding: 0 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .content-overlay .contact-btn {
+    font-size: 1.6rem;
+    padding: 1.2rem 3rem;
+  }
+}
+
+/* Super ultra large screens (2451px and above) */
+@media (min-width: 2451px) {
+  .pattern {
+    zoom: 1.8;
+    height: 900px;
+    padding-top: 300px;
+  }
+  
+  .content-overlay h2 {
+    font-size: 3.5rem;
+    width: 50%;
+    padding: 0 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .content-overlay p {
+    font-size: 1.8rem;
+    width: 50%;
+    padding: 0 2rem;
+    margin-bottom: 3.5rem;
+  }
+  
+  .content-overlay .contact-btn {
+    font-size: 1.8rem;
+    padding: 1.5rem 3.5rem;
+  }
+}
+
+/* Specific height adjustment for 800px screens */
+@media (min-height: 800px) and (max-height: 900px) {
+  .pattern {
+    height: 900px;
+  }
+}
+
+/* Height adjustment for very tall screens */
+@media (min-height: 850px) and (max-height: 1000px) {
+  .pattern {
+    height: 900px;
+  }
+}
+
+@media (min-height: 1201px) {
+  .pattern {
+    height: 900px;
   }
 }
