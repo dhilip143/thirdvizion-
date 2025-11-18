@@ -300,7 +300,7 @@ export default function CRMShowcase() {
             {/* CRM Core */}
             <div className="absolute top-8 left-1/2  mt-[50px] transform -translate-x-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-2xl shadow-[0_0_40px_rgba(255,100,103,0.6)] z-20"
               style={{ fontFamily: "Outfit, sans-serif" }}>
-              CRMhhh
+              CRM
               <div className="absolute inset-0 rounded-full border-2 border-[#FF6467] animate-ping opacity-20"></div>
             </div>
 
