@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import VrLanding from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/VrLanding.jsx";
-// import VRHeroSection from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/VRHeroSection.jsx";
+ import VRHeroSection from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/VRHeroSection.jsx";
 import Vrbike from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/vrbike.jsx";
 import Vrsol from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/vrsol.jsx";
 import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
@@ -26,7 +26,7 @@ function VirtualReality() {
     <div className="bg-black">
       <SparkleBg count={20} speed={0.8} color="194, 122, 255" />
       <VrLanding />
-      {/* <VRHeroSection /> */}
+      <VRHeroSection /> 
       <Vrbike />
       <Vrsol />
     </div>

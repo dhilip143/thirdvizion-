@@ -30,12 +30,12 @@ const MissionVision = () => {
     if (isMobile) return;
 
     const ctx = gsap.context(() => {
-      // Vision Animation
+      // Vision Animation Timeline
       const visionTimeline = gsap.timeline({
         scrollTrigger: {
-          trigger: visionLineRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
+          trigger: visionHeadingRef.current,
+          start: "top 40%",
+          end: "bottom 10%",
           toggleActions: "play reverse play reverse",
           markers: false,
         },
@@ -60,11 +60,11 @@ const MissionVision = () => {
           "-=0.2"
         );
 
-      // Mission Animation
+      // Mission Animation Timeline
       const missionTimeline = gsap.timeline({
         scrollTrigger: {
-          trigger: missionLineRef.current,
-          start: "top 80%",
+          trigger: missionHeadingRef.current,
+          start: "top 50%",
           end: "bottom 20%",
           toggleActions: "play reverse play reverse",
           markers: false,
@@ -89,6 +89,42 @@ const MissionVision = () => {
           { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
           "-=0.2"
         );
+
+      // Hide Animation for both sections when scrolling past the entire section
+      const hideTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 20%",
+          end: "top 10%",
+          toggleActions: "play reverse play reverse",
+          markers: false,
+        },
+      });
+
+      // Hide Vision elements
+      hideTimeline.to([
+        visionHeadingRef.current,
+        visionLineRef.current,
+        visionTextRef.current
+      ], {
+        opacity: 0,
+        y: -30,
+        duration: 0.5,
+        ease: "power2.in"
+      }, 0);
+
+      // Hide Mission elements at the same time
+      hideTimeline.to([
+        missionHeadingRef.current,
+        missionLineRef.current,
+        missionTextRef.current
+      ], {
+        opacity: 0,
+        y: -30,
+        duration: 0.5,
+        ease: "power2.in"
+      }, 0);
+
     }, sectionRef);
 
     return () => ctx.revert();
@@ -176,7 +212,7 @@ const MissionVision = () => {
       {/* Vision section */}
       <div className="relative">
         {/* Decorative left gold line */}
-        <div className="absolute -left-14 top- hidden md:block">
+        <div className="absolute -left-14 top-9 hidden md:block">
           <div
             ref={visionLineRef}
             className="h-[2.5px] w-70 bg-yellow-500 ml-[58px] relative"
@@ -218,8 +254,7 @@ const MissionVision = () => {
 
         <h2
           ref={missionHeadingRef}
-className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl pt-86 font-bold tracking-wider mb-6 flex justify-end md:justify-start text-[#FFC016]
-pl-10 md:pl-24 lg:pl-70 xl:pl-182"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl pt-86 font-bold tracking-wider mb-6 flex justify-end md:justify-start text-[#FFC016] pl-10 md:pl-24 lg:pl-70 xl:pl-162 2xl:pl-178"
           style={{ fontFamily: "Outfit, sans-serif" }}
         >
           MISSION

@@ -23,7 +23,7 @@ Innovative Services Crafted to Power Your Business.
               OUR <br />VISION 
             </h2>
             <p className="text-gray-400 text-xs md:text-lg">
-      To become a global leader in digital transformation and creative innovation. We aim to build a future where technology and imagination come together to create new possibilities, empower businesses, and shape the next generation of digital experiences.
+      To become a global leader in digital transformation and creative innovation. We aim to build a future where technology and imagination come together to create new possibilities.
             </p>
           </div>
         </div>
@@ -36,7 +36,7 @@ Innovative Services Crafted to Power Your Business.
               OUR <br /> MISSION
             </h2>
             <p className="text-gray-400 text-xs md:text-lg">
-            Our mission is to empower businesses and brands through innovative digital solutions that combine creativity, technology, and strategy. We transform ideas into immersive digital experiences that inspire audiences, boost engagement, and drive business growth in a fast-changing digital world.
+            Our mission is to empower businesses and brands through innovative digital solutions that combine creativity, technology, and strategy. 
             </p>
           </div>
         </div>
@@ -62,7 +62,7 @@ Innovative Services Crafted to Power Your Business.
               OUR <br /> GOALS
             </h2>
             <p className="text-gray-400 text-xs md:text-lg">
-             We strive to push the boundaries of technology and creativity to deliver real, measurable results. Our goal is to help businesses grow, innovate, and succeed in today’s fast-changing digital world.
+             We strive to push the boundaries of technology and creativity to deliver real, measurable results. Our goal is to help businesses grow, innovate, and succeed.
             </p>
           </div>
         </div>

@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "lenis";
 
-// GSAP பிளகினை ஒரு முறை மட்டும் பதிவு செய்தால் போதும்
 gsap.registerPlugin(ScrollTrigger);
 
 function VRHeroSection() {
@@ -15,26 +13,11 @@ function VRHeroSection() {
   const startFrame = 86400;
 
   useEffect(() => {
-    // GSAP Context-ஐத் தொடங்குகிறோம். இது இந்த component-க்குள் மட்டும் செயல்படும்.
     const ctx = gsap.context(() => {
-      // 1. Lenis (Smooth Scroll) Setup
-      // ஒரே ஒரு Lenis instance-ஐ மட்டும் உருவாக்குகிறோம்.
-      const lenis = new Lenis({
-        lerp: 0.1,
-        smoothWheel: true,
-        smoothtouch: true,
-      });
 
-      // GSAP Ticker-ஐப் பயன்படுத்தி Lenis-ஐ இயக்குகிறோம்
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
-      gsap.ticker.lagSmoothing(0);
-
-      // Lenis scroll-ஐ ScrollTrigger-க்கு update செய்கிறோம்
-      lenis.on("scroll", ScrollTrigger.update);
-
-      // 2. Canvas Setup
+      // -----------------------
+      // Canvas Setup
+      // -----------------------
       const canvas = canvasRef.current;
       const context = canvas.getContext("2d");
 
@@ -44,30 +27,36 @@ function VRHeroSection() {
         canvas.height = window.innerHeight * pixelRatio;
         canvas.style.width = window.innerWidth + "px";
         canvas.style.height = window.innerHeight + "px";
-        context.setTransform(1, 0, 0, 1, 0, 0); // context-ஐ reset செய்கிறோம்
+        context.setTransform(1, 0, 0, 1, 0, 0);
         context.scale(pixelRatio, pixelRatio);
       };
 
       setCanvasSize();
 
-      // 3. Image Preloading
+      // -----------------------
+      // Image Preload
+      // -----------------------
       const currentFrame = (index) =>
-        `/vr/Timeline 1_${(startFrame + index).toString().padStart(8, "0")}.jpg`;
+        `/vr/Timeline 1_${(startFrame + index)
+          .toString()
+          .padStart(8, "0")}.jpg`;
 
       const images = [];
       const videoFrames = { frame: 0 };
       let imagesToLoad = frameCount;
 
       const render = () => {
-        const canvasWidth = canvas.width / (window.devicePixelRatio || 1);
-        const canvasHeight = canvas.height / (window.devicePixelRatio || 1);
+        const pixelRatio = window.devicePixelRatio || 1;
+        const canvasWidth = canvas.width / pixelRatio;
+        const canvasHeight = canvas.height / pixelRatio;
+
         context.clearRect(0, 0, canvas.width, canvas.height);
 
         const img = images[videoFrames.frame];
-        if (img && img.complete && img.naturalWidth > 0) {
-          // "object-fit: cover" போன்றதொரு fill logic
+        if (img?.complete && img.naturalWidth > 0) {
           const imageAspect = img.naturalWidth / img.naturalHeight;
           const canvasAspect = canvasWidth / canvasHeight;
+
           let drawWidth, drawHeight, drawX, drawY;
 
           if (imageAspect > canvasAspect) {
@@ -81,6 +70,7 @@ function VRHeroSection() {
             drawX = 0;
             drawY = (canvasHeight - drawHeight) / 2;
           }
+
           context.drawImage(img, drawX, drawY, drawWidth, drawHeight);
         }
       };
@@ -90,69 +80,59 @@ function VRHeroSection() {
         if (imagesToLoad === 0) {
           setLoading(false);
           render();
-          // படங்கள் load ஆன பிறகு ScrollTrigger-ஐ உருவாக்குகிறோம்
-          setupScrollTrigger();
+          setupScrollAnimations();
         }
       };
 
       for (let i = 0; i < frameCount; i++) {
         const img = new Image();
         img.onload = onImageLoad;
-        img.onerror = onImageLoad; // Error ஆனாலும், load count-ஐக் குறைக்க வேண்டும்
+        img.onerror = onImageLoad;
         img.src = currentFrame(i);
         images.push(img);
       }
 
-      // 4. ScrollTrigger Setup
-      const setupScrollTrigger = () => {
-        const totalScroll = frameCount * 3; // Scroll தூரத்தை சரிசெய்யவும்
+      // -----------------------
+      // SCROLLTRIGGER SETUP
+      // -----------------------
+      const setupScrollAnimations = () => {
+        const totalScroll = frameCount * 3;
 
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: mainRef.current, // mainRef-ஐ trigger ஆகப் பயன்படுத்துகிறோம்
-            start: "top top",
-            end: `+=${totalScroll}`,
-            scrub: 1,
-            pin: true,
-            onUpdate: (self) => {
-              const targetFrame = Math.min(
-                frameCount - 1,
-                Math.floor(self.progress * (frameCount - 1))
-              );
-              videoFrames.frame = targetFrame;
-              render(); // Scroll செய்யும்போது canvas-ஐ re-render செய்கிறோம்
-            },
+        // ❗ Animation Scroll (frame change only)
+        ScrollTrigger.create({
+          trigger: mainRef.current,
+          start: "top 54%",  // 👉 animation starts early
+          end: `+=${totalScroll}`,
+          scrub: 1,
+          onUpdate: (self) => {
+            const targetFrame = Math.min(
+              frameCount - 1,
+              Math.floor(self.progress * (frameCount - 1))
+            );
+            videoFrames.frame = targetFrame;
+            render();
           },
         });
+
+        // ❗ Pin Scroll (only pinning)
+     
       };
 
-      // 5. Resize Handling
+      // -----------------------
+      // Resize Handler
+      // -----------------------
       const handleResize = () => {
         setCanvasSize();
-        render(); // Resize செய்யும்போது canvas-ஐ மீண்டும் வரைகிறோம்
-        ScrollTrigger.refresh(); // ScrollTrigger-ஐயும் refresh செய்கிறோம்
+        render();
+        ScrollTrigger.refresh();
       };
 
       window.addEventListener("resize", handleResize);
 
-      // 6. Cleanup Function
-      // இதுதான் மிக முக்கியம். Component unmount ஆகும்போது (வேறு பக்கத்திற்குச் செல்லும்போது) இது இயங்கும்.
-      return () => {
-        window.removeEventListener("resize", handleResize);
-        lenis.destroy(); // Lenis-ஐ அழிக்கிறோம்
-        // GSAP Ticker-லிருந்து Lenis-ஐ நீக்குகிறோம் (ctx.revert() இதைச் செய்யாது)
-        gsap.ticker.remove((time) => {
-            lenis.raf(time * 1000);
-        });
-        // ctx.revert() இந்த context-ல் உருவாக்கப்பட்ட அனைத்து
-        // GSAP animations மற்றும் ScrollTriggers-ஐ மட்டும் நீக்கும்.
-        // இது மற்ற பக்கங்களைப் பாதிக்காது.
-      };
-    }, mainRef); // mainRef-ஐ context-இன் scope-ஆக அமைக்கிறோம்
+    }, mainRef);
 
-    // useEffect-ன் cleanup function
     return () => ctx.revert();
-  }, []); // இந்த effect ஒரு முறை மட்டும் இயங்க வேண்டும்
+  }, []);
 
   return (
     <div ref={mainRef}>
@@ -165,7 +145,6 @@ function VRHeroSection() {
           </div>
         )}
 
-        {/* Overlay Content */}
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
           <div className="text-center text-white">
             <h2
@@ -174,9 +153,6 @@ function VRHeroSection() {
             >
               Experience The Future
             </h2>
-            {/* <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
-              Scroll to explore our immersive VR solutions and capabilities
-            </p> */}
           </div>
         </div>
       </section>
