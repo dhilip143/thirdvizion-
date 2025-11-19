@@ -34,7 +34,7 @@ const MissionVision = () => {
       const visionTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: visionHeadingRef.current,
-          start: "top 40%",
+          start: "top 70%",
           end: "bottom 10%",
           toggleActions: "play reverse play reverse",
           markers: false,
@@ -206,7 +206,7 @@ const MissionVision = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-black pt-50 text-white py-16 px-6 md:px-20"
+      className="bg-black pt-35 text-white py-16 px-6 md:px-20"
       style={{ fontFamily: "'Work Sans', sans-serif" }}
     >
       {/* Vision section */}

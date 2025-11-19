@@ -24,7 +24,14 @@ const industryImages = [
   retailImage,
 ];
 
-// Color gradient mapping
+// ⭐ New: Image position control for all images
+const imagePositions = [
+  "center 34.5%", // Digital Enterprise
+  "center 52%", // Healthcare
+  "center 49%", // Education
+  "center 49.7%", // Retail
+];
+
 const colorGradients = {
   "indigo-400": "linear-gradient(to right, #818cf8 80%, transparent 100%)",
   "green-400": "linear-gradient(to right, #4ade80 80%, transparent 100%)",
@@ -72,6 +79,8 @@ const Industries = () => {
 
     gsap.to(imageOverlayEl, {
       x: "0%",
+      scale: 1,
+      transformOrigin: "center center",
       duration: 0.8,
       ease: "power2.out",
     });
@@ -115,6 +124,7 @@ const Industries = () => {
 
     gsap.to(imageOverlayEl, {
       x: "100%",
+      scale: 1,
       duration: 0.8,
       ease: "power2.inOut",
     });
@@ -145,7 +155,8 @@ const Industries = () => {
         <div className="flex-1">
           <h2
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-Outfit"
-          style={{ fontFamily: "Outfit, sans-serif" }} >
+            style={{ fontFamily: "Outfit, sans-serif" }}
+          >
             Turning <span className="text-yellow-400">vision</span> into impact.
           </h2>
         </div>
@@ -168,7 +179,7 @@ const Industries = () => {
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
-            {/* Color overlay - each industry has different color */}
+            {/* Color overlay */}
             <div
               ref={(el) => (overlayRefs.current[index] = el)}
               className="absolute inset-0 z-10 hidden md:block"
@@ -186,7 +197,7 @@ const Industries = () => {
               style={{
                 backgroundImage: `url(${industryImages[index]})`,
                 backgroundSize: "cover",
-                backgroundPosition: "center",
+                backgroundPosition: imagePositions[index], // ⭐ applied here
                 transform: "translateX(100%)",
                 WebkitMaskImage:
                   "linear-gradient(to right, transparent 0%, black 15%, black 100%)",

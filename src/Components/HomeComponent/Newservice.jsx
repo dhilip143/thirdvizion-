@@ -275,57 +275,7 @@ export default function Categories() {
     return childItem?.link || "#";
   };
 
-  // Function to render vertical lines - hidden on mobile
-  const renderVerticalLines = (category, categoryIndex) => {
-    const lineConfigs = [
-      {
-        id: 1,
-        position: "-4.49%",
-        color: "bg-black",
-        width: "w-9",
-        responsive: "hidden md:block"
-      },
-      {
-        id: 2,
-        position: "30.20%",
-        color: "bg-black",
-        width: "w-9",
-        responsive: "hidden md:block"
-      },
-      {
-        id: 3,
-        position: "64.60%",
-        color: "bg-black",
-        width: "w-9",
-        responsive: "hidden md:block lg:block"
-      },
-      {
-        id: 4,
-        position: "99.29%",
-        color: "bg-black",
-        width: "w-8",
-        responsive: "hidden lg:block"
-      }
-    ];
-
-    return (
-      <>
-        {lineConfigs.map((line) => (
-          <div
-            key={`${category.id}-line-${line.id}`}
-            className={`absolute top-0 bottom-0 ${line.width} ${line.color} ${line.responsive} z-20 transition-all`}
-            style={{
-              left: line.position,
-              height: '100%',
-              top: '1.5rem',
-            }}
-          >
-            <div className={`absolute inset-0 bg-black`}></div>
-          </div>
-        ))}
-      </>
-    );
-  };
+  
 
   return (
    <>
@@ -477,7 +427,6 @@ export default function Categories() {
 
               {/* DESKTOP VIEW - Grid with images (unchanged) */}
               <div className="hidden md:block relative">
-                {renderVerticalLines(cap, index)}
 
                 <div className={`hidden md:grid gap-6 ${cap.children.length === 3
                     ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
@@ -508,21 +457,9 @@ export default function Categories() {
                         transition={{ type: "spring", stiffness: 200, damping: 15 }}
                       >
                         {/* ANIMATED YELLOW GLOW BACKGROUND BELOW IMAGE */}
-                        <motion.div
-                          className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[99%] h-[89px] bg-gradient-to-t from-yellow-500/80 via-yellow-400/50 to-transparent blur-xl rounded-full pointer-events-none z-0"
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{
-                            opacity: isScrolling ? 1 : 0,
-                            scale: isScrolling ? 1 : 0.9
-                          }}
-                          transition={{
-                            duration: 0.4, 
-                            ease: "easeInOut"
-                          }}
-                        />
+                       
 
                         {/* FLOATING YELLOW PARTICLES - Only show when scrolling */}
-                        <FloatingParticles isScrolling={isScrolling} />
 
                         {/* IMAGE BOX - Hidden on mobile */}
                         <div className="p-1 relative z-10">

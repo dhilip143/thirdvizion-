@@ -23,8 +23,9 @@ export default function Home() {
       <Industries />
       <Newservice />
       <Partners className="bg-black" />
+       <Indhu />
       <Testimonial />
-      <Indhu />
+     
       <FAQ />
       <div className="relative">
         <div className="relative z-20 -mt-10">
