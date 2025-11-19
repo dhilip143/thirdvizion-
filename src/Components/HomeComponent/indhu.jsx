@@ -3,11 +3,11 @@ import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import threed from "/src/assets/HomeImages/g11.svg";
-import gam from "/src/assets/HomeImages/g22.svg";
-import are from "/src/assets/HomeImages/g33.svg";
-import wih from "/src/assets/HomeImages/g44.svg";
-
+import threed from "/src/assets/indh/search.png";
+import gam from "/src/assets/indh/second.png";
+import are from "/src/assets/indh/tool.png";
+import wih from "/src/assets/indh/dounload.png";
+import bit from "/src/assets/indh/succes.png";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Indhu() {
@@ -86,7 +86,7 @@ export default function Indhu() {
       label: "SUCCEES",
       description:
         "Success isn't a destination—it's a journey of constant growth. We empower your business to achieve measurable results through strategic execution, data-driven insights, and relentless improvement—ensuring your goals aren't just met, but exceeded.",
-      img: threed, // You can replace this with a new image
+      img:bit , // You can replace this with a new image
       cx: circleSpacing * 5.35 - leftShift, // New fifth circle
       cy: 200,
       color: "#FFC016", // yellow (same as before)
