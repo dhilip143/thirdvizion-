@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 
 // ✅ Import images with clear names
-import DesignTool from "/src/assets/home/categories/qp.png";
-import Layout from "/src/assets/home/categories/qpp.png";
-import Component from "/src/assets/home/categories/qppp.png";
-import Por from "/src/assets/home/categories/qppppppppp.png";
-import Portal from "/src/assets/home/categories/qpppp.png";
-import Dashboard from "/src/assets/home/categories/qppppp.png";
-import Aws from "/src/assets/home/categories/qpppppp.png";
-import Azure from "/src/assets/home/categories/qppppppp.png";
-import GoogleCloud from "/src/assets/home/categories/qpppppppp.png";
+import DesignTool from "/src/assets/newserviceehome/ar.png";
+import Layout from "/src/assets/newserviceehome/3d.png";
+import Component from "/src/assets/newserviceehome/vr.png";
+import Por from "/src/assets/newserviceehome/mobile.png";
+import Portal from "/src/assets/newserviceehome/erp.png";
+import Dashboard from "/src/assets/newserviceehome/server.png";
+import Aws from "/src/assets/newserviceehome/crm.png";
+import Azure from "/src/assets/newserviceehome/game.png";
+import GoogleCloud from "/src/assets/newserviceehome/web.png";
 
 const capabilitiesData = [
   {
@@ -24,7 +24,7 @@ const capabilitiesData = [
         name: "AR",
         img: DesignTool,
         imageSettings: {
-          position: { objectPosition: "50% 20%" },
+          position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px"
         },
@@ -35,7 +35,7 @@ const capabilitiesData = [
         name: "3D",
         img: Layout,
         imageSettings: {
-          position: { objectPosition: "80% 60%" },
+          position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px"
         },
@@ -46,7 +46,7 @@ const capabilitiesData = [
         name: "VIRTUAL REALITY",
         img: Component,
         imageSettings: {
-          position: { objectPosition: "30% 70%" },
+          position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px"
         },
@@ -64,7 +64,7 @@ const capabilitiesData = [
         name: "CRM",
         img: Portal,
         imageSettings: {
-          position: { objectPosition: "60% 10%" },
+          position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px"
         },
@@ -75,7 +75,7 @@ const capabilitiesData = [
         name: "IAM",
         img: Dashboard,
         imageSettings: {
-          position: { objectPosition: "20% 85%" },
+          position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px"
         },
@@ -86,7 +86,7 @@ const capabilitiesData = [
         name: "ERP",
         img: Aws,
         imageSettings: {
-          position: { objectPosition: "75% 40%" },
+          position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px"
         },
@@ -104,7 +104,7 @@ const capabilitiesData = [
         name: "WEBSITE",
         img: Azure,
         imageSettings: {
-          position: { objectPosition: "45% 90%" },
+          position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px"
         },
@@ -115,7 +115,7 @@ const capabilitiesData = [
         name: "MOBILE",
         img: GoogleCloud,
         imageSettings: {
-          position: { objectPosition: "15% 25%" },
+          position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px"
         },
@@ -126,8 +126,8 @@ const capabilitiesData = [
         name: "GAME DEVELOPMENT",
         img: Por,
         imageSettings: {
-          position: { objectPosition: "85% 75%" },
-          transform: "scale(1.08)",
+          position: { objectPosition: "center" },
+          transform: "scale(1)",
           borderRadius: "18px"
         },
         size: "h-100",

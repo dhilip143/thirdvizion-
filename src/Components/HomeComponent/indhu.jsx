@@ -49,6 +49,7 @@ export default function Indhu() {
       img: threed,
       cx: circleSpacing * 0.9 - leftShift, // Adjusted spacing
       cy: 200,
+      color: "#fb923c", // orange-400
     },
     {
       id: 2,
@@ -58,6 +59,7 @@ export default function Indhu() {
       img: gam,
       cx: circleSpacing * 2 - leftShift, // Adjusted spacing
       cy: 300,
+      color: "#f472b6", // pink-400
     },
     {
       id: 3,
@@ -67,6 +69,7 @@ export default function Indhu() {
       img: are,
       cx: circleSpacing * 3.1 - leftShift, // Adjusted spacing
       cy: 200,
+      color: "#4ade80", // green-400
     },
     {
       id: 4,
@@ -76,15 +79,17 @@ export default function Indhu() {
       img: wih,
       cx: circleSpacing * 4.2 - leftShift, // Adjusted spacing
       cy: 300,
+      color: "#f87171", // red-400
     },
     {
       id: 5,
       label: "SUCCEES",
       description:
-        "Success isn’t a destination—it’s a journey of constant growth. We empower your business to achieve measurable results through strategic execution, data-driven insights, and relentless improvement—ensuring your goals aren’t just met, but exceeded.",
+        "Success isn't a destination—it's a journey of constant growth. We empower your business to achieve measurable results through strategic execution, data-driven insights, and relentless improvement—ensuring your goals aren't just met, but exceeded.",
       img: threed, // You can replace this with a new image
       cx: circleSpacing * 5.35 - leftShift, // New fifth circle
       cy: 200,
+      color: "#FFC016", // yellow (same as before)
     },
   ];
 
@@ -112,7 +117,10 @@ export default function Indhu() {
               key={c.id}
               className="min-w-[250px] max-w-[260px] bg-[#111] border border-[#222] rounded-2xl p-5 flex-shrink-0 snap-center text-center"
             >
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-[#1a1a1a] border border-[#FFC016] flex items-center justify-center">
+              <div 
+                className="w-20 h-20 mx-auto mb-4 rounded-full bg-[#1a1a1a] border flex items-center justify-center"
+                style={{ borderColor: c.color }}
+              >
                 <img
                   src={c.img}
                   alt={c.label}
@@ -121,8 +129,11 @@ export default function Indhu() {
                 />
               </div>
               <h2
-                className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#FFC016] mb-2"
-                style={{ fontFamily: "Outfit, sans-serif" }}
+                className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-2"
+                style={{ 
+                  fontFamily: "Outfit, sans-serif",
+                  color: c.color 
+                }}
               >
                 {c.label}
               </h2>
@@ -303,7 +314,7 @@ export default function Indhu() {
                   cy={c.cy}
                   r={radius}
                   fill="transparent"
-                  stroke="#FFC016"
+                  stroke={c.color}
                   strokeWidth="2"
                 />
                 <clipPath id={`clip-${c.id}`}>
@@ -330,7 +341,7 @@ export default function Indhu() {
                   x={c.cx}
                   y={labelY}
                   textAnchor="middle"
-                  fill="#FFC016"
+                  fill={c.color}
                   fontSize={fontSize * 1.7}
                   fontWeight={400}
                   style={{ fontFamily: "Outfit, sans-serif" }}

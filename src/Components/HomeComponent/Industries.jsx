@@ -3,18 +3,18 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 
-import digitalEnterpriseImage from "/src/assets/home/digital.png";
-import healthcareImage from "/src/assets/home/helth.png";
-import educationImage from "/src/assets/home/vrser.png";
-import retailImage from "/src/assets/home/retail.png";
+import digitalEnterpriseImage from "/src/assets/industrieshome/retail.png";
+import healthcareImage from "/src/assets/industrieshome/Gemini_Generated_Image_v7y11iv7y11iv7y1.png";
+import educationImage from "/src/assets/industrieshome/Gemini_Generated_Image_rlsh23rlsh23rlsh.png";
+import retailImage from "/src/assets/industrieshome/digital.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const industries = [
-  { id: 1, number: "01/", name: "Digital Enterprise" },
-  { id: 2, number: "02/", name: "Healthcare Innovation" },
-  { id: 3, number: "03/", name: "Education Technology" },
-  { id: 4, number: "04/", name: "Retail & E-commerce Solutions" },
+  { id: 1, number: "01/", name: "Digital Enterprise", color: "indigo-400" },
+  { id: 2, number: "02/", name: "Healthcare Innovation", color: "green-400" },
+  { id: 3, number: "03/", name: "Education Technology", color: "red-400" },
+  { id: 4, number: "04/", name: "Retail & E-commerce Solutions", color: "purple-400" },
 ];
 
 const industryImages = [
@@ -23,6 +23,14 @@ const industryImages = [
   educationImage,
   retailImage,
 ];
+
+// Color gradient mapping
+const colorGradients = {
+  "indigo-400": "linear-gradient(to right, #818cf8 80%, transparent 100%)",
+  "green-400": "linear-gradient(to right, #4ade80 80%, transparent 100%)",
+  "red-400": "linear-gradient(to right, #f87171 80%, transparent 100%)",
+  "purple-400": "linear-gradient(to right, #c084fc 80%, transparent 100%)",
+};
 
 const Industries = () => {
   const overlayRefs = useRef([]);
@@ -160,15 +168,14 @@ const Industries = () => {
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
-            {/* Yellow overlay */}
+            {/* Color overlay - each industry has different color */}
             <div
               ref={(el) => (overlayRefs.current[index] = el)}
               className="absolute inset-0 z-10 hidden md:block"
               style={{
                 width: "0%",
                 transform: "translateX(0%)",
-                backgroundImage:
-                  "linear-gradient(to right, #facc15 80%, transparent 100%)",
+                backgroundImage: colorGradients[industry.color],
               }}
             ></div>
 
