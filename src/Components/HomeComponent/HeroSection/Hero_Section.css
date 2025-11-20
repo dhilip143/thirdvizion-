@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #131313;
+  background: #000000;
   zoom: 1.5;
   position: relative;
   height: 900px;
@@ -73,7 +73,7 @@
 .pattern ul li::after {
   content: "";
   position: absolute;
-  background: #2a2a2a;
+  background-color: #141414;
 }
 
 .pattern ul li::before {
@@ -99,7 +99,7 @@
 /* Span styles */
 .pattern ul li #hexa {
   margin: 75px 0px 0px 50px;
-  background-color: #222222;
+  background-color: #141414;
   width: 60px;
   height: 8px;
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
@@ -115,9 +115,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(75, 57, 57, 0.2);
   transition: all 0.6s ease;
-  background: #222222;
+  background: #1a1a1a;
   font-size: 30px !important;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }

@@ -1,8 +1,41 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import BlogImage1 from "/src/assets/Blog1/3d.jpg";
 
-import BlogsData from "/src/Data/Data.jsx";
+// Single blog data
+const BlogsData = [
+  {
+    id: "1",
+    title: "3D Modeling in Immersive Tech",
+    description: "How immersive technologies are shaping the future.",
+    HeroImage: BlogImage1,
+    innerContent: [
+      `Spreadsheets. emails. tracking forms by hand.
+Teams were being slowed down, and each week it cost hours.
+
+At Thirdvizion Labs, we use intelligent, 𝙣𝙤-𝙘𝙤𝙙𝙚 𝙖𝙪𝙩𝙤𝙢𝙖𝙩𝙞𝙤𝙣 to help businesses get One customer had trouble with a not smooth procedure
+Forms are manually checked, emails are sent, data is logged into Airtable, and Slack is used to notify teams.
+
+Each week, it took almost seven hours.
+
+We intervened with a quick, customised automation utilising n8n:
+→ Submission of the form → Automatic email sent → Airtable updated → A Slack ping was initiated.
+
+We constructed it within three days.
+𝙉𝙤𝙩 𝙖 𝙘𝙤𝙙𝙚. 𝙉𝙤𝙩 𝙘𝙤𝙢𝙥𝙡𝙞𝙘𝙖𝙩𝙚𝙙. 𝙊𝙣𝙡𝙮 𝙤𝙪𝙩𝙘𝙤𝙢𝙚𝙨.
+
+The entire process now operates in the background without making any noise.
+No work. No mistakes.
+
+The outcome?
+"Smarter work. Smoother flow."
+
+"The best invisible hire we ever made," stated their COO.`
+    ],
+    sectionImages: [BlogImage1],
+  }
+];
 
 const BlogPage = () => {
   const [visibleCards, setVisibleCards] = useState([]);
@@ -170,49 +203,14 @@ const BlogPage = () => {
           </span>
         </motion.h1>
         
-        <motion.p
-          className="text-gray-300 text-lg md:text-xl xl:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          Explore insights on immersive tech, VR, AR, 3D, cloud, development, and more.
-        </motion.p>
+        
 
-        {/* Search Bar */}
-        <motion.div
-          className="flex justify-center "
-           style={{ fontFamily: "Outfit, sans-serif" }}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-        >
-          <div className="relative w-full sm:w-2/3 md:w-1/2 lg:w-1/3">
-            <motion.input
-              type="text"
-              placeholder="Search blogs..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-6 py-4 rounded-2xl bg-gray-900/80 backdrop-blur-sm border-2 border-gray-700 focus:outline-none focus:border-[#FF700A] text-white placeholder-gray-400 transition-all text-xs md:text-lg"
-              whileFocus={{
-                scale: 1.02,
-                boxShadow: "0 0 30px rgba(255, 112, 10, 0.3)"
-              }}
-            />
-            <motion.div
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              🔍
-            </motion.div>
-          </div>
-        </motion.div>
+      
       </motion.div>
 
       {/* Cards Grid */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 relative z-10"
+        className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-3 gap-8 relative z-10 justify-items-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -244,7 +242,7 @@ const BlogPage = () => {
                 whileHover="hover"
                 onHoverStart={() => setHoveredCard(i)}
                 onHoverEnd={() => setHoveredCard(null)}
-                className="relative group"
+                className="relative group max-w-md w-full"
               >
                 {/* Card Glow Effect */}
                 <motion.div
@@ -259,6 +257,20 @@ const BlogPage = () => {
                       transformStyle: "preserve-3d",
                     }}
                   >
+                    {/* Blog Image */}
+                    <motion.div
+                      className="mb-6 rounded-xl overflow-hidden"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.3 + i * 0.1 }}
+                    >
+                      <img 
+                        src={blog.HeroImage} 
+                        alt={blog.title}
+                        className="w-full h-48 object-cover rounded-xl"
+                      />
+                    </motion.div>
+
                     {/* Hover Gradient Overlay */}
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-br from-[#FF700A]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -277,7 +289,7 @@ const BlogPage = () => {
                     </motion.div>
 
                     {/* Content */}
-                    <div className="relative z-10 flex-1 flex flex-col "   style={{ fontFamily: "Outfit, sans-serif" }}>
+                    <div className="relative z-10 flex-1 flex flex-col" style={{ fontFamily: "Outfit, sans-serif" }}>
                       {/* Title with animated underline */}
                       <div className="mb-4">
                         <motion.h2
@@ -352,7 +364,6 @@ const BlogPage = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
       >
-        
       </motion.div>
     </div>
   );
