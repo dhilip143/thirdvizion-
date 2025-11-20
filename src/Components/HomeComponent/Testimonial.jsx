@@ -4,32 +4,34 @@ import { motion, AnimatePresence } from "framer-motion";
 // --- Testimonials Data ---
 const testimonials = [
   {
-    name: "Martin Goutry",
-    role: "Back-end Developer at MyDodow",
+    name: "Santhosh Kumar",
+    role: "Kanakavali • Manager",
     review:
-      "Work Sans has changed how we structure our UI documentation. The flow feels natural and productive!",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+      "ThirdVizion helped us modernize our entire digital presence. Their attention to detail and clean UI execution gave our brand a premium identity.",
   },
   {
-    name: "Agnes Remi",
-    role: "Product Designer at Stripe",
+    name: "Rajesh",
+    role: "Asmi • Team Leader",
     review:
-      "Outfit and Work Sans together bring such clarity and confidence to the interface. Clean and inspiring!",
-    avatar: "https://randomuser.me/api/portraits/women/45.jpg",
+      "The design and development support from ThirdVizion was exceptional. Our platform feels smoother, faster and far more user-friendly now.",
   },
   {
-    name: "Theo Champion",
-    role: "Lead Developer at Vercel",
+    name: "Sivaganga",
+    role: "Madras Kitchen • Software Developer",
     review:
-      "The experience feels smooth and minimalistic. It's a true showcase of thoughtful design execution.",
-    avatar: "https://randomuser.me/api/portraits/men/40.jpg",
+      "ThirdVizion created a visually stunning and highly functional website for us. Our online orders increased just because of their clean UI and fast UX.",
   },
   {
-    name: "Roman Atwoods",
-    role: "CTO at Tech Innovations",
+    name: "Priya Nandakumar",
+    role: "TourSup • Human Resource",
     review:
-      "A refreshing approach to UI presentation — clean visuals, soft motion, and a premium black theme.",
-    avatar: "https://randomuser.me/api/portraits/men/50.jpg",
+      "From planning to delivery, ThirdVizion maintained complete clarity and professionalism. Their work improved our customer engagement drastically.",
+  },
+  {
+    name: "Arun Prakash",
+    role: "KombaMela • Manager",
+    review:
+      "ThirdVizion built a fast, scalable platform that handles our event traffic smoothly. The team truly understands performance and great UI.",
   },
 ];
 
@@ -52,16 +54,13 @@ export default function TestimonialsSection() {
 
   return (
     <section className="relative bg-black text-white py-24 overflow-hidden">
-      {/* ✅ Removed glow background — solid black theme only */}
-
       <div className="relative z-10 container mx-auto px-6 text-center">
-        {/* ✅ Heading & Paragraph Style */}
-        <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-[#ffffff]" style={{ fontFamily: "Outfit, sans-serif" }}>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-white" style={{ fontFamily: "Outfit, sans-serif" }}>
           What People Say <span className="text-[#FFC016]" style={{ fontFamily: "Outfit, sans-serif" }}> About Us</span>
         </h2>
+
         <p className="text-white text-xs md:text-lg mb-16 max-w-2xl mx-auto" style={{ fontFamily: "Work Sans, sans-serif" }}>
-          Hear from creators and developers using our services to craft
-          immersive digital experiences.
+          Hear from companies and developers who trust ThirdVizion for premium digital solutions.
         </p>
 
         {/* --- Carousel Container --- */}
@@ -76,27 +75,35 @@ export default function TestimonialsSection() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -40 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="w-full bg-black border border-gray-800 rounded-2xl shadow-lg p-8 h-full"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="w-full  border border-gray-800 rounded-2xl shadow-2xl p-10 h-full relative"
                 >
-                  <div className="flex flex-col items-center text-center">
-                    <img
-                      src={testimonials[activeIndex].avatar}
-                      alt={testimonials[activeIndex].name}
-                      className="w-24 h-24 rounded-full border-2 border-gray-600 object-cover shadow-md mb-6"
-                    />
-                    <h4 className="text-2xl font-semibold text-white mb-2" style={{ fontFamily: "Work Sans, sans-serif" }}>
-                      {testimonials[activeIndex].name}
-                    </h4>
-                    <p className="text-gray-400 text-base mb-6" style={{ fontFamily: "Work Sans, sans-serif" }}>
-                      {testimonials[activeIndex].role}
+                  {/* Quote Icon */}
+                  
+                  <div className="flex flex-col items-center text-center relative z-10">
+                    <div className="mb-8">
+                      <h4 className="text-2xl font-semibold text-white mb-2" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                        {testimonials[activeIndex].name}
+                      </h4>
+                      <p className="text-[#FFC016] text-base font-medium" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                        {testimonials[activeIndex].role}
+                      </p>
+                    </div>
+                    <p className="text-gray-300 leading-relaxed text-xl max-w-2xl" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                      "{testimonials[activeIndex].review}"
                     </p>
-                    <p className="text-gray-300  leading-relaxed text-lg max-w-md" style={{ fontFamily: "Work Sans, sans-serif" }}>
-                      “{testimonials[activeIndex].review}”
-                    </p>
+                    
+                    {/* Rating Stars */}
+                    <div className="flex space-x-1 mt-8">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <svg key={star} className="w-6 h-6 text-[#FFC016]" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -110,29 +117,33 @@ export default function TestimonialsSection() {
                 .map((testimonial, index) => (
                   <motion.div
                     key={testimonial.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-black border border-gray-800 rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300 cursor-pointer"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className=" border border-gray-800 rounded-xl shadow-lg p-6 hover:border-[#FFC016] transition-all duration-300 cursor-pointer group"
                     onClick={() => setActiveIndex(testimonials.indexOf(testimonial))}
                   >
-                    <div className="flex items-start space-x-4">
-                      <img
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full border border-gray-600 object-cover flex-shrink-0"
-                      />
-                      <div className="text-left">
-                        <h5 className="font-semibold text-white text-sm" style={{ fontFamily: "Work Sans, sans-serif" }}>
-                          {testimonial.name}
-                        </h5>
-                        <p className="text-gray-400 text-xs mb-2" style={{ fontFamily: "Work Sans, sans-serif" }}>
-                          {testimonial.role}
-                        </p>
-                        <p className="text-gray-300 text-sm  line-clamp-3" style={{ fontFamily: "Work Sans, sans-serif" }}>
-                          “{testimonial.review}”
-                        </p>
+                    <div className="text-left">
+                      <div className="flex justify-between items-start mb-4">
+                        <div>
+                          <h5 className="font-semibold text-white text-lg group-hover:text-[#FFC016] transition-colors" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                            {testimonial.name}
+                          </h5>
+                          <p className="text-gray-400 text-sm" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                            {testimonial.role}
+                          </p>
+                        </div>
+                        <div className="flex space-x-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <svg key={star} className="w-4 h-4 text-[#FFC016]" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                          ))}
+                        </div>
                       </div>
+                      <p className="text-gray-300 text-sm leading-relaxed line-clamp-4" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                        "{testimonial.review}"
+                      </p>
                     </div>
                   </motion.div>
                 ))}
@@ -140,25 +151,22 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-center items-center mt-12 space-x-8">
+          <div className="flex justify-center items-center mt-16 space-x-8">
             <button
               onClick={prev}
-              className="w-12 h-12 rounded-full bg-gray-900 hover:bg-gray-700 border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110"
-              style={{ fontFamily: "Work Sans, sans-serif" }}
+              className="w-14 h-14 rounded-full bg-black border border-gray-700 flex items-center justify-center text-white text-2xl transition-all duration-300 hover:scale-110 hover:border-[#FFC016] hover:bg-[#FFC016] group"
             >
-              ‹
+              <span className="group-hover:text-black">‹</span>
             </button>
 
-            {/* Dots Indicator */}
-            <div className="flex space-x-3">
+            {/* Dots */}
+            <div className="flex space-x-4">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveIndex(i)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    i === activeIndex
-                      ? "bg-yellow-400 w-8"
-                      : "bg-gray-600 hover:bg-gray-400"
+                    i === activeIndex ? "bg-[#FFC016] w-8" : "bg-gray-600 hover:bg-gray-400"
                   }`}
                 />
               ))}
@@ -166,10 +174,9 @@ export default function TestimonialsSection() {
 
             <button
               onClick={next}
-              className="w-12 h-12 rounded-full bg-gray-900 hover:bg-gray-700 border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:scale-110"
-              style={{ fontFamily: "Work Sans, sans-serif" }}
+              className="w-14 h-14 rounded-full bg-black border border-gray-700 flex items-center justify-center text-white text-2xl transition-all duration-300 hover:scale-110 hover:border-[#FFC016] hover:bg-[#FFC016] group"
             >
-              ›
+              <span className="group-hover:text-black">›</span>
             </button>
           </div>
         </div>

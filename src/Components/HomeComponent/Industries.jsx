@@ -11,7 +11,7 @@ import retailImage from "/src/assets/industrieshome/digital.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const industries = [
-  { id: 1, number: "01/", name: "Digital Enterprise", color: "indigo-400" },
+  { id: 1, number: "01/", name: "Digital Services", color: "indigo-400" },
   { id: 2, number: "02/", name: "Healthcare Innovation", color: "green-400" },
   { id: 3, number: "03/", name: "Education Technology", color: "red-400" },
   { id: 4, number: "04/", name: "Retail & E-commerce Solutions", color: "purple-400" },
@@ -151,15 +151,22 @@ const Industries = () => {
       className="bg-black text-white font-outfit py-16 sm:py-20 md:py-24 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 overflow-hidden"
     >
       {/* TOP SECTION */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 sm:mb-14 md:mb-16 gap-6 md:gap-8">
-        <div className="flex-1">
-          <h2
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-Outfit"
-            style={{ fontFamily: "Outfit, sans-serif" }}
-          >
-            Turning <span className="text-yellow-400">vision</span> into impact.
-          </h2>
-        </div>
+<div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 sm:mb-14 md:mb-16 gap-6 md:gap-8">
+
+  <div className="flex-1">
+    {/* NEW SMALL TITLE */}
+    <p className="circle-text text-gray-400 text-white uppercase tracking-widest text-xs sm:text-sm md:text-base">
+    Industries we empower
+  </p>
+
+    <h2
+      className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-Outfit"
+      style={{ fontFamily: "Outfit, sans-serif" }}
+    >
+      Turning <span className="text-yellow-400">vision</span> into impact.
+    </h2>
+  </div>
+
 
         <div className="flex-1 font-worksans text-gray-300 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8 leading-relaxed max-w-xl">
           We partner with organizations to unlock new opportunities and
