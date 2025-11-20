@@ -82,7 +82,6 @@ export default function TestimonialsSection() {
                   className="w-full  border border-gray-800 rounded-2xl shadow-2xl p-10 h-full relative"
                 >
                   {/* Quote Icon */}
-                  <div className="absolute top-6 left-8 text-[#FFC016] text-6xl opacity-20">"</div>
                   
                   <div className="flex flex-col items-center text-center relative z-10">
                     <div className="mb-8">
