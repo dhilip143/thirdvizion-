@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 
 import Hero from "/src/Components/AboutComponents/AboutHero.jsx";
-import VisionMission from "/src/Components/HomeComponent/VissionSection.jsx";
+import Mission from "/src/Components/AboutComponents/MissionSection.jsx";
 // import Journey from "/src/Components/AboutComponents/JourneySection.jsx";
 import AboutSection from "/src/Components/ReusableComponents/AboutSection.jsx";
 import OurTeam from "/src/Components/AboutComponents/OurTeam.jsx";
@@ -15,7 +15,7 @@ export default function About() {
     <div className="bg-black">
       <Hero />
       <AboutSection />
-     <VisionMission />
+      <Mission />
       {/* <Journey /> */}
       <OurTeam />
       <Partners />
