@@ -10,6 +10,7 @@ import Testimonial from "/src/Components/HomeComponent/Testimonial.jsx";
 import FAQ from "/src/Components/HomeComponent/FAQ.jsx";
 import ContactSection from "/src/Components/HomeComponent/ContactSection.jsx";
 import Indhu from "../Components/HomeComponent/indhu";
+import About from "../Components/HomeComponent/About";
 
 
 export default function Home() {
@@ -18,7 +19,8 @@ export default function Home() {
   return (
     <div id="home-scroll-container">
       <Hero />
-      <VisionMission />
+      <About/>
+      
       <Industries />
       <Newservice />
       <Partners className="bg-black" />
