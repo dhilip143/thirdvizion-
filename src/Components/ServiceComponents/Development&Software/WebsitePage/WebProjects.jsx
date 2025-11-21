@@ -1,11 +1,8 @@
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "lenis";
 import { motion } from "framer-motion";
-import TextReveal from "/src/Hooks/TextReveal.jsx";
 
-// /src/data/ProjectsData.js
 import amsi from "/src/assets/HeroImages/amsi-go.png";
 import madras from "/src/assets/HeroImages/madraskitchen.png";
 import scopik from "/src/assets/HeroImages/scopik.png";
@@ -20,16 +17,14 @@ const ProjectsData = [
     image: amsi,
     description:
       "A modern NGO website designed for awareness campaigns and online donations.",
-    live: "https://amsi-ngo.com/",
     tools: ["Wordpress"],
   },
   {
-    id: 2,  
+    id: 2,
     title: "Madras Kitchen",
     image: madras,
     description:
       "An online restaurant site with menu listing, reservations, and smooth animations.",
-    live: "https://madraskitchen.ca/",
     tools: ["Wordpress"],
   },
   {
@@ -38,7 +33,6 @@ const ProjectsData = [
     image: scopik,
     description:
       "A Next.js powered platform with seamless Supabase integration.",
-    live: "https://scopik.com/",
     tools: ["React.js", "Tailwind", "PostresSQL", "Django"],
   },
   {
@@ -47,60 +41,40 @@ const ProjectsData = [
     image: spinz,
     description:
       "A reward-based platform for gamified interactions and user engagement.",
-    live: "https://spinzreward.site/",
     tools: ["Mern Stack"],
   },
 ];
 
 export default function WebProject() {
   useEffect(() => {
-    function raf() {
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    const isMobile = window.matchMedia("(max-width: 768px)").matches; // ✅ detect mobile
-    const isLapScreen = window.matchMedia("(min-width: 1024px) and (max-width: 1440px)").matches;
-    const sections = gsap.utils.toArray("section");
+    const sections = gsap.utils.toArray(".project-section");
 
     sections.forEach((section, index) => {
       const img = section.querySelector("img");
-      const text = section.querySelector(".overlay-content"); // ✅ select text container
-      gsap.set(img, { transformOrigin: "center center" });
+      const text = section.querySelector(".overlay-content");
 
-      // REVERSED DIRECTION: even index = right → left, odd index = left → right
-      const fromX = index % 2 === 0 ? 400 : -800;
-      const toX = index % 2 === 0 ? -400 : 400;
-      const centerX = isMobile ? 0 : index % 2 === 0 ? 300 : -300;
+      const fromImg = index % 2 === 0 ? -300 : 300;
+      const fromText = index % 2 === 0 ? 300 : -300;
 
-      const textFromX = isLapScreen
-        ? (index % 2 === 0 ? 300 : 300) // ✅ laptop screens (custom values)
-        : (index % 2 === 0 ? 300 : -300); // ✅ default screens
-      const textToX = 0;
-
-      const tl = gsap.timeline({
+      gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: isMobile ? "clamp(top bottom-=300)" : "clamp(top bottom-=100)", // ✅ start sooner
-          end: isMobile ? "clamp(bottom top+=200)" : "clamp(bottom top+=200)", // ✅ end earlier
+          start: "top 80%",
+          end: "top 20%",
           scrub: true,
         },
-      });
-
-      tl.fromTo(
-        img,
-        { scale: 0.2, x: fromX },
-        { scale: 0.7, x: centerX, ease: "power2.out" }
-      ).to(img, { scale: 0.3, x: toX, ease: "power2.in" });
-
-      // Animate Text (slides from opposite side)
-      if (text) {
-        tl.fromTo(
+      })
+        .fromTo(
+          img,
+          { opacity: 0, x: fromImg, scale: 0.7 },
+          { opacity: 1, x: 0, scale: 1, ease: "power2.out" }
+        )
+        .fromTo(
           text,
-          { opacity: 0, x: textFromX },
-          { opacity: 1, x: textToX, ease: "power2.out" },
-          0.1 // slightly delayed so it feels smooth
+          { opacity: 0, x: fromText },
+          { opacity: 1, x: 0, ease: "power2.out" },
+          "-=0.6"
         );
-      }
     });
 
     ScrollTrigger.refresh();
@@ -113,67 +87,57 @@ export default function WebProject() {
         className="mt-20 lg:mt-0 h-[20vh] bg-transparent text-cyan-300 flex flex-col justify-center items-center text-center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ amount: 0 }}
+        transition={{ duration: 0.8 }}
       >
-        <TextReveal>
-          <motion.h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-60 font-medium font-inter-tight tracking-wide bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 t bg-clip-text drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]" style={{ fontFamily: "Outfit, sans-serif" }}>
-            Our Portfolio
-          </motion.h1>
-        </TextReveal>
-
-        {/* Small Description Below Portfolio */}
-        <TextReveal delay={0.2}>
-          <motion.p
-            className="mt-2 text-sm md:text-xl text-gray-300 leading-relaxed max-w-4xl px-5"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ amount: 0 }}
-          >
-           
-          </motion.p>
-        </TextReveal>
+        <motion.h1
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-60 font-medium tracking-wide bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text drop-shadow-[0_0_15px_rgba(34,211,238,0.4)]"
+          style={{ fontFamily: "Outfit, sans-serif" }}
+        >
+          Our Portfolio
+        </motion.h1>
       </motion.div>
 
-      <div className="h-[400vh]  text-white">
+      {/* Project Sections */}
+      <div className="text-white">
         {ProjectsData.map((project, index) => (
           <section
             key={project.id}
-            className="h-screen flex flex-col xl:flex-row items-center justify-center overflow-hidden relative"
-           >
+            className={`
+              project-section h-screen w-full flex flex-col 
+              ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} 
+              items-center justify-center gap-10 px-5 lg:px-20
+            `}
+          >
             {/* Image */}
             <img
               src={project.image}
-              className="w-full lg:w-1/2 h-[50vh] lg:h-screen object-cover rounded-2xl shadow-[0_0_25px_rgba(0,255,255,0.2)]"
+              className="w-[30vh] lg:w-[50vh] h-[35vh] lg:h-[50vh] object-cover rounded-2xl shadow-[0_0_25px_rgba(0,255,255,0.3)]"
             />
 
-            {/* Overlay Content */}
+            {/* Text */}
             <div
-              className={`overlay-content backdrop-blur-md bg-cyan-950/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)] border border-cyan-400/30 rounded-2xl 
-          lg:absolute lg:top-1/2 lg:-translate-y-1/2 
-          ${index % 2 === 0 ? "lg:right-10 xl:right-24 2xl:right-28 lg:text-center" : "lg:left-10 xl:left-22 2xl:left-26 lg:text-center"} 
-          w-full md:w-2xl lg:w-auto px-6 py-6 mt-6 lg:mt-0 text-center lg:text-inherit`}
+              className="overlay-content w-full lg:w-[55vh] backdrop-blur-lg bg-cyan-950/20 border border-cyan-400/30 rounded-2xl p-8 shadow-xl"
             >
-              <h2 className="text-2xl md:text-5xl lg:text-3xl font-bold text-cyan-300 drop-shadow-[0_0_10px_rgba(0,255,255,0.3)]" style={{ fontFamily: "Outfit, sans-serif" }}>
+              <h2
+                className="text-3xl md:text-4xl font-bold text-cyan-300 mb-4"
+                style={{ fontFamily: "Outfit, sans-serif" }}
+              >
                 {project.title}
               </h2>
 
-              <p className="text-base md:text-md lg:text-lg max-w-lg mx-auto mb-3 text-cyan-100/90" style={{ fontFamily: "work-sans, sans-serif" }}>
+              <p
+                className="text-lg text-cyan-100/90 mb-5 leading-relaxed"
+                style={{ fontFamily: "Work Sans, sans-serif" }}
+              >
                 {project.description}
               </p>
 
               {/* Tools */}
-              <div
-                className={`flex ${index % 2 === 0
-                  ? "justify-center"
-                  : "justify-center"
-                  } gap-3 flex-wrap text-xs lg:text-sm text-cyan-200/90 mb-3`}
-              >
+              <div className="flex gap-3 flex-wrap text-sm text-cyan-200">
                 {project.tools.map((tool, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 border border-cyan-500/50 rounded-full bg-cyan-900/30 hover:bg-cyan-800/50 transition-all duration-300"
+                    className="px-3 py-1 border border-cyan-500/50 rounded-full bg-cyan-900/40"
                   >
                     {tool}
                   </span>
