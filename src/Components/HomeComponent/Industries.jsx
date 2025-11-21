@@ -3,10 +3,10 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 
-import digitalEnterpriseImage from "/src/assets/industrieshome/retail.png";
-import healthcareImage from "/src/assets/industrieshome/Gemini_Generated_Image_v7y11iv7y11iv7y1.png";
-import educationImage from "/src/assets/industrieshome/Gemini_Generated_Image_rlsh23rlsh23rlsh.png";
-import retailImage from "/src/assets/industrieshome/digital.png";
+import digitalEnterpriseImage from "/src/assets/industrieshome/ex.svg";
+import healthcareImage from "/src/assets/industrieshome/exx.svg";
+import educationImage from "/src/assets/industrieshome/exxx.svg";
+import retailImage from "/src/assets/industrieshome/exxxx.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,10 +26,10 @@ const industryImages = [
 
 // ⭐ New: Image position control for all images
 const imagePositions = [
-  "center 34.5%", // Digital Enterprise
-  "center 52%", // Healthcare
-  "center 49%", // Education
-  "center 49.7%", // Retail
+  "center 34.5%",
+  "center 52%",
+  "center 49%",
+  "center 49.7%",
 ];
 
 const colorGradients = {
@@ -50,7 +50,7 @@ const Industries = () => {
   useGSAP(() => {
     gsap.from("#industry-item", {
       y: 80,
-      opacity: 0,
+      opacity: 110,
       delay: 0.3,
       duration: 0.8,
       stagger: 0.2,
@@ -73,6 +73,7 @@ const Industries = () => {
     gsap.to(overlayEl, {
       width: "50%",
       x: "0%",
+      
       duration: 0.8,
       ease: "power2.out",
     });
@@ -97,7 +98,7 @@ const Industries = () => {
 
     gsap.to(nameEl, {
       x: hoverXValues[index],
-      color: "#ffffff",
+     
       scale: scaleValue,
       duration: 0.8,
       ease: "power2.out",
@@ -138,7 +139,7 @@ const Industries = () => {
 
     gsap.to(nameEl, {
       x: 0,
-      color: "#E5E7EB",
+     
       scale: 1,
       duration: 0.8,
       ease: "power2.inOut",
@@ -151,22 +152,19 @@ const Industries = () => {
       className="bg-black text-white font-outfit py-16 sm:py-20 md:py-24 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 overflow-hidden"
     >
       {/* TOP SECTION */}
-<div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 sm:mb-14 md:mb-16 gap-6 md:gap-8">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 sm:mb-14 md:mb-16 gap-6 md:gap-8">
+        <div className="flex-1">
+          <p className="circle-text text-gray-400 text-white uppercase tracking-widest text-xs sm:text-sm md:text-base">
+            Industries we empower
+          </p>
 
-  <div className="flex-1">
-    {/* NEW SMALL TITLE */}
-    <p className="circle-text text-gray-400 text-white uppercase tracking-widest text-xs sm:text-sm md:text-base">
-    Industries we empower
-  </p>
-
-    <h2
-      className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-Outfit"
-      style={{ fontFamily: "Outfit, sans-serif" }}
-    >
-      Turning <span className="text-yellow-400">vision</span> into impact.
-    </h2>
-  </div>
-
+          <h2
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-Outfit"
+            style={{ fontFamily: "Outfit, sans-serif" }}
+          >
+            Turning <span className="text-yellow-400">vision</span> into impact.
+          </h2>
+        </div>
 
         <div className="flex-1 font-worksans text-gray-300 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8 leading-relaxed max-w-xl">
           We partner with organizations to unlock new opportunities and
@@ -177,7 +175,7 @@ const Industries = () => {
       </div>
 
       {/* LIST */}
-      <div className="relative flex flex-col font-work-sans bg-black border-t border-gray-700">
+      <div className="relative flex flex-col font-work-sans  border-t border-gray-700">
         {industries.map((industry, index) => (
           <div
             key={industry.id}
@@ -197,19 +195,19 @@ const Industries = () => {
               }}
             ></div>
 
-            {/* Right image overlay */}
+            {/* Right image overlay with background color added */}
             <div
               ref={(el) => (imageOverlayRefs.current[index] = el)}
               className="absolute top-0 right-0 h-full w-1/2 z-20 hidden md:block"
               style={{
-                backgroundImage: `url(${industryImages[index]})`,
+                backgroundImage: `${colorGradients[industry.color]}, url(${industryImages[index]})`,
                 backgroundSize: "cover",
-                backgroundPosition: imagePositions[index], // ⭐ applied here
+                backgroundPosition: imagePositions[index],
+                backgroundBlendMode: "multiply",
+
                 transform: "translateX(100%)",
-                WebkitMaskImage:
-                  "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
-                maskImage:
-                  "linear-gradient(to right, transparent 0%, black 15%, black 100%)",
+              
+                
               }}
             ></div>
 
