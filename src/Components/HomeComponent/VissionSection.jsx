@@ -45,18 +45,18 @@ const MissionVision = () => {
         .fromTo(
           visionLineRef.current,
           { scaleX: 0, transformOrigin: "left center" },
-          { scaleX: 1, duration: 1, ease: "power2.out" }
+          { scaleX: 1, duration: 0.2,  }
         )
         .fromTo(
           visionHeadingRef.current,
           { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          { opacity: 1, y: 0, duration: 0.2,  },
           "-=0.3"
         )
         .fromTo(
           visionTextRef.current,
           { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          { opacity: 1, y: 0, duration: 0.2,  },
           "-=0.2"
         );
 
@@ -64,7 +64,7 @@ const MissionVision = () => {
       const missionTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: missionHeadingRef.current,
-          start: "top 50%",
+          start: "top 60%",
           end: "bottom 20%",
           toggleActions: "play reverse play reverse",
           markers: false,
@@ -75,18 +75,18 @@ const MissionVision = () => {
         .fromTo(
           missionLineRef.current,
           { scaleX: 0, transformOrigin: "right center" },
-          { scaleX: 1, duration: 1, ease: "power2.out" }
+          { scaleX: 1, duration: 0.2,  }
         )
         .fromTo(
           missionHeadingRef.current,
           { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          { opacity: 1, y: 0, duration: 0.2,  },
           "-=0.3"
         )
         .fromTo(
           missionTextRef.current,
           { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          { opacity: 1, y: 0, duration: 0.2,  },
           "-=0.2"
         );
 
@@ -107,10 +107,7 @@ const MissionVision = () => {
         visionLineRef.current,
         visionTextRef.current
       ], {
-        opacity: 0,
-        y: -30,
-        duration: 0.5,
-        ease: "power2.in"
+      
       }, 0);
 
       // Hide Mission elements at the same time
@@ -119,10 +116,7 @@ const MissionVision = () => {
         missionLineRef.current,
         missionTextRef.current
       ], {
-        opacity: 0,
-        y: -30,
-        duration: 0.5,
-        ease: "power2.in"
+      
       }, 0);
 
     }, sectionRef);
