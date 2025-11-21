@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import mobile from "/src/assets/MobileTransparent.png";
+import qqq from "/src/assets/qqq.mp4"; // UPDATED
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
@@ -17,9 +17,8 @@ export default function AppHero() {
 
     if (!wrapper || !imgHolder) return;
 
-    const innerImg = imgHolder.querySelector("img");
+    const innerVideo = imgHolder.querySelector("video");
 
-    // Kill existing triggers if re-rendered
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
     // Pin and scale
@@ -41,7 +40,7 @@ export default function AppHero() {
       }
     );
 
-    // Fade out image near the end
+    // Fade out video
     gsap.to(imgHolder, {
       opacity: 0,
       ease: "power2.out",
@@ -53,9 +52,10 @@ export default function AppHero() {
       },
     });
 
-    if (innerImg) {
+    // Border radius animation (same logic as image)
+    if (innerVideo) {
       gsap.fromTo(
-        innerImg,
+        innerVideo,
         { borderRadius: "3rem" },
         {
           borderRadius: "0rem",
@@ -76,10 +76,10 @@ export default function AppHero() {
   }, []);
 
   return (
-    <div className="bg-black text-white font-sans overflow-x-hidden mb-[-100vh]">
+    <div className="bg-black text-white font-sans overflow-x-hidden mb-[-10vh]">
       {/* Hero text section */}
       <section className="mt-40 lg:mt-0 lg:h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 relative z-10">
-        {/* Static Heading */}
+        
         <h1
           className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-4 text-[#ff8904]"
           style={{ fontFamily: "Outfit, sans-serif" }}
@@ -87,7 +87,6 @@ export default function AppHero() {
           We Craft Seamless Mobile Experiences
         </h1>
 
-        {/* Static Paragraph */}
         <p
           className="text-gray-400 text-sm sm:text-base md:text-lg max-w-md sm:max-w-xl lg:max-w-2xl mb-6"
           style={{ fontFamily: "Work Sans, sans-serif" }}
@@ -96,7 +95,6 @@ export default function AppHero() {
           that drive success.
         </p>
 
-        {/* Animated CTA Button */}
         <Link to="/contact">
           <motion.button
             initial={{ opacity: 0, scale: 0.8 }}
@@ -119,10 +117,13 @@ export default function AppHero() {
           ref={imgHolderRef}
           className="w-full flex items-center justify-center"
         >
-          <img
-            src={mobile}
-            alt=""
-            className="w-56 sm:w-64 md:w-80 lg:w-[20rem] xl:w-[22rem] 2xl:w-[20rem] mt-40 md:mt-20 object-contain"
+          <video
+            src={qqq}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-56 sm:w-64 md:w-80 lg:w-[20rem] xl:w-[22rem] 2xl:w-[20rem] mt-40 md:mt-20 object-contain rounded-3xl"
           />
         </div>
       </div>

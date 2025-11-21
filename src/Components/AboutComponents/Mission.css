@@ -16,6 +16,7 @@ h2 {
 .card {
   position: relative;
 
+  /* Circle background area */
   &::before {
     position: absolute;
     content: "";
@@ -23,32 +24,38 @@ h2 {
     height: 100%;
     transition: 0.6s;
     z-index: 0;
-    background-color: #4f46e5;
   }
 
   &:hover {
     box-shadow: 0.063rem 0.063rem 1.25rem 0.375rem rgb(0 0 0 / 53%);
   }
 
+  /* ========================
+     UNIQUE COLORS PER CARD
+     ======================== */
   &:nth-child(1)::before {
+    background-color: #000000; 
     bottom: 0;
     right: 0;
     clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%);
   }
 
   &:nth-child(2)::before {
+    background-color: #ffd700; 
     bottom: 0;
     left: 0;
     clip-path: circle(calc(6.25rem + 7.5vw) at 0% 100%);
   }
 
   &:nth-child(3)::before {
+    background-color: #ffd700; 
     top: 0;
     right: 0;
     clip-path: circle(calc(6.25rem + 7.5vw) at 100% 0%);
   }
 
   &:nth-child(4)::before {
+    background-color: #000000; 
     top: 0;
     left: 0;
     clip-path: circle(calc(6.25rem + 7.5vw) at 0% 0%);
@@ -59,6 +66,7 @@ h2 {
   }
 }
 
+/* Hover effects */
 .card:hover::before {
   clip-path: circle(110vw at 100% 100%);
 }
@@ -67,6 +75,7 @@ h2 {
   color: #fff;
 }
 
+/* Circle wrapper */
 .circle {
   @include mQ(62.5rem) {
     position: absolute;
@@ -76,25 +85,29 @@ h2 {
   }
 }
 
-/* UI/UX Design Image - Original first card */
+/* ============================
+   IMAGES for each card circle
+   ============================ */
+
+/* 1. UI/UX Design Image */
 .ux-design-image {
-  background: url("https://images.unsplash.com/photo-1587440871875-191322ee64b0?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+  background: url("https://images.unsplash.com/photo-1587440871875-191322ee64b0?q=80&w=2071&auto=format&fit=crop")
     no-repeat 50% 50% / cover;
   bottom: 0;
   right: 0;
   clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%);
 }
 
-/* Graphic Design Image - Original second card */
+/* 2. Graphic Design Image */
 .graphic-design-image {
-  background: url("https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+  background: url("https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop")
     no-repeat 50% 50% / cover;
   bottom: 0;
   left: 0;
   clip-path: circle(calc(6.25rem + 7.5vw) at 0% 100%);
 }
 
-/* Vision Card Image - New third card */
+/* 3. Vision Image */
 .vision-image {
   background: url("/images/image1.jpg") no-repeat 50% 50% / cover;
   top: 0;
@@ -102,7 +115,7 @@ h2 {
   clip-path: circle(calc(6.25rem + 7.5vw) at 100% 0%);
 }
 
-/* Mission Card Image - New fourth card */
+/* 4. Mission Image */
 .mission-image {
   background: url("/images/image2.jpg") no-repeat 50% 50% / cover;
   top: 0;

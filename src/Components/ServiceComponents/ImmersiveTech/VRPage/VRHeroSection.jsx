@@ -9,15 +9,12 @@ function VRHeroSection() {
   const canvasRef = useRef(null);
 
   const [loading, setLoading] = useState(true);
+
   const frameCount = 192;
   const startFrame = 86400;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-
-      // -----------------------
-      // Canvas Setup
-      // -----------------------
       const canvas = canvasRef.current;
       const context = canvas.getContext("2d");
 
@@ -33,9 +30,9 @@ function VRHeroSection() {
 
       setCanvasSize();
 
-      // -----------------------
-      // Image Preload
-      // -----------------------
+      // -------------------------------------
+      // FRAME PATH
+      // -------------------------------------
       const currentFrame = (index) =>
         `/vr/Timeline 1_${(startFrame + index)
           .toString()
@@ -43,7 +40,6 @@ function VRHeroSection() {
 
       const images = [];
       const videoFrames = { frame: 0 };
-      let imagesToLoad = frameCount;
 
       const render = () => {
         const pixelRatio = window.devicePixelRatio || 1;
@@ -51,8 +47,8 @@ function VRHeroSection() {
         const canvasHeight = canvas.height / pixelRatio;
 
         context.clearRect(0, 0, canvas.width, canvas.height);
-
         const img = images[videoFrames.frame];
+
         if (img?.complete && img.naturalWidth > 0) {
           const imageAspect = img.naturalWidth / img.naturalHeight;
           const canvasAspect = canvasWidth / canvasHeight;
@@ -75,34 +71,35 @@ function VRHeroSection() {
         }
       };
 
-      const onImageLoad = () => {
-        imagesToLoad--;
-        if (imagesToLoad === 0) {
-          setLoading(false);
-          render();
-          setupScrollAnimations();
-        }
+      // -------------------------------------
+      // LOAD FIRST FRAME IMMEDIATELY
+      // -------------------------------------
+      const firstImage = new Image();
+      firstImage.src = currentFrame(0);
+
+      firstImage.onload = () => {
+        images[0] = firstImage;
+        render();
+        setLoading(false); // remove loader instantly
       };
 
+      // -------------------------------------
+      // PRELOAD ALL FRAMES IN BACKGROUND (non-blocking)
+      // -------------------------------------
       for (let i = 0; i < frameCount; i++) {
         const img = new Image();
-        img.onload = onImageLoad;
-        img.onerror = onImageLoad;
         img.src = currentFrame(i);
-        images.push(img);
+        images[i] = img;
       }
 
-      // -----------------------
-      // SCROLLTRIGGER SETUP
-      // -----------------------
+      // -------------------------------------
+      // SCROLLTRIGGER
+      // -------------------------------------
       const setupScrollAnimations = () => {
-        const totalScroll = frameCount * 3;
-
-        // ❗ Animation Scroll (frame change only)
         ScrollTrigger.create({
           trigger: mainRef.current,
-          start: "top 54%",  // 👉 animation starts early
-          end: `+=${totalScroll}`,
+          start: "top 510",
+          end: `+=${frameCount * 3}`,
           scrub: 1,
           onUpdate: (self) => {
             const targetFrame = Math.min(
@@ -113,14 +110,13 @@ function VRHeroSection() {
             render();
           },
         });
-
-        // ❗ Pin Scroll (only pinning)
-     
       };
 
-      // -----------------------
-      // Resize Handler
-      // -----------------------
+      setupScrollAnimations();
+
+      // -------------------------------------
+      // RESIZE HANDLER
+      // -------------------------------------
       const handleResize = () => {
         setCanvasSize();
         render();
@@ -129,6 +125,9 @@ function VRHeroSection() {
 
       window.addEventListener("resize", handleResize);
 
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
     }, mainRef);
 
     return () => ctx.revert();
@@ -141,7 +140,7 @@ function VRHeroSection() {
 
         {loading && (
           <div className="absolute inset-0 flex items-center justify-center bg-black text-white z-50">
-            <p>Loading Immersive VR Experience...</p>
+            <p>Loading...</p>
           </div>
         )}
 
@@ -151,7 +150,7 @@ function VRHeroSection() {
               className="text-4xl md:text-6xl font-bold mb-4"
               style={{ fontFamily: "Outfit, sans-serif" }}
             >
-              Experience The Future
+            
             </h2>
           </div>
         </div>
