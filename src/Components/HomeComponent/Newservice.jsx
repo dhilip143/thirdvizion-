@@ -11,8 +11,8 @@ import Por from "/src/assets/newserviceehome/mobile.png";
 import Portal from "/src/assets/newserviceehome/erp.png";
 import Dashboard from "/src/assets/newserviceehome/server.png";
 import Aws from "/src/assets/newserviceehome/crm.png";
-import Azure from "/src/assets/newserviceehome/game.png";
-import GoogleCloud from "/src/assets/newserviceehome/web.png";
+import Azure from "/src/assets/home/new game.png";
+import GoogleCloud from "/src/assets/home/webone.png";
 
 const capabilitiesData = [
   {
@@ -475,7 +475,7 @@ export default function Categories() {
                                 transform: child.imageSettings.transform,
                                 width: '100%',
                                 height: '100%',
-                                objectFit: 'cover',
+                                objectFit: 'fill',
                                 transition: 'transform 0.7s ease-in-out'
                               }}
                               className="group-hover:scale-110"

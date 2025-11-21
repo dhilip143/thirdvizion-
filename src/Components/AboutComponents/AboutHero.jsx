@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import threed from "/src/assets/home/Clients/wsx.jpg";
+import threed from "/src/assets/AboutImages/group.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,52 +27,53 @@ export default function AboutHero() {
 
       ScrollTrigger.matchMedia({
         "(min-width: 1024px)": () => {
+          // Reset all transforms before animation
+          gsap.set([aboutText, thirdText, vizionText, imgHolder, innerImg], {
+            clearProps: "transform,opacity,clipPath,borderRadius"
+          });
+
+          // Create a master timeline for smoother sequencing
+          const masterTL = gsap.timeline({
+            scrollTrigger: {
+              trigger: wrapper,
+              start: "top top",
+              end: "+=300%",
+              scrub: 1.5,
+              pin: imgHolder,
+              anticipatePin: 1,
+              markers: false,
+            }
+          });
+
+          // Text animations with better timing
           if (aboutText) {
-            gsap.to(aboutText, {
+            masterTL.to(aboutText, {
               y: -200,
               opacity: 0,
               ease: "power2.inOut",
-              scrollTrigger: {
-                trigger: wrapper,
-                start: "top top",
-                end: "+=150%",
-                scrub: true,
-              },
-            });
+            }, 0);
           }
 
           if (thirdText) {
-            gsap.to(thirdText, {
+            masterTL.to(thirdText, {
               x: -window.innerWidth * 1.5,
               scale: 3,
               opacity: 0,
               ease: "power2.inOut",
-              scrollTrigger: {
-                trigger: wrapper,
-                start: "top top",
-                end: "+=150%",
-                scrub: true,
-              },
-            });
+            }, 0);
           }
 
           if (vizionText) {
-            gsap.to(vizionText, {
+            masterTL.to(vizionText, {
               x: window.innerWidth * 1.5,
               scale: 3,
               opacity: 0,
               ease: "power2.inOut",
-              scrollTrigger: {
-                trigger: wrapper,
-                start: "top top",
-                end: "+=150%",
-                scrub: true,
-              },
-            });
+            }, 0);
           }
 
-          gsap.fromTo(
-            imgHolder,
+          // Image holder animation
+          masterTL.fromTo(imgHolder, 
             {
               scale: 0,
               rotate: 30,
@@ -83,35 +84,32 @@ export default function AboutHero() {
               rotate: 0,
               clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
               ease: "power2.inOut",
-              scrollTrigger: {
-                trigger: wrapper,
-                start: "top top",
-                end: "+=200%",
-                scrub: true,
-                pin: imgHolder,
-                anticipatePin: 1,
-              },
-            }
+              duration: 1,
+            },
+            0
           );
 
+          // Inner image animation with better timing - FULL WIDTH
           if (innerImg) {
-            gsap.to(innerImg, {
-              scale: 0.8,
-              y: 60,
-              borderRadius: "5rem",
-              ease: "power2.inOut",
-              scrollTrigger: {
-                trigger: wrapper,
-                start: "80% bottom",
-                end: "bottom bottom",
-                scrub: true,
+            masterTL.fromTo(innerImg, 
+              {
+                scale: 2, // Start with zoomed in
+                width: "100%", // Full width
               },
-            });
+              {
+                scale: 1, // End with normal scale
+                width: "100%", // Maintain full width
+                y: 60,
+                borderRadius: "5rem",
+                ease: "power2.inOut",
+              }, 
+              0.5
+            );
           }
         },
 
         "(max-width: 1023px)": () => {
-          // Mobile header scrolls away normally
+          // Mobile animations
           if (mobileHeader) {
             gsap.to(mobileHeader, {
               opacity: 0,
@@ -120,22 +118,56 @@ export default function AboutHero() {
               scrollTrigger: {
                 trigger: wrapper,
                 start: "top top",
-                end: "top+=100 top",
-                scrub: true,
+                end: "top+=150 top",
+                scrub: 1,
               },
             });
+          }
+
+          // Mobile image animation - FULL WIDTH
+          const mobileImg = document.querySelector('.lg\\:hidden img');
+          if (mobileImg) {
+            gsap.fromTo(mobileImg, 
+              {
+                scale: 0.8,
+                opacity: 0.8,
+                width: "100%", // Full width on mobile
+              },
+              {
+                scale: 1,
+                opacity: 1,
+                width: "100%", // Maintain full width
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: mobileImg,
+                  start: "top bottom",
+                  end: "top center",
+                  scrub: 1,
+                }
+              }
+            );
           }
         },
       });
     }, wrapperRef);
 
-    const handleResize = () => ScrollTrigger.refresh();
-    window.addEventListener("resize", handleResize);
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    // Debounced resize handler for better performance
+    let resizeTimeout;
+    const debouncedResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(handleResize, 250);
+    };
+
+    window.addEventListener("resize", debouncedResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", debouncedResize);
+      clearTimeout(resizeTimeout);
       ctx.revert();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
@@ -184,28 +216,28 @@ export default function AboutHero() {
 
       <div ref={wrapperRef} className="w-full relative">
         {/* Desktop scroll section */}
-        <div className="hidden lg:block min-h-[300vh]">
+        <div className="hidden lg:block min-h-[400vh]">
           <div className="sticky top-0 w-full min-h-screen z-10">
             <div
               ref={imgHolderRef}
-              className="sticky top-0 w-full h-screen bg-black flex items-center justify-center"
+              className="sticky top-0 w-full h-screen bg-black flex items-center justify-center overflow-hidden"
             >
               <img
                 src={threed}
                 alt="3d visual"
-                className="w-full h-[50vh] md:h-[60vh] lg:h-[80vh] xl:h-full object-cover scale-[2]"
+                className="w-full h-full object-contain transform-gpu" // Full width and height
               />
             </div>
           </div>
         </div>
 
-        {/* Mobile simple section */}
-        <div className="lg:hidden w-full bg-black flex items-center justify-center px-4 pb-20">
-          <div className="w-full max-w-md">
+        {/* Mobile simple section - FULL WIDTH */}
+        <div className="lg:hidden w-full bg-black flex items-center justify-center px-0 pb-20 pt-10"> {/* Removed horizontal padding */}
+          <div className="w-full"> {/* Full width container */}
             <img
               src={threed}
               alt="3d visual"
-              className="w-full h-auto object-cover rounded-2xl shadow-lg"
+              className="w-full h-auto object-cover transform-gpu" // Full width image
             />
           </div>
         </div>
