@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -126,26 +125,7 @@ Transforming Businesses with Innovative Digital Technology.          </motion.h2
           We create innovative digital solutions that blend AR/VR, 3D design, cloud infrastructure, and custom software development. Our goal is to help businesses grow smarter, work faster, and lead through technology.
           </motion.p>
 
-          <div className="flex lg:flex-col justify-center gap-4 mt-4">
-            <motion.button
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              viewport={{ amount: 0.3 }}
-              className="px-5 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-orange-500 text-white font-semibold shadow-md hover:scale-105 transition"
-            >
-              Explore Our Services
-            </motion.button>
-            <motion.button
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              viewport={{ amount: 0.3 }}
-              className="px-5 py-3 rounded-xl border border-gray-600 text-gray-300 hover:bg-gray-800 transition"
-            >
-              View Case Studies
-            </motion.button>
-          </div>
+          {/* Buttons removed from here */}
         </div>
 
         {/* CENTER CAPSULE */}

@@ -96,7 +96,7 @@ export default function AboutHero() {
 
           if (innerImg) {
             gsap.to(innerImg, {
-              scale: 0.8,
+              scale: 1, // Changed to 1 for full image
               y: 60,
               borderRadius: "5rem",
               ease: "power2.inOut",
@@ -193,7 +193,7 @@ export default function AboutHero() {
               <img
                 src={threed}
                 alt="3d visual"
-                className="w-full h-[50vh] md:h-[60vh] lg:h-[80vh] xl:h-full object-cover scale-[2]"
+                className="w-full h-full object-contain" // Changed to object-contain and removed scale-[2]
               />
             </div>
           </div>
@@ -205,7 +205,7 @@ export default function AboutHero() {
             <img
               src={threed}
               alt="3d visual"
-              className="w-full h-auto object-cover rounded-2xl shadow-lg"
+              className="w-full h-auto object-contain rounded-2xl shadow-lg" // Changed to object-contain
             />
           </div>
         </div>
