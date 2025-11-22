@@ -143,23 +143,7 @@ const Vrsol = () => {
                   className="w-full h-120 object-cover rounded-2xl shadow-lg mb-8 hover:scale-[1.02] transition-transform duration-500"
                 />
 
-                {/* Buttons */}
-                {/* <div className="flex flex-wrap gap-4 mt-4">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg shadow-violet-500/20 transition-all"
-                  >
-                    Get Started
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="border border-violet-500/50 hover:border-violet-400 text-violet-300 font-medium py-3 px-6 rounded-full transition-colors bg-black/30"
-                  >
-                    Learn More
-                  </motion.button>
-                </div> */}
+               
               </motion.div>
             </AnimatePresence>
           </div>
