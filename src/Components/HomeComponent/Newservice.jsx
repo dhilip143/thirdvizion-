@@ -8,9 +8,9 @@ import DesignTool from "/src/assets/newserviceehome/ar.png";
 import Layout from "/src/assets/newserviceehome/3d.png";
 import Component from "/src/assets/newserviceehome/vr.png";
 import Por from "/src/assets/home/mobileapp.jpg";
-import Portal from "/src/assets/newserviceehome/erp.png";
+import Portal from "/src/assets/newserviceehome/crm.png";
 import Dashboard from "/src/assets/newserviceehome/server.png";
-import Aws from "/src/assets/newserviceehome/crm.png";
+import Aws from "/src/assets/home/erp.png";
 import Azure from "/src/assets/home/game.jpg";
 import GoogleCloud from "/src/assets/home/web.jpg";
 
@@ -47,7 +47,7 @@ const capabilitiesData = [
       {
         name: "VIRTUAL REALITY",
         img: Component,
-        emojis: ["🥽", ], // VR-related emojis
+        emojis: ["🥽"], // VR-related emojis
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -66,7 +66,7 @@ const capabilitiesData = [
       {
         name: "CRM",
         img: Portal,
-        emojis: [ "📊",], // CRM-related emojis
+        emojis: ["📊"], // CRM-related emojis
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -90,7 +90,7 @@ const capabilitiesData = [
       {
         name: "ERP",
         img: Aws,
-        emojis: [ "📈"], // ERP-related emojis
+        emojis: ["📈"], // ERP-related emojis
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -99,6 +99,7 @@ const capabilitiesData = [
         size: "h-100",
         link: "/enterprise_resource_planning"
       },
+      // Removed "SERVER MANAGEMENT" from images but kept in tags
     ],
   },
   {
@@ -107,8 +108,20 @@ const capabilitiesData = [
     desc: "We create innovative software solutions that help businesses grow in the digital era. From custom websites to mobile apps and interactive games, our team combines creativity, technology, and strategy to turn ideas into reality",
     children: [
       {
-        name: "WEBSITE",
+        name: "GAME DEVELOPMENT",
         img: Azure,
+        emojis: ["🎮"], // Game development-related emojis
+        imageSettings: {
+          position: { objectPosition: "center" },
+          transform: "scale(1)",
+          borderRadius: "18px"
+        },
+        size: "h-100",
+        link: "/game_development"
+      },
+      {
+        name: "WEBSITE",
+        img: GoogleCloud,
         emojis: ["💻"], // Website-related emojis
         imageSettings: {
           position: { objectPosition: "center" },
@@ -119,8 +132,8 @@ const capabilitiesData = [
         link: "/web_development"
       },
       {
-        name: "MOBILE",
-        img: GoogleCloud,
+        name: "MOBILE APP",
+        img: Por,
         emojis: ["📱"], // Mobile-related emojis
         imageSettings: {
           position: { objectPosition: "center" },
@@ -129,18 +142,6 @@ const capabilitiesData = [
         },
         size: "h-100",
         link: "/app_development"
-      },
-      {
-        name: "GAME DEVELOPMENT",
-        img: Por,
-        emojis: ["🎮"], // Game development-related emojis
-        imageSettings: {
-          position: { objectPosition: "center" },
-          transform: "scale(1)",
-          borderRadius: "18px"
-        },
-        size: "h-100",
-        link: "/game_development"
       },
     ],
   },
@@ -152,7 +153,7 @@ const FloatingParticles = ({ isScrolling }) => {
     id: i,
     size: Math.random() * 4 + 2, // Random size between 2-6px
     left: Math.random() * 80 + 10, // Random position between 10-90%
-    delay: Math.random() * 0.5  , // Random delay
+    delay: Math.random() * 0.5, // Random delay
     duration: Math.random() * 1 + 2, // Random duration between 2-5s
     opacity: Math.random() * 0.7 + 0.3, // Random opacity between 0.3-1
   }));
@@ -237,12 +238,51 @@ const RollingEmojis = ({ emojis, isInView }) => {
   );
 };
 
+// Image Slide In Component
+const SlideInImage = ({ src, alt, delay = 0, isInView }) => {
+  return (
+    <motion.div
+      initial={{ 
+        opacity: 0, 
+        y: 100,
+        scale: 0.8
+      }}
+      animate={isInView ? { 
+        opacity: 1, 
+        y: 0,
+        scale: 1
+      } : {
+        opacity: 0,
+        y: 100,
+        scale: 0.8
+      }}
+      transition={{
+        duration: 0.8,
+        delay: delay,
+        type: "spring",
+        stiffness: 80,
+        damping: 15
+      }}
+      className="w-full h-full"
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover"
+        style={{ borderRadius: '18px' }}
+      />
+    </motion.div>
+  );
+};
+
 export default function Categories() {
   const [activeCategoryId, setActiveCategoryId] = useState(capabilitiesData[0].id);
   const [isScrolling, setIsScrolling] = useState(false);
   const [inViewItems, setInViewItems] = useState({});
+  const [inViewImages, setInViewImages] = useState({});
   const scrollContainerRef = useRef(null);
   const sectionRefs = useRef(capabilitiesData.map(() => useRef(null)));
+  const imageRefs = useRef({});
   const itemRefs = useRef({});
   const scrollTimeoutRef = useRef(null);
 
@@ -334,8 +374,47 @@ export default function Categories() {
     };
   }, []);
 
+  // Intersection Observer for images
+  useEffect(() => {
+    const imageObserver = new IntersectionObserver(
+      (entries) => {
+        const updates = {};
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            updates[entry.target.dataset.imageId] = true;
+          }
+        });
+        setInViewImages(prev => ({ ...prev, ...updates }));
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.3
+      }
+    );
+
+    // Observe all images
+    capabilitiesData.forEach(category => {
+      category.children.forEach((child, index) => {
+        const imageId = `${category.id}-${child.name}-image`;
+        const ref = imageRefs.current[imageId];
+        if (ref) {
+          ref.dataset.imageId = imageId;
+          imageObserver.observe(ref);
+        }
+      });
+    });
+
+    return () => {
+      Object.values(imageRefs.current).forEach(ref => {
+        if (ref) imageObserver.unobserve(ref);
+      });
+    };
+  }, []);
+
   const getCategoryTags = (category) => {
     if (category.id === "data-cloud") {
+      // For data-cloud section, include SERVER MANAGEMENT in tags but not in images
       return [
         ...category.children.map(child => child.name),
         "SERVER MANAGEMENT"
@@ -359,6 +438,7 @@ export default function Categories() {
       child.name.toUpperCase() === tag.toUpperCase()
     );
 
+    // Special case for SERVER MANAGEMENT in data-cloud section
     if (tag === "SERVER MANAGEMENT" && category.id === "data-cloud") {
       return "/server_management";
     }
@@ -498,11 +578,16 @@ export default function Categories() {
                   <div className="space-y-4">
                     {cap.children.map((child, i) => {
                       const itemId = `${cap.id}-${child.name}`;
+                      const imageId = `${cap.id}-${child.name}-image`;
                       return (
                         <div
                           key={i}
-                          ref={el => itemRefs.current[itemId] = el}
+                          ref={el => {
+                            itemRefs.current[itemId] = el;
+                            imageRefs.current[imageId] = el;
+                          }}
                           data-item-id={itemId}
+                          data-image-id={imageId}
                         >
                           <Link
                             to={child.link}
@@ -544,17 +629,20 @@ export default function Categories() {
                 <div className="hidden md:block relative">
                   <div className={`hidden md:grid gap-6 ${cap.children.length === 3
                       ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-                      : cap.children.length === 4
-                        ? "grid-cols-1 md:grid-cols-2"
-                        : "grid-cols-1 md:grid-cols-2 lg:grid-cols-2"
+                      : "grid-cols-1 md:grid-cols-2 lg:grid-cols-2"
                     }`}>
                     {cap.children.map((child, i) => {
                       const itemId = `${cap.id}-${child.name}`;
+                      const imageId = `${cap.id}-${child.name}-image`;
                       return (
                         <div
                           key={i}
-                          ref={el => itemRefs.current[itemId] = el}
+                          ref={el => {
+                            itemRefs.current[itemId] = el;
+                            imageRefs.current[imageId] = el;
+                          }}
                           data-item-id={itemId}
+                          data-image-id={imageId}
                           className={`block relative ${index === 0 && i === 0 ? 'mt-16' :
                               index === 0 && i === 1 ? 'mt-25' :
                                 index === 0 && i === 2 ? 'mt-35' :
@@ -582,19 +670,17 @@ export default function Categories() {
                                   className={`${child.size} overflow-hidden border border-gray-600/30 shadow-2xl relative group`}
                                   style={{ borderRadius: child.imageSettings.borderRadius }}
                                 >
-                                  <img
-                                    src={child.img}
-                                    alt={child.name}
-                                    style={{
-                                      ...child.imageSettings.position,
-                                      transform: child.imageSettings.transform,
-                                      width: '100%',
-                                      height: '100%',
-                                      objectFit: 'fill',
-                                      transition: 'transform 0.7s ease-in-out'
-                                    }}
-                                    className="group-hover:scale-110"
-                                  />
+                                  <div 
+                                    className="w-full h-full"
+                                    ref={el => imageRefs.current[imageId] = el}
+                                  >
+                                    <SlideInImage 
+                                      src={child.img}
+                                      alt={child.name}
+                                      delay={i * 0.2}
+                                      isInView={inViewImages[imageId]}
+                                    />
+                                  </div>
                                   <div className="absolute inset-0 bg-black/40 opacity-70 group-hover:opacity-30 transition-all duration-500"></div>
 
                                   {/* TITLE OVERLAY - NO EMOJIS HERE */}

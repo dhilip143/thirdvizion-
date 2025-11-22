@@ -26,40 +26,6 @@ const Landing = () => {
     { class: "instagram", src: service9 },
   ];
 
-  // const createDynamicLists = (totalULs, totalLIsPerUL) => {
-  //   const shuffledIcons = [...icons].sort(() => Math.random() - 0.5);
-  //   const lists = [];
-
-  //   for (let ulIndex = 0; ulIndex < totalULs; ulIndex++) {
-  //     const listItems = [];
-  //     for (let liIndex = 1; liIndex < totalLIsPerUL; liIndex++) {
-  //       const currentIcon =
-  //         shuffledIcons[(liIndex + ulIndex) % shuffledIcons.length];
-  //       listItems.push(
-  //         <li className={currentIcon.class} key={liIndex}>
-  //           <a>
-  //             <div>
-  //               {[...Array(4)].map((_, idx) => (
-  //                 <span key={idx}></span>
-  //               ))}
-  //               <span>
-  //                 <img
-  //                   src={currentIcon.src}
-  //                   alt={`${currentIcon.class} icon`}
-  //                   style={{ width: "60px", height: "60px" }}
-  //                 />
-  //               </span>
-  //             </div>
-  //           </a>
-  //           <span id="hexa"></span>
-  //         </li>
-  //       );
-  //     }
-  //     lists.push(<ul key={ulIndex}>{listItems}</ul>);
-  //   }
-  //   return lists;
-  // };
-
   const createDynamicLists = (totalULs, totalLIsPerUL) => {
     const shuffledIcons = [...icons].sort(() => Math.random() - 0.5);
     const lists = [];
@@ -130,12 +96,12 @@ const Landing = () => {
       {createDynamicLists(10, 10)}
 
       {/* ✅ Centered text + button */}
-      <div className="flex flex-col items-center justify-center gap- z-20 text-white ">
-        <h2 className="w-full absolute top-160 md:top-140 lg:top-128 xl:top-115  left-1/2 -translate-x-1/2 z-50  leading-snug text-center text-3xl md:text-3xl lg:text-3xl xl:text-4xl xl:max-w-4xl  font-michroma font-extrabold px-5  pt-[45px]">
+      <div className="flex flex-col items-center justify-center gap- z-20 text-white pointer-events-none">
+        <h2 className="w-full absolute top-160 md:top-140 lg:top-128 xl:top-115  left-1/2 -translate-x-1/2 z-50  leading-snug text-center text-3xl md:text-3xl lg:text-3xl xl:text-4xl xl:max-w-4xl  font-michroma font-extrabold px-5  pt-[45px] pointer-events-none">
           Engineering the Future, Innovating the Present
         </h2>
 
-        <p className="w-full absolute top-200 md:top-168 lg:top-155 xl:top-147 2xl:top-145 left-1/2 -translate-x-1/2 xl:max-w-4xl 2xl:max-w-2xl text-xl md:text-base lg:text-lg 2xl:text-xs text-center text-gray-200 px-20">
+        <p className="w-full absolute top-200 md:top-168 lg:top-155 xl:top-147 2xl:top-145 left-1/2 -translate-x-1/2 xl:max-w-4xl 2xl:max-w-2xl text-xl md:text-base lg:text-lg 2xl:text-xs text-center text-gray-200 px-20 pointer-events-none">
           We combine cutting-edge technology with visionary ideas to deliver
           solutions that shape tomorrow while empowering businesses today.
         </p>
