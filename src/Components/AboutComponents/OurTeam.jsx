@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import lap from "/src/assets/AboutImages/bbbb.jpg";
-import mow from "/src/assets/AboutImages/aaaaa.jpg";
+import mow from "/src/assets/AboutImages/Artboard 1.jpg";
 import wow from "/src/assets/AboutImages/aaa.jpg";
 import hav from "/src/assets/AboutImages/bbbbb.jpg";
 import call from "/src/assets/AboutImages/aa.jpg"; 
@@ -14,7 +14,7 @@ import low from "/src/assets/AboutImages/aaaa.jpg";
 
 const teamData = [
   { img: lap, name: "Tharun Joel", role: "3D Graphic Designer" },
-  { img: mow, name: "Paazil Parvesh", role: "Web Developer" },
+  { img: mow, name: "akash", role: "Web Developer" },
   { img: wow, name: "Dhilip Kumar", role: "Web Developer" },
   { img: hav, name: "Rajesh", role: "Unity Developer" },
   { img: call, name: "Shammi Kumar", role: "Full Stack Developer" },

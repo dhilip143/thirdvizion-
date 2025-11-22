@@ -7,12 +7,12 @@ import { useState, useRef, useEffect } from "react";
 import DesignTool from "/src/assets/newserviceehome/ar.png";
 import Layout from "/src/assets/newserviceehome/3d.png";
 import Component from "/src/assets/newserviceehome/vr.png";
-import Por from "/src/assets/newserviceehome/mobile.png";
+import Por from "/src/assets/home/mobileapp.jpg";
 import Portal from "/src/assets/newserviceehome/erp.png";
 import Dashboard from "/src/assets/newserviceehome/server.png";
 import Aws from "/src/assets/newserviceehome/crm.png";
-import Azure from "/src/assets/home/new game.png";
-import GoogleCloud from "/src/assets/home/webone.png";
+import Azure from "/src/assets/home/game.jpg";
+import GoogleCloud from "/src/assets/home/web.jpg";
 
 const capabilitiesData = [
   {
