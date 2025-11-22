@@ -169,7 +169,7 @@ import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 
 // 👉 Import the JSON animation
-import AssistantBot from "/src/assets/crm/Trackkkk.json";
+import AssistantBot from "/src/assets/Crm/Trackkkk.json";
 
 export default function CrmHero() {
   const rootRef = useRef(null);
