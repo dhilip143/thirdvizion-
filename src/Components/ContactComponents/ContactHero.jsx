@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ContactHeroimg from "/src/assets/AboutImages/Gemini_Generated_Image_7yy9tb7yy9tb7yy9.png";
+import ContactHeroimg from "/src/assets/HomeImages/contactus.avif";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -191,7 +191,7 @@ export default function ContactHero() {
               <img
                 src={ContactHeroimg}
                 alt="Contact Visual"
-                className="w-full h-[50vh] md:h-[60vh] lg:h-[80vh] xl:h-full object-cover scale-[2]"
+                className="w-full h-[50vh] md:h-[60vh] lg:h-[80vh] xl:h-full object-fill scale-[2]"
               />
             </div>
           </div>

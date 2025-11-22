@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 
 import Hero from "/src/Components/HomeComponent/HeroSection/HeroSection.jsx";
-import VisionMission from "/src/Components/HomeComponent/VissionSection.jsx";
+// import VisionMission from "/src/Components/HomeComponent/VissionSection.jsx";
 import Industries from "/src/Components/HomeComponent/Industries.jsx";
 import Newservice from "/src/Components/HomeComponent/Newservice.jsx";
 import Partners from "/src/Components/AboutComponents/Partners.jsx";
@@ -20,7 +20,7 @@ export default function Home() {
     <div id="home-scroll-container">
       <Hero />
       <About/>
-      <VisionMission />
+      {/* <VisionMission /> */}
       <Industries />
       <Newservice />
       <Partners className="bg-black" />

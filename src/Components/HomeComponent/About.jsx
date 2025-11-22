@@ -9,12 +9,7 @@ export default function About() {
       <div className="text-center mb-20">
         <h2
           className="text-4xl lg:text-6xl font-bold tracking-wide"
-          style={{
-            background:
-              "linear-gradient(157deg, rgba(130,203,246,1) 0%, rgba(236,154,150,1) 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
+         
           style={{ fontFamily: "Outfit, sans-serif" }}>
           WHO ARE WE
         </h2>
