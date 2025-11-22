@@ -36,9 +36,9 @@ export default function Indhu() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const svgWidth = 6500; // Increased from 5000 to 6000 for 5 circles
+  const svgWidth = 6500;
   const leftShift = 150;
-  const circleSpacing = svgWidth / (5 + 1); // Changed from 4 to 5
+  const circleSpacing = svgWidth / (5 + 1);
 
   const circles = [
     {
@@ -47,7 +47,7 @@ export default function Indhu() {
       description:
         "We begin by understanding your business goals, vision, and challenges. Our team studies every detail to find the right digital strategy for your brand.",
       img: threed,
-      cx: circleSpacing * 0.9 - leftShift, // Adjusted spacing
+      cx: circleSpacing * 0.9 - leftShift,
       cy: 200,
       color: "#fb923c", // orange-400
     },
@@ -57,7 +57,7 @@ export default function Indhu() {
       description:
         "We design robust and scalable system architectures using the latest technologies and best industry practices.",
       img: gam,
-      cx: circleSpacing * 2 - leftShift, // Adjusted spacing
+      cx: circleSpacing * 2 - leftShift,
       cy: 300,
       color: "#f472b6", // pink-400
     },
@@ -67,7 +67,7 @@ export default function Indhu() {
       description:
         "We build your solution with cutting-edge technologies and agile methodologies, ensuring code quality and maintainability.",
       img: are,
-      cx: circleSpacing * 3.1 - leftShift, // Adjusted spacing
+      cx: circleSpacing * 3.1 - leftShift,
       cy: 200,
       color: "#4ade80", // green-400
     },
@@ -77,7 +77,7 @@ export default function Indhu() {
       description:
         "We conduct comprehensive testing to ensure your solution is bug-free, performs optimally, and delivers exceptional user experience.",
       img: wih,
-      cx: circleSpacing * 4.2 - leftShift, // Adjusted spacing
+      cx: circleSpacing * 4.2 - leftShift,
       cy: 300,
       color: "#f87171", // red-400
     },
@@ -86,12 +86,15 @@ export default function Indhu() {
       label: "SUCCEES",
       description:
         "Success isn't a destination—it's a journey of constant growth. We empower your business to achieve measurable results through strategic execution, data-driven insights, and relentless improvement—ensuring your goals aren't just met, but exceeded.",
-      img:bit , // You can replace this with a new image
-      cx: circleSpacing * 5.35 - leftShift, // New fifth circle
+      img: bit,
+      cx: circleSpacing * 5.35 - leftShift,
       cy: 200,
-      color: "#FFC016", // yellow (same as before)
+      color: "#FFC016", // yellow
     },
   ];
+
+  // Get gradient colors from circles
+  const gradientColors = circles.map(circle => circle.color);
 
   // --- MOBILE SIMPLE HORIZONTAL SCROLL VERSION ---
   if (isMobile) {
@@ -150,7 +153,7 @@ export default function Indhu() {
     );
   }
 
-  // --- DESKTOP ORIGINAL DESIGN (updated for 5 circles) ---
+  // --- DESKTOP ORIGINAL DESIGN ---
   const splitDescription = (description) => {
     const words = description.split(" ");
     const totalWords = words.length;
@@ -214,7 +217,7 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.65}`, // Increased from 1.2 to 1.5 for more scroll space
+        end: () => `+=${svg.scrollWidth * 1.65}`,
         scrub: true,
         pin: true,
         anticipatePin: 1,
@@ -228,7 +231,7 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.5}`, // Increased from 1.2 to 1.5 for more scroll space
+        end: () => `+=${svg.scrollWidth * 1.5}`,
         scrub: true,
         invalidateOnRefresh: true,
       },
@@ -261,11 +264,11 @@ export default function Indhu() {
         </h1>
       </div>
 
-      <div className="relative flex-shrink-0 w-[11000px] h-[600px] lg:h-[700px] 2xl:h-[800px] mx-auto z-10"> {/* Increased width from 9000px to 11000px */}
+      <div className="relative flex-shrink-0 w-[11000px] h-[600px] lg:h-[700px] 2xl:h-[800px] mx-auto z-10">
         <svg
           ref={svgRef}
           viewBox={`0 0 ${svgWidth} 600`}
-          className="w-[6000px] h-full" // Increased from 5000px to 6000px
+          className="w-[6000px] h-full"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid meet"
@@ -289,9 +292,11 @@ export default function Indhu() {
 
           <defs>
             <linearGradient id="gradientGlow" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#ffb200" />
-              <stop offset="50%" stopColor="#ffb200" />
-              <stop offset="100%" stopColor="#ffb200" />
+              <stop offset="0%" stopColor={gradientColors[0]} />
+              <stop offset="25%" stopColor={gradientColors[1]} />
+              <stop offset="50%" stopColor={gradientColors[2]} />
+              <stop offset="75%" stopColor={gradientColors[3]} />
+              <stop offset="100%" stopColor={gradientColors[4]} />
             </linearGradient>
           </defs>
 
