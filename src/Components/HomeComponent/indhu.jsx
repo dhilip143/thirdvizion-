@@ -23,6 +23,57 @@ export default function Indhu() {
   const imageRefs = useRef([]);
   const animationRefs = useRef([]);
 
+  // PRECISE COLOR TRANSITION CONTROL
+  const colorTransitions = {
+    // Define exactly when colors change during scroll (0 to 1 progress)
+    transitions: [
+      {
+        startProgress: 0.0,    // Start of scroll
+        endProgress: 0.25,     // End at 25% scroll
+        color: "#fb923c",      // Orange
+        label: "DISCOVER Phase"
+      },
+      {
+        startProgress: 0.25,   // Start at 25% scroll
+        endProgress: 0.50,     // End at 45% scroll
+        color: "#f472b6",      // Pink
+        label: "ARCHITECT Phase"
+      },
+      {
+        startProgress: 0.45,   // Start at 45% scroll
+        endProgress: 0.75,     // End at 65% scroll
+        color: "#4ade80",      // Green
+        label: "BUILD Phase"
+      },
+      {
+        startProgress: 0.65,   // Start at 65% scroll
+        endProgress: 0.85,     // End at 85% scroll
+        color: "#f87171",      // Red
+        label: "ELEVATE Phase"
+      },
+      {
+        startProgress: 0.85,   // Start at 85% scroll
+        endProgress: 1.0,      // End at 100% scroll
+        color: "#FFC016",      // Yellow
+        label: "SUCCESS Phase"
+      }
+    ],
+    
+    // Alternative: Single color for entire line
+    useSingleColor: false,
+    singleColor: "#FFC016",
+    
+    // Visual effects
+    pulseEffect: true,
+    pulseIntensity: 0.2,
+    glowEffect: true,
+    glowIntensity: 0.3,
+    
+    // Line style
+    strokeWidth: 5,
+    strokeOpacity: 1
+  };
+
   // Responsive detection
   useEffect(() => {
     const handleResize = () => {
@@ -49,7 +100,9 @@ export default function Indhu() {
       img: threed,
       cx: circleSpacing * 0.9 - leftShift,
       cy: 200,
-      color: "#fb923c", // orange-400
+      color: colorTransitions.transitions[0].color,
+      progressStart: colorTransitions.transitions[0].startProgress,
+      progressEnd: colorTransitions.transitions[0].endProgress,
     },
     {
       id: 2,
@@ -59,7 +112,9 @@ export default function Indhu() {
       img: gam,
       cx: circleSpacing * 2 - leftShift,
       cy: 300,
-      color: "#f472b6", // pink-400
+      color: colorTransitions.transitions[1].color,
+      progressStart: colorTransitions.transitions[1].startProgress,
+      progressEnd: colorTransitions.transitions[1].endProgress,
     },
     {
       id: 3,
@@ -69,7 +124,9 @@ export default function Indhu() {
       img: are,
       cx: circleSpacing * 3.1 - leftShift,
       cy: 200,
-      color: "#4ade80", // green-400
+      color: colorTransitions.transitions[2].color,
+      progressStart: colorTransitions.transitions[2].startProgress,
+      progressEnd: colorTransitions.transitions[2].endProgress,
     },
     {
       id: 4,
@@ -79,7 +136,9 @@ export default function Indhu() {
       img: wih,
       cx: circleSpacing * 4.2 - leftShift,
       cy: 300,
-      color: "#f87171", // red-400
+      color: colorTransitions.transitions[3].color,
+      progressStart: colorTransitions.transitions[3].startProgress,
+      progressEnd: colorTransitions.transitions[3].endProgress,
     },
     {
       id: 5,
@@ -89,12 +148,83 @@ export default function Indhu() {
       img: bit,
       cx: circleSpacing * 5.35 - leftShift,
       cy: 200,
-      color: "#FFC016", // yellow
+      color: colorTransitions.transitions[4].color,
+      progressStart: colorTransitions.transitions[4].startProgress,
+      progressEnd: colorTransitions.transitions[4].endProgress,
     },
   ];
 
-  // Get gradient colors from circles
-  const gradientColors = circles.map(circle => circle.color);
+  // Function to get current color based on scroll progress
+  const getCurrentColor = (progress) => {
+    if (colorTransitions.useSingleColor) {
+      return colorTransitions.singleColor;
+    }
+    
+    const currentTransition = colorTransitions.transitions.find(
+      transition => progress >= transition.startProgress && progress <= transition.endProgress
+    );
+    
+    return currentTransition ? currentTransition.color : colorTransitions.transitions[0].color;
+  };
+
+  // Function to create gradient stops for precise color transitions
+  const getPreciseGradientStops = () => {
+    if (colorTransitions.useSingleColor) {
+      return [
+        <stop key="single-start" offset="0%" stopColor={colorTransitions.singleColor} />,
+        <stop key="single-end" offset="100%" stopColor={colorTransitions.singleColor} />
+      ];
+    }
+
+    const gradientStops = [];
+    
+    colorTransitions.transitions.forEach((transition, index) => {
+      // Add start point of this transition
+      gradientStops.push(
+        <stop 
+          key={`start-${index}`}
+          offset={`${transition.startProgress * 100}%`} 
+          stopColor={transition.color}
+        />
+      );
+      
+      // Add end point of this transition
+      gradientStops.push(
+        <stop 
+          key={`end-${index}`}
+          offset={`${transition.endProgress * 100}%`} 
+          stopColor={transition.color}
+        />
+      );
+    });
+
+    return gradientStops;
+  };
+
+  // Force update helper
+  const [, forceUpdate] = useState();
+
+  // Function to apply pulse animation
+  const applyPulseEffect = () => {
+    if (!colorTransitions.pulseEffect || !pathRef.current) return;
+    
+    const path = pathRef.current;
+    gsap.to(path, {
+      strokeOpacity: 1 - colorTransitions.pulseIntensity,
+      duration: 1.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+  };
+
+  // Function to apply glow effect
+  const applyGlowEffect = () => {
+    if (!colorTransitions.glowEffect || !pathRef.current) return;
+    
+    const path = pathRef.current;
+    path.style.filter = `drop-shadow(0 0 ${colorTransitions.glowIntensity * 8}px currentColor)`;
+  };
 
   // --- MOBILE SIMPLE HORIZONTAL SCROLL VERSION ---
   if (isMobile) {
@@ -209,7 +339,16 @@ export default function Indhu() {
     });
 
     const totalLength = path.getTotalLength();
-    gsap.set(path, { strokeDasharray: totalLength, strokeDashoffset: totalLength });
+    gsap.set(path, { 
+      strokeDasharray: totalLength, 
+      strokeDashoffset: totalLength,
+      strokeWidth: colorTransitions.strokeWidth,
+      strokeOpacity: colorTransitions.strokeOpacity
+    });
+
+    // Apply visual effects
+    applyPulseEffect();
+    applyGlowEffect();
 
     const scrollTween = gsap.to(svg, {
       x: () => -(svg.scrollWidth - window.innerWidth),
@@ -237,11 +376,44 @@ export default function Indhu() {
       },
     });
 
+    // PRECISE COLOR TRANSITION CONTROL BASED ON SCROLL PROGRESS
+    const colorAnimation = gsap.to({}, {
+      duration: 1,
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: () => `+=${svg.scrollWidth * 1.5}`,
+        scrub: 0.1, // Smooth color transitions
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const currentColor = getCurrentColor(progress);
+          
+          // Update the path color
+          if (path) {
+            path.style.stroke = currentColor;
+          }
+          
+          // Update circle colors based on progress
+          circles.forEach((circle, index) => {
+            if (progress >= circle.progressStart && progress <= circle.progressEnd) {
+              // This circle is active - you could add highlight effects here
+              const circleElement = document.querySelector(`circle[cx="${circle.cx}"]`);
+              if (circleElement) {
+                circleElement.style.strokeWidth = "3";
+                circleElement.style.filter = "drop-shadow(0 0 8px currentColor)";
+              }
+            }
+          });
+        },
+      },
+    });
+
     return () => {
       scrollTween.kill();
       pathAnimation.kill();
+      colorAnimation.kill();
     };
-  }, [isMobile]);
+  }, [isMobile, colorTransitions]);
 
   return (
     <section
@@ -249,6 +421,7 @@ export default function Indhu() {
       className="relative w-full min-h-screen overflow-hidden bg-black text-white flex items-center justify-start py-16 isolate"
     >
       <div className="absolute inset-0 bg-black" />
+      
       <div
         className="absolute top-24 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4"
         style={{ fontFamily: "Outfit, sans-serif" }}
@@ -273,31 +446,42 @@ export default function Indhu() {
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid meet"
         >
+          {/* Background path */}
           <path
             d={pathD}
-            stroke="rgba(255, 242, 0, 0.05)"
+            stroke="rgba(255, 255, 255, 0.05)"
             strokeWidth="3"
             fill="none"
             strokeLinecap="round"
           />
 
+          {/* Main animated path with precise color control */}
           <path
             ref={pathRef}
             d={pathD}
-            stroke="url(#gradientGlow)"
-            strokeWidth="5"
+            stroke={colorTransitions.useSingleColor ? colorTransitions.singleColor : "currentColor"}
+            strokeWidth={colorTransitions.strokeWidth}
             strokeLinecap="round"
             fill="none"
+            strokeOpacity={colorTransitions.strokeOpacity}
           />
 
           <defs>
+            {/* Gradient definition (backup for gradient mode) */}
             <linearGradient id="gradientGlow" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor={gradientColors[0]} />
-              <stop offset="25%" stopColor={gradientColors[1]} />
-              <stop offset="50%" stopColor={gradientColors[2]} />
-              <stop offset="75%" stopColor={gradientColors[3]} />
-              <stop offset="100%" stopColor={gradientColors[4]} />
+              {getPreciseGradientStops()}
             </linearGradient>
+            
+            {/* Glow filter */}
+            {colorTransitions.glowEffect && (
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation={colorTransitions.glowIntensity * 4} result="coloredBlur"/>
+                <feMerge> 
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            )}
           </defs>
 
           {circles.map((c, idx) => {
