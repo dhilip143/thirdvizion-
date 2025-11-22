@@ -98,9 +98,9 @@ export default function AboutHero() {
               },
               {
                 scale: 1, // End with normal scale
-                width: "100%", // Maintain full width
+                width: "90%", // Maintain full width
                 y: 60,
-                borderRadius: "5rem",
+                borderRadius: "10rem",
                 ease: "power2.inOut",
               }, 
               0.5
@@ -216,7 +216,7 @@ export default function AboutHero() {
 
       <div ref={wrapperRef} className="w-full relative">
         {/* Desktop scroll section */}
-        <div className="hidden lg:block min-h-[400vh]">
+        <div className="hidden lg:block min-h-[100vh]">
           <div className="sticky top-0 w-full min-h-screen z-10">
             <div
               ref={imgHolderRef}

@@ -215,24 +215,6 @@ export default function CRMShowcase() {
     });
   }, [activeIndex, isMobile, isTablet]);
 
-  // Helper function to determine visibility for mobile/tablet - IMPROVED
-  const getMobileVisibility = (index) => {
-    if (index <= activeIndex) {
-      const distanceFromActive = activeIndex - index;
-      if (distanceFromActive === 0) {
-        return "opacity-100 scale-100 z-30 translate-y-0"; // Current item
-      } else if (distanceFromActive === 1) {
-        return "opacity-80 scale-95 -translate-y-8 z-20"; // Previous item
-      } else if (distanceFromActive === 2) {
-        return "opacity-60 scale-90 -translate-y-16 z-10"; // Two items back
-      } else {
-        return "opacity-40 scale-85 -translate-y-20 z-0"; // Older items
-      }
-    } else {
-      return "opacity-0 translate-y-10 scale-95 pointer-events-none"; // Future items
-    }
-  };
-
   // Helper function to determine visibility for desktop icons
   const getDesktopIconVisibility = (index) => {
     if (index <= activeIndex) {
@@ -269,15 +251,15 @@ export default function CRMShowcase() {
     }
   };
 
-  // Render Mobile View - FIXED OVERLAPPING AND STICKY ISSUES
+  // SIMPLE MOBILE VIEW - No animations, just clean layout
   if (isMobile) {
     return (
       <section
         ref={sectionRef}
         className="relative w-full min-h-screen bg-transparent text-white overflow-hidden"
       >
-        {/* Header - Not Pinned */}
-        <div className="relative z-40 pt-20 px-4">
+        {/* Header */}
+        <div className="relative z-40 pt-16 px-4">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-medium text-[#FF6467] mb-3"
               style={{ fontFamily: "Outfit, sans-serif" }}>
@@ -285,91 +267,53 @@ export default function CRMShowcase() {
             </h2>
             <p className="text-white/60 text-xs max-w-sm mx-auto"
               style={{ fontFamily: "work-sans, sans-serif" }}>
-              Swipe through to see how every platform connects into one powerful CRM hub.
+              All your platforms connected in one powerful CRM hub
             </p>
           </div>
         </div>
 
-        {/* Mobile Carousel - Pinned Section with Fixed Height */}
-        <div 
-          ref={visualizationRef} 
-          className="relative w-full flex flex-col items-center justify-start px-4"
-          style={{ minHeight: "70vh" }} // Fixed height to prevent overlap
-        >
-          <div className="relative w-full max-w-sm   h-[500px]"> {/* Fixed container height */}
-            {/* CRM Core */}
-            <div className="absolute top-8 left-1/2  mt-[50px] transform -translate-x-1/2 w-32 h-32 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-2xl shadow-[0_0_40px_rgba(255,100,103,0.6)] z-20"
-              style={{ fontFamily: "Outfit, sans-serif" }}>
-              CRM
-              <div className="absolute inset-0 rounded-full border-2 border-[#FF6467] animate-ping opacity-20"></div>
-            </div>
-
-            {/* Feature Cards Stack - Improved positioning */}
-            <div className="absolute top-70 left-0 right-0 h-80"> {/* Fixed positioning */}
-              {platforms.map((platform, index) => (
-                <div
-                  key={index}
-                  className={`absolute inset-x-0 transition-all duration-500 ease-out ${getMobileVisibility(index)}`}
-                  style={{
-                    top: `${index * 4}px`, // Small offset to create stack effect
-                  }}
-                >
-                  <div className="bg-[#FF646710] backdrop-blur-md border border-[#FF646740] rounded-2xl p-4 shadow-[0_0_20px_rgba(255,100,103,0.2)] mx-2">
-                    {/* Platform Icon */}
-                    <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 rounded-full bg-[#FF6467] border border-[#FF6467] text-white shadow-[0_0_15px_rgba(255,100,103,0.6)]">
-                      {platform.icon}
-                    </div>
-                    
-                    <h3 className="text-center text-base font-bold text-[#FF6467] mb-2"
-                      style={{ fontFamily: "Outfit, sans-serif" }}>
-                      {platform.label}
-                    </h3>
-                    
-                    <h4 className="text-center text-xs font-semibold text-white mb-1"
-                      style={{ fontFamily: "Outfit, sans-serif" }}>
-                      {cardData[index].title}
-                    </h4>
-                    
-                    <p className="text-center text-xs text-white/70 leading-relaxed"
-                      style={{ fontFamily: "work-sans, sans-serif" }}>
-                      {cardData[index].desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Dots Indicator */}
-            <div className="absolute bottom-4  mt-[40px] left-0 right-0 flex justify-center space-x-2">
-              {platforms.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === activeIndex
-                      ? "bg-[#FF6467] w-6"
-                      : index < activeIndex
-                      ? "bg-[#FF6467] opacity-60"
-                      : "bg-white/30"
-                  }`}
-                />
-              ))}
-            </div>
-
-            {/* Scroll Hint */}
-            <div className="absolute bottom-16 left-0 right-0 text-center">
-              <div className="flex items-center justify-center text-white/50 text-xs">
-                <ChevronDown className="w-4 h-4 mr-1 animate-bounce" />
-                Scroll to explore
-              </div>
-            </div>
+        {/* Simple CRM Core */}
+        <div className="flex justify-center mb-8">
+          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-xl shadow-[0_0_20px_rgba(255,100,103,0.4)]"
+            style={{ fontFamily: "Outfit, sans-serif" }}>
+            CRM
           </div>
+        </div>
+
+        {/* Simple Feature List - No animations, just static layout */}
+        <div className="px-4 space-y-4 pb-12">
+          {platforms.map((platform, index) => (
+            <div
+              key={index}
+              className="bg-[#FF646710] backdrop-blur-md border border-[#FF646730] rounded-xl p-4"
+            >
+              <div className="flex items-center mb-3">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#FF6467] text-white mr-3">
+                  {platform.icon}
+                </div>
+                <h3 className="text-base font-bold text-[#FF6467]"
+                  style={{ fontFamily: "Outfit, sans-serif" }}>
+                  {platform.label}
+                </h3>
+              </div>
+              
+              <h4 className="text-sm font-semibold text-white mb-2"
+                style={{ fontFamily: "Outfit, sans-serif" }}>
+                {cardData[index].title}
+              </h4>
+              
+              <p className="text-xs text-white/70 leading-relaxed"
+                style={{ fontFamily: "work-sans, sans-serif" }}>
+                {cardData[index].desc}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
     );
   }
 
-  // Render Tablet View
+  // Render Tablet View (unchanged)
   if (isTablet) {
     const radius = 180;
     const center = { x: 380, y: 300 };

@@ -17,7 +17,6 @@ export default function About() {
       <Hero />
       <AboutSection />
        <VisionMission />
-      <Mission />
       {/* <Journey /> */}
       <OurTeam />
       <Partners />
