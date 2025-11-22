@@ -8,9 +8,9 @@ import DesignTool from "/src/assets/newserviceehome/ar.png";
 import Layout from "/src/assets/newserviceehome/3d.png";
 import Component from "/src/assets/newserviceehome/vr.png";
 import Por from "/src/assets/home/mobileapp.jpg";
-import Portal from "/src/assets/newserviceehome/erp.png";
+import Portal from "/src/assets/newserviceehome/crm.png";
 import Dashboard from "/src/assets/newserviceehome/server.png";
-import Aws from "/src/assets/newserviceehome/crm.png";
+import Aws from "/src/assets/home/erp.png";
 import Azure from "/src/assets/home/game.jpg";
 import GoogleCloud from "/src/assets/home/web.jpg";
 
@@ -107,7 +107,7 @@ const capabilitiesData = [
     desc: "We create innovative software solutions that help businesses grow in the digital era. From custom websites to mobile apps and interactive games, our team combines creativity, technology, and strategy to turn ideas into reality",
     children: [
       {
-        name: "WEBSITE",
+        name: "GAME DEVELOPMENT",
         img: Azure,
         emojis: ["💻"], // Website-related emojis
         imageSettings: {
@@ -119,7 +119,7 @@ const capabilitiesData = [
         link: "/web_development"
       },
       {
-        name: "MOBILE",
+        name: "WEBSITE",
         img: GoogleCloud,
         emojis: ["📱"], // Mobile-related emojis
         imageSettings: {
@@ -131,7 +131,7 @@ const capabilitiesData = [
         link: "/app_development"
       },
       {
-        name: "GAME DEVELOPMENT",
+        name: "MOBILE APP",
         img: Por,
         emojis: ["🎮"], // Game development-related emojis
         imageSettings: {

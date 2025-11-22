@@ -2,13 +2,13 @@ import Client1 from "/src/assets/partners/client1.png";
 import Client2 from "/src/assets/partners/client2.png";
 import Client3 from "/src/assets/partners/client3.png";
 import Client4 from "/src/assets/partners/client4.png";
-import Client5 from "/src/assets/partners/client5.png";
-import Client6 from "/src/assets/partners/client6.png";
+import Client5 from "/src/assets/home/Clients/Logo ssm-11.png";
+import Client6 from "/src/assets/home/Clients/Logo ssm-12.png";
 import Client7 from "/src/assets/partners/c1.svg";
 import Client8 from "/src/assets/partners/c2.png";
 import Client9 from "/src/assets/partners/c3.png";
 import Client10 from "/src/assets/partners/c4.png";
-import Client11 from "/src/assets/partners/c5.png";
+import Client11 from "/src/assets/home/Clients/kt-10 (1).png";
 import Client12 from "/src/assets/partners/c6.png";
 import Client13 from "/src/assets/partners/c7.png";
 
